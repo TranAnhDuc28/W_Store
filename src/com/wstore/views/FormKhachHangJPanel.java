@@ -33,7 +33,7 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButton3 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
-        jButton4 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
         jButton5 = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
@@ -99,12 +99,13 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         jToolBar1.add(jButton3);
         jToolBar1.add(jSeparator3);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/import-excel32x32.png"))); // NOI18N
-        jButton4.setText("Nhập từ excel");
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton4.setIconTextGap(5);
-        jButton4.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jToolBar1.add(jButton4);
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/import-excel32x32.png"))); // NOI18N
+        jButton12.setText("Nhập từ excel");
+        jButton12.setFocusable(false);
+        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton12.setIconTextGap(5);
+        jButton12.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        jToolBar1.add(jButton12);
         jToolBar1.add(jSeparator4);
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/export-excel32x32.png"))); // NOI18N
@@ -313,9 +314,9 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnThemKH;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
