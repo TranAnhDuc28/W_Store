@@ -4,6 +4,7 @@
  */
 package com.wstore.views;
 
+
 /**
  *
  * @author ducan
@@ -17,6 +18,7 @@ public class FormTrangChuJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,30 +28,21 @@ public class FormTrangChuJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblAnhBia = new javax.swing.JLabel();
+        lblAnhBiaTrangChu = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(243, 243, 243));
+        setLayout(new java.awt.BorderLayout());
 
-        lblAnhBia.setBackground(new java.awt.Color(255, 255, 255));
-        lblAnhBia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAnhBia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/anh-trang-chu.jpg"))); // NOI18N
-        lblAnhBia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblAnhBia.setOpaque(true);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblAnhBia, javax.swing.GroupLayout.DEFAULT_SIZE, 918, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblAnhBia, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
-        );
+        lblAnhBiaTrangChu.setBackground(new java.awt.Color(255, 255, 255));
+        lblAnhBiaTrangChu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAnhBiaTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/anh-trang-chu.jpg"))); // NOI18N
+        lblAnhBiaTrangChu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblAnhBiaTrangChu.setOpaque(true);
+        add(lblAnhBiaTrangChu, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblAnhBia;
+    private javax.swing.JLabel lblAnhBiaTrangChu;
     // End of variables declaration//GEN-END:variables
 }

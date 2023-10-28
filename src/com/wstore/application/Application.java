@@ -5,7 +5,7 @@
 package com.wstore.application;
 
 import com.wstore.swingdesign.ScrollBarWin11UI;
-import com.wstore.views.FormQuanTriJFrame_QuanLy;
+import com.wstore.views.FormQuanTriJFrameQuanLy;
 import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 
@@ -79,7 +79,7 @@ public class Application extends javax.swing.JFrame {
         ui.put("ScrollBarUI", ScrollBarWin11UI.class.getCanonicalName());
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormQuanTriJFrame_QuanLy().setVisible(true);
+                new FormQuanTriJFrameQuanLy().setVisible(true);
             }
         });
     }
