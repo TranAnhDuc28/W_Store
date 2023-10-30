@@ -424,7 +424,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblTrangChuMouseClicked
 
     private void lblBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMouseClicked
-        // TODO add your handling code here:
+       new FormBanHangJFrame().setVisible(true);
     }//GEN-LAST:event_lblBanHangMouseClicked
 
     private void lblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseClicked

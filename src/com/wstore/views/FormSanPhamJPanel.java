@@ -188,19 +188,19 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(243, 243, 243));
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
-        jLabel7.setText("jLabel7");
+        jLabel7.setText("Thương hiệu");
         jLabel7.setPreferredSize(new java.awt.Dimension(150, 16));
         jPanel5.add(jLabel7);
 
-        jLabel8.setText("jLabel7");
+        jLabel8.setText("Dòng sản phẩm");
         jLabel8.setPreferredSize(new java.awt.Dimension(150, 16));
         jPanel5.add(jLabel8);
 
-        jLabel9.setText("jLabel7");
+        jLabel9.setText("Đối tượng sử dụng");
         jLabel9.setPreferredSize(new java.awt.Dimension(150, 16));
         jPanel5.add(jLabel9);
 
-        jLabel10.setText("jLabel7");
+        jLabel10.setText("Trạng thái");
         jLabel10.setPreferredSize(new java.awt.Dimension(150, 16));
         jPanel5.add(jLabel10);
 
