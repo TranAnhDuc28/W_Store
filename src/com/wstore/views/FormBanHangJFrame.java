@@ -4,6 +4,8 @@
  */
 package com.wstore.views;
 
+import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -14,10 +16,14 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
 
     public FormBanHangJFrame() {
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        init();
     }
 
-    
+    private void init() {
+        getContentPane().setBackground(new Color(243, 243, 243));
+        setIconImage(new ImageIcon("src/com/wstore/icons/logo.png").getImage());
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -210,7 +216,7 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))

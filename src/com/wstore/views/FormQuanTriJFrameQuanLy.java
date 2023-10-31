@@ -6,8 +6,7 @@ package com.wstore.views;
 
 import com.wstore.swingdesign.ScrollBarWin11UI;
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIDefaults;
@@ -24,12 +23,18 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
      */
     public FormQuanTriJFrameQuanLy() {
         initComponents();
+        init();
+    }
+    
+    private void init() {
         getContentPane().setBackground(new Color(243, 243, 243));
+        setIconImage(new ImageIcon("src/com/wstore/icons/logo.png").getImage());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         showPnl(new FormTrangChuJPanel());
-    } 
+    }
+        
     
-     private void showPnl(JPanel jPanel) {
+    private void showPnl(JPanel jPanel) {
         pnlMainForm.removeAll();
         pnlMainForm.add(jPanel);
         pnlMainForm.validate();
@@ -64,7 +69,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(202, 219, 236));
+        jPanel1.setBackground(new java.awt.Color(144, 182, 168));
         jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), null));
 
         lblThongTinCaNhan.setBackground(new java.awt.Color(239, 236, 239));
@@ -80,6 +85,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
         });
 
         jPanel3.setBackground(new java.awt.Color(202, 219, 236));
+        jPanel3.setOpaque(false);
 
         jLabel2.setText("Nhân viên:");
 
@@ -89,9 +95,10 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 255, 255)));
         jPanel2.setAutoscrolls(true);
         jPanel2.setFocusTraversalPolicyProvider(true);
+        jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTrangChu.setBackground(new java.awt.Color(202, 219, 236));
+        lblTrangChu.setBackground(new java.awt.Color(207, 228, 235));
         lblTrangChu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTrangChu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/page-home32x32.png"))); // NOI18N
@@ -115,7 +122,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
         });
         jPanel2.add(lblTrangChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 5, 215, 50));
 
-        lblThongKe.setBackground(new java.awt.Color(202, 219, 236));
+        lblThongKe.setBackground(new java.awt.Color(207, 228, 235));
         lblThongKe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/thong-ke32x32.png"))); // NOI18N
@@ -138,7 +145,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
         });
         jPanel2.add(lblThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 215, 50));
 
-        lblSanPham.setBackground(new java.awt.Color(202, 219, 236));
+        lblSanPham.setBackground(new java.awt.Color(207, 228, 235));
         lblSanPham.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/products32x32.png"))); // NOI18N
@@ -161,7 +168,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
         });
         jPanel2.add(lblSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 115, 215, 50));
 
-        lblBanHang.setBackground(new java.awt.Color(202, 219, 236));
+        lblBanHang.setBackground(new java.awt.Color(207, 228, 235));
         lblBanHang.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblBanHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/ban-hang32x32.png"))); // NOI18N
@@ -184,7 +191,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
         });
         jPanel2.add(lblBanHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 215, 50));
 
-        lblKhachHang.setBackground(new java.awt.Color(202, 219, 236));
+        lblKhachHang.setBackground(new java.awt.Color(207, 228, 235));
         lblKhachHang.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/customer32x32.png"))); // NOI18N
@@ -207,7 +214,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
         });
         jPanel2.add(lblKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 215, 50));
 
-        lblHoaDon.setBackground(new java.awt.Color(202, 219, 236));
+        lblHoaDon.setBackground(new java.awt.Color(207, 228, 235));
         lblHoaDon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/hoa-don32x32.png"))); // NOI18N
@@ -230,7 +237,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
         });
         jPanel2.add(lblHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 225, 215, 50));
 
-        lblNhanVien.setBackground(new java.awt.Color(202, 219, 236));
+        lblNhanVien.setBackground(new java.awt.Color(207, 228, 235));
         lblNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/nhan-vien.png"))); // NOI18N
@@ -253,7 +260,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
         });
         jPanel2.add(lblNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 215, 50));
 
-        lblKhuyenMai.setBackground(new java.awt.Color(202, 219, 236));
+        lblKhuyenMai.setBackground(new java.awt.Color(207, 228, 235));
         lblKhuyenMai.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblKhuyenMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/khuyen-mai32x32.png"))); // NOI18N
@@ -291,7 +298,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,7 +311,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -338,8 +345,8 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlMainForm, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(pnlMainForm, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,7 +363,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblThongTinCaNhanMouseClicked
 
     private void lblTrangChuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangChuMouseEntered
-        lblTrangChu.setBackground(new Color(243, 243, 243));
+        lblTrangChu.setBackground(new Color(214,167,167));
     }//GEN-LAST:event_lblTrangChuMouseEntered
 
     private void lblTrangChuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangChuMouseExited
@@ -364,7 +371,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblTrangChuMouseExited
 
     private void lblBanHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMouseEntered
-        lblBanHang.setBackground(new Color(243, 243, 243));
+        lblBanHang.setBackground(new Color(214,167,167));
     }//GEN-LAST:event_lblBanHangMouseEntered
 
     private void lblBanHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMouseExited
@@ -372,7 +379,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblBanHangMouseExited
 
     private void lblSanPhamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseEntered
-        lblSanPham.setBackground(new Color(243, 243, 243));
+        lblSanPham.setBackground(new Color(214,167,167));
     }//GEN-LAST:event_lblSanPhamMouseEntered
 
     private void lblSanPhamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseExited
@@ -380,7 +387,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSanPhamMouseExited
 
     private void lblKhachHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseEntered
-        lblKhachHang.setBackground(new Color(243, 243, 243));
+        lblKhachHang.setBackground(new Color(214,167,167));
     }//GEN-LAST:event_lblKhachHangMouseEntered
 
     private void lblKhachHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseExited
@@ -388,7 +395,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblKhachHangMouseExited
 
     private void lblHoaDonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseEntered
-        lblHoaDon.setBackground(new Color(243, 243, 243));
+        lblHoaDon.setBackground(new Color(214,167,167));
     }//GEN-LAST:event_lblHoaDonMouseEntered
 
     private void lblHoaDonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseExited
@@ -396,7 +403,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHoaDonMouseExited
 
     private void lblNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseEntered
-        lblNhanVien.setBackground(new Color(243, 243, 243));
+        lblNhanVien.setBackground(new Color(214,167,167));
     }//GEN-LAST:event_lblNhanVienMouseEntered
 
     private void lblNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseExited
@@ -404,7 +411,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblNhanVienMouseExited
 
     private void lblKhuyenMaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMouseEntered
-        lblKhuyenMai.setBackground(new Color(243, 243, 243));
+        lblKhuyenMai.setBackground(new Color(214,167,167));
     }//GEN-LAST:event_lblKhuyenMaiMouseEntered
 
     private void lblKhuyenMaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMouseExited
@@ -412,7 +419,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblKhuyenMaiMouseExited
 
     private void lblThongKeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseEntered
-        lblThongKe.setBackground(new Color(243, 243, 243));
+        lblThongKe.setBackground(new Color(214,167,167));
     }//GEN-LAST:event_lblThongKeMouseEntered
 
     private void lblThongKeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseExited
@@ -436,7 +443,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblKhachHangMouseClicked
 
     private void lblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseClicked
-        // TODO add your handling code here:
+        showPnl(new FormHoaDonJPanel());
     }//GEN-LAST:event_lblHoaDonMouseClicked
 
     private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
@@ -444,7 +451,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblNhanVienMouseClicked
 
     private void lblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMouseClicked
-        // TODO add your handling code here:
+        showPnl(new FormKhuyenMaiJPanel());
     }//GEN-LAST:event_lblKhuyenMaiMouseClicked
 
     private void lblThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseClicked
