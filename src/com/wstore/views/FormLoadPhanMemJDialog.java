@@ -11,11 +11,11 @@ import javax.swing.ImageIcon;
  *
  * @author ducan
  */
-public class LoadPhanMemJDialog extends javax.swing.JDialog {
+public class FormLoadPhanMemJDialog extends javax.swing.JDialog {
 
     Thread t = null;
     
-    public LoadPhanMemJDialog(java.awt.Frame parent, boolean modal) {
+    public FormLoadPhanMemJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         init();
@@ -36,7 +36,7 @@ public class LoadPhanMemJDialog extends javax.swing.JDialog {
                     if (value < 100) {
                         pgbLoad.setValue(value + 1);
                     } else {
-                        LoadPhanMemJDialog.this.dispose();
+                        FormLoadPhanMemJDialog.this.dispose();
                         break;
                     }
                     try {
@@ -76,8 +76,8 @@ public class LoadPhanMemJDialog extends javax.swing.JDialog {
         pnlBackground.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 306, 60, 20));
         pnlBackground.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        pgbLoad.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        pgbLoad.setForeground(new java.awt.Color(0, 0, 0));
+        pgbLoad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        pgbLoad.setForeground(new java.awt.Color(102, 102, 102));
         pgbLoad.setOpaque(true);
         pgbLoad.setStringPainted(true);
 
@@ -121,21 +121,23 @@ public class LoadPhanMemJDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoadPhanMemJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoadPhanMemJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoadPhanMemJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoadPhanMemJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoadPhanMemJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoadPhanMemJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoadPhanMemJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoadPhanMemJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LoadPhanMemJDialog dialog = new LoadPhanMemJDialog(new javax.swing.JFrame(), true);
+                FormLoadPhanMemJDialog dialog = new FormLoadPhanMemJDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

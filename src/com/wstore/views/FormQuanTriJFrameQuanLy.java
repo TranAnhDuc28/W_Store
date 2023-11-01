@@ -25,15 +25,19 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
         initComponents();
         init();
     }
-    
+
     private void init() {
         getContentPane().setBackground(new Color(243, 243, 243));
         setIconImage(new ImageIcon("src/com/wstore/icons/logo.png").getImage());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         showPnl(new FormTrangChuJPanel());
+        openLoadPhanMem();
     }
-        
-    
+
+    private void openLoadPhanMem() {
+        new FormLoadPhanMemJDialog(this, true).setVisible(true);
+    }
+
     private void showPnl(JPanel jPanel) {
         pnlMainForm.removeAll();
         pnlMainForm.add(jPanel);
@@ -75,6 +79,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
         lblThongTinCaNhan.setBackground(new java.awt.Color(239, 236, 239));
         lblThongTinCaNhan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblThongTinCaNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/user.png"))); // NOI18N
+        lblThongTinCaNhan.setToolTipText("Xem thông tin cá nhân");
         lblThongTinCaNhan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         lblThongTinCaNhan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblThongTinCaNhan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -359,11 +364,13 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblThongTinCaNhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongTinCaNhanMouseClicked
-        
+        if (evt.getClickCount() == 2) {
+            new FormThongTinCaNhanJDialog(this, true).setVisible(true);
+        }
     }//GEN-LAST:event_lblThongTinCaNhanMouseClicked
 
     private void lblTrangChuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangChuMouseEntered
-        lblTrangChu.setBackground(new Color(214,167,167));
+        lblTrangChu.setBackground(new Color(214, 167, 167));
     }//GEN-LAST:event_lblTrangChuMouseEntered
 
     private void lblTrangChuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangChuMouseExited
@@ -371,7 +378,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblTrangChuMouseExited
 
     private void lblBanHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMouseEntered
-        lblBanHang.setBackground(new Color(214,167,167));
+        lblBanHang.setBackground(new Color(214, 167, 167));
     }//GEN-LAST:event_lblBanHangMouseEntered
 
     private void lblBanHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMouseExited
@@ -379,7 +386,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblBanHangMouseExited
 
     private void lblSanPhamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseEntered
-        lblSanPham.setBackground(new Color(214,167,167));
+        lblSanPham.setBackground(new Color(214, 167, 167));
     }//GEN-LAST:event_lblSanPhamMouseEntered
 
     private void lblSanPhamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseExited
@@ -387,7 +394,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSanPhamMouseExited
 
     private void lblKhachHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseEntered
-        lblKhachHang.setBackground(new Color(214,167,167));
+        lblKhachHang.setBackground(new Color(214, 167, 167));
     }//GEN-LAST:event_lblKhachHangMouseEntered
 
     private void lblKhachHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseExited
@@ -395,7 +402,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblKhachHangMouseExited
 
     private void lblHoaDonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseEntered
-        lblHoaDon.setBackground(new Color(214,167,167));
+        lblHoaDon.setBackground(new Color(214, 167, 167));
     }//GEN-LAST:event_lblHoaDonMouseEntered
 
     private void lblHoaDonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseExited
@@ -403,7 +410,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHoaDonMouseExited
 
     private void lblNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseEntered
-        lblNhanVien.setBackground(new Color(214,167,167));
+        lblNhanVien.setBackground(new Color(214, 167, 167));
     }//GEN-LAST:event_lblNhanVienMouseEntered
 
     private void lblNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseExited
@@ -411,7 +418,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblNhanVienMouseExited
 
     private void lblKhuyenMaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMouseEntered
-        lblKhuyenMai.setBackground(new Color(214,167,167));
+        lblKhuyenMai.setBackground(new Color(214, 167, 167));
     }//GEN-LAST:event_lblKhuyenMaiMouseEntered
 
     private void lblKhuyenMaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMouseExited
@@ -419,7 +426,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblKhuyenMaiMouseExited
 
     private void lblThongKeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseEntered
-        lblThongKe.setBackground(new Color(214,167,167));
+        lblThongKe.setBackground(new Color(214, 167, 167));
     }//GEN-LAST:event_lblThongKeMouseEntered
 
     private void lblThongKeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseExited
@@ -431,7 +438,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblTrangChuMouseClicked
 
     private void lblBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMouseClicked
-       new FormBanHangJFrame().setVisible(true);
+        new FormBanHangJFrame().setVisible(true);
     }//GEN-LAST:event_lblBanHangMouseClicked
 
     private void lblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseClicked
@@ -455,7 +462,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_lblKhuyenMaiMouseClicked
 
     private void lblThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseClicked
-        // TODO add your handling code here:
+        showPnl(new FormThongKeJPanel());
     }//GEN-LAST:event_lblThongKeMouseClicked
 
     /**

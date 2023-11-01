@@ -151,9 +151,9 @@ public class FormChupAnhJFrame extends javax.swing.JFrame {
             }
         });
 
+        pnlWebcam.setBackground(new java.awt.Color(243, 243, 243));
         pnlWebcam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnChup.setBackground(new java.awt.Color(243, 243, 243));
         btnChup.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnChup.setText("Chụp");
         btnChup.setToolTipText("Chụp ảnh");

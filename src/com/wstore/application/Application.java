@@ -7,6 +7,7 @@ package com.wstore.application;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.fonts.roboto.FlatRobotoFont;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import com.wstore.views.FormDangNhapJFrame;
 import com.wstore.views.FormQuanTriJFrameQuanLy;
 import java.awt.Font;
 import javax.swing.UIManager;
@@ -83,7 +84,7 @@ public class Application extends javax.swing.JFrame {
         FlatMacLightLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormQuanTriJFrameQuanLy().setVisible(true);
+                new FormDangNhapJFrame().setVisible(true);
             }
         });
     }

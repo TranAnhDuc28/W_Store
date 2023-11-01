@@ -76,8 +76,12 @@ public class FormKhuyenMaiJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(243, 243, 243));
+
+        jPanel1.setBackground(new java.awt.Color(243, 243, 243));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CHƯƠNG TRÌNH KHUYẾN MÃI", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
+        jPanel2.setBackground(new java.awt.Color(243, 243, 243));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin chương trình", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         jLabel1.setText("Mã chương trình");
@@ -170,6 +174,7 @@ public class FormKhuyenMaiJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(new java.awt.Color(243, 243, 243));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sản phẩm muốn áp dụng chương trình", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -325,6 +330,7 @@ public class FormKhuyenMaiJPanel extends javax.swing.JPanel {
         jButton3.setMargin(new java.awt.Insets(5, 14, 5, 14));
         jToolBar1.add(jButton3);
 
+        jPanel3.setBackground(new java.awt.Color(243, 243, 243));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -346,6 +352,8 @@ public class FormKhuyenMaiJPanel extends javax.swing.JPanel {
         jScrollPane3.setViewportView(jTable2);
 
         jPanel3.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+
+        jPanel5.setBackground(new java.awt.Color(243, 243, 243));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("Tìm kiếm");
