@@ -26,7 +26,7 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
         getContentPane().setBackground(new Color(243, 243, 243));
         setIconImage(new ImageIcon("src/com/wstore/icons/logo.png").getImage());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        jTabbedPane1.addTab("HÓA ĐƠN BÁN HÀNG (1)", new FormTabBanHangJPanel());
+        jTabbedPane1.addTab("HÓA ĐƠN BÁN HÀNG (1)", new FormTabBanHangJPanel(this));
     }
 
     @SuppressWarnings("unchecked")
@@ -101,7 +101,7 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
 
     private void btnTaoTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoTabActionPerformed
         int count = jTabbedPane1.getTabCount();
-        jTabbedPane1.addTab("HÓA ĐƠN BÁN HÀNG (" + (count + 1) + ")", new FormTabBanHangJPanel());
+        jTabbedPane1.addTab("HÓA ĐƠN BÁN HÀNG (" + (count + 1) + ")", new FormTabBanHangJPanel(this));
     }//GEN-LAST:event_btnTaoTabActionPerformed
 
     private void btnDongTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongTabActionPerformed

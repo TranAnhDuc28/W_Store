@@ -350,8 +350,7 @@ public class FormQuanTriJFrameQuanLy extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlMainForm, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pnlMainForm, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

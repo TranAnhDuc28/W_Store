@@ -4,16 +4,18 @@
  */
 package com.wstore.views;
 
+import java.awt.Frame;
+
 /**
  *
  * @author ducan
  */
 public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form FormTabBanHangJPanel
-     */
-    public FormTabBanHangJPanel() {
+    private Frame formBanHangJFrame;
+    
+    public FormTabBanHangJPanel(Frame parent) {
+        this.formBanHangJFrame = parent;
         initComponents();
     }
 
@@ -109,12 +111,10 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         jComboBox1.setPreferredSize(new java.awt.Dimension(70, 25));
         jPanel8.add(jComboBox1);
 
-        jButton6.setBackground(new java.awt.Color(243, 243, 243));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/first16x16.png"))); // NOI18N
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel8.add(jButton6);
 
-        jButton7.setBackground(new java.awt.Color(243, 243, 243));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/prev16x16.png"))); // NOI18N
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel8.add(jButton7);
@@ -125,12 +125,10 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(70, 22));
         jPanel8.add(jLabel3);
 
-        jButton8.setBackground(new java.awt.Color(243, 243, 243));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/next16x16.png"))); // NOI18N
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel8.add(jButton8);
 
-        jButton9.setBackground(new java.awt.Color(243, 243, 243));
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/last16x16.png"))); // NOI18N
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel8.add(jButton9);
@@ -257,6 +255,11 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/barcode.png"))); // NOI18N
         jButton3.setText("Quét mã");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -445,6 +448,10 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new FormQuetMaBarcodeJDialog(formBanHangJFrame, false).setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

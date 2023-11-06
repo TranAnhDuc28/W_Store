@@ -112,6 +112,7 @@ public class FormThongTinCaNhanJDialog extends javax.swing.JDialog {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "THÔNG TIN CÁ NHÂN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(206, 206, 206)));
 
         jLabel2.setText("Mã nhân viên:");
@@ -119,39 +120,47 @@ public class FormThongTinCaNhanJDialog extends javax.swing.JDialog {
         jLabel3.setText("Họ và tên");
 
         jTextField2.setEditable(false);
+        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(206, 206, 206)));
 
         jLabel4.setText("Ngày sinh");
 
         jTextField3.setEditable(false);
+        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
         jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(206, 206, 206)));
 
         jLabel5.setText("Giới tính");
 
         jTextField4.setEditable(false);
+        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
         jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(206, 206, 206)));
 
         jLabel6.setText("Số điện thoại");
 
         jTextField5.setEditable(false);
+        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(206, 206, 206)));
 
         jTextField6.setEditable(false);
+        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
         jTextField6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(206, 206, 206)));
 
         jLabel7.setText("Email");
 
         jTextField7.setEditable(false);
+        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
         jTextField7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(206, 206, 206)));
 
         jLabel8.setText("CCCD");
 
         jTextField8.setEditable(false);
+        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
         jTextField8.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(206, 206, 206)));
 
         jLabel9.setText("Địa chỉ");
 
         jTextField9.setEditable(false);
+        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
         jTextField9.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(206, 206, 206)));
 
         jLabel10.setText("Chức vụ");
@@ -168,7 +177,7 @@ public class FormThongTinCaNhanJDialog extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,10 +197,9 @@ public class FormThongTinCaNhanJDialog extends javax.swing.JDialog {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel10)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel9))
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
                 .addGap(16, 16, 16)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -203,7 +211,7 @@ public class FormThongTinCaNhanJDialog extends javax.swing.JDialog {
                             .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jTextField7)
                     .addComponent(jTextField8)
@@ -277,9 +285,7 @@ public class FormThongTinCaNhanJDialog extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,51 +311,51 @@ public class FormThongTinCaNhanJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
     private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnDongActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormThongTinCaNhanJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormThongTinCaNhanJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormThongTinCaNhanJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormThongTinCaNhanJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                FormThongTinCaNhanJDialog dialog = new FormThongTinCaNhanJDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(FormThongTinCaNhanJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(FormThongTinCaNhanJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(FormThongTinCaNhanJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(FormThongTinCaNhanJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the dialog */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                FormThongTinCaNhanJDialog dialog = new FormThongTinCaNhanJDialog(new javax.swing.JFrame(), true);
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    @Override
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangXuat;

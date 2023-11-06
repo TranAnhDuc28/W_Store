@@ -29,6 +29,7 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         initWebcam();
+        captureThread();
     }
 
 
@@ -97,14 +98,13 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
                         //với phương thức decode() và lưu vào biến result
                         result = new MultiFormatReader().decode(bitmap);
                     } catch (NotFoundException ex) {
-                        ex.printStackTrace();
+//                        ex.printStackTrace();
                     }
                     //Kiểm tra nếu giải mã thành công và gán giá trị
                     //cho biến result thì in kết quả đó lên TextField
                     if (result != null) {
                         System.out.println("Quét thành công!");
-                        txtCode.setText(result.getText());
-                        btnQuet.setEnabled(false);
+                        txtMaBarCode.setText(result.getText());
                         return;
                     }
                 } while (true); //Vòng lặp vô hạn                            
@@ -125,88 +125,261 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtCode = new javax.swing.JTextArea();
-        btnQuet = new javax.swing.JButton();
         pnlShowWebcam = new javax.swing.JPanel();
-        btnRefresh = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btnQuet = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        btnThemVaoGioHang = new javax.swing.JButton();
+        btnDong = new javax.swing.JButton();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtMaBarCode = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Result");
+        jPanel1.setBackground(new java.awt.Color(243, 243, 243));
 
-        txtCode.setColumns(20);
-        txtCode.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCode.setLineWrap(true);
-        txtCode.setRows(5);
-        jScrollPane2.setViewportView(txtCode);
+        pnlShowWebcam.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlShowWebcam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+
+        btnQuet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/barcode.png"))); // NOI18N
         btnQuet.setText("Quét");
+        btnQuet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnQuet.setIconTextGap(5);
         btnQuet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuetActionPerformed(evt);
             }
         });
 
-        pnlShowWebcam.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        pnlShowWebcam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(143, 143, 143)));
+        jPanel3.setPreferredSize(new java.awt.Dimension(180, 0));
 
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+        jLabel15.setBackground(new java.awt.Color(243, 243, 243));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Hình ảnh");
+        jLabel15.setOpaque(true);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jLabel3.setText("Mã sản phẩm");
+
+        jLabel4.setText("Tên sản phẩm");
+
+        jLabel5.setText("Số lượng tồn");
+
+        jTextField5.setEditable(false);
+        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField5.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextField5.setOpaque(true);
+
+        jLabel6.setText("Đơn giá");
+
+        jTextField6.setEditable(false);
+        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField6.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jLabel7.setText("Giá bán");
+
+        jLabel8.setText("Số lượng mua");
+
+        btnThemVaoGioHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/add32x32.png"))); // NOI18N
+        btnThemVaoGioHang.setText("Thêm vào giỏ hàng");
+        btnThemVaoGioHang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnThemVaoGioHang.setIconTextGap(5);
+        btnThemVaoGioHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
+                btnThemVaoGioHangActionPerformed(evt);
             }
         });
+
+        btnDong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/cancel32x32.png"))); // NOI18N
+        btnDong.setText("Đóng");
+        btnDong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDong.setIconTextGap(5);
+        btnDong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDongActionPerformed(evt);
+            }
+        });
+
+        jTextField7.setEditable(false);
+        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField7.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextField7.setOpaque(true);
+
+        jTextField8.setEditable(false);
+        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField8.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextField8.setOpaque(true);
+
+        jTextField9.setEditable(false);
+        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField9.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextField9.setOpaque(true);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnQuet)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnThemVaoGioHang)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDong)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnQuet)
+                    .addComponent(btnThemVaoGioHang)
+                    .addComponent(btnDong))
+                .addContainerGap())
+        );
+
+        jLabel1.setText("Kết quả");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Quét sản phẩm");
+
+        txtMaBarCode.setEditable(false);
+        txtMaBarCode.setBackground(new java.awt.Color(255, 255, 255));
+        txtMaBarCode.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtMaBarCode.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMaBarCode.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtMaBarCode.setOpaque(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(pnlShowWebcam, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMaBarCode))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnQuet, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 365, Short.MAX_VALUE))))
-                            .addComponent(jLabel2))
-                        .addGap(20, 20, 20))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pnlShowWebcam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlShowWebcam, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnQuet, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRefresh)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtMaBarCode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,16 +387,26 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnQuetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuetActionPerformed
+        txtMaBarCode.setText("");
         captureThread();
     }//GEN-LAST:event_btnQuetActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        txtCode.setText("");
-        btnQuet.setEnabled(true);
-    }//GEN-LAST:event_btnRefreshActionPerformed
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        webcam.close();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void btnThemVaoGioHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemVaoGioHangActionPerformed
+        
+    }//GEN-LAST:event_btnThemVaoGioHangActionPerformed
+
+    private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
+        webcam.close();
+        this.dispose();
+    }//GEN-LAST:event_btnDongActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,12 +451,28 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDong;
     private javax.swing.JButton btnQuet;
-    private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnThemVaoGioHang;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel pnlShowWebcam;
-    private javax.swing.JTextArea txtCode;
+    private javax.swing.JTextField txtMaBarCode;
     // End of variables declaration//GEN-END:variables
 }

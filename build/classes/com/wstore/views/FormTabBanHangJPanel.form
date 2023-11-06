@@ -190,9 +190,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton6">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="f3" green="f3" red="f3" type="rgb"/>
-                    </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/com/wstore/icons/first16x16.png"/>
                     </Property>
@@ -203,9 +200,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton7">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="f3" green="f3" red="f3" type="rgb"/>
-                    </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/com/wstore/icons/prev16x16.png"/>
                     </Property>
@@ -226,9 +220,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton8">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="f3" green="f3" red="f3" type="rgb"/>
-                    </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/com/wstore/icons/next16x16.png"/>
                     </Property>
@@ -239,9 +230,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton9">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="f3" green="f3" red="f3" type="rgb"/>
-                    </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/com/wstore/icons/last16x16.png"/>
                     </Property>
@@ -477,6 +465,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Qu&#xe9;t m&#xe3;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
