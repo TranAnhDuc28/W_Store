@@ -210,12 +210,10 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         jComboBox1.setPreferredSize(new java.awt.Dimension(70, 25));
         jPanel6.add(jComboBox1);
 
-        jButton7.setBackground(new java.awt.Color(243, 243, 243));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/first16x16.png"))); // NOI18N
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(jButton7);
 
-        jButton8.setBackground(new java.awt.Color(243, 243, 243));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/prev16x16.png"))); // NOI18N
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(jButton8);
@@ -226,12 +224,10 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(70, 22));
         jPanel6.add(jLabel3);
 
-        jButton9.setBackground(new java.awt.Color(243, 243, 243));
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/next16x16.png"))); // NOI18N
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(jButton9);
 
-        jButton10.setBackground(new java.awt.Color(243, 243, 243));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/last16x16.png"))); // NOI18N
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(jButton10);
