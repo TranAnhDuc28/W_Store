@@ -803,7 +803,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextField8" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                      <Component id="txtTimKiemNhanVien" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                       <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -824,7 +824,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField8" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="txtTimKiemNhanVien" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jComboBox2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -832,7 +832,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="jTextField8">
+        <Component class="javax.swing.JTextField" name="txtTimKiemNhanVien">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>

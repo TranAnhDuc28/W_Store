@@ -4,6 +4,8 @@
  */
 package com.wstore.views;
 
+import com.formdev.flatlaf.FlatClientProperties;
+
 /**
  *
  * @author ducan
@@ -16,6 +18,13 @@ public class FormDoiMatKhauJDialog extends javax.swing.JDialog {
     public FormDoiMatKhauJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
+    }
+
+    private void init() {
+        txtMatKhauCu.putClientProperty(FlatClientProperties.STYLE, "showRevealButton:true");
+        txtMatKhauMoi.putClientProperty(FlatClientProperties.STYLE, "showRevealButton:true");
+        txtMatKhauMoiNhapLai.putClientProperty(FlatClientProperties.STYLE, "showRevealButton:true");
     }
 
     /**
@@ -31,7 +40,6 @@ public class FormDoiMatKhauJDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnCapNhat = new javax.swing.JButton();
-        chkShowPass = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         btnDong = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -61,14 +69,6 @@ public class FormDoiMatKhauJDialog extends javax.swing.JDialog {
         btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCapNhatActionPerformed(evt);
-            }
-        });
-
-        chkShowPass.setText("Hiển thị");
-        chkShowPass.setBorder(null);
-        chkShowPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkShowPassActionPerformed(evt);
             }
         });
 
@@ -104,7 +104,6 @@ public class FormDoiMatKhauJDialog extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtMatKhauMoiNhapLai, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkShowPass, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnCapNhat)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -133,13 +132,11 @@ public class FormDoiMatKhauJDialog extends javax.swing.JDialog {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtMatKhauMoiNhapLai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkShowPass)
-                .addGap(20, 20, 20)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDong)
                     .addComponent(btnCapNhat))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCapNhat, btnDong});
@@ -152,32 +149,21 @@ public class FormDoiMatKhauJDialog extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowPassActionPerformed
-        if (chkShowPass.isSelected()) {
-            // đặt kí tự hiển  -> (char)0  để hiển thị mật khẩu
-            txtMatKhauCu.setEchoChar((char) 0);
-            txtMatKhauMoi.setEchoChar((char) 0);
-            txtMatKhauMoiNhapLai.setEchoChar((char) 0);
-        } else {
-            txtMatKhauCu.setEchoChar('*');
-            txtMatKhauMoi.setEchoChar('*');
-            txtMatKhauMoiNhapLai.setEchoChar('*');
-        }
-    }//GEN-LAST:event_chkShowPassActionPerformed
-
     private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnDongActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
-        
+
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     /**
@@ -226,7 +212,6 @@ public class FormDoiMatKhauJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
     private javax.swing.JButton btnDong;
-    private javax.swing.JCheckBox chkShowPass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -4,8 +4,10 @@
  */
 package com.wstore.views;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
 import java.awt.Panel;
+import java.util.function.IntConsumer;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -26,7 +28,14 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
         getContentPane().setBackground(new Color(243, 243, 243));
         setIconImage(new ImageIcon("src/com/wstore/icons/logo.png").getImage());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        jTabbedPane1.addTab("HÓA ĐƠN BÁN HÀNG (1)", new FormTabBanHangJPanel(this));
+        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG", new FormTabBanHangJPanel(this));
+        tabbedBanHang.putClientProperty(FlatClientProperties.TABBED_PANE_TAB_CLOSABLE, true);
+        tabbedBanHang.putClientProperty(FlatClientProperties.TABBED_PANE_SHOW_TAB_SEPARATORS, true);
+        tabbedBanHang.putClientProperty(FlatClientProperties.TABBED_PANE_TAB_CLOSE_TOOLTIPTEXT, "Đóng tab");
+        tabbedBanHang.putClientProperty("JTabbedPane.tabCloseCallback",
+                (IntConsumer) tabIndex -> {
+                    tabbedBanHang.removeTabAt(tabIndex);
+                });
     }
 
     @SuppressWarnings("unchecked")
@@ -36,12 +45,10 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btnTaoTab = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        btnDongTab = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabbedBanHang = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Bán hàng");
-        setExtendedState(6);
+        setTitle("BÁN HÀNG");
 
         jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
         jToolBar1.setRollover(true);
@@ -60,23 +67,11 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
         jToolBar1.add(btnTaoTab);
         jToolBar1.add(jSeparator1);
 
-        btnDongTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/cancel24x24.png"))); // NOI18N
-        btnDongTab.setText("Đóng");
-        btnDongTab.setIconTextGap(5);
-        btnDongTab.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        btnDongTab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDongTabActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnDongTab);
-
-        jTabbedPane1.setBackground(new java.awt.Color(243, 243, 243));
-        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(1377, 760));
-        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+        tabbedBanHang.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        tabbedBanHang.setPreferredSize(new java.awt.Dimension(1377, 760));
+        tabbedBanHang.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jTabbedPane1StateChanged(evt);
+                tabbedBanHangStateChanged(evt);
             }
         });
 
@@ -85,14 +80,14 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tabbedBanHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(tabbedBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,18 +95,14 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTaoTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoTabActionPerformed
-        int count = jTabbedPane1.getTabCount();
-        jTabbedPane1.addTab("HÓA ĐƠN BÁN HÀNG (" + (count + 1) + ")", new FormTabBanHangJPanel(this));
+        int count = tabbedBanHang.getTabCount();
+        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG" , new FormTabBanHangJPanel(this));
     }//GEN-LAST:event_btnTaoTabActionPerformed
 
-    private void btnDongTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongTabActionPerformed
-        jTabbedPane1.removeTabAt(tab);
-    }//GEN-LAST:event_btnDongTabActionPerformed
-
-    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
-        tab = jTabbedPane1.getSelectedIndex();
-        System.out.println(tab);
-    }//GEN-LAST:event_jTabbedPane1StateChanged
+    private void tabbedBanHangStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedBanHangStateChanged
+        tab = tabbedBanHang.getSelectedIndex();
+        System.out.println(tabbedBanHang.getTabCount());
+    }//GEN-LAST:event_tabbedBanHangStateChanged
 
     /**
      * @param args the command line arguments
@@ -149,10 +140,9 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDongTab;
     private javax.swing.JButton btnTaoTab;
     private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTabbedPane tabbedBanHang;
     // End of variables declaration//GEN-END:variables
 }

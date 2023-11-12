@@ -4,6 +4,7 @@
  */
 package com.wstore.views;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import com.wstore.utilities.Helper;
 import java.awt.Color;
 import java.awt.Font;
@@ -31,6 +32,7 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
         ImageIcon imageIcon = new ImageIcon(background.getImage().getScaledInstance(
                 pnlBackground.getWidth(), pnlBackground.getHeight(), Image.SCALE_SMOOTH));
         lblBgDangNhap.setIcon(imageIcon);
+        txtMatKhau.putClientProperty(FlatClientProperties.STYLE, "showRevealButton:true");
     }
 
     @SuppressWarnings("unchecked")
@@ -46,7 +48,6 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
         txtMatKhau = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        chkShowPass = new javax.swing.JCheckBox();
         btnDangNhap = new javax.swing.JButton();
         btnDong = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -65,8 +66,6 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
         pnlBackground.add(lblTenCuaHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 160, 50));
         pnlBackground.add(lblBgDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(243, 243, 243));
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Đăng nhập");
@@ -76,14 +75,6 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Mật khẩu");
-
-        chkShowPass.setText("Hiển thị");
-        chkShowPass.setBorder(null);
-        chkShowPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkShowPassActionPerformed(evt);
-            }
-        });
 
         btnDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/Login32x32.png"))); // NOI18N
@@ -96,6 +87,7 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnDong.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/cancel32x32.png"))); // NOI18N
         btnDong.setText("Đóng");
         btnDong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -112,6 +104,9 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
         lblQuenMK.setText("Quên mật khẩu?");
         lblQuenMK.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblQuenMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblQuenMKMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblQuenMKMouseEntered(evt);
             }
@@ -130,13 +125,11 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblQuenMK, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(chkShowPass, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtMatKhau)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3)
-                                .addComponent(txtTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtMatKhau)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(txtTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnDangNhap)
@@ -157,13 +150,11 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkShowPass)
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(lblQuenMK)
@@ -196,18 +187,9 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowPassActionPerformed
-        if (chkShowPass.isSelected()) {
-            // đặt kí tự hiển  -> (char)0  để hiển thị mật khẩu
-            txtMatKhau.setEchoChar((char) 0);
-        } else {
-            txtMatKhau.setEchoChar('*');
-        }
-    }//GEN-LAST:event_chkShowPassActionPerformed
-
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         this.dispose();
-        new FormQuanTriJFrameQuanLy().setVisible(true);
+        new FormQuanTriJFrame().setVisible(true);
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void lblQuenMKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseEntered
@@ -221,6 +203,11 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
     private void lblQuenMKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseExited
         lblQuenMK.setFont(new Font("Segoe UI",Font.ITALIC, 12));
     }//GEN-LAST:event_lblQuenMKMouseExited
+
+    private void lblQuenMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseClicked
+        this.dispose();
+        new FormQuenMatKhauJDialog(null, true).setVisible(true);
+    }//GEN-LAST:event_lblQuenMKMouseClicked
 
     /**
      * @param args the command line arguments
@@ -261,7 +248,6 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btnDong;
-    private javax.swing.JCheckBox chkShowPass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

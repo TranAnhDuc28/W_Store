@@ -4,6 +4,8 @@
  */
 package com.wstore.views;
 
+import com.formdev.flatlaf.FlatClientProperties;
+
 /**
  *
  * @author ducan
@@ -15,6 +17,16 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
      */
     public FormNhanVienJPanel() {
         initComponents();
+        init();
+    }
+
+    private void init() {
+        txtTimKiemNhanVien.putClientProperty(
+                FlatClientProperties.PLACEHOLDER_TEXT, 
+                "Nhập nội dung tìm kiếm...");
+        txtTimKiemNhanVien.putClientProperty(
+                FlatClientProperties.TEXT_FIELD_SHOW_CLEAR_BUTTON, 
+                true);
     }
 
     /**
@@ -78,7 +90,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         btnChonAnh = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jTextField8 = new javax.swing.JTextField();
+        txtTimKiemNhanVien = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
@@ -463,7 +475,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimKiemNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,7 +491,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimKiemNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -688,7 +700,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTextField txtTimKiemNhanVien;
     // End of variables declaration//GEN-END:variables
 }

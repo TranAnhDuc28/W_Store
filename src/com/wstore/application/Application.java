@@ -5,10 +5,10 @@
 package com.wstore.application;
 
 import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.fonts.roboto.FlatRobotoFont;
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.wstore.views.FormDangNhapJFrame;
-import com.wstore.views.FormQuanTriJFrameQuanLy;
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.UIManager;
 
@@ -70,10 +70,20 @@ public class Application extends javax.swing.JFrame {
 //        //</editor-fold>
 //
 //        /* Create and display the form */
+
         FlatRobotoFont.install();
         FlatLaf.registerCustomDefaultsSource("com.wstore.application");
         UIManager.put("defaultFont", new Font(FlatRobotoFont.FAMILY, Font.PLAIN, 12));
-        FlatMacLightLaf.setup();
+        FlatLightLaf.registerCustomDefaultsSource("style");
+        FlatLightLaf.setup();
+        UIManager.put("Button.iconTextGap", 10);
+        UIManager.put("Table.showGrid", true);
+        UIManager.put("Table.showVerticalLines", false);
+        UIManager.put("Table.showHorizontalLines", true);
+        UIManager.put("Table.rowHeight", 30);
+        UIManager.put("Table.selectionBackground", new Color(137, 187, 201));
+        UIManager.put("TableHeader.height", 35);
+        UIManager.put("TableHeader.font", UIManager.getFont("h4.font"));
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FormDangNhapJFrame().setVisible(true);

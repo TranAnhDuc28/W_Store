@@ -4,6 +4,8 @@
  */
 package com.wstore.views;
 
+import com.formdev.flatlaf.FlatClientProperties;
+
 /**
  *
  * @author ducan
@@ -15,6 +17,18 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
      */
     public FormSanPhamJPanel() {
         initComponents();
+        init();
+    }
+
+    private void init() {
+        txtTimKiemSanPham.putClientProperty(
+                FlatClientProperties.PLACEHOLDER_TEXT,
+                "Nhập nội dung tìm kiếm...");
+        txtTimKiemSanPham.putClientProperty(
+                FlatClientProperties.TEXT_FIELD_SHOW_CLEAR_BUTTON,
+                true);
+        tabbebQLSanPham.putClientProperty(FlatClientProperties.TABBED_PANE_SHOW_TAB_SEPARATORS, true);
+        tabbebQLSanPham.addTab("THUỘC TÍNH SẢN PHẨM", new FormTabThuocTinhSanPham());
     }
 
     /**
@@ -26,7 +40,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabbebQLSanPham = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
@@ -40,7 +54,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jButton5 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTimKiemSanPham = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -53,7 +67,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jComboBox7 = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDSSanPham = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -66,13 +80,11 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton10 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(243, 243, 243));
         setPreferredSize(new java.awt.Dimension(1140, 800));
 
-        jTabbedPane1.setBackground(new java.awt.Color(243, 243, 243));
+        tabbebQLSanPham.setBackground(new java.awt.Color(243, 243, 243));
 
         jPanel1.setBackground(new java.awt.Color(243, 243, 243));
 
@@ -138,7 +150,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTimKiemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -147,7 +159,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtTimKiemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel5.setBackground(new java.awt.Color(243, 243, 243));
@@ -188,7 +200,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(243, 243, 243));
         jPanel7.setLayout(new java.awt.BorderLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDSSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -225,9 +237,11 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15", "Title 16", "Title 17", "Title 18", "Title 19", "Title 20", "Title 21", "Title 22", "Title 23", "Title 24", "Title 25", "Title 26", "Title 27", "Title 28", "Title 29", "Title 30"
             }
         ));
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jTable1.setRowHeight(30);
-        jScrollPane1.setViewportView(jTable1);
+        tblDSSanPham.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tblDSSanPham.setRowHeight(30);
+        tblDSSanPham.setShowGrid(false);
+        tblDSSanPham.setShowHorizontalLines(true);
+        jScrollPane1.setViewportView(tblDSSanPham);
 
         jPanel7.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -245,12 +259,10 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jComboBox1.setPreferredSize(new java.awt.Dimension(70, 25));
         jPanel6.add(jComboBox1);
 
-        jButton6.setBackground(new java.awt.Color(243, 243, 243));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/first16x16.png"))); // NOI18N
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(jButton6);
 
-        jButton7.setBackground(new java.awt.Color(243, 243, 243));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/prev16x16.png"))); // NOI18N
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(jButton7);
@@ -261,12 +273,10 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(70, 22));
         jPanel6.add(jLabel3);
 
-        jButton8.setBackground(new java.awt.Color(243, 243, 243));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/next16x16.png"))); // NOI18N
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(jButton8);
 
-        jButton9.setBackground(new java.awt.Color(243, 243, 243));
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/last16x16.png"))); // NOI18N
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(jButton9);
@@ -277,7 +287,6 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
 
         jCheckBox1.setText("All");
 
-        jButton10.setBackground(new java.awt.Color(243, 243, 243));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/restore.png"))); // NOI18N
         jButton10.setText("Khôi phục");
 
@@ -333,47 +342,17 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
                 .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("DANH SÁCH SẢN PHẨM", jPanel1);
-
-        jPanel2.setBackground(new java.awt.Color(243, 243, 243));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 765, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("THƯƠNG HIỆU & DÒNG SẢN PHẨM", jPanel2);
-
-        jPanel3.setBackground(new java.awt.Color(243, 243, 243));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 765, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("THUỘC TÍNH SẢN PHẨM", jPanel3);
+        tabbebQLSanPham.addTab("DANH SÁCH SẢN PHẨM", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tabbebQLSanPham)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tabbebQLSanPham)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -405,8 +384,6 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -417,9 +394,9 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTabbedPane tabbebQLSanPham;
+    private javax.swing.JTable tblDSSanPham;
+    private javax.swing.JTextField txtTimKiemSanPham;
     // End of variables declaration//GEN-END:variables
 }
