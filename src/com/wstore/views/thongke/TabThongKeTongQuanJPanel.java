@@ -4,8 +4,8 @@
  */
 package com.wstore.views.thongke;
 
-import com.wstore.swing.chart.ModelChart;
-import java.awt.Color;
+import com.wstore.swing.table.TableTextAlignmentCellRender;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,17 +15,29 @@ public class TabThongKeTongQuanJPanel extends javax.swing.JPanel {
 
     public TabThongKeTongQuanJPanel() {
         initComponents();
-        chart.addLegend("Vốn", new Color(245, 189, 135));
-        chart.addLegend("Doanh thu", new Color(135, 189, 245));
-        chart.addLegend("Lợi nhuận", new Color(189, 135, 245));
-        chart.addData(new ModelChart("Ngày 1", new double[]{100000000, 200, 80}));
-        chart.addData(new ModelChart("Ngày 2", new double[]{600, 750, 90}));
-        chart.addData(new ModelChart("Ngày 3", new double[]{200, 350, 460}));
-        chart.addData(new ModelChart("Ngày 4", new double[]{480, 150, 750}));
-        chart.addData(new ModelChart("Ngày 5", new double[]{350, 540, 300}));
-        chart.addData(new ModelChart("Ngày 6", new double[]{190, 280, 500}));
-        chart.addData(new ModelChart("Ngày 7", new double[]{475, 300, 50}));
-        chart.addData(new ModelChart("Ngày 8", new double[]{15000000, 910, 200}));
+        init();
+        testData();
+    }
+
+    private void init() {
+        TableTextAlignmentCellRender textCenter = new TableTextAlignmentCellRender();
+        int countColumntblSP = tblTongQuan.getColumnCount();
+        for (int i = 0; i < countColumntblSP; i++) {
+            tblTongQuan.getColumnModel().getColumn(i).setCellRenderer(textCenter);
+        }
+    }
+
+    private void testData() {
+        DefaultTableModel dtmTongQuan = (DefaultTableModel) tblTongQuan.getModel();
+        dtmTongQuan.setRowCount(0);
+        dtmTongQuan.addRow(new Object[]{"Ngày 1", 5000000, 2000000, 8000000});
+        dtmTongQuan.addRow(new Object[]{"Ngày 2", 6000000, 7500000, 9000000});
+        dtmTongQuan.addRow(new Object[]{"Ngày 3", 2000000, 3500000, 460000});
+        dtmTongQuan.addRow(new Object[]{"Ngày 4", 4800000, 1500000, 7500000});
+        dtmTongQuan.addRow(new Object[]{"Ngày 5", 3500000, 5400000, 3000000});
+        dtmTongQuan.addRow(new Object[]{"Ngày 6", 1900000, 2800000, 5000000});
+        dtmTongQuan.addRow(new Object[]{"Ngày 7", 4750000, 3000000, 5000000});
+        dtmTongQuan.addRow(new Object[]{"Ngày 8", 1500000, 9100000, 2000000});
     }
 
     /**
@@ -51,7 +63,7 @@ public class TabThongKeTongQuanJPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblTongQuan = new javax.swing.JTable();
         pnlChart = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         chart = new com.wstore.swing.chart.Chart();
@@ -198,7 +210,7 @@ public class TabThongKeTongQuanJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTongQuan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -210,14 +222,14 @@ public class TabThongKeTongQuanJPanel extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblTongQuan);
 
         pnlChart.setLayout(new java.awt.BorderLayout());
 
@@ -254,7 +266,7 @@ public class TabThongKeTongQuanJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
-       chart.start();
+        chart.start();
     }//GEN-LAST:event_formComponentAdded
 
 
@@ -275,7 +287,7 @@ public class TabThongKeTongQuanJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     public javax.swing.JPanel pnlChart;
+    private javax.swing.JTable tblTongQuan;
     // End of variables declaration//GEN-END:variables
 }

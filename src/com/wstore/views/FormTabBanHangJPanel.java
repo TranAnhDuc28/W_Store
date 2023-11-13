@@ -5,7 +5,17 @@
 package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.wstore.swing.table.TableActionCellEditor;
+import com.wstore.swing.table.TableActionCellRender;
+import com.wstore.swing.table.TableActionEvent;
+import com.wstore.swing.table.TableImageCellRender;
+import com.wstore.swing.table.TableTextAlignmentCellRender;
 import java.awt.Frame;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +26,28 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     public FormTabBanHangJPanel() {
         initComponents();
         init();
+        customJTable();
+        testData();
+    }
+
+    private void testData() {
+        DefaultTableModel dtmSP = (DefaultTableModel) tblDSSanPham.getModel();
+        dtmSP.setRowCount(0);
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00001", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00002", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00003", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00004", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00005", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00006", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00007", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00008", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00009", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00010", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00011", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00012", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00013", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00014", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
+        dtmSP.addRow(new Object[]{scaledImage(new ImageIcon("images/images-san-pham/OP990-45ADGS-GL-X-1-165483221725.jpg")), "SP00015", "Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X", 99, 6550000});
     }
 
     private void init() {
@@ -25,9 +57,49 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         txtTimKiemSanPham.putClientProperty(
                 FlatClientProperties.TEXT_FIELD_SHOW_CLEAR_BUTTON,
                 true);
-        tabbedThanhToan.putClientProperty(FlatClientProperties.TABBED_PANE_SHOW_TAB_SEPARATORS, true);
+        tabbedThanhToan.putClientProperty(
+                FlatClientProperties.TABBED_PANE_SHOW_TAB_SEPARATORS,
+                true);
     }
-    
+
+    private void customJTable() {
+        tblDSSanPham.getColumnModel().getColumn(0).setCellRenderer(new TableImageCellRender());
+        tblDSSanPham.getColumnModel().getColumn(5).setCellRenderer(new TableActionCellRender());
+        tblDSSanPham.getColumnModel().getColumn(5).setCellEditor(new TableActionCellEditor(tableSanPhamActionEvent()));
+        TableTextAlignmentCellRender textCenter = new TableTextAlignmentCellRender();
+        int countColumntblSP = tblDSSanPham.getColumnCount();
+        for (int i = 1; i < countColumntblSP - 1; i++) {
+            tblDSSanPham.getColumnModel().getColumn(i).setCellRenderer(textCenter);
+        }
+    }
+
+    private TableActionEvent tableSanPhamActionEvent() {
+        TableActionEvent event = new TableActionEvent() {
+            @Override
+            public void onAdd(int row) {
+                String strSoLuong = JOptionPane.showInputDialog("Số lượng ");
+//                if (Helper.isSo(strSoLuong)) {
+//                    int soLuong = Integer.parseInt(strSoLuong);
+//                    if (soLuong <= 0) {
+//                        return;
+//                    }
+//                    themNhieuSanPhamVaoGioHang(row, soLuong);
+//                }
+            }
+
+            @Override
+            public void onMinus(int row) {
+
+            }
+        };
+        return event;
+    }
+
+    private ImageIcon scaledImage(Icon image) {
+        int h = tblDSSanPham.getRowHeight() - 10;
+        int w = tblDSSanPham.getColumnModel().getColumn(0).getWidth() - 10;
+        return new ImageIcon(((ImageIcon) image).getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH));
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,7 +108,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblDSSanPham = new javax.swing.JTable();
         txtTimKiemSanPham = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -115,27 +187,47 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         jPanel2.setOpaque(false);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblDSSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "", "Mã SP", "Tên SP", "Số lượng", "Đơn giá"
+                "Hình ảnh", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá", ""
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable2.setSelectionBackground(new java.awt.Color(137, 187, 201));
-        jScrollPane2.setViewportView(jTable2);
+        tblDSSanPham.setRowHeight(80);
+        tblDSSanPham.setSelectionBackground(new java.awt.Color(137, 187, 201));
+        tblDSSanPham.setShowHorizontalLines(true);
+        tblDSSanPham.setShowVerticalLines(true);
+        jScrollPane2.setViewportView(tblDSSanPham);
+        if (tblDSSanPham.getColumnModel().getColumnCount() > 0) {
+            tblDSSanPham.getColumnModel().getColumn(0).setMinWidth(80);
+            tblDSSanPham.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tblDSSanPham.getColumnModel().getColumn(0).setMaxWidth(80);
+            tblDSSanPham.getColumnModel().getColumn(1).setMinWidth(100);
+            tblDSSanPham.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tblDSSanPham.getColumnModel().getColumn(1).setMaxWidth(100);
+            tblDSSanPham.getColumnModel().getColumn(3).setMinWidth(100);
+            tblDSSanPham.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tblDSSanPham.getColumnModel().getColumn(3).setMaxWidth(100);
+            tblDSSanPham.getColumnModel().getColumn(4).setMinWidth(120);
+            tblDSSanPham.getColumnModel().getColumn(4).setPreferredWidth(120);
+            tblDSSanPham.getColumnModel().getColumn(4).setMaxWidth(120);
+            tblDSSanPham.getColumnModel().getColumn(5).setMinWidth(60);
+            tblDSSanPham.getColumnModel().getColumn(5).setPreferredWidth(60);
+            tblDSSanPham.getColumnModel().getColumn(5).setMaxWidth(60);
+        }
 
         jPanel8.setBackground(new java.awt.Color(243, 243, 243));
         jPanel8.setOpaque(false);
@@ -752,7 +844,6 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
@@ -769,6 +860,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     private javax.swing.JTextArea kh;
     private javax.swing.JLabel lblHoaDonDangChon;
     private javax.swing.JTabbedPane tabbedThanhToan;
+    private javax.swing.JTable tblDSSanPham;
     private javax.swing.JTextField txtTimKiemSanPham;
     // End of variables declaration//GEN-END:variables
 }
