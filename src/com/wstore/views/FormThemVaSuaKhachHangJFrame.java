@@ -99,14 +99,15 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
         jButton3.setMargin(new java.awt.Insets(5, 14, 5, 14));
         jToolBar1.add(jButton3);
 
+        jPanel6.setBackground(new java.awt.Color(241, 246, 251));
         jPanel6.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("THÔNG TIN KHÁCH HÀNG");
         jPanel6.add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setBackground(new java.awt.Color(243, 243, 243));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(0, 400));
 
         jLabel4.setText("Mã nhân viên (*)");
@@ -170,7 +171,7 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
         txtGhiChu.setPreferredSize(new java.awt.Dimension(370, 84));
         jScrollPane2.setViewportView(txtGhiChu);
 
-        jPanel2.setBackground(new java.awt.Color(243, 243, 243));
+        jPanel2.setOpaque(false);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(143, 143, 143)));
         jPanel3.setPreferredSize(new java.awt.Dimension(180, 0));
@@ -191,17 +192,14 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
             .addComponent(lblHinhAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        btnChupAnh.setBackground(new java.awt.Color(243, 243, 243));
         btnChupAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/camera24x24.png"))); // NOI18N
         btnChupAnh.setText("Chụp ảnh");
         btnChupAnh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnChonAnh.setBackground(new java.awt.Color(243, 243, 243));
         btnChonAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/upload-image24x24.png"))); // NOI18N
         btnChonAnh.setText("Chọn ảnh");
         btnChonAnh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnRefeshAnh.setBackground(new java.awt.Color(243, 243, 243));
         btnRefeshAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/refresh16x16.png"))); // NOI18N
         btnRefeshAnh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 

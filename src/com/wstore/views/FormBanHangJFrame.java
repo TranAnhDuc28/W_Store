@@ -6,7 +6,6 @@ package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
-import java.awt.Panel;
 import java.util.function.IntConsumer;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -17,8 +16,6 @@ import javax.swing.JFrame;
  */
 public class FormBanHangJFrame extends javax.swing.JFrame {
 
-    int tab;
-
     public FormBanHangJFrame() {
         initComponents();
         init();
@@ -28,9 +25,8 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
         getContentPane().setBackground(new Color(243, 243, 243));
         setIconImage(new ImageIcon("src/com/wstore/icons/logo.png").getImage());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG", new FormTabBanHangJPanel(this));
+        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG", new FormTabBanHangJPanel());
         tabbedBanHang.putClientProperty(FlatClientProperties.TABBED_PANE_TAB_CLOSABLE, true);
-        tabbedBanHang.putClientProperty(FlatClientProperties.TABBED_PANE_SHOW_TAB_SEPARATORS, true);
         tabbedBanHang.putClientProperty(FlatClientProperties.TABBED_PANE_TAB_CLOSE_TOOLTIPTEXT, "Đóng tab");
         tabbedBanHang.putClientProperty("JTabbedPane.tabCloseCallback",
                 (IntConsumer) tabIndex -> {
@@ -96,12 +92,11 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
 
     private void btnTaoTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoTabActionPerformed
         int count = tabbedBanHang.getTabCount();
-        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG" , new FormTabBanHangJPanel(this));
+        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG" , new FormTabBanHangJPanel());
     }//GEN-LAST:event_btnTaoTabActionPerformed
 
     private void tabbedBanHangStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedBanHangStateChanged
-        tab = tabbedBanHang.getSelectedIndex();
-        System.out.println(tabbedBanHang.getTabCount());
+
     }//GEN-LAST:event_tabbedBanHangStateChanged
 
     /**

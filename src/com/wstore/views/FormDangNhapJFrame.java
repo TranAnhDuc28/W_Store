@@ -56,6 +56,7 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
+        pnlBackground.setBackground(new java.awt.Color(241, 246, 251));
         pnlBackground.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pnlBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -65,6 +66,8 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
         lblTenCuaHang.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         pnlBackground.add(lblTenCuaHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 160, 50));
         pnlBackground.add(lblBgDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(241, 246, 251));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -109,7 +109,10 @@ public class FormThongTinCaNhanJDialog extends javax.swing.JDialog {
         });
         jToolBar1.add(btnDong);
 
+        jPanel1.setBackground(new java.awt.Color(241, 246, 251));
+
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "THÔNG TIN CÁ NHÂN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel3.setOpaque(false);
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));

@@ -72,6 +72,9 @@ public class Application extends javax.swing.JFrame {
 //        /* Create and display the form */
 
         FlatRobotoFont.install();
+        FlatLaf.setPreferredFontFamily(FlatRobotoFont.FAMILY);
+        FlatLaf.setPreferredLightFontFamily(FlatRobotoFont.FAMILY_LIGHT);
+        FlatLaf.setPreferredSemiboldFontFamily(FlatRobotoFont.FAMILY_SEMIBOLD);
         FlatLaf.registerCustomDefaultsSource("com.wstore.application");
         UIManager.put("defaultFont", new Font(FlatRobotoFont.FAMILY, Font.PLAIN, 12));
         FlatLightLaf.registerCustomDefaultsSource("style");
@@ -82,8 +85,10 @@ public class Application extends javax.swing.JFrame {
         UIManager.put("Table.showHorizontalLines", true);
         UIManager.put("Table.rowHeight", 30);
         UIManager.put("Table.selectionBackground", new Color(137, 187, 201));
-        UIManager.put("TableHeader.height", 35);
+        UIManager.put("TableHeader.height", 40);
         UIManager.put("TableHeader.font", UIManager.getFont("h4.font"));
+        UIManager.put("TabbedPane.selectedBackground", Color.WHITE);
+        UIManager.put( "TabbedPane.showTabSeparators", true );
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FormDangNhapJFrame().setVisible(true);

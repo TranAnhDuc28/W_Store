@@ -81,12 +81,12 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton10 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(243, 243, 243));
+        setBackground(new java.awt.Color(241, 246, 251));
         setPreferredSize(new java.awt.Dimension(1140, 800));
 
-        tabbebQLSanPham.setBackground(new java.awt.Color(243, 243, 243));
+        tabbebQLSanPham.setOpaque(true);
 
-        jPanel1.setBackground(new java.awt.Color(243, 243, 243));
+        jPanel1.setBackground(new java.awt.Color(241, 246, 251));
 
         jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
         jToolBar1.setRollover(true);
@@ -137,8 +137,10 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jToolBar1.add(jButton5);
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel8.setOpaque(false);
 
         jPanel4.setBackground(new java.awt.Color(243, 243, 243));
+        jPanel4.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Tìm kiếm");
@@ -163,6 +165,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         );
 
         jPanel5.setBackground(new java.awt.Color(243, 243, 243));
+        jPanel5.setOpaque(false);
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
         jLabel7.setText("Thương hiệu");
@@ -198,6 +201,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jPanel5.add(jComboBox7);
 
         jPanel7.setBackground(new java.awt.Color(243, 243, 243));
+        jPanel7.setOpaque(false);
         jPanel7.setLayout(new java.awt.BorderLayout());
 
         tblDSSanPham.setModel(new javax.swing.table.DefaultTableModel(
@@ -251,6 +255,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jPanel7.add(jLabel5, java.awt.BorderLayout.PAGE_START);
 
         jPanel6.setBackground(new java.awt.Color(243, 243, 243));
+        jPanel6.setOpaque(false);
 
         jLabel2.setText("Số bản ghi:");
         jPanel6.add(jLabel2);

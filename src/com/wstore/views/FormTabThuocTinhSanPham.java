@@ -6,12 +6,14 @@ package com.wstore.views;
 
 import com.wstore.views.thuoctinhsanpham.FormChatLieuDayJDialog;
 import com.wstore.views.thuoctinhsanpham.FormChatLieuKinhJDialog;
+import com.wstore.views.thuoctinhsanpham.FormChatLieuVoJDialog;
 import com.wstore.views.thuoctinhsanpham.FormDoiTuongSuDungJDialog;
 import com.wstore.views.thuoctinhsanpham.FormDongMayJDialog;
 import com.wstore.views.thuoctinhsanpham.FormDongSanPhamJDialog;
 import com.wstore.views.thuoctinhsanpham.FormKhangNuocJDialog;
 import com.wstore.views.thuoctinhsanpham.FormMauJDialog;
 import com.wstore.views.thuoctinhsanpham.FormPhongCachJDialog;
+import com.wstore.views.thuoctinhsanpham.FormSizeMatJDialog;
 import com.wstore.views.thuoctinhsanpham.FormThuongHieuJDialog;
 import com.wstore.views.thuoctinhsanpham.FormTinhNangJDialog;
 import com.wstore.views.thuoctinhsanpham.FormXuatXuJDialog;
@@ -52,6 +54,7 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
         btnMau = new javax.swing.JButton();
         btnTinhNang = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(241, 246, 251));
         setLayout(new java.awt.GridLayout(4, 4, 20, 20));
 
         btnThuongHieu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -206,7 +209,7 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btnKhangNuocActionPerformed
 
     private void btnSizeMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSizeMatActionPerformed
-        new FormThuongHieuJDialog(null, true).setVisible(true);
+        new FormSizeMatJDialog(null, true).setVisible(true);
     }//GEN-LAST:event_btnSizeMatActionPerformed
 
     private void btnXuatXuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatXuActionPerformed
@@ -214,7 +217,7 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXuatXuActionPerformed
 
     private void btnChatLieuVoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatLieuVoActionPerformed
-        new FormThuongHieuJDialog(null, true).setVisible(true);
+        new FormChatLieuVoJDialog(null, true).setVisible(true);
     }//GEN-LAST:event_btnChatLieuVoActionPerformed
 
     private void btnPhongCachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhongCachActionPerformed

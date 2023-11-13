@@ -4,13 +4,10 @@
  */
 package com.wstore.views;
 
-import com.wstore.swingdesign.ScrollBarWin11UI;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
 
 /**
  *
@@ -18,9 +15,6 @@ import javax.swing.UIManager;
  */
 public class FormQuanTriJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TrangChuJFrame
-     */
     public FormQuanTriJFrame() {
         initComponents();
         init();
@@ -42,10 +36,6 @@ public class FormQuanTriJFrame extends javax.swing.JFrame {
         pnlMainForm.removeAll();
         pnlMainForm.add(jPanel);
         pnlMainForm.validate();
-    }
-    
-    private void setSelectedColor() {
-        
     }
 
     /**
@@ -353,7 +343,7 @@ public class FormQuanTriJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlMainForm.setBackground(new java.awt.Color(243, 243, 243));
+        pnlMainForm.setBackground(new java.awt.Color(241, 246, 251));
         pnlMainForm.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -368,7 +358,7 @@ public class FormQuanTriJFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlMainForm, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(pnlMainForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -382,67 +372,67 @@ public class FormQuanTriJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lblThongTinCaNhanMouseClicked
 
     private void lblTrangChuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangChuMouseEntered
-        lblTrangChu.setBackground(new Color(137,187,201));
+        lblTrangChu.setBackground(new Color(137, 187, 201));
     }//GEN-LAST:event_lblTrangChuMouseEntered
 
     private void lblTrangChuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangChuMouseExited
-        lblTrangChu.setBackground(new Color(144,182,168));
+        lblTrangChu.setBackground(new Color(144, 182, 168));
     }//GEN-LAST:event_lblTrangChuMouseExited
 
     private void lblBanHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMouseEntered
-        lblBanHang.setBackground(new Color(137,187,201));
+        lblBanHang.setBackground(new Color(137, 187, 201));
     }//GEN-LAST:event_lblBanHangMouseEntered
 
     private void lblBanHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMouseExited
-        lblBanHang.setBackground(new Color(144,182,168));
+        lblBanHang.setBackground(new Color(144, 182, 168));
     }//GEN-LAST:event_lblBanHangMouseExited
 
     private void lblSanPhamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseEntered
-        lblSanPham.setBackground(new Color(137,187,201));
+        lblSanPham.setBackground(new Color(137, 187, 201));
     }//GEN-LAST:event_lblSanPhamMouseEntered
 
     private void lblSanPhamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseExited
-        lblSanPham.setBackground(new Color(144,182,168));
+        lblSanPham.setBackground(new Color(144, 182, 168));
     }//GEN-LAST:event_lblSanPhamMouseExited
 
     private void lblKhachHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseEntered
-        lblKhachHang.setBackground(new Color(137,187,201));
+        lblKhachHang.setBackground(new Color(137, 187, 201));
     }//GEN-LAST:event_lblKhachHangMouseEntered
 
     private void lblKhachHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseExited
-        lblKhachHang.setBackground(new Color(144,182,168));
+        lblKhachHang.setBackground(new Color(144, 182, 168));
     }//GEN-LAST:event_lblKhachHangMouseExited
 
     private void lblHoaDonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseEntered
-        lblHoaDon.setBackground(new Color(137,187,201));
+        lblHoaDon.setBackground(new Color(137, 187, 201));
     }//GEN-LAST:event_lblHoaDonMouseEntered
 
     private void lblHoaDonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseExited
-        lblHoaDon.setBackground(new Color(144,182,168));
+        lblHoaDon.setBackground(new Color(144, 182, 168));
     }//GEN-LAST:event_lblHoaDonMouseExited
 
     private void lblNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseEntered
-        lblNhanVien.setBackground(new Color(137,187,201));
+        lblNhanVien.setBackground(new Color(137, 187, 201));
     }//GEN-LAST:event_lblNhanVienMouseEntered
 
     private void lblNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseExited
-        lblNhanVien.setBackground(new Color(144,182,168));
+        lblNhanVien.setBackground(new Color(144, 182, 168));
     }//GEN-LAST:event_lblNhanVienMouseExited
 
     private void lblKhuyenMaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMouseEntered
-        lblKhuyenMai.setBackground(new Color(137,187,201));
+        lblKhuyenMai.setBackground(new Color(137, 187, 201));
     }//GEN-LAST:event_lblKhuyenMaiMouseEntered
 
     private void lblKhuyenMaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMouseExited
-        lblKhuyenMai.setBackground(new Color(144,182,168));
+        lblKhuyenMai.setBackground(new Color(144, 182, 168));
     }//GEN-LAST:event_lblKhuyenMaiMouseExited
 
     private void lblThongKeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseEntered
-        lblThongKe.setBackground(new Color(137,187,201));
+        lblThongKe.setBackground(new Color(137, 187, 201));
     }//GEN-LAST:event_lblThongKeMouseEntered
 
     private void lblThongKeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseExited
-        lblThongKe.setBackground(new Color(144,182,168));
+        lblThongKe.setBackground(new Color(144, 182, 168));
     }//GEN-LAST:event_lblThongKeMouseExited
 
     private void lblTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangChuMouseClicked
@@ -505,8 +495,6 @@ public class FormQuanTriJFrame extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         /* Create and display the form */
-        UIDefaults ui = UIManager.getDefaults();
-        ui.put("ScrollBarUI", ScrollBarWin11UI.class.getCanonicalName());
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FormQuanTriJFrame().setVisible(true);

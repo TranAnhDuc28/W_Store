@@ -51,7 +51,7 @@ public class FormDoiMatKhauJDialog extends javax.swing.JDialog {
         setTitle("Đổi mật khẩu");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(243, 243, 243));
+        jPanel1.setBackground(new java.awt.Color(241, 246, 251));
         jPanel1.setPreferredSize(new java.awt.Dimension(380, 400));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
