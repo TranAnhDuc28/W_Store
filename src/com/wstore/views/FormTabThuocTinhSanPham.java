@@ -7,13 +7,10 @@ package com.wstore.views;
 import com.wstore.views.thuoctinhsanpham.FormChatLieuDayJDialog;
 import com.wstore.views.thuoctinhsanpham.FormChatLieuKinhJDialog;
 import com.wstore.views.thuoctinhsanpham.FormChatLieuVoJDialog;
-import com.wstore.views.thuoctinhsanpham.FormDoiTuongSuDungJDialog;
 import com.wstore.views.thuoctinhsanpham.FormDongMayJDialog;
 import com.wstore.views.thuoctinhsanpham.FormDongSanPhamJDialog;
-import com.wstore.views.thuoctinhsanpham.FormKhangNuocJDialog;
 import com.wstore.views.thuoctinhsanpham.FormMauJDialog;
 import com.wstore.views.thuoctinhsanpham.FormPhongCachJDialog;
-import com.wstore.views.thuoctinhsanpham.FormSizeMatJDialog;
 import com.wstore.views.thuoctinhsanpham.FormThuongHieuJDialog;
 import com.wstore.views.thuoctinhsanpham.FormTinhNangJDialog;
 import com.wstore.views.thuoctinhsanpham.FormXuatXuJDialog;
@@ -42,12 +39,9 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
 
         btnThuongHieu = new javax.swing.JButton();
         btnDongSanPham = new javax.swing.JButton();
-        btnDoiTuongSuDung = new javax.swing.JButton();
         btnDongMay = new javax.swing.JButton();
         btnChatLieuDay = new javax.swing.JButton();
         btnChatLieuKinh = new javax.swing.JButton();
-        btnKhangNuoc = new javax.swing.JButton();
-        btnSizeMat = new javax.swing.JButton();
         btnXuatXu = new javax.swing.JButton();
         btnChatLieuVo = new javax.swing.JButton();
         btnPhongCach = new javax.swing.JButton();
@@ -76,16 +70,6 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
         });
         add(btnDongSanPham);
 
-        btnDoiTuongSuDung.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnDoiTuongSuDung.setText("Đối tượng sử dụng");
-        btnDoiTuongSuDung.setIconTextGap(10);
-        btnDoiTuongSuDung.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoiTuongSuDungActionPerformed(evt);
-            }
-        });
-        add(btnDoiTuongSuDung);
-
         btnDongMay.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDongMay.setText("Dòng máy");
         btnDongMay.addActionListener(new java.awt.event.ActionListener() {
@@ -112,24 +96,6 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
             }
         });
         add(btnChatLieuKinh);
-
-        btnKhangNuoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnKhangNuoc.setText("Kháng nước");
-        btnKhangNuoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKhangNuocActionPerformed(evt);
-            }
-        });
-        add(btnKhangNuoc);
-
-        btnSizeMat.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnSizeMat.setText("Size mặt");
-        btnSizeMat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSizeMatActionPerformed(evt);
-            }
-        });
-        add(btnSizeMat);
 
         btnXuatXu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnXuatXu.setText("Xuất xứ ");
@@ -188,10 +154,6 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
         new FormDongSanPhamJDialog(null, true).setVisible(true);
     }//GEN-LAST:event_btnDongSanPhamActionPerformed
 
-    private void btnDoiTuongSuDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiTuongSuDungActionPerformed
-        new FormDoiTuongSuDungJDialog(null, true).setVisible(true);
-    }//GEN-LAST:event_btnDoiTuongSuDungActionPerformed
-
     private void btnDongMayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongMayActionPerformed
         new FormDongMayJDialog(null, true).setVisible(true);
     }//GEN-LAST:event_btnDongMayActionPerformed
@@ -203,14 +165,6 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
     private void btnChatLieuKinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatLieuKinhActionPerformed
         new FormChatLieuKinhJDialog(null, true).setVisible(true);
     }//GEN-LAST:event_btnChatLieuKinhActionPerformed
-
-    private void btnKhangNuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhangNuocActionPerformed
-        new FormKhangNuocJDialog(null, true).setVisible(true);
-    }//GEN-LAST:event_btnKhangNuocActionPerformed
-
-    private void btnSizeMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSizeMatActionPerformed
-        new FormSizeMatJDialog(null, true).setVisible(true);
-    }//GEN-LAST:event_btnSizeMatActionPerformed
 
     private void btnXuatXuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatXuActionPerformed
         new FormXuatXuJDialog(null, true).setVisible(true);
@@ -237,13 +191,10 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
     private javax.swing.JButton btnChatLieuDay;
     private javax.swing.JButton btnChatLieuKinh;
     private javax.swing.JButton btnChatLieuVo;
-    private javax.swing.JButton btnDoiTuongSuDung;
     private javax.swing.JButton btnDongMay;
     private javax.swing.JButton btnDongSanPham;
-    private javax.swing.JButton btnKhangNuoc;
     private javax.swing.JButton btnMau;
     private javax.swing.JButton btnPhongCach;
-    private javax.swing.JButton btnSizeMat;
     private javax.swing.JButton btnThuongHieu;
     private javax.swing.JButton btnTinhNang;
     private javax.swing.JButton btnXuatXu;
