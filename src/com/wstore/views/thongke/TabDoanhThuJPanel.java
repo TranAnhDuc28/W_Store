@@ -10,10 +10,10 @@ package com.wstore.views.thongke;
  */
 public class TabDoanhThuJPanel extends javax.swing.JPanel {
 
-    private TabThongKeDoanhThuTheoNam tabThongKeDoanhThuTheoNam;
-    private TabThongKeDoanhThuTungThangTrongNam tabThongKeDoanhThuTungThangTrongNam;
-    private TabThongKeDoanhThuTungNgayTrongThang tabThongKeDoanhThuTungNgayTrongThang;
-    private TabThongKeDoanhThuTuNgayDenNgay tabThongKeDoanhThuTuNgayDenNgay;
+    private final TabThongKeDoanhThuTheoNam tabThongKeDoanhThuTheoNam;
+    private final TabThongKeDoanhThuTungThangTrongNam tabThongKeDoanhThuTungThangTrongNam;
+    private final TabThongKeDoanhThuTungNgayTrongThang tabThongKeDoanhThuTungNgayTrongThang;
+    private final TabThongKeDoanhThuTuNgayDenNgay tabThongKeDoanhThuTuNgayDenNgay;
 
     public TabDoanhThuJPanel() {
         initComponents();
@@ -22,9 +22,9 @@ public class TabDoanhThuJPanel extends javax.swing.JPanel {
         tabThongKeDoanhThuTungNgayTrongThang = new TabThongKeDoanhThuTungNgayTrongThang();
         tabThongKeDoanhThuTuNgayDenNgay = new TabThongKeDoanhThuTuNgayDenNgay();
         tabbedDoanhThu.addTab("Thống kê theo năm", tabThongKeDoanhThuTheoNam);
-        tabbedDoanhThu.addTab("Thống kê theo năm", tabThongKeDoanhThuTungThangTrongNam);
-        tabbedDoanhThu.addTab("Thống kê theo năm", tabThongKeDoanhThuTungNgayTrongThang);
-        tabbedDoanhThu.addTab("Thống kê theo năm", tabThongKeDoanhThuTuNgayDenNgay);
+        tabbedDoanhThu.addTab("Thống kê từng tháng trong năm", tabThongKeDoanhThuTungThangTrongNam);
+        tabbedDoanhThu.addTab("Thống kê từng ngày trong tháng", tabThongKeDoanhThuTungNgayTrongThang);
+        tabbedDoanhThu.addTab("Thống kê từ ngày đến ngày", tabThongKeDoanhThuTuNgayDenNgay);
     }
 
     /**

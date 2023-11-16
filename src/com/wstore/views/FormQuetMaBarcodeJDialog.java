@@ -17,7 +17,7 @@ import java.awt.image.BufferedImage;
  *
  * @author ducan
  */
-public class FormQuetMaBarcodeJFrame extends javax.swing.JFrame {
+public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
 
     private Webcam webcam;
     private WebcamPanel webcamPanel;
@@ -25,7 +25,8 @@ public class FormQuetMaBarcodeJFrame extends javax.swing.JFrame {
     //để có thể chụp ảnh liên tiếp mà k ảnh hưởng đến thread chính
     private Thread captureThread;
 
-    public FormQuetMaBarcodeJFrame() {
+    public FormQuetMaBarcodeJDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         initWebcam();
     }
@@ -429,21 +430,27 @@ public class FormQuetMaBarcodeJFrame extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(FormQuetMaBarcodeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(FormQuetMaBarcodeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(FormQuetMaBarcodeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(FormQuetMaBarcodeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
-//        //</editor-fold>
 //        //</editor-fold>
 //
 //        /* Create and display the dialog */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new FormQuetMaBarcodeJFrame().setVisible(true);
+//                FormQuenMatKhauJDialog dialog = new FormQuenMatKhauJDialog(new javax.swing.JFrame(), true);
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    @Override
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
 //            }
 //        });
 //    }

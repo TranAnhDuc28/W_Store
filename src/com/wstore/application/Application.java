@@ -88,7 +88,7 @@ public class Application extends javax.swing.JFrame {
         UIManager.put("TableHeader.height", 40);
         UIManager.put("TableHeader.font", UIManager.getFont("h4.font"));
         UIManager.put("TabbedPane.selectedBackground", Color.WHITE);
-        UIManager.put( "TabbedPane.showTabSeparators", true );
+        UIManager.put("TabbedPane.showTabSeparators", true );
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FormDangNhapJFrame().setVisible(true);

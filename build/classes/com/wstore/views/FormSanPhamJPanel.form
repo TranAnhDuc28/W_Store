@@ -409,77 +409,35 @@
                         <Component class="javax.swing.JTable" name="tblDSSanPham">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="30" rowCount="30">
-                                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 5" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 6" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 7" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 8" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 9" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 10" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 11" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 12" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 13" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 14" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 15" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 16" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 17" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 18" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 19" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 20" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 21" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 22" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 23" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 24" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 25" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 26" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 27" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 28" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 29" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 30" type="java.lang.Object"/>
+                              <Table columnCount="23" rowCount="4">
+                                <Column editable="false" title="M&#xe3; s&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
+                                <Column editable="false" title="Th&#x1b0;&#x1a1;ng hi&#x1ec7;u" type="java.lang.Object"/>
+                                <Column editable="false" title="M&#xe3; h&#xe0;ng h&#xf3;a" type="java.lang.Object"/>
+                                <Column editable="false" title="Gi&#xe1; nh&#x1ead;p" type="java.lang.Object"/>
+                                <Column editable="false" title="Gi&#xe1; b&#xe1;n" type="java.lang.Object"/>
+                                <Column editable="false" title="&#x110;&#x1ed1;i t&#x1b0;&#x1ee3;ng s&#x1eed; d&#x1ee5;ng" type="java.lang.Object"/>
+                                <Column editable="false" title="D&#xf2;ng s&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
+                                <Column editable="false" title="D&#xf2;ng m&#xe1;y" type="java.lang.Object"/>
+                                <Column editable="false" title="Ch&#x1ea5;t li&#x1ec7;u d&#xe2;y" type="java.lang.Object"/>
+                                <Column editable="false" title="Ch&#x1ea5;t li&#x1ec7;u k&#xed;nh" type="java.lang.Object"/>
+                                <Column editable="false" title="Kh&#xe1;ng n&#x1b0;&#x1edb;c" type="java.lang.Object"/>
+                                <Column editable="false" title="Kho&#x1ea3;ng tr&#x1eef; c&#xf3;t" type="java.lang.Object"/>
+                                <Column editable="false" title="Size m&#x1eb7;t" type="java.lang.Object"/>
+                                <Column editable="false" title="Xu&#x1ea5;t x&#x1ee9;" type="java.lang.Object"/>
+                                <Column editable="false" title="Ch&#x1ea5;t li&#x1ec7;u v&#x1ecf;" type="java.lang.Object"/>
+                                <Column editable="false" title="H&#xec;nh d&#x1ea1;ng m&#x1eb7;t" type="java.lang.Object"/>
+                                <Column editable="false" title="M&#xe0;u v&#x1ecf;" type="java.lang.Object"/>
+                                <Column editable="false" title="T&#xec;nh tr&#x1ea1;ng" type="java.lang.Object"/>
+                                <Column editable="false" title="T&#xed;nh n&#x103;ng" type="java.lang.Object"/>
+                                <Column editable="false" title="&#x110;&#x1ed9; d&#x1ea7;y" type="java.lang.Object"/>
+                                <Column editable="false" title="M&#xe0;u m&#x1eb7;t" type="java.lang.Object"/>
+                                <Column editable="false" title="Phong c&#xe1;ch" type="java.lang.Object"/>
+                                <Column editable="false" title="H&#xec;nh &#x1ea3;nh" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="autoResizeMode" type="int" value="0"/>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>

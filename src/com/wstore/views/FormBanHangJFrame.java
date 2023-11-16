@@ -15,7 +15,7 @@ import javax.swing.JFrame;
  * @author ducan
  */
 public class FormBanHangJFrame extends javax.swing.JFrame {
-
+    
     public FormBanHangJFrame() {
         initComponents();
         init();
@@ -25,7 +25,7 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
         getContentPane().setBackground(new Color(243, 243, 243));
         setIconImage(new ImageIcon("src/com/wstore/icons/logo.png").getImage());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG", new FormTabBanHangJPanel());
+        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG", new FormTabBanHangJPanel(this));
         tabbedBanHang.putClientProperty(FlatClientProperties.TABBED_PANE_TAB_CLOSABLE, true);
         tabbedBanHang.putClientProperty(FlatClientProperties.TABBED_PANE_TAB_CLOSE_TOOLTIPTEXT, "Đóng tab");
         tabbedBanHang.putClientProperty("JTabbedPane.tabCloseCallback",
@@ -45,6 +45,11 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BÁN HÀNG");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
         jToolBar1.setRollover(true);
@@ -92,12 +97,16 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
 
     private void btnTaoTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoTabActionPerformed
         int count = tabbedBanHang.getTabCount();
-        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG" , new FormTabBanHangJPanel());
+        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG" , new FormTabBanHangJPanel(this));
     }//GEN-LAST:event_btnTaoTabActionPerformed
 
     private void tabbedBanHangStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedBanHangStateChanged
 
     }//GEN-LAST:event_tabbedBanHangStateChanged
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
