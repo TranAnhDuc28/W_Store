@@ -13,9 +13,9 @@ import javax.swing.JPanel;
  *
  * @author ducan
  */
-public class FormQuanTriJFramE extends javax.swing.JFrame {
+public class FormQuanTriJFrame extends javax.swing.JFrame {
 
-    public FormQuanTriJFramE() {
+    public FormQuanTriJFrame() {
         initComponents();
         init();
     }
@@ -485,20 +485,20 @@ public class FormQuanTriJFramE extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormQuanTriJFramE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanTriJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormQuanTriJFramE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanTriJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormQuanTriJFramE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanTriJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormQuanTriJFramE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanTriJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormQuanTriJFramE().setVisible(true);
+                new FormQuanTriJFrame().setVisible(true);
             }
         });
     }
