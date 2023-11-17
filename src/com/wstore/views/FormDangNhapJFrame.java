@@ -192,7 +192,7 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         this.dispose();
-        new FormQuanTriJFrame().setVisible(true);
+        new FormQuanTriJFramE().setVisible(true);
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void lblQuenMKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseEntered
