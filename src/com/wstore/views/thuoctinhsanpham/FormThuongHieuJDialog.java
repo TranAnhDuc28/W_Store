@@ -8,7 +8,7 @@ import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ThuongHieuService;
 import com.wstore.swing.table.TableTextAlignmentCellRender;
 import com.wstore.utilities.Helper;
-import com.wstore.viewmodels.ThuongHieuView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuView;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 

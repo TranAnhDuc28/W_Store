@@ -7,7 +7,7 @@ package com.wstore.services.impl.thuoctinhsanpham;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.ThuongHieuRepository;
 import com.wstore.services.IThuocTinhSanPhamService;
-import com.wstore.viewmodels.ThuongHieuView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuView;
 import java.util.List;
 
 /**

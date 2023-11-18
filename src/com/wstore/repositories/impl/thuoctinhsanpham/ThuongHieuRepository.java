@@ -7,7 +7,7 @@ package com.wstore.repositories.impl.thuoctinhsanpham;
 import java.util.List;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.utilities.DBConnect;
-import com.wstore.viewmodels.ThuongHieuView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuView;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
