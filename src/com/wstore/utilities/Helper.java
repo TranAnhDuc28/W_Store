@@ -32,7 +32,7 @@ public class Helper {
 
     public static Image ICON_APP;
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    public static Dimension dimensionJFileChooser = new Dimension(700, 400);
+    public static Dimension dimensionJFileChooser = new Dimension(800, 500);
 //    public static NhanVien USER_LOGIN = null;
 
     public static Image getIconApp() {
@@ -49,35 +49,17 @@ public class Helper {
     // dialog thông báo
     public static void alert(Component component, String message) {
         JOptionPane.showMessageDialog(component, message,
-                "FPT Polytechnic", JOptionPane.INFORMATION_MESSAGE);
+                "W-Store", JOptionPane.INFORMATION_MESSAGE);
     }
 
     // dialog xác nhận
     public static boolean comfirm(Component component, String message) {
         int result = JOptionPane.showConfirmDialog(component, message,
-                "FPT Polytechnic", JOptionPane.YES_NO_OPTION,
+                "W-Store", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
         return result == JOptionPane.YES_OPTION;
     }
 
-    // dialog lựa chọn
-    public static int option(Component component, JComboBox jComboBox) {
-        int sizeCbo = jComboBox.getItemCount();
-        String listTrangThai[] = new String[sizeCbo];
-        for (int i = 0; i < sizeCbo; i++) {
-            listTrangThai[i] = jComboBox.getItemAt(i).toString();
-        }
-        int choose = JOptionPane.showOptionDialog(
-                component,
-                "Chọn trạng thái:",
-                "Cập nhật trạng thái",
-                0,
-                JOptionPane.INFORMATION_MESSAGE,
-                new ImageIcon("src//duanmau//icon//clipboard.png"),
-                listTrangThai,
-                -1);
-        return choose;
-    }
 
     public static String chonAnh(String dicrectoryPath, JLabel lblHienThi) {
         String imgName = null;
@@ -100,15 +82,15 @@ public class Helper {
     }
 
     public static void showHinhAnh(String dicrectoryPath, JLabel lblHienThi, String hinhHienThi) {
-        if (hinhHienThi == null || hinhHienThi.equalsIgnoreCase("No avatar")) {
+        if (hinhHienThi == null || hinhHienThi.equalsIgnoreCase("No image")) {
             lblHienThi.setIcon(null);
-            lblHienThi.setText("HÌNH ẢNH");
+            lblHienThi.setText("No image");
         } else {
             Image img = null;
             try {
                 img = ImageIO.read(new File(dicrectoryPath + "\\" + hinhHienThi));
             } catch (IOException ex) {
-                ex.printStackTrace();
+                ex.printStackTrace(System.out);
             }
             if (img != null) {
                 ImageIcon imageIcon = new ImageIcon(img.getScaledInstance(

@@ -1,10 +1,10 @@
 package com.wstore.repositories.impl.thuoctinhsanpham;
 
 import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuVo;
-import com.wstore.repositories.IThuocTinhRepository;
 import java.util.List;
+import com.wstore.repositories.IThuocTinhSanPhamRepository;
 
-public class ChatLieuVoRepository implements IThuocTinhRepository<ChatLieuVo>{
+public class ChatLieuVoRepository implements IThuocTinhSanPhamRepository<ChatLieuVo> {
 
     @Override
     public List<ChatLieuVo> getAll() {
@@ -17,7 +17,7 @@ public class ChatLieuVoRepository implements IThuocTinhRepository<ChatLieuVo>{
     }
 
     @Override
-    public boolean update(ChatLieuVo obj) {
+    public boolean update(ChatLieuVo obj, int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -25,5 +25,5 @@ public class ChatLieuVoRepository implements IThuocTinhRepository<ChatLieuVo>{
     public boolean updateHienThi(ChatLieuVo obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

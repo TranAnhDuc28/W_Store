@@ -5,14 +5,14 @@
 package com.wstore.repositories.impl.thuoctinhsanpham;
 
 import com.wstore.domainmodels.thuoctinhsanpham.DongSanPham;
-import com.wstore.repositories.IThuocTinhRepository;
 import java.util.List;
+import com.wstore.repositories.IThuocTinhSanPhamRepository;
 
 /**
  *
  * @author ducan
  */
-public class DongSanPhamRepository implements IThuocTinhRepository<DongSanPham>{
+public class DongSanPhamRepository implements IThuocTinhSanPhamRepository<DongSanPham>{
 
     @Override
     public List<DongSanPham> getAll() {
@@ -25,7 +25,7 @@ public class DongSanPhamRepository implements IThuocTinhRepository<DongSanPham>{
     }
 
     @Override
-    public boolean update(DongSanPham obj) {
+    public boolean update(DongSanPham obj, int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -33,5 +33,7 @@ public class DongSanPhamRepository implements IThuocTinhRepository<DongSanPham>{
     public boolean updateHienThi(DongSanPham obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+
     
 }

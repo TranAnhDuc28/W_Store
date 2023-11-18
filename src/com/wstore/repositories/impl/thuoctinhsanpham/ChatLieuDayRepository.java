@@ -5,14 +5,14 @@
 package com.wstore.repositories.impl.thuoctinhsanpham;
 
 import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuDay;
-import com.wstore.repositories.IThuocTinhRepository;
 import java.util.List;
+import com.wstore.repositories.IThuocTinhSanPhamRepository;
 
 /**
  *
  * @author ducan
  */
-public class ChatLieuDayRepository implements IThuocTinhRepository<ChatLieuDay>{
+public class ChatLieuDayRepository implements IThuocTinhSanPhamRepository<ChatLieuDay>{
 
     @Override
     public List<ChatLieuDay> getAll() {
@@ -25,7 +25,7 @@ public class ChatLieuDayRepository implements IThuocTinhRepository<ChatLieuDay>{
     }
 
     @Override
-    public boolean update(ChatLieuDay obj) {
+    public boolean update(ChatLieuDay obj, int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -33,5 +33,7 @@ public class ChatLieuDayRepository implements IThuocTinhRepository<ChatLieuDay>{
     public boolean updateHienThi(ChatLieuDay obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+
     
 }

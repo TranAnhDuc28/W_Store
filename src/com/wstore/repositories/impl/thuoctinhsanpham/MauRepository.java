@@ -5,14 +5,14 @@
 package com.wstore.repositories.impl.thuoctinhsanpham;
 
 import com.wstore.domainmodels.thuoctinhsanpham.Mau;
-import com.wstore.repositories.IThuocTinhRepository;
 import java.util.List;
+import com.wstore.repositories.IThuocTinhSanPhamRepository;
 
 /**
  *
  * @author ducan
  */
-public class MauRepository implements IThuocTinhRepository<Mau>{
+public class MauRepository implements IThuocTinhSanPhamRepository<Mau>{
 
     @Override
     public List<Mau> getAll() {
@@ -25,13 +25,12 @@ public class MauRepository implements IThuocTinhRepository<Mau>{
     }
 
     @Override
-    public boolean update(Mau obj) {
+    public boolean update(Mau obj, int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public boolean updateHienThi(Mau obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
+    }   
 }
