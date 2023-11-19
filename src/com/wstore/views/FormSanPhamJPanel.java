@@ -5,7 +5,11 @@
 package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.wstore.services.ISanPhamService;
+import com.wstore.services.impl.SanPhamService;
 import com.wstore.swing.table.TableTextAlignmentCellRender;
+import com.wstore.viewmodels.QLsanpham.SanPhamView;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,13 +18,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormSanPhamJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SanPhamJPanel
-     */
+    private final ISanPhamService sanPhamService = new SanPhamService();
+    private DefaultTableModel dtmTblSanPham;
+    private List<SanPhamView> listSP;
+    
     public FormSanPhamJPanel() {
         initComponents();
         init();
-        testData();
+        loadDataToTable();
     }
 
     private void init() {
@@ -32,39 +37,23 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
                 true);
         tabbebQLSanPham.putClientProperty(FlatClientProperties.TABBED_PANE_SHOW_TAB_SEPARATORS, true);
         tabbebQLSanPham.addTab("THUỘC TÍNH SẢN PHẨM", new FormTabThuocTinhSanPham());
-                TableTextAlignmentCellRender textCenter = new TableTextAlignmentCellRender();
-        int countColumntblSP = tblDSSanPham.getColumnCount();
-        for (int i = 0; i < countColumntblSP; i++) {
-            tblDSSanPham.getColumnModel().getColumn(i).setCellRenderer(textCenter);
+//                TableTextAlignmentCellRender textCenter = new TableTextAlignmentCellRender();
+//        int countColumntblSP = tblDSSanPham.getColumnCount();
+//        for (int i = 0; i < countColumntblSP; i++) {
+//            tblDSSanPham.getColumnModel().getColumn(i).setCellRenderer(textCenter);
+//        }
+    }
+
+
+    private void loadDataToTable() {
+        listSP = sanPhamService.getAll(1, 1);
+        dtmTblSanPham = (DefaultTableModel) tblDSSanPham.getModel();
+        dtmTblSanPham.setRowCount(0);
+        for (SanPhamView sp : listSP) {
+            dtmTblSanPham.addRow(sp.toDataRow());
         }
     }
-
-    private void testData() {
-        DefaultTableModel dtmDSSanPham = (DefaultTableModel) tblDSSanPham.getModel();
-        dtmDSSanPham.setRowCount(0);
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-        dtmDSSanPham.addRow(new Object[]{"SP00001", "Casio", "LA-20WH-4A1DF", 459000, 510000, "Nữ", "", "Điện tử", "Dây Nhựa", "Kính Nhựa", "3atm", "", "30.4mm", "Đồng hồ Nhật", "Vỏ nhựa", "Mặt vuông", "Hồng", "Hàng mới về", "Chronograph, Lịch ngày, Lịch thứ, Giờ, phút, giây", "8.6mm", "Màu xám ghi", "Trẻ trung, cá tính", "casio-la-20wh-4a1df-la-20wh-4a1df-4134"});
-
-    }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -235,17 +224,17 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
 
         tblDSSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã sản phẩm", "Thương hiệu", "Mã hàng hóa", "Giá nhập", "Giá bán", "Đối tượng sử dụng", "Dòng sản phẩm", "Dòng máy", "Chất liệu dây", "Chất liệu kính", "Kháng nước", "Khoảng trữ cót", "Size mặt", "Xuất xứ", "Chất liệu vỏ", "Hình dạng mặt", "Màu vỏ", "Tình trạng", "Tính năng", "Độ dầy", "Màu mặt", "Phong cách", "Hình ảnh"
+                "Mã sản phẩm", "Thương hiệu", "Mã hàng hóa", "Giá nhập", "Giá bán", "Đối tượng sử dụng", "Dòng sản phẩm", "Dòng máy", "Chất liệu dây", "Chất liệu kính", "Kháng nước", "Khoảng trữ cót", "Size mặt", "Xuất xứ", "Chất liệu vỏ", "Hình dạng mặt", "Màu vỏ", "Độ dầy", "Màu mặt", "Hình ảnh"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -257,6 +246,15 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         tblDSSanPham.setShowGrid(false);
         tblDSSanPham.setShowHorizontalLines(true);
         jScrollPane1.setViewportView(tblDSSanPham);
+        if (tblDSSanPham.getColumnModel().getColumnCount() > 0) {
+            tblDSSanPham.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tblDSSanPham.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tblDSSanPham.getColumnModel().getColumn(2).setPreferredWidth(120);
+            tblDSSanPham.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tblDSSanPham.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tblDSSanPham.getColumnModel().getColumn(5).setPreferredWidth(150);
+            tblDSSanPham.getColumnModel().getColumn(6).setPreferredWidth(100);
+        }
 
         jPanel7.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 

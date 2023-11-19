@@ -20,6 +20,11 @@ public class ChatLieuKinh {
     public ChatLieuKinh(Integer id) {
         this.id = id;
     }
+
+    public ChatLieuKinh(Integer id, String tenChatLieuKinh) {
+        this.id = id;
+        this.tenChatLieuKinh = tenChatLieuKinh;
+    }
     
     public ChatLieuKinh(Integer id, String tenChatLieuKinh, Boolean trangThai) {
         this.id = id;
@@ -51,4 +56,10 @@ public class ChatLieuKinh {
         this.trangThai = trangThai;
     }
 
+    @Override
+    public String toString() {
+        return tenChatLieuKinh;
+    }
+    
+    
 }

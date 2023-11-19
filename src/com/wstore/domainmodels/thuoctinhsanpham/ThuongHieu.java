@@ -22,6 +22,11 @@ public class ThuongHieu {
         this.id = id;
     }
 
+    public ThuongHieu(Integer id, String tenThuongHieu) {
+        this.id = id;
+        this.tenThuongHieu = tenThuongHieu;
+    }
+
     public ThuongHieu(Integer id, String tenThuongHieu, String loGo, Boolean trangThai) {
         this.id = id;
         this.tenThuongHieu = tenThuongHieu;
@@ -60,5 +65,12 @@ public class ThuongHieu {
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
+
+    @Override
+    public String toString() {
+        return tenThuongHieu;
+    }
+    
+    
 
 }

@@ -21,6 +21,11 @@ public class DongMay {
         this.id = id;
     }
 
+    public DongMay(Integer id, String tenDongMay) {
+        this.id = id;
+        this.tenDongMay = tenDongMay;
+    }
+
     public DongMay(Integer id, String tenDongMay, Boolean trangThai) {
         this.id = id;
         this.tenDongMay = tenDongMay;
@@ -49,6 +54,11 @@ public class DongMay {
 
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
+    }
+
+    @Override
+    public String toString() {
+        return tenDongMay;
     }
     
     

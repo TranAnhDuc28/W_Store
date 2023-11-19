@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface ISanPhamRepository {
     
-    List<SanPham> getAll(int page, int pageSize, int trangThai);
+    List<SanPham> getAll(int page, int pageSize);
     
     boolean insert(SanPham sp);
     

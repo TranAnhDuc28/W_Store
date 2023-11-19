@@ -5,6 +5,7 @@
 package com.wstore.services;
 
 import com.wstore.domainmodels.SanPham;
+import com.wstore.viewmodels.QLsanpham.SanPhamView;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface ISanPhamService {
 
-    List<SanPham> getAll(int page, int pageSize, int trangThai);
+    List<SanPhamView> getAll(int page, int pageSize);
 
     String insert(SanPham sp);
 

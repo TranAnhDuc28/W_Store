@@ -21,6 +21,11 @@ public class XuatXu {
         this.id = id;
     }
 
+    public XuatXu(Integer id, String noiXuatXu) {
+        this.id = id;
+        this.noiXuatXu = noiXuatXu;
+    }
+
     public XuatXu(Integer id, String noiXuatXu, Boolean trangThai) {
         this.id = id;
         this.noiXuatXu = noiXuatXu;
@@ -50,5 +55,12 @@ public class XuatXu {
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
+
+    @Override
+    public String toString() {
+        return noiXuatXu;
+    }
+    
+    
 
 }

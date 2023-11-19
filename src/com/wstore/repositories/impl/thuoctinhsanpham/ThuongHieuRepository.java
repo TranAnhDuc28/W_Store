@@ -33,11 +33,10 @@ public class ThuongHieuRepository implements IThuocTinhSanPhamRepository<ThuongH
                         rs.getBoolean("trang_thai"));
                 list.add(th);
             }
-            return list;
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return null;
+        return list;
     }
 
     @Override

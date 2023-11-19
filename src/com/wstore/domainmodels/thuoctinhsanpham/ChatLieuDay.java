@@ -21,6 +21,11 @@ public class ChatLieuDay {
         this.id = id;
     }
 
+    public ChatLieuDay(Integer id, String tenChatLieuDay) {
+        this.id = id;
+        this.tenChatLieuDay = tenChatLieuDay;
+    }
+
     public ChatLieuDay(Integer id, String tenChatLieuDay, Boolean trangThai) {
         this.id = id;
         this.tenChatLieuDay = tenChatLieuDay;
@@ -49,6 +54,11 @@ public class ChatLieuDay {
 
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
+    }
+
+    @Override
+    public String toString() {
+        return tenChatLieuDay;
     }
 
 }

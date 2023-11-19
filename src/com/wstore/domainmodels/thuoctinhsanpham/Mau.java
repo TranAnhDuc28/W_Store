@@ -20,6 +20,11 @@ public class Mau {
     public Mau(Integer id) {
         this.id = id;
     }
+
+    public Mau(Integer id, String tenMau) {
+        this.id = id;
+        this.tenMau = tenMau;
+    }
     
     public Mau(Integer id, String tenMau, Boolean trangThai) {
         this.id = id;
@@ -49,6 +54,11 @@ public class Mau {
 
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
+    }
+
+    @Override
+    public String toString() {
+        return tenMau;
     }
     
     

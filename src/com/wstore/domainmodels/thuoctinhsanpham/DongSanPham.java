@@ -17,7 +17,7 @@ public class DongSanPham {
 
     public DongSanPham() {
     }
-
+    
     public DongSanPham(Integer id, String tenDongSanPham, ThuongHieu thuongHieu, Boolean trangThai) {
         this.id = id;
         this.tenDongSanPham = tenDongSanPham;
