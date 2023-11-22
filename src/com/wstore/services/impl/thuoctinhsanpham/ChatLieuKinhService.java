@@ -7,35 +7,35 @@ package com.wstore.services.impl.thuoctinhsanpham;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.ChatLieuKinhRepository;
 import com.wstore.services.IThuocTinhSanPhamService;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhViewModel;
 import java.util.List;
 
 /**
  *
  * @author ducan
  */
-public class ChatLieuKinhService implements IThuocTinhSanPhamService<ChatLieuKinhView> {
+public class ChatLieuKinhService implements IThuocTinhSanPhamService<ChatLieuKinhViewModel> {
 
     private final IThuocTinhSanPhamRepository chatLieuKinhRepository 
             = new ChatLieuKinhRepository();
 
     @Override
-    public List<ChatLieuKinhView> getAll() {
+    public List<ChatLieuKinhViewModel> getAll() {
         return chatLieuKinhRepository.getAll();
     }
 
     @Override
-    public boolean insert(ChatLieuKinhView clk) {
+    public boolean insert(ChatLieuKinhViewModel clk) {
         return chatLieuKinhRepository.insert(clk);
     }
 
     @Override
-    public boolean update(ChatLieuKinhView clk, int id) {
+    public boolean update(ChatLieuKinhViewModel clk, int id) {
         return chatLieuKinhRepository.update(clk, id);
     }
 
     @Override
-    public boolean updateHienThi(ChatLieuKinhView clk) {
+    public boolean updateHienThi(ChatLieuKinhViewModel clk) {
         return chatLieuKinhRepository.updateHienThi(clk);
     }
 }

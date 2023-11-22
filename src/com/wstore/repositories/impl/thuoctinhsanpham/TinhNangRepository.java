@@ -8,7 +8,7 @@ import com.wstore.domainmodels.thuoctinhsanpham.TinhNang;
 import java.util.List;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.utilities.DBConnect;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,16 +18,16 @@ import java.util.ArrayList;
  *
  * @author ducan
  */
-public class TinhNangRepository implements IThuocTinhSanPhamRepository<TinhNangView> {
+public class TinhNangRepository implements IThuocTinhSanPhamRepository<TinhNangViewModel> {
 
     @Override
-    public List<TinhNangView> getAll() {
-        List<TinhNangView> list = new ArrayList<>();
+    public List<TinhNangViewModel> getAll() {
+        List<TinhNangViewModel> list = new ArrayList<>();
         String sql = "select id, ten_tinh_nang, trang_thai from TinhNang";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement ptms = cn.prepareStatement(sql);) {
             ResultSet rs = ptms.executeQuery();
             while (rs.next()) {
-                TinhNangView tn = new TinhNangView();
+                TinhNangViewModel tn = new TinhNangViewModel();
                 tn.setMaTinhNang(rs.getInt("id"));
                 tn.setTenTinhNang(rs.getString("ten_tinh_nang"));
                 tn.setHienThi(rs.getBoolean("trang_thai"));
@@ -40,7 +40,7 @@ public class TinhNangRepository implements IThuocTinhSanPhamRepository<TinhNangV
     }
 
     @Override
-    public boolean insert(TinhNangView obj) {
+    public boolean insert(TinhNangViewModel obj) {
         int checkinsert = 0;
         String sql = "insert into TinhNang(ten_tinh_nang, trang_thai) values (?, default);";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement ptms = cn.prepareStatement(sql);) {
@@ -54,7 +54,7 @@ public class TinhNangRepository implements IThuocTinhSanPhamRepository<TinhNangV
     }
 
     @Override
-    public boolean update(TinhNangView obj, int id) {
+    public boolean update(TinhNangViewModel obj, int id) {
         int checkUpdate = 0;
         String sql = "update TinhNang\n"
                 + "set ten_tinh_nang=?\n"
@@ -70,7 +70,7 @@ public class TinhNangRepository implements IThuocTinhSanPhamRepository<TinhNangV
     }
 
     @Override
-    public boolean updateHienThi(TinhNangView obj) {
+    public boolean updateHienThi(TinhNangViewModel obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

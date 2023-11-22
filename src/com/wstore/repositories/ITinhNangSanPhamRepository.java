@@ -5,12 +5,15 @@
 package com.wstore.repositories;
 
 import com.wstore.domainmodels.thuoctinhsanpham.TinhNangSanPham;
+import java.util.Set;
 
 /**
  *
  * @author ducan
  */
 public interface ITinhNangSanPhamRepository {
+
+    Set<TinhNangSanPham> getAllByIdSanPham(int idSanPham);
 
     boolean insert(TinhNangSanPham tnsp);
 

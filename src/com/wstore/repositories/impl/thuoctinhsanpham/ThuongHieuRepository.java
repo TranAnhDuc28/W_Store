@@ -7,7 +7,7 @@ package com.wstore.repositories.impl.thuoctinhsanpham;
 import java.util.List;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.utilities.DBConnect;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuViewModel;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,16 +17,16 @@ import java.sql.ResultSet;
  *
  * @author ducan
  */
-public class ThuongHieuRepository implements IThuocTinhSanPhamRepository<ThuongHieuView> {
+public class ThuongHieuRepository implements IThuocTinhSanPhamRepository<ThuongHieuViewModel> {
 
     @Override
-    public List<ThuongHieuView> getAll() {
-        List<ThuongHieuView> list = new ArrayList<>();
+    public List<ThuongHieuViewModel> getAll() {
+        List<ThuongHieuViewModel> list = new ArrayList<>();
         String sql = "select id, ten_thuong_hieu, lo_go, trang_thai from ThuongHieu";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
-                ThuongHieuView th = new ThuongHieuView(
+                ThuongHieuViewModel th = new ThuongHieuViewModel(
                         rs.getInt("id"),
                         rs.getString("ten_thuong_hieu"),
                         rs.getString("lo_go"),
@@ -40,7 +40,7 @@ public class ThuongHieuRepository implements IThuocTinhSanPhamRepository<ThuongH
     }
 
     @Override
-    public boolean insert(ThuongHieuView th) {
+    public boolean insert(ThuongHieuViewModel th) {
         int checkInsert = 0;
         String sql = "insert into ThuongHieu(ten_thuong_hieu, lo_go, trang_thai) "
                 + "values (?, ?, default);";
@@ -55,7 +55,7 @@ public class ThuongHieuRepository implements IThuocTinhSanPhamRepository<ThuongH
     }
 
     @Override
-    public boolean update(ThuongHieuView th, int id) {
+    public boolean update(ThuongHieuViewModel th, int id) {
         int checkUpdate = 0;
         String sql = "update ThuongHieu\n"
                 + "set ten_thuong_hieu = ? , lo_go = ?\n"
@@ -72,7 +72,7 @@ public class ThuongHieuRepository implements IThuocTinhSanPhamRepository<ThuongH
     }
 
     @Override
-    public boolean updateHienThi(ThuongHieuView th) {
+    public boolean updateHienThi(ThuongHieuViewModel th) {
         String sql = "update ThuongHieu\n"
                 + "set trang_thai = ?\n"
                 + "where id = ?;";

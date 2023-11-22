@@ -8,7 +8,7 @@ import com.wstore.domainmodels.thuoctinhsanpham.PhongCach;
 import java.util.List;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.utilities.DBConnect;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,16 +18,16 @@ import java.util.ArrayList;
  *
  * @author ducan
  */
-public class PhongCachRepository implements IThuocTinhSanPhamRepository<PhongCachView> {
+public class PhongCachRepository implements IThuocTinhSanPhamRepository<PhongCachViewModel> {
 
     @Override
-    public List<PhongCachView> getAll() {
-        List<PhongCachView> list = new ArrayList<>();
+    public List<PhongCachViewModel> getAll() {
+        List<PhongCachViewModel> list = new ArrayList<>();
         String sql = "select id, ten_phong_cach, trang_thai from PhongCach";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement ptms = cn.prepareStatement(sql);) {
             ResultSet rs = ptms.executeQuery();
             while (rs.next()) {
-                PhongCachView pc = new PhongCachView();
+                PhongCachViewModel pc = new PhongCachViewModel();
                 pc.setMaPhongCach(rs.getInt("id"));
                 pc.setTenPhongCach(rs.getString("ten_phong_cach"));
                 pc.setHienThi(rs.getBoolean("trang_thai"));
@@ -40,7 +40,7 @@ public class PhongCachRepository implements IThuocTinhSanPhamRepository<PhongCac
     }
 
     @Override
-    public boolean insert(PhongCachView obj) {
+    public boolean insert(PhongCachViewModel obj) {
         int checkinsert = 0;
         String sql = "insert into PhongCach(ten_phong_cach, trang_thai) values (? ,default);";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement ptms = cn.prepareStatement(sql);) {
@@ -53,7 +53,7 @@ public class PhongCachRepository implements IThuocTinhSanPhamRepository<PhongCac
     }
 
     @Override
-    public boolean update(PhongCachView obj, int id) {
+    public boolean update(PhongCachViewModel obj, int id) {
         int checkUpdate = 0;
         String sql = "update PhongCach\n"
                 + "set ten_phong_cach=?\n"
@@ -70,7 +70,7 @@ public class PhongCachRepository implements IThuocTinhSanPhamRepository<PhongCac
     }
 
     @Override
-    public boolean updateHienThi(PhongCachView obj) {
+    public boolean updateHienThi(PhongCachViewModel obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

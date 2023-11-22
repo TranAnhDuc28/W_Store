@@ -3,7 +3,7 @@ package com.wstore.views.thuoctinhsanpham;
 import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.TinhNangService;
 import com.wstore.utilities.Helper;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,51 +11,13 @@ public class FormTinhNangJDialog extends javax.swing.JDialog {
 
     private final IThuocTinhSanPhamService tinhNangService = new TinhNangService();
     private DefaultTableModel dtmTinhNang = new DefaultTableModel();
-    int index = -1;
-    List<TinhNangView> listTinhNang;
+    private int index = -1;
+    private List<TinhNangViewModel> listTinhNang;
 
-    /**
-     * Creates new form FormTinhNangJDialog
-     */
     public FormTinhNangJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         loadDataToTable();
-    }
-
-    private void loadDataToTable() {
-        dtmTinhNang = (DefaultTableModel) tblTinhNang.getModel();
-        dtmTinhNang.setRowCount(0);
-        listTinhNang = tinhNangService.getAll();
-        for (TinhNangView tn : listTinhNang) {
-            dtmTinhNang.addRow(tn.toDataRow());
-        }
-    }
-
-    private TinhNangView getDaTaForm() {
-        TinhNangView tn = new TinhNangView();
-        tn.setTenTinhNang(txtTenTinhNang.getText());
-        return tn;
-    }
-
-    private boolean validateForm() {
-        if (Helper.checkRongTextField(this, txtTenTinhNang,
-                "Vui lòng nhập tên tính năng!")) {
-            return true;
-        }
-        return false;
-    }
-
-    private void clearForm() {
-        txtTenTinhNang.setText("");
-        tblTinhNang.clearSelection();
-        btnThem.setEnabled(true);
-        index = -1;
-    }
-
-    private void showData() {
-        TinhNangView tn = listTinhNang.get(index);
-        txtTenTinhNang.setText(tn.getTenTinhNang());
     }
 
     @SuppressWarnings("unchecked")
@@ -89,17 +51,19 @@ public class FormTinhNangJDialog extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(txtTenTinhNang)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTenTinhNang, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTenTinhNang, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTenTinhNang, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)))
         );
 
         tblTinhNang.setModel(new javax.swing.table.DefaultTableModel(
@@ -235,6 +199,9 @@ public class FormTinhNangJDialog extends javax.swing.JDialog {
 
     private void tblTinhNangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTinhNangMouseClicked
         index = tblTinhNang.getSelectedRow();
+        if (index >= 0) {
+            btnThem.setEnabled(false);
+        }
         showData();
      }//GEN-LAST:event_tblTinhNangMouseClicked
 
@@ -260,13 +227,16 @@ public class FormTinhNangJDialog extends javax.swing.JDialog {
             Helper.alert(this, "Vui lòng chọn thông tin cần sửa!");
             return;
         }
-        if (Helper.comfirm(this, "Xác nhận sửa!")) {
-            int id = listTinhNang.get(index).getMaTinhNang();
-            if (tinhNangService.update(getDaTaForm(), id)) {
-                Helper.alert(this, "Sửa thành công!");
-                loadDataToTable();
-            } else {
-                Helper.alert(this, "Sửa thất bại!");
+        if (!validateForm()) {
+            if (Helper.comfirm(this, "Xác nhận sửa!")) {
+                int id = listTinhNang.get(index).getMaTinhNang();
+                if (tinhNangService.update(getDaTaForm(), id)) {
+                    Helper.alert(this, "Sửa thành công!");
+                    loadDataToTable();
+                    tblTinhNang.setRowSelectionInterval(index, index);
+                } else {
+                    Helper.alert(this, "Sửa thất bại!");
+                }
             }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -275,9 +245,41 @@ public class FormTinhNangJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void loadDataToTable() {
+        dtmTinhNang = (DefaultTableModel) tblTinhNang.getModel();
+        dtmTinhNang.setRowCount(0);
+        listTinhNang = tinhNangService.getAll();
+        for (TinhNangViewModel tn : listTinhNang) {
+            dtmTinhNang.addRow(tn.toDataRow());
+        }
+    }
+
+    private TinhNangViewModel getDaTaForm() {
+        TinhNangViewModel tn = new TinhNangViewModel();
+        tn.setTenTinhNang(txtTenTinhNang.getText());
+        return tn;
+    }
+
+    private boolean validateForm() {
+        if (Helper.checkRongTextField(this, txtTenTinhNang,
+                "Vui lòng nhập tên tính năng!")) {
+            return true;
+        }
+        return false;
+    }
+
+    private void clearForm() {
+        txtTenTinhNang.setText("");
+        tblTinhNang.clearSelection();
+        btnThem.setEnabled(true);
+        index = -1;
+    }
+
+    private void showData() {
+        TinhNangViewModel tn = listTinhNang.get(index);
+        txtTenTinhNang.setText(tn.getTenTinhNang());
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

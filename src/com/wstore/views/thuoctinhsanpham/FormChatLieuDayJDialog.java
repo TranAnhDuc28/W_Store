@@ -8,7 +8,7 @@ import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuDayService;
 import com.wstore.swing.table.TableTextAlignmentCellRender;
 import com.wstore.utilities.Helper;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,13 +20,13 @@ public class FormChatLieuDayJDialog extends javax.swing.JDialog {
 
     private final IThuocTinhSanPhamService chatLieuDayService = new ChatLieuDayService();
     private DefaultTableModel dtmChatLieuDay;
-    private List<ChatLieuDayView> listChatLieuDay;
+    private List<ChatLieuDayViewModel> listChatLieuDay;
     private int index = -1;
 
     public FormChatLieuDayJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        init();
+//        init();
         loadDataToTable();
     }
 
@@ -34,42 +34,6 @@ public class FormChatLieuDayJDialog extends javax.swing.JDialog {
         TableTextAlignmentCellRender textCenter = new TableTextAlignmentCellRender();
         tblChatLieuDay.getColumnModel().getColumn(0).setCellRenderer(textCenter);
         tblChatLieuDay.getColumnModel().getColumn(1).setCellRenderer(textCenter);
-    }
-
-    private void loadDataToTable() {
-        listChatLieuDay = chatLieuDayService.getAll();
-        dtmChatLieuDay = (DefaultTableModel) tblChatLieuDay.getModel();
-        dtmChatLieuDay.setRowCount(0);
-        for (ChatLieuDayView th : listChatLieuDay) {
-            dtmChatLieuDay.addRow(th.toDataRow());
-        }
-    }
-
-    private ChatLieuDayView getDataToForm() {
-        ChatLieuDayView cld = new ChatLieuDayView();
-        cld.setTenChatLieuDay(txtTenChatLieuDay.getText());
-        return cld;
-    }
-
-    private void showData() {
-        ChatLieuDayView th = listChatLieuDay.get(index);
-        txtTenChatLieuDay.setText(th.getTenChatLieuDay());
-
-    }
-
-    private void clearForm() {
-        txtTenChatLieuDay.setText("");
-        tblChatLieuDay.clearSelection();
-        btnThem.setEnabled(true);
-        index = -1;
-    }
-
-    private boolean validateForm() {
-        if (Helper.checkRongTextField(this, txtTenChatLieuDay,
-                "Vui lòng nhập tên chất liệu dây!")) {
-            return true;
-        }
-        return false;
     }
 
     @SuppressWarnings("unchecked")
@@ -105,17 +69,19 @@ public class FormChatLieuDayJDialog extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(txtTenChatLieuDay)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTenChatLieuDay, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTenChatLieuDay, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTenChatLieuDay, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)))
         );
 
         tblChatLieuDay.setModel(new javax.swing.table.DefaultTableModel(
@@ -279,13 +245,16 @@ public class FormChatLieuDayJDialog extends javax.swing.JDialog {
             Helper.alert(this, "Vui lòng chọn thông tin cần sửa!");
             return;
         }
-        if (Helper.comfirm(this, "Xác nhận sửa!")) {
-            int id = Integer.parseInt(tblChatLieuDay.getValueAt(index, 0).toString());
-            if (chatLieuDayService.update(getDataToForm(), id)) {
-                Helper.alert(this, "Sửa thành công!");
-                loadDataToTable();
-            } else {
-                Helper.alert(this, "Sửa thất bại!");
+        if (!validateForm()) {
+            if (Helper.comfirm(this, "Xác nhận sửa!")) {
+                int id = Integer.parseInt(tblChatLieuDay.getValueAt(index, 0).toString());
+                if (chatLieuDayService.update(getDataToForm(), id)) {
+                    Helper.alert(this, "Sửa thành công!");
+                    loadDataToTable();
+                    tblChatLieuDay.setRowSelectionInterval(index, index);
+                } else {
+                    Helper.alert(this, "Sửa thất bại!");
+                }
             }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -294,9 +263,42 @@ public class FormChatLieuDayJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void loadDataToTable() {
+        listChatLieuDay = chatLieuDayService.getAll();
+        dtmChatLieuDay = (DefaultTableModel) tblChatLieuDay.getModel();
+        dtmChatLieuDay.setRowCount(0);
+        for (ChatLieuDayViewModel th : listChatLieuDay) {
+            dtmChatLieuDay.addRow(th.toDataRow());
+        }
+    }
+
+    private ChatLieuDayViewModel getDataToForm() {
+        ChatLieuDayViewModel cld = new ChatLieuDayViewModel();
+        cld.setTenChatLieuDay(txtTenChatLieuDay.getText());
+        return cld;
+    }
+
+    private void showData() {
+        ChatLieuDayViewModel th = listChatLieuDay.get(index);
+        txtTenChatLieuDay.setText(th.getTenChatLieuDay());
+
+    }
+
+    private void clearForm() {
+        txtTenChatLieuDay.setText("");
+        tblChatLieuDay.clearSelection();
+        btnThem.setEnabled(true);
+        index = -1;
+    }
+
+    private boolean validateForm() {
+        if (Helper.checkRongTextField(this, txtTenChatLieuDay,
+                "Vui lòng nhập tên chất liệu dây!")) {
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -7,35 +7,35 @@ package com.wstore.services.impl.thuoctinhsanpham;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.TinhNangRepository;
 import com.wstore.services.IThuocTinhSanPhamService;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import java.util.List;
 
 /**
  *
  * @author ducan
  */
-public class TinhNangService implements IThuocTinhSanPhamService<TinhNangView> {
+public class TinhNangService implements IThuocTinhSanPhamService<TinhNangViewModel> {
 
     private final IThuocTinhSanPhamRepository tinhSanPhamRepository 
             = new TinhNangRepository();
 
     @Override
-    public List<TinhNangView> getAll() {
+    public List<TinhNangViewModel> getAll() {
         return tinhSanPhamRepository.getAll();
     }
 
     @Override
-    public boolean insert(TinhNangView tn) {
+    public boolean insert(TinhNangViewModel tn) {
         return tinhSanPhamRepository.insert(tn);
     }
 
     @Override
-    public boolean updateHienThi(TinhNangView tn) {
+    public boolean updateHienThi(TinhNangViewModel tn) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean update(TinhNangView tn, int id) {
+    public boolean update(TinhNangViewModel tn, int id) {
         return tinhSanPhamRepository.update(tn, id);
     }
 

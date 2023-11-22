@@ -90,7 +90,7 @@ public class Helper {
             try {
                 img = ImageIO.read(new File(dicrectoryPath + "\\" + hinhHienThi));
             } catch (IOException ex) {
-                ex.printStackTrace(System.out);
+                alert(null, ex.getMessage());
             }
             if (img != null) {
                 ImageIcon imageIcon = new ImageIcon(img.getScaledInstance(
@@ -202,4 +202,8 @@ public class Helper {
         }
         return false;
     }
+    
+    public static String removeDauNgoacVuong(String str) {
+        return str.replaceAll("\\[|\\]", "");
+    } 
 }

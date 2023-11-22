@@ -8,7 +8,7 @@ import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ThuongHieuService;
 import com.wstore.swing.table.TableTextAlignmentCellRender;
 import com.wstore.utilities.Helper;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,14 +20,14 @@ public class FormThuongHieuJDialog extends javax.swing.JDialog {
 
     private final IThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
     private DefaultTableModel dtmThuongHieu;
-    private List<ThuongHieuView> listThuongHieu;
+    private List<ThuongHieuViewModel> listThuongHieu;
     private String imageName = null;
     private int index = -1;
 
     public FormThuongHieuJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        init();
+//        init();
         loadDataToTable();
     }
 
@@ -36,59 +36,6 @@ public class FormThuongHieuJDialog extends javax.swing.JDialog {
         tblThuongHieu.getColumnModel().getColumn(0).setCellRenderer(textCenter);
         tblThuongHieu.getColumnModel().getColumn(1).setCellRenderer(textCenter);
         tblThuongHieu.getColumnModel().getColumn(2).setCellRenderer(textCenter);
-    }
-
-    private void loadDataToTable() {
-        listThuongHieu = thuongHieuService.getAll();
-        dtmThuongHieu = (DefaultTableModel) tblThuongHieu.getModel();
-        dtmThuongHieu.setRowCount(0);
-        for (ThuongHieuView th : listThuongHieu) {
-            dtmThuongHieu.addRow(th.toDataRow());
-        }
-    }
-
-    private ThuongHieuView getDataToForm() {
-        ThuongHieuView th = new ThuongHieuView();
-        th.setTenThuongHieu(txtTenThuongHieu.getText());
-        String logo = null;
-        if (imageName != null) {
-            logo = imageName;
-        } else {
-            if (index >= 0 && tblThuongHieu.getValueAt(index, 2) != null
-                    && !(tblThuongHieu.getValueAt(index, 2).equals("No image"))) {
-                logo = tblThuongHieu.getValueAt(index, 2).toString();
-                if (lblLogo.getIcon() == null) {
-                    logo = "No image";
-                }
-            } else {
-                logo = "No image";
-            }
-        }
-        th.setLogo(logo);
-        return th;
-    }
-
-    private void showData() {
-        ThuongHieuView th = listThuongHieu.get(index);
-        txtTenThuongHieu.setText(th.getTenThuongHieu());
-        Helper.showHinhAnh("images/lo-go-thuong-hieu", lblLogo, th.getLogo());
-    }
-
-    private void clearForm() {
-        txtTenThuongHieu.setText("");
-        lblLogo.setIcon(null);
-        lblLogo.setText("No image");
-        index = -1;
-        tblThuongHieu.clearSelection();
-        btnThem.setEnabled(true);
-    }
-
-    private boolean validateForm() {
-        if (Helper.checkRongTextField(this, txtTenThuongHieu,
-                "Vui lòng nhập tên thương hiệu!")) {
-            return true;
-        }
-        return false;
     }
 
     @SuppressWarnings("unchecked")
@@ -335,19 +282,22 @@ public class FormThuongHieuJDialog extends javax.swing.JDialog {
             Helper.alert(this, "Vui lòng chọn thông tin cần sửa!");
             return;
         }
-        if (Helper.comfirm(this, "Xác nhận sửa!")) {
-            int id = Integer.parseInt(tblThuongHieu.getValueAt(index, 0).toString());
-            if (thuongHieuService.update(getDataToForm(), id)) {
-                Helper.alert(this, "Sửa thành công!");
-                loadDataToTable();
-            } else {
-                Helper.alert(this, "Sửa thất bại!");
+        if (!validateForm()) {
+            if (Helper.comfirm(this, "Xác nhận sửa!")) {
+                int id = Integer.parseInt(tblThuongHieu.getValueAt(index, 0).toString());
+                if (thuongHieuService.update(getDataToForm(), id)) {
+                    Helper.alert(this, "Sửa thành công!");
+                    loadDataToTable();
+                    tblThuongHieu.setRowSelectionInterval(index, index);
+                } else {
+                    Helper.alert(this, "Sửa thất bại!");
+                }
             }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnCapNhatHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatHienThiActionPerformed
- 
+
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
     private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonAnhActionPerformed
@@ -358,9 +308,59 @@ public class FormThuongHieuJDialog extends javax.swing.JDialog {
         clearForm();
     }//GEN-LAST:event_btnMoiActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void loadDataToTable() {
+        listThuongHieu = thuongHieuService.getAll();
+        dtmThuongHieu = (DefaultTableModel) tblThuongHieu.getModel();
+        dtmThuongHieu.setRowCount(0);
+        for (ThuongHieuViewModel th : listThuongHieu) {
+            dtmThuongHieu.addRow(th.toDataRow());
+        }
+    }
+
+    private ThuongHieuViewModel getDataToForm() {
+        ThuongHieuViewModel th = new ThuongHieuViewModel();
+        th.setTenThuongHieu(txtTenThuongHieu.getText());
+        String logo = null;
+        if (imageName != null) {
+            logo = imageName;
+        } else {
+            if (index >= 0 && tblThuongHieu.getValueAt(index, 2) != null
+                    && !(tblThuongHieu.getValueAt(index, 2).equals("No image"))) {
+                logo = tblThuongHieu.getValueAt(index, 2).toString();
+                if (lblLogo.getIcon() == null) {
+                    logo = "No image";
+                }
+            } else {
+                logo = "No image";
+            }
+        }
+        th.setLogo(logo);
+        return th;
+    }
+
+    private void showData() {
+        ThuongHieuViewModel th = listThuongHieu.get(index);
+        txtTenThuongHieu.setText(th.getTenThuongHieu());
+        Helper.showHinhAnh("images/lo-go-thuong-hieu", lblLogo, th.getLogo());
+    }
+
+    private void clearForm() {
+        txtTenThuongHieu.setText("");
+        lblLogo.setIcon(null);
+        lblLogo.setText("No image");
+        index = -1;
+        tblThuongHieu.clearSelection();
+        btnThem.setEnabled(true);
+    }
+
+    private boolean validateForm() {
+        if (Helper.checkRongTextField(this, txtTenThuongHieu,
+                "Vui lòng nhập tên thương hiệu!")) {
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

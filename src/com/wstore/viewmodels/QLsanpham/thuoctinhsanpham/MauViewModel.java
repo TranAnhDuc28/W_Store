@@ -8,16 +8,16 @@ package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
  *
  * @author Admin
  */
-public class MauView {
+public class MauViewModel {
 
     private Integer maMau;
     private String tenMau;
     private Boolean hienThi;
 
-    public MauView() {
+    public MauViewModel() {
     }
 
-    public MauView(Integer maMau, String tenMau, Boolean hienThi) {
+    public MauViewModel(Integer maMau, String tenMau, Boolean hienThi) {
         this.maMau = maMau;
         this.tenMau = tenMau;
         this.hienThi = hienThi;
@@ -45,6 +45,11 @@ public class MauView {
 
     public void setHienThi(Boolean hienThi) {
         this.hienThi = hienThi;
+    }
+
+    @Override
+    public String toString() {
+        return tenMau;
     }
 
     public Object[] toDataRow() {

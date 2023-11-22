@@ -4,16 +4,16 @@
  */
 package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
 
+public class ChatLieuKinhViewModel {
 
-public class ChatLieuKinhView {
     private Integer maChatLieuKinh;
     private String tenChatLieuKinh;
     private Boolean hienThi;
 
-    public ChatLieuKinhView() {
+    public ChatLieuKinhViewModel() {
     }
 
-    public ChatLieuKinhView(Integer maChatLieuKinh, String tenChatLieuKinh, Boolean hienThi) {
+    public ChatLieuKinhViewModel(Integer maChatLieuKinh, String tenChatLieuKinh, Boolean hienThi) {
         this.maChatLieuKinh = maChatLieuKinh;
         this.tenChatLieuKinh = tenChatLieuKinh;
         this.hienThi = hienThi;
@@ -42,7 +42,13 @@ public class ChatLieuKinhView {
     public void setHienThi(Boolean hienThi) {
         this.hienThi = hienThi;
     }
-     public Object[] toDataRow() {
-        return new Object[] {maChatLieuKinh, tenChatLieuKinh, hienThi};
-    } 
+
+    @Override
+    public String toString() {
+        return tenChatLieuKinh;
+    }
+
+    public Object[] toDataRow() {
+        return new Object[]{maChatLieuKinh, tenChatLieuKinh, hienThi};
+    }
 }

@@ -8,7 +8,7 @@ import com.wstore.domainmodels.thuoctinhsanpham.Mau;
 import java.util.List;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.utilities.DBConnect;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.MauView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.MauViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,16 +18,16 @@ import java.util.ArrayList;
  *
  * @author ducan
  */
-public class MauRepository implements IThuocTinhSanPhamRepository<MauView> {
+public class MauRepository implements IThuocTinhSanPhamRepository<MauViewModel> {
 
     @Override
-    public List<MauView> getAll() {
-        List<MauView> list = new ArrayList<>();
+    public List<MauViewModel> getAll() {
+        List<MauViewModel> list = new ArrayList<>();
         String sql = "select id, ten_mau, trang_thai from Mau";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement ptms = cn.prepareStatement(sql);) {
             ResultSet rs = ptms.executeQuery();
             while (rs.next()) {
-                MauView mau = new MauView();
+                MauViewModel mau = new MauViewModel();
                 mau.setMaMau(rs.getInt("id"));
                 mau.setTenMau(rs.getString("ten_mau"));
                 mau.setHienThi(rs.getBoolean("trang_thai"));
@@ -41,7 +41,7 @@ public class MauRepository implements IThuocTinhSanPhamRepository<MauView> {
     }
 
     @Override
-    public boolean insert(MauView obj) {
+    public boolean insert(MauViewModel obj) {
         int checkInsert = 0;
         String sql = "insert into Mau(ten_mau, trang_thai) values (?, default);";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement ptms = cn.prepareStatement(sql);) {
@@ -54,7 +54,7 @@ public class MauRepository implements IThuocTinhSanPhamRepository<MauView> {
     }
 
     @Override
-    public boolean update(MauView obj, int id) {
+    public boolean update(MauViewModel obj, int id) {
         int checkUpdate = 0;
         String sql = "update Mau\n"
                 + "set ten_mau= ?\n"
@@ -70,7 +70,7 @@ public class MauRepository implements IThuocTinhSanPhamRepository<MauView> {
     }
 
     @Override
-    public boolean updateHienThi(MauView obj) {
+    public boolean updateHienThi(MauViewModel obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

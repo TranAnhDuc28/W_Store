@@ -7,34 +7,34 @@ package com.wstore.services.impl.thuoctinhsanpham;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.ChatLieuDayRepository;
 import com.wstore.services.IThuocTinhSanPhamService;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayViewModel;
 import java.util.List;
 
 /**
  *
  * @author ducan
  */
-public class ChatLieuDayService implements IThuocTinhSanPhamService<ChatLieuDayView> {
+public class ChatLieuDayService implements IThuocTinhSanPhamService<ChatLieuDayViewModel> {
 
     private final IThuocTinhSanPhamRepository chatLieuDayRepository = new ChatLieuDayRepository();
 
     @Override
-    public List<ChatLieuDayView> getAll() {
+    public List<ChatLieuDayViewModel> getAll() {
         return chatLieuDayRepository.getAll();
     }
 
     @Override
-    public boolean insert(ChatLieuDayView cld) {
+    public boolean insert(ChatLieuDayViewModel cld) {
         return chatLieuDayRepository.insert(cld);
     }
 
     @Override
-    public boolean update(ChatLieuDayView cld, int id) {
+    public boolean update(ChatLieuDayViewModel cld, int id) {
         return chatLieuDayRepository.update(cld, id);
     }
 
     @Override
-    public boolean updateHienThi(ChatLieuDayView cld) {
+    public boolean updateHienThi(ChatLieuDayViewModel cld) {
         return chatLieuDayRepository.updateHienThi(cld);
     }
 

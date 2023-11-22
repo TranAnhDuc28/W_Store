@@ -51,4 +51,11 @@ public class PhongCach {
         this.trangThai = trangThai;
     }
 
+    @Override
+    public String toString() {
+        return tenPhongCach;
+    }
+    
+    
+
 }

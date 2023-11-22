@@ -4,6 +4,8 @@
  */
 package com.wstore.domainmodels.thuoctinhsanpham;
 
+import java.util.Objects;
+
 /**
  *
  * @author ducan
@@ -51,4 +53,40 @@ public class TinhNang {
         this.trangThai = trangThai;
     }
 
+    @Override
+    public String toString() {
+        return tenTinhNang;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.tenTinhNang);
+        hash = 29 * hash + Objects.hashCode(this.trangThai);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TinhNang other = (TinhNang) obj;
+        if (!Objects.equals(this.tenTinhNang, other.tenTinhNang)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return Objects.equals(this.trangThai, other.trangThai);
+    }
+    
+    
 }

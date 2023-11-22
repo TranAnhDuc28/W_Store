@@ -8,7 +8,7 @@ import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuKinhService;
 import com.wstore.swing.table.TableTextAlignmentCellRender;
 import com.wstore.utilities.Helper;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,13 +20,13 @@ public class FormChatLieuKinhJDialog extends javax.swing.JDialog {
 
     private final IThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
     private DefaultTableModel dtmChatLieuKinh;
-    private List<ChatLieuKinhView> listChatLieuKinh;
+    private List<ChatLieuKinhViewModel> listChatLieuKinh;
     private int index = -1;
 
     public FormChatLieuKinhJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        init();
+//        init();
         loadDataToTable();
     }
 
@@ -34,41 +34,6 @@ public class FormChatLieuKinhJDialog extends javax.swing.JDialog {
         TableTextAlignmentCellRender textCenter = new TableTextAlignmentCellRender();
         tblChatLieuKinh.getColumnModel().getColumn(0).setCellRenderer(textCenter);
         tblChatLieuKinh.getColumnModel().getColumn(1).setCellRenderer(textCenter);
-    }
-
-    private void loadDataToTable() {
-        listChatLieuKinh = chatLieuKinhService.getAll();
-        dtmChatLieuKinh = (DefaultTableModel) tblChatLieuKinh.getModel();
-        dtmChatLieuKinh.setRowCount(0);
-        for (ChatLieuKinhView clk : listChatLieuKinh) {
-            dtmChatLieuKinh.addRow(clk.toDataRow());
-        }
-    }
-
-    private ChatLieuKinhView getDataToForm() {
-        ChatLieuKinhView cld = new ChatLieuKinhView();
-        cld.setTenChatLieuKinh(txtTenChatLieuKinh.getText());
-        return cld;
-    }
-
-    private void showData() {
-        ChatLieuKinhView th = listChatLieuKinh.get(index);
-        txtTenChatLieuKinh.setText(th.getTenChatLieuKinh());
-    }
-
-    private void clearForm() {
-        txtTenChatLieuKinh.setText("");
-        tblChatLieuKinh.clearSelection();
-        btnThem.setEnabled(true);
-        index = -1;
-    }
-
-    private boolean validateForm() {
-        if (Helper.checkRongTextField(this, txtTenChatLieuKinh,
-                "Vui lòng nhập tên chất liệu kính!")) {
-            return true;
-        }
-        return false;
     }
 
     @SuppressWarnings("unchecked")
@@ -102,17 +67,19 @@ public class FormChatLieuKinhJDialog extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(txtTenChatLieuKinh)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTenChatLieuKinh, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTenChatLieuKinh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTenChatLieuKinh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)))
         );
 
         tblChatLieuKinh.setModel(new javax.swing.table.DefaultTableModel(
@@ -211,7 +178,7 @@ public class FormChatLieuKinhJDialog extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 1, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,13 +243,16 @@ public class FormChatLieuKinhJDialog extends javax.swing.JDialog {
             Helper.alert(this, "Vui lòng chọn thông tin cần sửa!");
             return;
         }
-        if (Helper.comfirm(this, "Xác nhận sửa!")) {
-            int id = Integer.parseInt(tblChatLieuKinh.getValueAt(index, 0).toString());
-            if (chatLieuKinhService.update(getDataToForm(), id)) {
-                Helper.alert(this, "Sửa thành công!");
-                loadDataToTable();
-            } else {
-                Helper.alert(this, "Sửa thất bại!");
+        if (!validateForm()) {
+            if (Helper.comfirm(this, "Xác nhận sửa!")) {
+                int id = Integer.parseInt(tblChatLieuKinh.getValueAt(index, 0).toString());
+                if (chatLieuKinhService.update(getDataToForm(), id)) {
+                    Helper.alert(this, "Sửa thành công!");
+                    loadDataToTable();
+                    tblChatLieuKinh.setRowSelectionInterval(index, index);
+                } else {
+                    Helper.alert(this, "Sửa thất bại!");
+                }
             }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -291,47 +261,79 @@ public class FormChatLieuKinhJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormChatLieuKinhJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormChatLieuKinhJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormChatLieuKinhJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormChatLieuKinhJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void loadDataToTable() {
+        listChatLieuKinh = chatLieuKinhService.getAll();
+        dtmChatLieuKinh = (DefaultTableModel) tblChatLieuKinh.getModel();
+        dtmChatLieuKinh.setRowCount(0);
+        for (ChatLieuKinhViewModel clk : listChatLieuKinh) {
+            dtmChatLieuKinh.addRow(clk.toDataRow());
         }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                FormChatLieuKinhJDialog dialog = new FormChatLieuKinhJDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
     }
+
+    private ChatLieuKinhViewModel getDataToForm() {
+        ChatLieuKinhViewModel cld = new ChatLieuKinhViewModel();
+        cld.setTenChatLieuKinh(txtTenChatLieuKinh.getText());
+        return cld;
+    }
+
+    private void showData() {
+        ChatLieuKinhViewModel th = listChatLieuKinh.get(index);
+        txtTenChatLieuKinh.setText(th.getTenChatLieuKinh());
+    }
+
+    private void clearForm() {
+        txtTenChatLieuKinh.setText("");
+        tblChatLieuKinh.clearSelection();
+        btnThem.setEnabled(true);
+        index = -1;
+    }
+
+    private boolean validateForm() {
+        if (Helper.checkRongTextField(this, txtTenChatLieuKinh,
+                "Vui lòng nhập tên chất liệu kính!")) {
+            return true;
+        }
+        return false;
+    }
+
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(FormChatLieuKinhJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(FormChatLieuKinhJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(FormChatLieuKinhJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(FormChatLieuKinhJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the dialog */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                FormChatLieuKinhJDialog dialog = new FormChatLieuKinhJDialog(new javax.swing.JFrame(), true);
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    @Override
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhatHienThi;

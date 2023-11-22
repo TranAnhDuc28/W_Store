@@ -10,15 +10,23 @@ import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuKinh;
 import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuVo;
 import com.wstore.domainmodels.thuoctinhsanpham.DongMay;
 import com.wstore.domainmodels.thuoctinhsanpham.Mau;
+import com.wstore.domainmodels.thuoctinhsanpham.PhongCachSanPham;
 import com.wstore.domainmodels.thuoctinhsanpham.ThuongHieu;
+import com.wstore.domainmodels.thuoctinhsanpham.TinhNangSanPham;
 import com.wstore.domainmodels.thuoctinhsanpham.XuatXu;
+import com.wstore.repositories.IPhongCachSanPhamRepository;
 import com.wstore.repositories.ISanPhamRepository;
+import com.wstore.repositories.ITinhNangSanPhamRepository;
 import com.wstore.repositories.impl.SanPhamRepository;
+import com.wstore.repositories.impl.thuoctinhsanpham.PhongCachSanPhamReporitory;
+import com.wstore.repositories.impl.thuoctinhsanpham.TinhNangSanPhamRepository;
 import com.wstore.services.ISanPhamService;
-import com.wstore.viewmodels.QLsanpham.SanPhamView;
-import java.math.BigDecimal;
+import com.wstore.utilities.Helper;
+import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -27,15 +35,21 @@ import java.util.List;
 public class SanPhamService implements ISanPhamService {
 
     private ISanPhamRepository sanPhamRepository = new SanPhamRepository();
+    private ITinhNangSanPhamRepository tinhNangRepository = new TinhNangSanPhamRepository();
+    private IPhongCachSanPhamRepository phongCachRepository = new PhongCachSanPhamReporitory();
 
     @Override
-    public List<SanPhamView> getAll(int page, int pageSize) {
-        List<SanPham> listSanPham = sanPhamRepository.getAll(1, 1);
+    public List<SanPhamViewModel> getAll(int page, int pageSize) {
+        List<SanPham> listSanPham = sanPhamRepository.getAll(page, pageSize);
 
-        List<SanPhamView> listSanPhamView = new ArrayList<>();
+        List<SanPhamViewModel> listSanPhamView = new ArrayList<>();
         for (SanPham sanPham : listSanPham) {
-            SanPhamView sanPhamView = new SanPhamView(
-                    sanPham.getId(),
+            int idSanPham = sanPham.getId();
+            Set<TinhNangSanPham> listTNSP = tinhNangRepository.getAllByIdSanPham(sanPham.getId());
+            Set<PhongCachSanPham> listPCSP = phongCachRepository.getAllByIdSanPham(sanPham.getId());
+            
+            SanPhamViewModel sanPhamView = new SanPhamViewModel(
+                    idSanPham,
                     sanPham.getMaSanPham(),
                     new ThuongHieu(sanPham.getThuongHieu().getId(), sanPham.getThuongHieu().getTenThuongHieu()),
                     sanPham.getMaHangHoa(),
@@ -46,7 +60,7 @@ public class SanPhamService implements ISanPhamService {
                     sanPham.getDoiTuongSuDung(),
                     sanPham.getDongSanPham(),
                     sanPham.getKhangNuoc(),
-                    sanPham.getKhangNuoc(),
+                    sanPham.getKhoangTruCot(),
                     sanPham.getSizeMat(),
                     sanPham.getHinhDang(),
                     sanPham.getDoDay(),
@@ -56,7 +70,10 @@ public class SanPhamService implements ISanPhamService {
                     new XuatXu(sanPham.getXuatXu().getId(), sanPham.getXuatXu().getNoiXuatXu()),
                     new ChatLieuVo(sanPham.getChatLieuVo().getId(), sanPham.getChatLieuVo().getTenChatLieuVo()),
                     new Mau(sanPham.getMauVo().getId(), sanPham.getMauVo().getTenMau()),
+                    Helper.removeDauNgoacVuong(listPCSP.toString()),
+                    Helper.removeDauNgoacVuong(listTNSP.toString()),
                     new Mau(sanPham.getMauMat().getId(), sanPham.getMauMat().getTenMau()),
+                    "",
                     sanPham.getTrangThai());
             listSanPhamView.add(sanPhamView);
         }
@@ -79,8 +96,8 @@ public class SanPhamService implements ISanPhamService {
     }
 
     @Override
-    public int getRecordCount(int trangThai) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int getRecordCount() {
+        return sanPhamRepository.getRecordCount();
     }
 
 }

@@ -5,7 +5,7 @@
 package com.wstore.services;
 
 import com.wstore.domainmodels.SanPham;
-import com.wstore.viewmodels.QLsanpham.SanPhamView;
+import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface ISanPhamService {
 
-    List<SanPhamView> getAll(int page, int pageSize);
+    List<SanPhamViewModel> getAll(int page, int pageSize);
 
     String insert(SanPham sp);
 
@@ -22,5 +22,5 @@ public interface ISanPhamService {
     
     List<SanPham> findByNameOrMa(int page, int pageSize, int trangThai, String name);
     
-    int getRecordCount(int trangThai);
+    int getRecordCount();
 }

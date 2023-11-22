@@ -7,35 +7,35 @@ package com.wstore.services.impl.thuoctinhsanpham;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.ThuongHieuRepository;
 import com.wstore.services.IThuocTinhSanPhamService;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuViewModel;
 import java.util.List;
 
 /**
  *
  * @author ducan
  */
-public class ThuongHieuService implements IThuocTinhSanPhamService<ThuongHieuView> {
+public class ThuongHieuService implements IThuocTinhSanPhamService<ThuongHieuViewModel> {
 
     private final IThuocTinhSanPhamRepository thuongHieuRepository
             = new ThuongHieuRepository();
 
     @Override
-    public List<ThuongHieuView> getAll() {
+    public List<ThuongHieuViewModel> getAll() {
         return thuongHieuRepository.getAll();
     }
 
     @Override
-    public boolean insert(ThuongHieuView th) {
+    public boolean insert(ThuongHieuViewModel th) {
         return thuongHieuRepository.insert(th);
     }
 
     @Override
-    public boolean update(ThuongHieuView th, int id) {
+    public boolean update(ThuongHieuViewModel th, int id) {
         return thuongHieuRepository.update(th, id);
     }
 
     @Override
-    public boolean updateHienThi(ThuongHieuView obj) {
+    public boolean updateHienThi(ThuongHieuViewModel obj) {
         return thuongHieuRepository.updateHienThi(obj);
     }
 }

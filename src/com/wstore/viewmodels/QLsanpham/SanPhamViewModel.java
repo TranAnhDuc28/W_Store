@@ -9,15 +9,18 @@ import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuKinh;
 import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuVo;
 import com.wstore.domainmodels.thuoctinhsanpham.DongMay;
 import com.wstore.domainmodels.thuoctinhsanpham.Mau;
+import com.wstore.domainmodels.thuoctinhsanpham.PhongCachSanPham;
 import com.wstore.domainmodels.thuoctinhsanpham.ThuongHieu;
+import com.wstore.domainmodels.thuoctinhsanpham.TinhNangSanPham;
 import com.wstore.domainmodels.thuoctinhsanpham.XuatXu;
 import java.math.BigDecimal;
+import java.util.Set;
 
 /**
  *
  * @author ducan
  */
-public class SanPhamView {
+public class SanPhamViewModel {
 
     private Integer id;
     private String maSanPham;
@@ -40,18 +43,16 @@ public class SanPhamView {
     private XuatXu xuatXu;
     private ChatLieuVo chatLieuVo;
     private Mau mauVo;
+    private String phongCach;
+    private String tinhNang;
     private Mau mauMat;
+    private String ghiChu;
     private Boolean trangThai;
 
-    public SanPhamView() {
+    public SanPhamViewModel() {
     }
 
-    public SanPhamView(Integer id, String maSanPham, ThuongHieu thuongHieu, String maHangHoa,
-            BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh,
-            String doiTuongSuDung, String dongSanPham, Integer khangNuoc,
-            Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay,
-            DongMay dongMay, ChatLieuDay chatLieuDay, ChatLieuKinh chatLieuKinh,
-            XuatXu xuatXu, ChatLieuVo chatLieuVo, Mau mauVo, Mau mauMat, Boolean trangThai) {
+    public SanPhamViewModel(Integer id, String maSanPham, ThuongHieu thuongHieu, String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc, Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, DongMay dongMay, ChatLieuDay chatLieuDay, ChatLieuKinh chatLieuKinh, XuatXu xuatXu, ChatLieuVo chatLieuVo, Mau mauVo, String phongCach, String tinhNang, Mau mauMat, String ghiChu, Boolean trangThai) {
         this.id = id;
         this.maSanPham = maSanPham;
         this.thuongHieu = thuongHieu;
@@ -73,7 +74,10 @@ public class SanPhamView {
         this.xuatXu = xuatXu;
         this.chatLieuVo = chatLieuVo;
         this.mauVo = mauVo;
+        this.phongCach = phongCach;
+        this.tinhNang = tinhNang;
         this.mauMat = mauMat;
+        this.ghiChu = ghiChu;
         this.trangThai = trangThai;
     }
 
@@ -245,12 +249,36 @@ public class SanPhamView {
         this.mauVo = mauVo;
     }
 
+    public String getPhongCach() {
+        return phongCach;
+    }
+
+    public void setPhongCach(String phongCach) {
+        this.phongCach = phongCach;
+    }
+
+    public String getTinhNang() {
+        return tinhNang;
+    }
+
+    public void setTinhNang(String tinhNang) {
+        this.tinhNang = tinhNang;
+    }
+
     public Mau getMauMat() {
         return mauMat;
     }
 
     public void setMauMat(Mau mauMat) {
         this.mauMat = mauMat;
+    }
+
+    public String getGhiChu() {
+        return ghiChu;
+    }
+
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
     }
 
     public Boolean getTrangThai() {
@@ -260,11 +288,11 @@ public class SanPhamView {
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
-
+    
     public Object[] toDataRow() {
-        return new Object[]{maSanPham, thuongHieu, maHangHoa, giaNhap, donGia, 
-            doiTuongSuDung, dongSanPham, dongMay, chatLieuDay, chatLieuKinh, 
-            khangNuoc, khoangTruCot, sizeMat, xuatXu, chatLieuVo, 
-            hinhDang, mauVo, doDay, mauMat, hinhAnh};
+        return new Object[]{maSanPham, thuongHieu, maHangHoa, giaNhap, donGia,
+            doiTuongSuDung, dongSanPham, dongMay, chatLieuDay, chatLieuKinh,
+            khangNuoc, khoangTruCot, sizeMat, xuatXu, chatLieuVo,
+            hinhDang, mauVo, phongCach, tinhNang, doDay, mauMat, hinhAnh};
     }
 }

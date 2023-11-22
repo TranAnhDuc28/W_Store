@@ -8,15 +8,16 @@ package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
  *
  * @author Admin
  */
-public class PhongCachView {
+public class PhongCachViewModel {
+
     private Integer maPhongCach;
     private String tenPhongCach;
     private Boolean hienThi;
 
-    public PhongCachView() {
+    public PhongCachViewModel() {
     }
 
-    public PhongCachView(Integer maPhongCach, String tenPhongCach, Boolean hienThi) {
+    public PhongCachViewModel(Integer maPhongCach, String tenPhongCach, Boolean hienThi) {
         this.maPhongCach = maPhongCach;
         this.tenPhongCach = tenPhongCach;
         this.hienThi = hienThi;
@@ -45,8 +46,13 @@ public class PhongCachView {
     public void setHienThi(Boolean hienThi) {
         this.hienThi = hienThi;
     }
-    
-     public Object[] toDataRow() {
+
+    @Override
+    public String toString() {
+        return tenPhongCach;
+    }
+
+    public Object[] toDataRow() {
         return new Object[]{maPhongCach, tenPhongCach, hienThi};
 
     }

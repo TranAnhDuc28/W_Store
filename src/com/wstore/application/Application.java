@@ -81,7 +81,7 @@ public class Application extends javax.swing.JFrame {
         FlatLightLaf.setup();
         UIManager.put("Button.iconTextGap", 10);
         UIManager.put("Table.showGrid", true);
-        UIManager.put("Table.showVerticalLines", false);
+        UIManager.put("Table.showVerticalLines", true);
         UIManager.put("Table.showHorizontalLines", true);
         UIManager.put("Table.rowHeight", 30);
         UIManager.put("Table.selectionBackground", new Color(137, 187, 201));

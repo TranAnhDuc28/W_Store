@@ -7,7 +7,7 @@ package com.wstore.views.thuoctinhsanpham;
 import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.MauService;
 import com.wstore.utilities.Helper;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.MauView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.MauViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +20,7 @@ public class FormMauJDialog extends javax.swing.JDialog {
     private final IThuocTinhSanPhamService mauSevice = new MauService();
     private DefaultTableModel dtmMau = new DefaultTableModel();
     int index = -1;
-    List<MauView> listMau;
+    List<MauViewModel> listMau;
 
     /**
      * Creates new form MauJDialog
@@ -29,41 +29,6 @@ public class FormMauJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         loadDataToTable();
-    }
-
-    private void loadDataToTable() {
-        dtmMau = (DefaultTableModel) tblMau.getModel();
-        dtmMau.setRowCount(0);
-        listMau = mauSevice.getAll();
-        for (MauView m : listMau) {
-            dtmMau.addRow(m.toDataRow());
-        }
-    }
-
-    private MauView getDaTaForm() {
-        MauView mau = new MauView();
-        mau.setTenMau(txtTenMau.getText());
-        return mau;
-    }
-
-    private boolean validateForm() {
-        if (Helper.checkRongTextField(this, txtTenMau,
-                "Vui lòng nhập tên màu!")) {
-            return true;
-        }
-        return false;
-    }
-
-    private void clearForm() {
-        txtTenMau.setText("");
-        tblMau.clearSelection();
-        btnThem.setEnabled(true);
-        index = -1;
-    }
-
-    private void showData() {
-        MauView mau = listMau.get(index);
-        txtTenMau.setText(mau.getTenMau());
     }
 
     @SuppressWarnings("unchecked")
@@ -97,17 +62,18 @@ public class FormMauJDialog extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(txtTenMau)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTenMau))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTenMau, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTenMau, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)))
         );
 
         tblMau.setModel(new javax.swing.table.DefaultTableModel(
@@ -243,6 +209,9 @@ public class FormMauJDialog extends javax.swing.JDialog {
 
     private void tblMauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMauMouseClicked
         index = tblMau.getSelectedRow();
+        if (index >= 0) {
+            btnThem.setEnabled(false);
+        }
         showData();
     }//GEN-LAST:event_tblMauMouseClicked
 
@@ -268,13 +237,16 @@ public class FormMauJDialog extends javax.swing.JDialog {
             Helper.alert(this, "Vui lòng chọn thông tin cần sửa!");
             return;
         }
-        if (Helper.comfirm(this, "Xác nhận sửa!")) {
-            int id = listMau.get(index).getMaMau();
-            if (mauSevice.update(getDaTaForm(), id)) {
-                Helper.alert(this, "Sửa thành công!");
-                loadDataToTable();
-            } else {
-                Helper.alert(this, "Sửa thất bại!");
+        if (!validateForm()) {
+            if (Helper.comfirm(this, "Xác nhận sửa!")) {
+                int id = listMau.get(index).getMaMau();
+                if (mauSevice.update(getDaTaForm(), id)) {
+                    Helper.alert(this, "Sửa thành công!");
+                    loadDataToTable();
+                    tblMau.setRowSelectionInterval(index, index);
+                } else {
+                    Helper.alert(this, "Sửa thất bại!");
+                }
             }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -283,9 +255,41 @@ public class FormMauJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void loadDataToTable() {
+        dtmMau = (DefaultTableModel) tblMau.getModel();
+        dtmMau.setRowCount(0);
+        listMau = mauSevice.getAll();
+        for (MauViewModel m : listMau) {
+            dtmMau.addRow(m.toDataRow());
+        }
+    }
+
+    private MauViewModel getDaTaForm() {
+        MauViewModel mau = new MauViewModel();
+        mau.setTenMau(txtTenMau.getText());
+        return mau;
+    }
+
+    private void clearForm() {
+        txtTenMau.setText("");
+        tblMau.clearSelection();
+        btnThem.setEnabled(true);
+        index = -1;
+    }
+
+    private void showData() {
+        MauViewModel mau = listMau.get(index);
+        txtTenMau.setText(mau.getTenMau());
+    }
+
+    private boolean validateForm() {
+        if (Helper.checkRongTextField(this, txtTenMau,
+                "Vui lòng nhập tên màu!")) {
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

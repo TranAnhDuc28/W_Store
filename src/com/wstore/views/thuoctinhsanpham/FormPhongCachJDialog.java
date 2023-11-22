@@ -7,7 +7,7 @@ package com.wstore.views.thuoctinhsanpham;
 import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.PhongCachService;
 import com.wstore.utilities.Helper;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +20,7 @@ public class FormPhongCachJDialog extends javax.swing.JDialog {
     private final IThuocTinhSanPhamService phongcachsevice = new PhongCachService();
     DefaultTableModel dtmPhongCach = new DefaultTableModel();
     int index = -1;
-    List<PhongCachView> listPhongCach;
+    List<PhongCachViewModel> listPhongCach;
 
     /**
      * Creates new form FormPhongCachJDialog
@@ -29,43 +29,6 @@ public class FormPhongCachJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         loadDataToTable();
-    }
-
-    private void loadDataToTable() {
-        dtmPhongCach = (DefaultTableModel) tblPhongCach.getModel();
-        dtmPhongCach.setRowCount(0);
-        listPhongCach = phongcachsevice.getAll();
-        for (PhongCachView pc : listPhongCach) {
-            dtmPhongCach.addRow(pc.toDataRow());
-        }
-    }
-
-    private PhongCachView getDaTaForm() {
-        PhongCachView pc = new PhongCachView();
-        pc.setTenPhongCach(txtTenPhongCach.getText());
-        pc.setMaPhongCach(pc.getMaPhongCach());
-
-        return pc;
-    }
-
-    private boolean validateForm() {
-        if (Helper.checkRongTextField(this, txtTenPhongCach,
-                "Vui lòng nhập tên màu!")) {
-            return true;
-        }
-        return false;
-    }
-
-    private void clearForm() {
-        txtTenPhongCach.setText("");
-        tblPhongCach.clearSelection();
-        btnThem.setEnabled(true);
-        index = -1;
-    }
-
-    private void showData() {
-        PhongCachView pc = listPhongCach.get(index);
-        txtTenPhongCach.setText(pc.getTenPhongCach());
     }
 
     @SuppressWarnings("unchecked")
@@ -99,17 +62,18 @@ public class FormPhongCachJDialog extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(txtTenPhongCach)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTenPhongCach))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTenPhongCach, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTenPhongCach, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)))
         );
 
         tblPhongCach.setModel(new javax.swing.table.DefaultTableModel(
@@ -262,13 +226,16 @@ public class FormPhongCachJDialog extends javax.swing.JDialog {
             Helper.alert(this, "Vui lòng chọn thông tin cần sửa!");
             return;
         }
-        if (Helper.comfirm(this, "Xác nhận sửa!")) {
-            int id = listPhongCach.get(index).getMaPhongCach();
-            if (phongcachsevice.update(getDaTaForm(), id)) {
-                Helper.alert(this, "Sửa thành công!");
-                loadDataToTable();
-            } else {
-                Helper.alert(this, "Sửa thất bại!");
+        if (!validateForm()) {
+            if (Helper.comfirm(this, "Xác nhận sửa!")) {
+                int id = listPhongCach.get(index).getMaPhongCach();
+                if (phongcachsevice.update(getDaTaForm(), id)) {
+                    Helper.alert(this, "Sửa thành công!");
+                    loadDataToTable();
+                    tblPhongCach.setRowSelectionInterval(index, index);
+                } else {
+                    Helper.alert(this, "Sửa thất bại!");
+                }
             }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -282,9 +249,41 @@ public class FormPhongCachJDialog extends javax.swing.JDialog {
         showData();
     }//GEN-LAST:event_tblPhongCachMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void loadDataToTable() {
+        dtmPhongCach = (DefaultTableModel) tblPhongCach.getModel();
+        dtmPhongCach.setRowCount(0);
+        listPhongCach = phongcachsevice.getAll();
+        for (PhongCachViewModel pc : listPhongCach) {
+            dtmPhongCach.addRow(pc.toDataRow());
+        }
+    }
+
+    private PhongCachViewModel getDaTaForm() {
+        PhongCachViewModel pc = new PhongCachViewModel();
+        pc.setTenPhongCach(txtTenPhongCach.getText());
+        return pc;
+    }
+
+    private void clearForm() {
+        txtTenPhongCach.setText("");
+        tblPhongCach.clearSelection();
+        btnThem.setEnabled(true);
+        index = -1;
+    }
+
+    private void showData() {
+        PhongCachViewModel pc = listPhongCach.get(index);
+        txtTenPhongCach.setText(pc.getTenPhongCach());
+    }
+
+    private boolean validateForm() {
+        if (Helper.checkRongTextField(this, txtTenPhongCach,
+                "Vui lòng nhập tên màu!")) {
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

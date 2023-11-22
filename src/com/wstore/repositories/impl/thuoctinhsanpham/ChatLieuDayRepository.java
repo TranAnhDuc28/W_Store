@@ -8,7 +8,7 @@ import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuDay;
 import java.util.List;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.utilities.DBConnect;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,16 +18,16 @@ import java.util.ArrayList;
  *
  * @author ducan
  */
-public class ChatLieuDayRepository implements IThuocTinhSanPhamRepository<ChatLieuDayView> {
+public class ChatLieuDayRepository implements IThuocTinhSanPhamRepository<ChatLieuDayViewModel> {
 
     @Override
-    public List<ChatLieuDayView> getAll() {
-        List<ChatLieuDayView> list = new ArrayList<>();
+    public List<ChatLieuDayViewModel> getAll() {
+        List<ChatLieuDayViewModel> list = new ArrayList<>();
         String sql = "select id, ten_chat_lieu_day, trang_thai from ChatLieuDay;";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
-                ChatLieuDayView cld = new ChatLieuDayView(
+                ChatLieuDayViewModel cld = new ChatLieuDayViewModel(
                         rs.getInt("id"),
                         rs.getString("ten_chat_lieu_day"),
                         rs.getBoolean("trang_thai"));
@@ -41,7 +41,7 @@ public class ChatLieuDayRepository implements IThuocTinhSanPhamRepository<ChatLi
     }
 
     @Override
-    public boolean insert(ChatLieuDayView cld) {
+    public boolean insert(ChatLieuDayViewModel cld) {
         int checkInsert = 0;
         String sql = "insert into ChatLieuDay(ten_chat_lieu_day, trang_thai) values (?, default);";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
@@ -54,7 +54,7 @@ public class ChatLieuDayRepository implements IThuocTinhSanPhamRepository<ChatLi
     }
 
     @Override
-    public boolean update(ChatLieuDayView cld, int id) {
+    public boolean update(ChatLieuDayViewModel cld, int id) {
         int checkUpdate = 0;
         String sql = "update ChatLieuDay\n"
                 + "set ten_chat_lieu_day= ?\n"
@@ -70,7 +70,7 @@ public class ChatLieuDayRepository implements IThuocTinhSanPhamRepository<ChatLi
     }
 
     @Override
-    public boolean updateHienThi(ChatLieuDayView cld) {
+    public boolean updateHienThi(ChatLieuDayViewModel cld) {
         String sql = "update ChatLieuDay set trang_thai =? where id = ?";
         return true;
     }

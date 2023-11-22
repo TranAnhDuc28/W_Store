@@ -46,6 +46,10 @@ public class SanPham {
     public SanPham() {
     }
 
+    public SanPham(Integer id) {
+        this.id = id;
+    }    
+
     public SanPham(Integer id, String maSanPham, ThuongHieu thuongHieu, String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc, Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, DongMay dongMay, ChatLieuDay chatLieuDay, ChatLieuKinh chatLieuKinh, XuatXu xuatXu, ChatLieuVo chatLieuVo, Mau mauVo, Mau mauMat, Boolean trangThai) {
         this.id = id;
         this.maSanPham = maSanPham;

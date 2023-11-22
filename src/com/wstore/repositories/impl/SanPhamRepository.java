@@ -37,7 +37,7 @@ public class SanPhamRepository implements ISanPhamRepository {
                 + ", sp.hinh_dang, sp.do_day, sp.id_dong_may, dm.ten_dong_may, sp.id_chat_lieu_day\n"
                 + ", cld.ten_chat_lieu_day, sp.id_chat_lieu_kinh, clk.ten_chat_lieu_kinh\n"
                 + ", sp.id_xuat_xu, xx.noi_xuat_xu, sp.id_chat_lieu_vo, clv.ten_chat_lieu_vo\n"
-                + ", sp.id_mau_vo, mv.ten_mau, sp.id_mau_mat, mm.ten_mau, sp.trang_thai\n"
+                + ", sp.id_mau_vo, mv.ten_mau as mau_vo, sp.id_mau_mat, mm.ten_mau as mau_mat, sp.trang_thai\n"
                 + "     from SanPham sp \n"
                 + "left join ThuongHieu th on sp.id_thuong_hieu = th.id\n"
                 + "left join DongMay dm on sp.id_dong_may = dm.id\n"
@@ -46,11 +46,14 @@ public class SanPhamRepository implements ISanPhamRepository {
                 + "left join ChatLieuVo clv on sp.id_chat_lieu_vo = clv.id\n"
                 + "left join XuatXu xx on sp.id_xuat_xu = xx.id\n"
                 + "left join Mau mv on sp.id_mau_vo = mv.id\n"
-                + "left join Mau mm on sp.id_mau_mat = mm.id";
+                + "left join Mau mm on sp.id_mau_mat = mm.id\n"
+                + "order by sp.id\n"
+                + "offset ? rows\n"
+                + "fetch next ? rows only;";
 
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
-//            pstm.setInt(1, (page - 1) * pageSize);
-//            pstm.setInt(2, pageSize);
+            pstm.setInt(1, (page - 1) * pageSize);
+            pstm.setInt(2, pageSize);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 SanPham sp = new SanPham(
@@ -81,9 +84,9 @@ public class SanPhamRepository implements ISanPhamRepository {
                         new ChatLieuVo(rs.getInt("id_chat_lieu_vo"),
                                 rs.getString("ten_chat_lieu_vo")),
                         new Mau(rs.getInt("id_mau_vo"),
-                                rs.getString("ten_mau")),
+                                rs.getString("mau_vo")),
                         new Mau(rs.getInt("id_mau_mat"),
-                                rs.getString("ten_mau")),
+                                rs.getString("mau_mat")),
                         rs.getBoolean("trang_thai"));
                 list.add(sp);
             }
@@ -109,8 +112,18 @@ public class SanPhamRepository implements ISanPhamRepository {
     }
 
     @Override
-    public int getRecordCount(int trangThai) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int getRecordCount() {
+        int count = 0;
+        String sql = "select COUNT(*) from SanPham";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return count;
     }
 
     @Override
@@ -119,6 +132,7 @@ public class SanPhamRepository implements ISanPhamRepository {
     }
 
     public static void main(String[] args) {
-        System.out.println(new SanPhamRepository().getAll(1, 1).size());
+        System.out.println(new SanPhamRepository().getRecordCount());
     }
+
 }

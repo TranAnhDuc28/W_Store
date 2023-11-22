@@ -8,16 +8,16 @@ package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
  *
  * @author Admin
  */
-public class TinhNangView {
+public class TinhNangViewModel {
 
     private Integer maTinhNang;
     private String tenTinhNang;
     private Boolean hienThi;
 
-    public TinhNangView() {
+    public TinhNangViewModel() {
     }
 
-    public TinhNangView(Integer maTinhNang, String tenTinhNang, Boolean hienThi) {
+    public TinhNangViewModel(Integer maTinhNang, String tenTinhNang, Boolean hienThi) {
         this.maTinhNang = maTinhNang;
         this.tenTinhNang = tenTinhNang;
         this.hienThi = hienThi;
@@ -45,6 +45,11 @@ public class TinhNangView {
 
     public void setHienThi(Boolean hienThi) {
         this.hienThi = hienThi;
+    }
+
+    @Override
+    public String toString() {
+        return tenTinhNang;
     }
 
     public Object[] toDataRow() {

@@ -7,35 +7,35 @@ package com.wstore.services.impl.thuoctinhsanpham;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.PhongCachRepository;
 import com.wstore.services.IThuocTinhSanPhamService;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachView;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import java.util.List;
 
 /**
  *
  * @author ducan
  */
-public class PhongCachService implements IThuocTinhSanPhamService<PhongCachView> {
+public class PhongCachService implements IThuocTinhSanPhamService<PhongCachViewModel> {
 
     private final IThuocTinhSanPhamRepository phongcahRepository 
             = new PhongCachRepository();
 
     @Override
-    public List<PhongCachView> getAll() {
+    public List<PhongCachViewModel> getAll() {
         return phongcahRepository.getAll();
     }
 
     @Override
-    public boolean insert(PhongCachView pc) {
+    public boolean insert(PhongCachViewModel pc) {
         return phongcahRepository.insert(pc);
     }
 
     @Override
-    public boolean update(PhongCachView pc, int id) {
+    public boolean update(PhongCachViewModel pc, int id) {
         return phongcahRepository.update(pc, id);
     }
 
     @Override
-    public boolean updateHienThi(PhongCachView pc) {
+    public boolean updateHienThi(PhongCachViewModel pc) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

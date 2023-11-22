@@ -21,7 +21,7 @@ public interface ISanPhamRepository {
     
     boolean updateStatus(int trangThai, int idSanPham);
     
-    int getRecordCount(int trangThai);
+    int getRecordCount();
     
     List<SanPham> findByNameOrMa(int page, int pageSize, int trangThai, String name);
 }

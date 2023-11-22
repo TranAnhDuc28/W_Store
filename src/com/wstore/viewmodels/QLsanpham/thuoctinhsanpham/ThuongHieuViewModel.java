@@ -8,17 +8,17 @@ package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
  *
  * @author ducan
  */
-public class ThuongHieuView {
+public class ThuongHieuViewModel {
 
     private Integer maThuongHieu;
     private String tenThuongHieu;
     private String logo;
     private Boolean hienThi;
 
-    public ThuongHieuView() {
+    public ThuongHieuViewModel() {
     }
 
-    public ThuongHieuView(Integer maThuongHieu, String tenThuongHieu, String logo, Boolean hienThi) {
+    public ThuongHieuViewModel(Integer maThuongHieu, String tenThuongHieu, String logo, Boolean hienThi) {
         this.maThuongHieu = maThuongHieu;
         this.tenThuongHieu = tenThuongHieu;
         this.logo = logo;
@@ -55,6 +55,11 @@ public class ThuongHieuView {
 
     public void setHienThi(Boolean hienThi) {
         this.hienThi = hienThi;
+    }
+
+    @Override
+    public String toString() {
+        return tenThuongHieu;
     }
     
     public Object[] toDataRow() {
