@@ -546,9 +546,6 @@ select * from SanPham
 select * from DongMay
 
 
-delete from SanPham
-truncate table SanPham
-
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
 values ('SP000001',	1,	'LA-20WH-4A1DF',	459000,	510000,	5,	'LA-20WH-4A1DF.jpg',	N'Nữ',	null,	3,	null,	30.4,	N'Mặt vuông',	8.6,	2,	5,	2,	111,	2,	11,	22,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
@@ -776,8 +773,6 @@ select * from SanPham
  
 -- data table PhongCachSanPham
 
-truncate table PhongCachSanPham
-
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (2, 5);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (3, 5);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (68, 4);
@@ -910,8 +905,6 @@ insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (4, 8);
 
 -- data table TinhNangSanPham
 select * from TinhNang
-
-truncate table TinhNangSanPham
 
 insert into TinhNangSanPham(id_san_pham, id_tinh_nang) values (5, 3);
 insert into TinhNangSanPham(id_san_pham, id_tinh_nang) values (5, 12);
