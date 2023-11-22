@@ -4,17 +4,14 @@
  */
 package com.wstore.viewmodels.QLsanpham;
 
-import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuDay;
-import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuKinh;
-import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuVo;
-import com.wstore.domainmodels.thuoctinhsanpham.DongMay;
-import com.wstore.domainmodels.thuoctinhsanpham.Mau;
-import com.wstore.domainmodels.thuoctinhsanpham.PhongCachSanPham;
-import com.wstore.domainmodels.thuoctinhsanpham.ThuongHieu;
-import com.wstore.domainmodels.thuoctinhsanpham.TinhNangSanPham;
-import com.wstore.domainmodels.thuoctinhsanpham.XuatXu;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayViewModel;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhViewModel;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuVoViewModel;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.DongMayViewModel;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.MauViewModel;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuViewModel;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.XuatXuViewModel;
 import java.math.BigDecimal;
-import java.util.Set;
 
 /**
  *
@@ -24,7 +21,7 @@ public class SanPhamViewModel {
 
     private Integer id;
     private String maSanPham;
-    private ThuongHieu thuongHieu;
+    private ThuongHieuViewModel thuongHieu;
     private String maHangHoa;
     private BigDecimal giaNhap;
     private BigDecimal donGia;
@@ -37,22 +34,22 @@ public class SanPhamViewModel {
     private Float sizeMat;
     private String hinhDang;
     private Float doDay;
-    private DongMay dongMay;
-    private ChatLieuDay chatLieuDay;
-    private ChatLieuKinh chatLieuKinh;
-    private XuatXu xuatXu;
-    private ChatLieuVo chatLieuVo;
-    private Mau mauVo;
+    private DongMayViewModel dongMay;
+    private ChatLieuDayViewModel chatLieuDay;
+    private ChatLieuKinhViewModel chatLieuKinh;
+    private XuatXuViewModel xuatXu;
+    private ChatLieuVoViewModel chatLieuVo;
+    private MauViewModel mauVo;
     private String phongCach;
     private String tinhNang;
-    private Mau mauMat;
+    private MauViewModel mauMat;
     private String ghiChu;
     private Boolean trangThai;
 
     public SanPhamViewModel() {
     }
 
-    public SanPhamViewModel(Integer id, String maSanPham, ThuongHieu thuongHieu, String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc, Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, DongMay dongMay, ChatLieuDay chatLieuDay, ChatLieuKinh chatLieuKinh, XuatXu xuatXu, ChatLieuVo chatLieuVo, Mau mauVo, String phongCach, String tinhNang, Mau mauMat, String ghiChu, Boolean trangThai) {
+    public SanPhamViewModel(Integer id, String maSanPham, ThuongHieuViewModel thuongHieu, String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc, Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, DongMayViewModel dongMay, ChatLieuDayViewModel chatLieuDay, ChatLieuKinhViewModel chatLieuKinh, XuatXuViewModel xuatXu, ChatLieuVoViewModel chatLieuVo, MauViewModel mauVo, String phongCach, String tinhNang, MauViewModel mauMat, String ghiChu, Boolean trangThai) {
         this.id = id;
         this.maSanPham = maSanPham;
         this.thuongHieu = thuongHieu;
@@ -97,11 +94,11 @@ public class SanPhamViewModel {
         this.maSanPham = maSanPham;
     }
 
-    public ThuongHieu getThuongHieu() {
+    public ThuongHieuViewModel getThuongHieu() {
         return thuongHieu;
     }
 
-    public void setThuongHieu(ThuongHieu thuongHieu) {
+    public void setThuongHieu(ThuongHieuViewModel thuongHieu) {
         this.thuongHieu = thuongHieu;
     }
 
@@ -201,51 +198,51 @@ public class SanPhamViewModel {
         this.doDay = doDay;
     }
 
-    public DongMay getDongMay() {
+    public DongMayViewModel getDongMay() {
         return dongMay;
     }
 
-    public void setDongMay(DongMay dongMay) {
+    public void setDongMay(DongMayViewModel dongMay) {
         this.dongMay = dongMay;
     }
 
-    public ChatLieuDay getChatLieuDay() {
+    public ChatLieuDayViewModel getChatLieuDay() {
         return chatLieuDay;
     }
 
-    public void setChatLieuDay(ChatLieuDay chatLieuDay) {
+    public void setChatLieuDay(ChatLieuDayViewModel chatLieuDay) {
         this.chatLieuDay = chatLieuDay;
     }
 
-    public ChatLieuKinh getChatLieuKinh() {
+    public ChatLieuKinhViewModel getChatLieuKinh() {
         return chatLieuKinh;
     }
 
-    public void setChatLieuKinh(ChatLieuKinh chatLieuKinh) {
+    public void setChatLieuKinh(ChatLieuKinhViewModel chatLieuKinh) {
         this.chatLieuKinh = chatLieuKinh;
     }
 
-    public XuatXu getXuatXu() {
+    public XuatXuViewModel getXuatXu() {
         return xuatXu;
     }
 
-    public void setXuatXu(XuatXu xuatXu) {
+    public void setXuatXu(XuatXuViewModel xuatXu) {
         this.xuatXu = xuatXu;
     }
 
-    public ChatLieuVo getChatLieuVo() {
+    public ChatLieuVoViewModel getChatLieuVo() {
         return chatLieuVo;
     }
 
-    public void setChatLieuVo(ChatLieuVo chatLieuVo) {
+    public void setChatLieuVo(ChatLieuVoViewModel chatLieuVo) {
         this.chatLieuVo = chatLieuVo;
     }
 
-    public Mau getMauVo() {
+    public MauViewModel getMauVo() {
         return mauVo;
     }
 
-    public void setMauVo(Mau mauVo) {
+    public void setMauVo(MauViewModel mauVo) {
         this.mauVo = mauVo;
     }
 
@@ -265,11 +262,11 @@ public class SanPhamViewModel {
         this.tinhNang = tinhNang;
     }
 
-    public Mau getMauMat() {
+    public MauViewModel getMauMat() {
         return mauMat;
     }
 
-    public void setMauMat(Mau mauMat) {
+    public void setMauMat(MauViewModel mauMat) {
         this.mauMat = mauMat;
     }
 
@@ -288,6 +285,8 @@ public class SanPhamViewModel {
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
+
+    
     
     public Object[] toDataRow() {
         return new Object[]{maSanPham, thuongHieu, maHangHoa, giaNhap, donGia,

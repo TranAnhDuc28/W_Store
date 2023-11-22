@@ -5,11 +5,17 @@
 package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.wstore.services.IPhongCachSanPhamService;
 import com.wstore.services.ISanPhamService;
+import com.wstore.services.ITinhNangSanPhamService;
 import com.wstore.services.impl.SanPhamService;
-import com.wstore.swing.table.TableTextAlignmentCellRender;
+import com.wstore.services.impl.thuoctinhsanpham.PhongCachSanPhamService;
+import com.wstore.services.impl.thuoctinhsanpham.TinhNangSanPhamService;
 import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +25,10 @@ import javax.swing.table.DefaultTableModel;
 public class FormSanPhamJPanel extends javax.swing.JPanel {
 
     private final ISanPhamService sanPhamService = new SanPhamService();
+    private ITinhNangSanPhamService tinhNangSanPhamService = new TinhNangSanPhamService();
+    private IPhongCachSanPhamService phongCachSanPhamService = new PhongCachSanPhamService();
+    private final FormThemVaSuaSanPhamJFrame formThemVaSuaSanPham
+            = new FormThemVaSuaSanPhamJFrame();
     private DefaultTableModel dtmTblSanPham;
     private List<SanPhamViewModel> listSP;
     private Integer trangThai = 0;
@@ -43,7 +53,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jToolBar1 = new javax.swing.JToolBar();
         btnThem = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        jButton2 = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButton3 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
@@ -104,18 +114,18 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jToolBar1.add(btnThem);
         jToolBar1.add(jSeparator1);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/chinh-sua32x32.png"))); // NOI18N
-        jButton2.setText("Điều chỉnh");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton2.setIconTextGap(5);
-        jButton2.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/chinh-sua32x32.png"))); // NOI18N
+        btnSua.setText("Điều chỉnh");
+        btnSua.setFocusable(false);
+        btnSua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnSua.setIconTextGap(5);
+        btnSua.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSuaActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton2);
+        jToolBar1.add(btnSua);
         jToolBar1.add(jSeparator2);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/xoa32x32.png"))); // NOI18N
@@ -219,7 +229,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jComboBox6.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel5.add(jComboBox6);
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang kinh doanh", "Ngừng kinh doanh" }));
         jComboBox7.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel5.add(jComboBox7);
 
@@ -229,17 +239,17 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
 
         tblDSSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã sản phẩm", "Thương hiệu", "Mã hàng hóa", "Giá nhập", "Giá bán", "Đối tượng sử dụng", "Dòng sản phẩm", "Dòng máy", "Chất liệu dây", "Chất liệu kính", "Kháng nước", "Khoảng trữ cót", "Size mặt", "Xuất xứ", "Chất liệu vỏ", "Hình dạng mặt", "Màu vỏ", "Phong cách", "Tính năng", "Độ dầy", "Màu mặt", "Hình ảnh"
+                "Mã sản phẩm", "Thương hiệu", "Mã hàng hóa", "Giá nhập", "Giá bán", "Đối tượng sử dụng", "Dòng sản phẩm", "Dòng máy", "Chất liệu dây", "Chất liệu kính", "Kháng nước", "Khoảng trữ cót", "Size mặt", "Xuất xứ", "Chất liệu vỏ", "Hình dạng mặt", "Màu vỏ", "Phong cách", "Tính năng", "Độ dầy", "Màu mặt", "Hình ảnh", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -276,6 +286,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
             tblDSSanPham.getColumnModel().getColumn(19).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(20).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(21).setPreferredWidth(150);
+            tblDSSanPham.getColumnModel().getColumn(22).setPreferredWidth(150);
         }
 
         jPanel7.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -449,9 +460,14 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         new FormThemVaSuaSanPhamJFrame().setVisible(true);
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        index = tblDSSanPham.getSelectedRow();
+        if (index < 0) {
+            return;
+        }
+        formThemVaSuaSanPham.setVisible(true);
+        showData();
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -502,15 +518,44 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         }
     }
 
+    private void showData() {
+        SanPhamViewModel sp = listSP.get(index);
+        formThemVaSuaSanPham.txtMaSanPham.setText(sp.getMaSanPham());
+        formThemVaSuaSanPham.txtMaVach.setText(sp.getMaHangHoa());
+        formThemVaSuaSanPham.spnSoLuong.setValue(sp.getSoLuongTon());
+        formThemVaSuaSanPham.txtGiaNhap.setText(sp.getGiaNhap().toString());
+        formThemVaSuaSanPham.txtGiaBan.setText(sp.getDonGia().toString());
+        formThemVaSuaSanPham.cboThuongHieu.setSelectedItem(sp.getThuongHieu());
+        formThemVaSuaSanPham.cboDongSanPham.setSelectedItem(sp.getDongSanPham());
+        formThemVaSuaSanPham.cboXuatXu.setSelectedItem(sp.getXuatXu());
+        formThemVaSuaSanPham.cboMauVo.setSelectedItem(sp.getMauVo());
+        formThemVaSuaSanPham.cboMauMat.setSelectedItem(sp.getMauMat());
+        formThemVaSuaSanPham.cboDongMay.setSelectedItem(sp.getDongMay());
+        formThemVaSuaSanPham.cboChatLieuDay.setSelectedItem(sp.getChatLieuDay());
+        formThemVaSuaSanPham.cboChatLieuKinh.setSelectedItem(sp.getChatLieuKinh());
+        formThemVaSuaSanPham.cboChatLieuVo.setSelectedItem(sp.getChatLieuVo());
+        formThemVaSuaSanPham.cboHinhDang.setSelectedItem(sp.getHinhDang());
+        formThemVaSuaSanPham.cboDoiTuongSuDong.setSelectedItem(sp.getDoiTuongSuDung());
+        formThemVaSuaSanPham.txtKhangNuoc.setText(sp.getKhangNuoc().toString());
+        formThemVaSuaSanPham.txtSizeMat.setText(sp.getSizeMat().toString());
+        formThemVaSuaSanPham.txtDoDay.setText(sp.getDoDay().toString());
+        formThemVaSuaSanPham.txtKhoangTruCot.setText(sp.getKhoangTruCot().toString());
+        Set<TinhNangViewModel> listTNSP = tinhNangSanPhamService.getAllByIdSanPham(sp.getId());
+        listTNSP.forEach((tnsp) -> {
+            formThemVaSuaSanPham.cboTinhNang.setSelectedItem(tnsp);
+        });
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
+    private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JComboBox<String> cboSoBanGhi;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

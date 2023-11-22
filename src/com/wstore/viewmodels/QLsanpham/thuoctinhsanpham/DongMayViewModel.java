@@ -4,6 +4,8 @@
  */
 package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
 
+import java.util.Objects;
+
 /**
  *
  * @author admin
@@ -15,6 +17,11 @@ public class DongMayViewModel {
     private Boolean hienThi;
 
     public DongMayViewModel() {
+    }
+
+    public DongMayViewModel(Integer idDongMay, String tenDongMay) {
+        this.idDongMay = idDongMay;
+        this.tenDongMay = tenDongMay;
     }
 
     public DongMayViewModel(Integer idDongMay, String tenDongMay, Boolean hienThi) {
@@ -45,6 +52,33 @@ public class DongMayViewModel {
 
     public void setHienThi(Boolean hienThi) {
         this.hienThi = hienThi;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 43 * hash + Objects.hashCode(this.idDongMay);
+        hash = 43 * hash + Objects.hashCode(this.tenDongMay);
+        hash = 43 * hash + Objects.hashCode(this.hienThi);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DongMayViewModel other = (DongMayViewModel) obj;
+        if (!Objects.equals(this.tenDongMay, other.tenDongMay)) {
+            return false;
+        }
+        return Objects.equals(this.idDongMay, other.idDongMay);
     }
 
     @Override

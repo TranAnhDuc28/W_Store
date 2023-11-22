@@ -4,6 +4,8 @@
  */
 package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
 
+import java.util.Objects;
+
 /**
  *
  * @author Admin
@@ -15,6 +17,11 @@ public class MauViewModel {
     private Boolean hienThi;
 
     public MauViewModel() {
+    }
+
+    public MauViewModel(Integer maMau, String tenMau) {
+        this.maMau = maMau;
+        this.tenMau = tenMau;
     }
 
     public MauViewModel(Integer maMau, String tenMau, Boolean hienThi) {
@@ -45,6 +52,33 @@ public class MauViewModel {
 
     public void setHienThi(Boolean hienThi) {
         this.hienThi = hienThi;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.maMau);
+        hash = 67 * hash + Objects.hashCode(this.tenMau);
+        hash = 67 * hash + Objects.hashCode(this.hienThi);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MauViewModel other = (MauViewModel) obj;
+        if (!Objects.equals(this.tenMau, other.tenMau)) {
+            return false;
+        }
+        return Objects.equals(this.maMau, other.maMau);
     }
 
     @Override

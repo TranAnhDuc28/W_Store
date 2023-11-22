@@ -4,6 +4,8 @@
  */
 package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
 
+import java.util.Objects;
+
 /**
  *
  * @author admin
@@ -17,6 +19,11 @@ public class ChatLieuVoViewModel {
     public ChatLieuVoViewModel() {
     }
 
+    public ChatLieuVoViewModel(Integer idChatLieuVo, String tenChatLieuVo) {
+        this.idChatLieuVo = idChatLieuVo;
+        this.tenChatLieuVo = tenChatLieuVo;
+    }
+    
     public ChatLieuVoViewModel(Integer idChatLieuVo, String tenChatLieuVo, Boolean hienThi) {
         this.idChatLieuVo = idChatLieuVo;
         this.tenChatLieuVo = tenChatLieuVo;
@@ -47,6 +54,35 @@ public class ChatLieuVoViewModel {
         this.hienThi = hienThi;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.idChatLieuVo);
+        hash = 71 * hash + Objects.hashCode(this.tenChatLieuVo);
+        hash = 71 * hash + Objects.hashCode(this.hienThi);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ChatLieuVoViewModel other = (ChatLieuVoViewModel) obj;
+        if (!Objects.equals(this.tenChatLieuVo, other.tenChatLieuVo)) {
+            return false;
+        }
+        return Objects.equals(this.idChatLieuVo, other.idChatLieuVo);
+    }
+    
+    
+    
     @Override
     public String toString() {
         return tenChatLieuVo;

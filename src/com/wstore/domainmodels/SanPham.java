@@ -41,6 +41,7 @@ public class SanPham {
     private ChatLieuVo chatLieuVo;
     private Mau mauVo;
     private Mau mauMat;
+    private String ghiChu;
     private Boolean trangThai;
 
     public SanPham() {
@@ -48,9 +49,9 @@ public class SanPham {
 
     public SanPham(Integer id) {
         this.id = id;
-    }    
+    }
 
-    public SanPham(Integer id, String maSanPham, ThuongHieu thuongHieu, String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc, Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, DongMay dongMay, ChatLieuDay chatLieuDay, ChatLieuKinh chatLieuKinh, XuatXu xuatXu, ChatLieuVo chatLieuVo, Mau mauVo, Mau mauMat, Boolean trangThai) {
+    public SanPham(Integer id, String maSanPham, ThuongHieu thuongHieu, String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc, Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, DongMay dongMay, ChatLieuDay chatLieuDay, ChatLieuKinh chatLieuKinh, XuatXu xuatXu, ChatLieuVo chatLieuVo, Mau mauVo, Mau mauMat, String ghiChu, Boolean trangThai) {
         this.id = id;
         this.maSanPham = maSanPham;
         this.thuongHieu = thuongHieu;
@@ -73,6 +74,7 @@ public class SanPham {
         this.chatLieuVo = chatLieuVo;
         this.mauVo = mauVo;
         this.mauMat = mauMat;
+        this.ghiChu = ghiChu;
         this.trangThai = trangThai;
     }
 
@@ -252,6 +254,14 @@ public class SanPham {
         this.mauMat = mauMat;
     }
 
+    public String getGhiChu() {
+        return ghiChu;
+    }
+
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
+    }
+    
     public Boolean getTrangThai() {
         return trangThai;
     }

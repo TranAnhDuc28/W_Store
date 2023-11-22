@@ -226,7 +226,7 @@ public class ComboBoxMultiSelection<E> extends JComboBox<E> {
             putClientProperty(FlatClientProperties.STYLE, ""
                     + "border:0,5,0,20;"
                     + "background:darken($ComboBox.background,10%)");
-            JButton cmd = new JButton(new FlatSVGIcon("combobox/close.svg", 0.7f));
+            JButton cmd = new JButton(new FlatSVGIcon("com/wstore/icons/close.svg", 0.7f));
             cmd.putClientProperty(FlatClientProperties.STYLE, ""
                     + "arc:999;"
                     + "margin:0,0,0,0;"

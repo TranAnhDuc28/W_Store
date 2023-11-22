@@ -4,11 +4,10 @@
  */
 package com.wstore.repositories.impl.thuoctinhsanpham;
 
-import com.wstore.domainmodels.SanPham;
-import com.wstore.domainmodels.thuoctinhsanpham.TinhNang;
 import com.wstore.domainmodels.thuoctinhsanpham.TinhNangSanPham;
 import com.wstore.repositories.ITinhNangSanPhamRepository;
 import com.wstore.utilities.DBConnect;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,21 +21,19 @@ import java.util.Set;
 public class TinhNangSanPhamRepository implements ITinhNangSanPhamRepository {
 
     @Override
-    public Set<TinhNangSanPham> getAllByIdSanPham(int idSanPham) {
-        Set<TinhNangSanPham> list = new HashSet<>();
-        String sql = "select tnsp.id_san_pham, tnsp.id_tinh_nang, tn.ten_tinh_nang, tn.trang_thai \n"
-                + "from TinhNangSanPham tnsp join TinhNang tn on tnsp.id_tinh_nang = tn.id\n"
+    public Set<TinhNangViewModel> getAllByIdSanPham(int idSanPham) {
+        Set<TinhNangViewModel> list = new HashSet<>();
+        String sql = "select tn.id, tn.ten_tinh_nang, tn.trang_thai \n"
+                + "from  TinhNang tn join TinhNangSanPham tnsp on tnsp.id_tinh_nang = tn.id\n"
                 + "where id_san_pham = ?;";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
             pstm.setInt(1, idSanPham);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
-                TinhNangSanPham tnsp = new TinhNangSanPham();
-                tnsp.setSanPham(new SanPham(idSanPham));
-                tnsp.setTinhNang(new TinhNang(
-                        rs.getInt("id_tinh_nang"),
-                        rs.getString("ten_tinh_nang"),
-                        rs.getBoolean("trang_thai")));
+                TinhNangViewModel tnsp = new TinhNangViewModel();
+                tnsp.setMaTinhNang(rs.getInt("id"));
+                tnsp.setTenTinhNang(rs.getString("ten_tinh_nang"));
+                tnsp.setHienThi(rs.getBoolean("trang_thai"));
                 list.add(tnsp);
             }
         } catch (Exception e) {

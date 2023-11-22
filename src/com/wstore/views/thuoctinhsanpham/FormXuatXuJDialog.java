@@ -4,18 +4,28 @@
  */
 package com.wstore.views.thuoctinhsanpham;
 
+import com.wstore.services.IThuocTinhSanPhamService;
+import com.wstore.services.impl.thuoctinhsanpham.XuatXuService;
+import com.wstore.utilities.Helper;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.XuatXuViewModel;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ducan
  */
 public class FormXuatXuJDialog extends javax.swing.JDialog {
 
-    /**
-     * Creates new form FormXuatXu
-     */
+    private final IThuocTinhSanPhamService xuatxuseService = new XuatXuService();
+    private DefaultTableModel xuatxumodel = new DefaultTableModel();
+    int index = -1;
+    private List<XuatXuViewModel> listXuatXu;
+
     public FormXuatXuJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        loadDataToTable();
     }
 
     @SuppressWarnings("unchecked")
@@ -25,14 +35,15 @@ public class FormXuatXuJDialog extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTenXuatXu = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblXuatXu = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnMoi = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnCapNhatHienThi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,18 +62,18 @@ public class FormXuatXuJDialog extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1))
+                .addComponent(txtTenXuatXu))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTenXuatXu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblXuatXu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -88,33 +99,65 @@ public class FormXuatXuJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jTable1.setRowHeight(30);
-        jTable1.setSelectionBackground(new java.awt.Color(137, 187, 201));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(150);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(150);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(150);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(70);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(70);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(70);
+        tblXuatXu.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tblXuatXu.setRowHeight(30);
+        tblXuatXu.setSelectionBackground(new java.awt.Color(137, 187, 201));
+        tblXuatXu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblXuatXuMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblXuatXu);
+        if (tblXuatXu.getColumnModel().getColumnCount() > 0) {
+            tblXuatXu.getColumnModel().getColumn(0).setMinWidth(150);
+            tblXuatXu.getColumnModel().getColumn(0).setPreferredWidth(150);
+            tblXuatXu.getColumnModel().getColumn(0).setMaxWidth(150);
+            tblXuatXu.getColumnModel().getColumn(2).setMinWidth(70);
+            tblXuatXu.getColumnModel().getColumn(2).setPreferredWidth(70);
+            tblXuatXu.getColumnModel().getColumn(2).setMaxWidth(70);
         }
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/add24x24.png"))); // NOI18N
-        jButton1.setText("Thêm");
-        jButton1.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jPanel3.add(jButton1);
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/chinh-sua24x24.png"))); // NOI18N
-        jButton2.setText("Sửa");
-        jButton2.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jPanel3.add(jButton2);
+        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/new-document24x24.png"))); // NOI18N
+        btnMoi.setText("Mới");
+        btnMoi.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnMoi);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/updated.png"))); // NOI18N
-        jButton3.setText("Cập nhật hiển thị");
-        jButton3.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jPanel3.add(jButton3);
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/add24x24.png"))); // NOI18N
+        btnThem.setText("Thêm");
+        btnThem.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnThem);
+
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/chinh-sua24x24.png"))); // NOI18N
+        btnSua.setText("Sửa");
+        btnSua.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnSua);
+
+        btnCapNhatHienThi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/updated.png"))); // NOI18N
+        btnCapNhatHienThi.setText("Cập nhật hiển thị");
+        btnCapNhatHienThi.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnCapNhatHienThi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCapNhatHienThiActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnCapNhatHienThi);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,7 +185,7 @@ public class FormXuatXuJDialog extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -161,9 +204,89 @@ public class FormXuatXuJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void tblXuatXuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblXuatXuMouseClicked
+        index = tblXuatXu.getSelectedRow();
+        if (index >= 0) {
+            btnThem.setEnabled(false);
+        }
+        showData();
+    }//GEN-LAST:event_tblXuatXuMouseClicked
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        clearForm();
+    }//GEN-LAST:event_btnMoiActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if (!validateForm()) {
+            if (xuatxuseService.insert(getDaTaForm())) {
+                Helper.alert(this, "Thêm thành công!");
+                loadDataToTable();
+                clearForm();
+            } else {
+                Helper.alert(this, "Thêm thất bại!");
+            }
+        }
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        index = tblXuatXu.getSelectedRow();
+        if (index < 0) {
+            Helper.alert(this, "Vui lòng chọn thông tin cần sửa!");
+            return;
+        }
+        if (!validateForm()) {
+            if (Helper.comfirm(this, "Xác nhận sửa!")) {
+                int id = listXuatXu.get(index).getMaXuatXu();
+                if (xuatxuseService.update(getDaTaForm(), id)) {
+                    Helper.alert(this, "Sửa thành công!");
+                    loadDataToTable();
+                    tblXuatXu.setRowSelectionInterval(index, index);
+                } else {
+                    Helper.alert(this, "Sửa thất bại!");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnCapNhatHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatHienThiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
+
+    private void loadDataToTable() {
+        xuatxumodel = (DefaultTableModel) tblXuatXu.getModel();
+        xuatxumodel.setRowCount(0);
+        listXuatXu = xuatxuseService.getAll();
+        for (XuatXuViewModel xx : listXuatXu) {
+            xuatxumodel.addRow(xx.toDataRow());
+        }
+    }
+
+    private XuatXuViewModel getDaTaForm() {
+        XuatXuViewModel xx = new XuatXuViewModel();
+        xx.setNoiXuatXu(txtTenXuatXu.getText());
+        return xx;
+    }
+
+    private boolean validateForm() {
+        if (Helper.checkRongTextField(this, txtTenXuatXu,
+                "Vui lòng nhập nơi xuất xứ!")) {
+            return true;
+        }
+        return false;
+    }
+
+    private void clearForm() {
+        txtTenXuatXu.setText("");
+        tblXuatXu.clearSelection();
+        index = -1;
+        btnThem.setEnabled(true);
+    }
+
+    private void showData() {
+        XuatXuViewModel xx = listXuatXu.get(index);
+        txtTenXuatXu.setText(xx.getNoiXuatXu());
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -189,7 +312,6 @@ public class FormXuatXuJDialog extends javax.swing.JDialog {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 FormXuatXuJDialog dialog = new FormXuatXuJDialog(new javax.swing.JFrame(), true);
@@ -205,16 +327,17 @@ public class FormXuatXuJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnCapNhatHienThi;
+    private javax.swing.JButton btnMoi;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tblXuatXu;
+    private javax.swing.JTextField txtTenXuatXu;
     // End of variables declaration//GEN-END:variables
 }

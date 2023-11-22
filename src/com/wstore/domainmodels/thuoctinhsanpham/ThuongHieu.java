@@ -4,6 +4,8 @@
  */
 package com.wstore.domainmodels.thuoctinhsanpham;
 
+import java.util.Objects;
+
 /**
  *
  * @author ducan
@@ -69,8 +71,6 @@ public class ThuongHieu {
     @Override
     public String toString() {
         return tenThuongHieu;
-    }
-    
-    
+    }  
 
 }

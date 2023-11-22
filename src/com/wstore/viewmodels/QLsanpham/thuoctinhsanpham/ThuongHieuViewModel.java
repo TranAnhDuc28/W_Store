@@ -4,11 +4,13 @@
  */
 package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
 
+import java.util.Objects;
+
 /**
  *
  * @author ducan
  */
-public class ThuongHieuViewModel {
+    public class ThuongHieuViewModel {
 
     private Integer maThuongHieu;
     private String tenThuongHieu;
@@ -18,6 +20,11 @@ public class ThuongHieuViewModel {
     public ThuongHieuViewModel() {
     }
 
+    public ThuongHieuViewModel(Integer maThuongHieu, String tenThuongHieu) {
+        this.maThuongHieu = maThuongHieu;
+        this.tenThuongHieu = tenThuongHieu;
+    }
+    
     public ThuongHieuViewModel(Integer maThuongHieu, String tenThuongHieu, String logo, Boolean hienThi) {
         this.maThuongHieu = maThuongHieu;
         this.tenThuongHieu = tenThuongHieu;
@@ -61,8 +68,36 @@ public class ThuongHieuViewModel {
     public String toString() {
         return tenThuongHieu;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 61 * hash + Objects.hashCode(this.maThuongHieu);
+        hash = 61 * hash + Objects.hashCode(this.tenThuongHieu);
+        hash = 61 * hash + Objects.hashCode(this.logo);
+        hash = 61 * hash + Objects.hashCode(this.hienThi);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ThuongHieuViewModel other = (ThuongHieuViewModel) obj;
+        if (!Objects.equals(this.tenThuongHieu, other.tenThuongHieu)) {
+            return false;
+        }
+        return Objects.equals(this.maThuongHieu, other.maThuongHieu);
+    }
+
     public Object[] toDataRow() {
-        return new Object[] {maThuongHieu, tenThuongHieu, logo, hienThi};
+        return new Object[]{maThuongHieu, tenThuongHieu, logo, hienThi};
     }
 }

@@ -4,6 +4,8 @@
  */
 package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
 
+import java.util.Objects;
+
 /**
  *
  * @author Admin
@@ -15,6 +17,11 @@ public class TinhNangViewModel {
     private Boolean hienThi;
 
     public TinhNangViewModel() {
+    }
+
+    public TinhNangViewModel(Integer maTinhNang, String tenTinhNang) {
+        this.maTinhNang = maTinhNang;
+        this.tenTinhNang = tenTinhNang;
     }
 
     public TinhNangViewModel(Integer maTinhNang, String tenTinhNang, Boolean hienThi) {
@@ -47,6 +54,35 @@ public class TinhNangViewModel {
         this.hienThi = hienThi;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.maTinhNang);
+        hash = 79 * hash + Objects.hashCode(this.tenTinhNang);
+        hash = 79 * hash + Objects.hashCode(this.hienThi);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TinhNangViewModel other = (TinhNangViewModel) obj;
+        if (!Objects.equals(this.tenTinhNang, other.tenTinhNang)) {
+            return false;
+        }
+        return Objects.equals(this.maTinhNang, other.maTinhNang);
+    }
+    
+    
+    
     @Override
     public String toString() {
         return tenTinhNang;

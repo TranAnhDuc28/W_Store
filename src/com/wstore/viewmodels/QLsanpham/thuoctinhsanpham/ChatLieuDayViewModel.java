@@ -4,6 +4,8 @@
  */
 package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
 
+import java.util.Objects;
+
 public class ChatLieuDayViewModel {
 
     private Integer maChatLieuDay;
@@ -12,6 +14,12 @@ public class ChatLieuDayViewModel {
 
     public ChatLieuDayViewModel() {
     }
+
+    public ChatLieuDayViewModel(Integer maChatLieuDay, String tenChatLieuDay) {
+        this.maChatLieuDay = maChatLieuDay;
+        this.tenChatLieuDay = tenChatLieuDay;
+    }
+    
 
     public ChatLieuDayViewModel(Integer maChatLieuDay, String tenChatLieuDay, Boolean hienThi) {
         this.maChatLieuDay = maChatLieuDay;
@@ -48,6 +56,35 @@ public class ChatLieuDayViewModel {
         return tenChatLieuDay;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 11 * hash + Objects.hashCode(this.maChatLieuDay);
+        hash = 11 * hash + Objects.hashCode(this.tenChatLieuDay);
+        hash = 11 * hash + Objects.hashCode(this.hienThi);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ChatLieuDayViewModel other = (ChatLieuDayViewModel) obj;
+        if (!Objects.equals(this.tenChatLieuDay, other.tenChatLieuDay)) {
+            return false;
+        }
+        return Objects.equals(this.maChatLieuDay, other.maChatLieuDay);
+    }
+    
+    
+    
     public Object[] toDataRow() {
         return new Object[]{maChatLieuDay, tenChatLieuDay, hienThi};
     }

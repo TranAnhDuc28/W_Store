@@ -37,7 +37,7 @@ public class SanPhamRepository implements ISanPhamRepository {
                 + ", sp.hinh_dang, sp.do_day, sp.id_dong_may, dm.ten_dong_may, sp.id_chat_lieu_day\n"
                 + ", cld.ten_chat_lieu_day, sp.id_chat_lieu_kinh, clk.ten_chat_lieu_kinh\n"
                 + ", sp.id_xuat_xu, xx.noi_xuat_xu, sp.id_chat_lieu_vo, clv.ten_chat_lieu_vo\n"
-                + ", sp.id_mau_vo, mv.ten_mau as mau_vo, sp.id_mau_mat, mm.ten_mau as mau_mat, sp.trang_thai\n"
+                + ", sp.id_mau_vo, mv.ten_mau as mau_vo, sp.id_mau_mat, mm.ten_mau as mau_mat, sp.ghi_chu, sp.trang_thai\n"
                 + "     from SanPham sp \n"
                 + "left join ThuongHieu th on sp.id_thuong_hieu = th.id\n"
                 + "left join DongMay dm on sp.id_dong_may = dm.id\n"
@@ -87,6 +87,7 @@ public class SanPhamRepository implements ISanPhamRepository {
                                 rs.getString("mau_vo")),
                         new Mau(rs.getInt("id_mau_mat"),
                                 rs.getString("mau_mat")),
+                        rs.getString("ghi_chu"),
                         rs.getBoolean("trang_thai"));
                 list.add(sp);
             }

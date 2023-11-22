@@ -4,7 +4,7 @@
  */
 package com.wstore.viewmodels.QLsanpham.thuoctinhsanpham;
 
-import com.wstore.domainmodels.thuoctinhsanpham.ThuongHieu;
+import java.util.Objects;
 
 /**
  *
@@ -17,6 +17,11 @@ public class DongSanPhamViewModel {
     private Boolean hienThi;
 
     public DongSanPhamViewModel() {
+    }
+
+    public DongSanPhamViewModel(Integer maDongSanPham, String tenDongSanPham) {
+        this.maDongSanPham = maDongSanPham;
+        this.tenDongSanPham = tenDongSanPham;
     }
 
     public DongSanPhamViewModel(Integer maDongSanPham, String tenDongSanPham, Boolean hienThi) {
@@ -47,6 +52,33 @@ public class DongSanPhamViewModel {
 
     public void setHienThi(Boolean hienThi) {
         this.hienThi = hienThi;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.maDongSanPham);
+        hash = 97 * hash + Objects.hashCode(this.tenDongSanPham);
+        hash = 97 * hash + Objects.hashCode(this.hienThi);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DongSanPhamViewModel other = (DongSanPhamViewModel) obj;
+        if (!Objects.equals(this.tenDongSanPham, other.tenDongSanPham)) {
+            return false;
+        }
+        return Objects.equals(this.maDongSanPham, other.maDongSanPham);
     }
 
     @Override
