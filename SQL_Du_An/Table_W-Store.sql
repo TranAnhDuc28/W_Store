@@ -196,6 +196,7 @@ create table NhanVien(
 	so_dien_thoai varchar(20),
 	email varchar(255),
 	vai_tro int default 0,
+	hinh_anh varchar(max),
 	ngay_tao datetime2 default getdate(),
 	ghi_chu nvarchar(255),
 	trang_thai int default 1 
@@ -214,6 +215,7 @@ create table KhanhHang(
 	so_dien_thoai varchar(20),
 	email varchar(255),
 	dia_chi nvarchar(255),
+	hinh_anh varchar(max),
 	ngay_tao datetime2 default getdate(),
 	ghi_chu nvarchar(255),
 	trang_thai int default 1 

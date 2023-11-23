@@ -61,10 +61,12 @@ from PhongCach pc join PhongCachSanPham pcsp on pcsp.id_phong_cach = pc.id
 where id_san_pham = 2;
 
 --query NhanVien
-SELECT ID, MaNV ,TaiKhoan ,MatKhau ,HoTen ,GioiTinh,
-NgaySinh ,SDT ,CCCD ,Email ,DiaChi ,HinhAnh, GhiChu ,VaiTro ,TrangThai
+select * from NhanVien
+
+SELECT id, ma_nhan_vien , mat_khau, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai
+		, can_cuoc_cong_dan, email ,dia_chi, vai_tro, hinh_anh, ghi_chu, trang_thai
 FROM NhanVien
-WHERE TrangThai = ?
-ORDER BY ID
-OFFSET ? ROWS
-FETCH NEXT ? ROWS ONLY;
+WHERE trang_thai = 1
+ORDER BY id
+OFFSET 1 ROWS
+FETCH NEXT 1 ROWS ONLY;
