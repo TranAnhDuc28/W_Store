@@ -181,3 +181,42 @@ create table PhongCachSanPham(
 )
 go
 
+if OBJECT_ID('NhanVien') is not null
+drop table NhanVien
+go
+create table NhanVien(
+	id int identity(1,1) not null,
+	ma_nhan_vien char(8) not null,
+	mat_khau varchar(max),
+	ho_ten nvarchar(100) not null,
+	gioi_tinh bit not null,
+	ngay_sinh date not null,
+	can_cuoc_cong_dan varchar(25),
+	dia_chi nvarchar(255),
+	so_dien_thoai varchar(20),
+	email varchar(255),
+	vai_tro int default 0,
+	ngay_tao datetime2 default getdate(),
+	ghi_chu nvarchar(255),
+	trang_thai int default 1 
+)
+go
+
+if OBJECT_ID('KhanhHang') is not null
+drop table KhanhHang
+go
+create table KhanhHang(
+	id int identity(1,1) not null,
+	ma_khach_hang char(8) not null,
+	ho_ten nvarchar(100) not null,
+	gioi_tinh bit not null,
+	ngay_sinh date,
+	so_dien_thoai varchar(20),
+	email varchar(255),
+	dia_chi nvarchar(255),
+	ngay_tao datetime2 default getdate(),
+	ghi_chu nvarchar(255),
+	trang_thai int default 1 
+)
+go
+

@@ -1,23 +1,26 @@
 -- Query SanPham
 select sp.id, sp.ma_san_pham, id_thuong_hieu, th.ten_thuong_hieu, sp.ma_hang_hoa
-                		, sp.gia_nhap, sp.don_gia, sp.so_luong_ton, sp.hinh_anh, sp.doi_tuong_su_dung
-                		, sp.dong_san_pham, sp.khang_nuoc, sp.khoang_tru_cot, sp.size_mat
-                		, sp.hinh_dang, sp.do_day, sp.id_dong_may, dm.ten_dong_may, sp.id_chat_lieu_day
-                		, cld.ten_chat_lieu_day, sp.id_chat_lieu_kinh, clk.ten_chat_lieu_kinh
-                		, sp.id_xuat_xu, xx.noi_xuat_xu, sp.id_chat_lieu_vo, clv.ten_chat_lieu_vo
-                		, sp.id_mau_vo, mv.ten_mau as mau_vo, sp.id_mau_mat, mm.ten_mau as mau_mat, sp.trang_thai
-						, tn.ten_tinh_nang
-                from SanPham sp 
-                           left join ThuongHieu th on sp.id_thuong_hieu = th.id
-                           left join DongMay dm on sp.id_dong_may = dm.id
-                		left join ChatLieuDay cld on sp.id_chat_lieu_day = cld.id
-                		left join ChatLieuKinh clk on sp.id_chat_lieu_kinh = clk.id
-                		left join ChatLieuVo clv on sp.id_chat_lieu_vo = clv.id
-                		left join XuatXu xx on sp.id_xuat_xu = xx.id
-                		left join Mau mv on sp.id_mau_vo = mv.id
-                		left join Mau mm on sp.id_mau_mat = mm.id
-						left join TinhNangSanPham tnsp on sp.id = tnsp.id_san_pham
-						left join TinhNang tn on tnsp.id_tinh_nang = tn.id
+    , sp.gia_nhap, sp.don_gia, sp.so_luong_ton, sp.hinh_anh, sp.doi_tuong_su_dung
+    , sp.dong_san_pham, sp.khang_nuoc, sp.khoang_tru_cot, sp.size_mat
+    , sp.hinh_dang, sp.do_day, sp.id_dong_may, dm.ten_dong_may, sp.id_chat_lieu_day
+    , cld.ten_chat_lieu_day, sp.id_chat_lieu_kinh, clk.ten_chat_lieu_kinh
+    , sp.id_xuat_xu, xx.noi_xuat_xu, sp.id_chat_lieu_vo, clv.ten_chat_lieu_vo
+    , sp.id_mau_vo, mv.ten_mau as mau_vo, sp.id_mau_mat, mm.ten_mau as mau_mat
+	, sp.ghi_chu, sp.trang_thai
+from SanPham sp 
+	left join ThuongHieu th on sp.id_thuong_hieu = th.id
+	left join DongMay dm on sp.id_dong_may = dm.id
+	left join ChatLieuDay cld on sp.id_chat_lieu_day = cld.id
+	left join ChatLieuKinh clk on sp.id_chat_lieu_kinh = clk.id
+	left join ChatLieuVo clv on sp.id_chat_lieu_vo = clv.id
+	left join XuatXu xx on sp.id_xuat_xu = xx.id
+	left join Mau mv on sp.id_mau_vo = mv.id
+	left join Mau mm on sp.id_mau_mat = mm.id
+	left join TinhNangSanPham tnsp on sp.id = tnsp.id_san_pham
+	left join TinhNang tn on tnsp.id_tinh_nang = tn.id
+order by sp.id
+offset ? rows
+fetch next ? rows only;
 
 select id from SanPham where ma_san_pham = 'SP000108'
 
@@ -57,3 +60,11 @@ select pc.id, pc.ten_phong_cach, pc.trang_thai
 from PhongCach pc join PhongCachSanPham pcsp on pcsp.id_phong_cach = pc.id
 where id_san_pham = 2;
 
+--query NhanVien
+SELECT ID, MaNV ,TaiKhoan ,MatKhau ,HoTen ,GioiTinh,
+NgaySinh ,SDT ,CCCD ,Email ,DiaChi ,HinhAnh, GhiChu ,VaiTro ,TrangThai
+FROM NhanVien
+WHERE TrangThai = ?
+ORDER BY ID
+OFFSET ? ROWS
+FETCH NEXT ? ROWS ONLY;

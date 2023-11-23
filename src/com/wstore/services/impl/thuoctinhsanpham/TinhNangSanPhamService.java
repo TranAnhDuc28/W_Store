@@ -4,7 +4,6 @@
  */
 package com.wstore.services.impl.thuoctinhsanpham;
 
-import com.wstore.domainmodels.thuoctinhsanpham.TinhNang;
 import com.wstore.domainmodels.thuoctinhsanpham.TinhNangSanPham;
 import com.wstore.repositories.ITinhNangSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.TinhNangSanPhamRepository;

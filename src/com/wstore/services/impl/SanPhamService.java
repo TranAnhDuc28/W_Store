@@ -5,7 +5,6 @@
 package com.wstore.services.impl;
 
 import com.wstore.domainmodels.SanPham;
-import com.wstore.domainmodels.thuoctinhsanpham.PhongCachSanPham;
 import com.wstore.repositories.IPhongCachSanPhamRepository;
 import com.wstore.repositories.ISanPhamRepository;
 import com.wstore.repositories.ITinhNangSanPhamRepository;
