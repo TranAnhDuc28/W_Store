@@ -4,6 +4,7 @@
  */
 package com.wstore.viewmodels.QLsanpham;
 
+import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuVoViewModel;
@@ -289,7 +290,8 @@ public class SanPhamViewModel {
     
     
     public Object[] toDataRow() {
-        return new Object[]{maSanPham, thuongHieu, maHangHoa, giaNhap, donGia,
+        return new Object[]{maSanPham, thuongHieu, maHangHoa, 
+            Helper.dfTien.format(giaNhap), Helper.dfTien.format(donGia),
             doiTuongSuDung, dongSanPham, dongMay, chatLieuDay, chatLieuKinh,
             khangNuoc, khoangTruCot, sizeMat, xuatXu, chatLieuVo,
             hinhDang, mauVo, phongCach, tinhNang, doDay, mauMat, hinhAnh};

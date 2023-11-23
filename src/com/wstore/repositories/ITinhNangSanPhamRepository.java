@@ -6,6 +6,7 @@ package com.wstore.repositories;
 
 import com.wstore.domainmodels.thuoctinhsanpham.TinhNangSanPham;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -16,7 +17,7 @@ public interface ITinhNangSanPhamRepository {
 
     Set<TinhNangViewModel> getAllByIdSanPham(int idSanPham);
 
-    boolean insert(TinhNangSanPham tnsp);
+    void insert(List<TinhNangSanPham> list);
 
     boolean delete(int idSanPham);
 }

@@ -15,12 +15,16 @@ import java.util.List;
 public interface ISanPhamService {
 
     List<SanPhamViewModel> getAll(int page, int pageSize);
+    
+    SanPham findByMa(String ma);
+    
+    boolean insert(SanPham sp);
 
-    String insert(SanPham sp);
-
-    String update(SanPham sp, int idSanPham);
+    boolean update(SanPham sp, int idSanPham);
     
     List<SanPham> findByNameOrMa(int page, int pageSize, int trangThai, String name);
     
     int getRecordCount();
+    
+    String getMaSanPhamTuDongSinh();
 }

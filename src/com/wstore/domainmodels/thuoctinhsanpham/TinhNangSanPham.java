@@ -4,43 +4,39 @@
  */
 package com.wstore.domainmodels.thuoctinhsanpham;
 
-import com.wstore.domainmodels.SanPham;
-
 /**
  *
  * @author ducan
  */
 public class TinhNangSanPham {
 
-    private SanPham sanPham;
-    private TinhNang tinhNang;
+    private Integer idSanPham;
+    private Integer idTinhNang;
 
     public TinhNangSanPham() {
     }
 
-    public TinhNangSanPham(SanPham sanPham, TinhNang tinhNang) {
-        this.sanPham = sanPham;
-        this.tinhNang = tinhNang;
+    public TinhNangSanPham(Integer idSanPham, Integer idTinhNang) {
+        this.idSanPham = idSanPham;
+        this.idTinhNang = idTinhNang;
     }
 
-    public SanPham getSanPham() {
-        return sanPham;
+    public Integer getIdSanPham() {
+        return idSanPham;
     }
 
-    public void setSanPham(SanPham sanPham) {
-        this.sanPham = sanPham;
+    public void setIdSanPham(Integer idSanPham) {
+        this.idSanPham = idSanPham;
     }
 
-    public TinhNang getTinhNang() {
-        return tinhNang;
+    public Integer getIdTinhNang() {
+        return idTinhNang;
     }
 
-    public void setTinhNang(TinhNang tinhNang) {
-        this.tinhNang = tinhNang;
+    public void setIdTinhNang(Integer idTinhNang) {
+        this.idTinhNang = idTinhNang;
     }
 
-    @Override
-    public String toString() {
-        return tinhNang.getTenTinhNang();
-    }  
+    
+
 }

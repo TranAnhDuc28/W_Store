@@ -5,6 +5,7 @@
 package com.wstore.services;
 
 import com.wstore.domainmodels.thuoctinhsanpham.PhongCachSanPham;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import java.util.Set;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Set;
  */
 public interface IPhongCachSanPhamService {
 
-    Set<PhongCachSanPham> getAllByIdSanPham(int idSanPham);
+    Set<PhongCachViewModel> getAllByIdSanPham(int idSanPham);
 
     boolean insert(PhongCachSanPham pcsp);
 

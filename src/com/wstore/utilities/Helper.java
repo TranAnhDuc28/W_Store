@@ -12,6 +12,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,7 +32,8 @@ import javax.swing.JTextField;
 public class Helper {
 
     public static Image ICON_APP;
-    public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    public static SimpleDateFormat sdfNgayThang = new SimpleDateFormat("dd/MM/yyyy");
+    public static DecimalFormat dfTien = new DecimalFormat("###,###.##");
     public static Dimension dimensionJFileChooser = new Dimension(800, 500);
 //    public static NhanVien USER_LOGIN = null;
 
@@ -45,7 +47,6 @@ public class Helper {
 //    public static void logout() {
 //        Helper.USER_LOGIN = null;
 //    }
-
     // dialog thông báo
     public static void alert(Component component, String message) {
         JOptionPane.showMessageDialog(component, message,
@@ -59,7 +60,6 @@ public class Helper {
                 JOptionPane.QUESTION_MESSAGE);
         return result == JOptionPane.YES_OPTION;
     }
-
 
     public static String chonAnh(String dicrectoryPath, JLabel lblHienThi) {
         String imgName = null;
@@ -153,7 +153,7 @@ public class Helper {
         }
         return false;
     }
-    
+
     public static boolean checkSoKhongDuocAm(Component component, JTextField txt, String message) {
         Double so = Double.valueOf(txt.getText().trim());
         if (so < 0) {
@@ -163,7 +163,7 @@ public class Helper {
         }
         return false;
     }
-    
+
     public static boolean checkCCCD(Component component, JTextField txt, String message) {
         Pattern pattern = Pattern.compile("^\\d{12}$");
         Matcher matcher = pattern.matcher(txt.getText().trim());
@@ -193,7 +193,7 @@ public class Helper {
         }
         return false;
     }
-    
+
     public static boolean checkRongJDateChooser(Component component, JDateChooser jdc, String message) {
         if (jdc.getDate() == null) {
             alert(component, message);
@@ -202,8 +202,8 @@ public class Helper {
         }
         return false;
     }
-    
+
     public static String removeDauNgoacVuong(String str) {
         return str.replaceAll("\\[|\\]", "");
-    } 
+    }
 }

@@ -12,10 +12,10 @@ import com.wstore.services.impl.SanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.PhongCachSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.TinhNangSanPhamService;
 import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,16 +27,15 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     private final ISanPhamService sanPhamService = new SanPhamService();
     private ITinhNangSanPhamService tinhNangSanPhamService = new TinhNangSanPhamService();
     private IPhongCachSanPhamService phongCachSanPhamService = new PhongCachSanPhamService();
-    private final FormThemVaSuaSanPhamJFrame formThemVaSuaSanPham
-            = new FormThemVaSuaSanPhamJFrame();
+    FormThemVaSuaSanPhamJFrame formThemVaSuaSanPham;
     private DefaultTableModel dtmTblSanPham;
     private List<SanPhamViewModel> listSP;
     private Integer trangThai = 0;
     private int index = -1;
-    private Integer page = 1;
+    public Integer page = 1;
     private Integer tongSoBanGhi = 0;
     private Integer totalPage = 1;
-    private Integer pageSize = 10;
+    public Integer pageSize = 10;
 
     public FormSanPhamJPanel() {
         initComponents();
@@ -457,7 +456,9 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        new FormThemVaSuaSanPhamJFrame().setVisible(true);
+        formThemVaSuaSanPham = new FormThemVaSuaSanPhamJFrame();
+        formThemVaSuaSanPham.txtMaSanPham.setText(sanPhamService.getMaSanPhamTuDongSinh());
+        formThemVaSuaSanPham.setVisible(true);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -465,7 +466,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         if (index < 0) {
             return;
         }
-        formThemVaSuaSanPham.setVisible(true);
+        formThemVaSuaSanPham = new FormThemVaSuaSanPhamJFrame();
         showData();
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -497,7 +498,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
 //        }
     }
 
-    private void initPagination(List<SanPhamViewModel> list) {
+    public void initPagination(List<SanPhamViewModel> list) {
         tongSoBanGhi = sanPhamService.getRecordCount();
         pageSize = Integer.valueOf(cboSoBanGhi.getSelectedItem().toString());
         totalPage = (int) Math.ceil(tongSoBanGhi.doubleValue() / pageSize.doubleValue());
@@ -525,27 +526,31 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         formThemVaSuaSanPham.spnSoLuong.setValue(sp.getSoLuongTon());
         formThemVaSuaSanPham.txtGiaNhap.setText(sp.getGiaNhap().toString());
         formThemVaSuaSanPham.txtGiaBan.setText(sp.getDonGia().toString());
-        formThemVaSuaSanPham.cboThuongHieu.setSelectedItem(sp.getThuongHieu());
-        formThemVaSuaSanPham.cboDongSanPham.setSelectedItem(sp.getDongSanPham());
-        formThemVaSuaSanPham.cboXuatXu.setSelectedItem(sp.getXuatXu());
-        formThemVaSuaSanPham.cboMauVo.setSelectedItem(sp.getMauVo());
-        formThemVaSuaSanPham.cboMauMat.setSelectedItem(sp.getMauMat());
-        formThemVaSuaSanPham.cboDongMay.setSelectedItem(sp.getDongMay());
-        formThemVaSuaSanPham.cboChatLieuDay.setSelectedItem(sp.getChatLieuDay());
-        formThemVaSuaSanPham.cboChatLieuKinh.setSelectedItem(sp.getChatLieuKinh());
-        formThemVaSuaSanPham.cboChatLieuVo.setSelectedItem(sp.getChatLieuVo());
+        formThemVaSuaSanPham.dcbmThuongHieu.setSelectedItem(sp.getThuongHieu());
+        formThemVaSuaSanPham.dcbmDongSanPham.setSelectedItem(sp.getDongSanPham());
+        formThemVaSuaSanPham.dcbmXuatXu.setSelectedItem(sp.getXuatXu());
+        formThemVaSuaSanPham.dcbmMauVo.setSelectedItem(sp.getMauVo());
+        formThemVaSuaSanPham.dcbmMauMat.setSelectedItem(sp.getMauMat());
+        formThemVaSuaSanPham.dcbmDongMay.setSelectedItem(sp.getDongMay());
+        formThemVaSuaSanPham.dcbmChatLieuDay.setSelectedItem(sp.getChatLieuDay());
+        formThemVaSuaSanPham.dcbmChatLieuKinh.setSelectedItem(sp.getChatLieuKinh());
+        formThemVaSuaSanPham.dcbmChatLieuVo.setSelectedItem(sp.getChatLieuVo());
         formThemVaSuaSanPham.cboHinhDang.setSelectedItem(sp.getHinhDang());
         formThemVaSuaSanPham.cboDoiTuongSuDong.setSelectedItem(sp.getDoiTuongSuDung());
         formThemVaSuaSanPham.txtKhangNuoc.setText(sp.getKhangNuoc().toString());
         formThemVaSuaSanPham.txtSizeMat.setText(sp.getSizeMat().toString());
         formThemVaSuaSanPham.txtDoDay.setText(sp.getDoDay().toString());
         formThemVaSuaSanPham.txtKhoangTruCot.setText(sp.getKhoangTruCot().toString());
-        Set<TinhNangViewModel> listTNSP = tinhNangSanPhamService.getAllByIdSanPham(sp.getId());
-        listTNSP.forEach((tnsp) -> {
-            formThemVaSuaSanPham.cboTinhNang.setSelectedItem(tnsp);
-        });
-
+        List<TinhNangViewModel> listTNSP = new ArrayList<>(tinhNangSanPhamService.getAllByIdSanPham(sp.getId()));
+        formThemVaSuaSanPham.cboTinhNang.clearSelectedItems();
+        formThemVaSuaSanPham.cboTinhNang.setSelectedItems(listTNSP);
+        List<PhongCachViewModel> listPCSP = new ArrayList<>(phongCachSanPhamService.getAllByIdSanPham(sp.getId()));
+        formThemVaSuaSanPham.cboPhongCach.clearSelectedItems();
+        formThemVaSuaSanPham.cboPhongCach.setSelectedItems(listPCSP);
+        formThemVaSuaSanPham.setVisible(true);
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;

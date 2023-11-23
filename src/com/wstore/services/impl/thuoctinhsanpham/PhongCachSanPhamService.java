@@ -8,6 +8,7 @@ import com.wstore.domainmodels.thuoctinhsanpham.PhongCachSanPham;
 import com.wstore.repositories.IPhongCachSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.PhongCachSanPhamReporitory;
 import com.wstore.services.IPhongCachSanPhamService;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import java.util.Set;
 
 /**
@@ -20,7 +21,7 @@ public class PhongCachSanPhamService implements IPhongCachSanPhamService{
             = new PhongCachSanPhamReporitory();
     
     @Override
-    public Set<PhongCachSanPham> getAllByIdSanPham(int idSanPham) {
+    public Set<PhongCachViewModel> getAllByIdSanPham(int idSanPham) {
         return phongCachSanPhamService.getAllByIdSanPham(idSanPham);
     }
 

@@ -19,6 +19,12 @@ select sp.id, sp.ma_san_pham, id_thuong_hieu, th.ten_thuong_hieu, sp.ma_hang_hoa
 						left join TinhNangSanPham tnsp on sp.id = tnsp.id_san_pham
 						left join TinhNang tn on tnsp.id_tinh_nang = tn.id
 
+select id from SanPham where ma_san_pham = 'SP000108'
+
+insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
+values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,default);
+
+
 -- query DongSanPham
 select id, ten_dong_san_pham, id_thuong_hieu, trang_thai 
 from DongSanPham 
@@ -39,12 +45,15 @@ select tn.id, tn.ten_tinh_nang, tn.trang_thai
 from  TinhNang tn join TinhNangSanPham tnsp on tnsp.id_tinh_nang = tn.id
 where id_san_pham = ?;
 
+insert into TinhNangSanPham(id_san_pham, id_tinh_nang) values (?, ?);
+
 --query PhongCachSanPham
 select * from PhongCach
 select * from SanPham;
 select * from PhongCachSanPham
 
 
-select pcsp.id_san_pham, pcsp.id_phong_cach, pc.ten_phong_cach, pc.trang_thai 
-from PhongCachSanPham pcsp join PhongCach pc on pcsp.id_phong_cach = pc.id
-where id_san_pham = ?;
+select pc.id, pc.ten_phong_cach, pc.trang_thai
+from PhongCach pc join PhongCachSanPham pcsp on pcsp.id_phong_cach = pc.id
+where id_san_pham = 2;
+

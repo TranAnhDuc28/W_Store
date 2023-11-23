@@ -15,6 +15,8 @@ public interface ISanPhamRepository {
     
     List<SanPham> getAll(int page, int pageSize);
     
+    SanPham findByMa(String ma);
+    
     boolean insert(SanPham sp);
     
     boolean update(SanPham sp, int idSanPham);

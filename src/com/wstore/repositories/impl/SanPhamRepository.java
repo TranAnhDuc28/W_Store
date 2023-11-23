@@ -99,7 +99,41 @@ public class SanPhamRepository implements ISanPhamRepository {
 
     @Override
     public boolean insert(SanPham sp) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int checkInsert = 0;
+        String sql = "insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, "
+                + "gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, "
+                + "dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, "
+                + "do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, "
+                + "id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, ghi_chu, trang_thai) \n"
+                + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,default);";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setString(1, sp.getMaSanPham());
+            pstm.setInt(2, sp.getThuongHieu().getId());
+            pstm.setString(3, sp.getMaHangHoa());
+            pstm.setBigDecimal(4, sp.getGiaNhap());
+            pstm.setBigDecimal(5, sp.getDonGia());
+            pstm.setInt(6, sp.getSoLuongTon());
+            pstm.setString(7, sp.getHinhAnh());
+            pstm.setString(8, sp.getDoiTuongSuDung());
+            pstm.setString(9, sp.getDongSanPham());
+            pstm.setInt(10, sp.getKhangNuoc());
+            pstm.setInt(11, sp.getKhoangTruCot());
+            pstm.setFloat(12, sp.getSizeMat());
+            pstm.setString(13, sp.getHinhDang());
+            pstm.setFloat(14, sp.getDoDay());
+            pstm.setInt(15, sp.getDongMay().getId());
+            pstm.setInt(16, sp.getChatLieuDay().getId());
+            pstm.setInt(17, sp.getChatLieuKinh().getId());
+            pstm.setInt(18, sp.getXuatXu().getId());
+            pstm.setInt(19, sp.getChatLieuVo().getId());
+            pstm.setInt(20, sp.getMauMat().getId());
+            pstm.setInt(21, sp.getMauVo().getId());
+            pstm.setString(21, sp.getGhiChu());
+            checkInsert = pstm.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return checkInsert > 0;
     }
 
     @Override
@@ -132,8 +166,21 @@ public class SanPhamRepository implements ISanPhamRepository {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static void main(String[] args) {
-        System.out.println(new SanPhamRepository().getRecordCount());
+    @Override
+    public SanPham findByMa(String ma) {
+        SanPham sp = null;
+        String sql = "select id from SanPham where ma_san_pham = ?";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setString(1, ma);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                sp = new SanPham();
+                sp.setId(rs.getInt("id"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return sp;
     }
 
 }

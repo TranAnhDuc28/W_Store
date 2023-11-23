@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 /**
  *
  * @author ducan
- */
+     */
 public class FormDangNhapJFrame extends javax.swing.JFrame {
 
     /**

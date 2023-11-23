@@ -1,13 +1,13 @@
 package com.wstore.repositories;
 
-import com.wstore.domainmodels.thuoctinhsanpham.PhongCachSanPham;
+import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import java.util.Set;
 
 public interface IPhongCachSanPhamRepository {
     
-    Set<PhongCachSanPham> getAllByIdSanPham(int idSanPham);
+    Set<PhongCachViewModel> getAllByIdSanPham(int idSanPham);
     
-    boolean insert(PhongCachSanPham pcsp);
+    boolean insert(PhongCachViewModel pcsp);
     
     boolean delete(int idSanPham);
 }

@@ -270,4 +270,20 @@ public class SanPham {
         this.trangThai = trangThai;
     }
 
+    @Override
+    public String toString() {
+        return "SanPham{" + "id=" + id + ", maSanPham=" + maSanPham 
+                + ", thuongHieu=" + thuongHieu + ", maHangHoa=" + maHangHoa 
+                + ", giaNhap=" + giaNhap + ", donGia=" + donGia 
+                + ", soLuongTon=" + soLuongTon + ", hinhAnh=" + hinhAnh 
+                + ", doiTuongSuDung=" + doiTuongSuDung + ", dongSanPham=" 
+                + dongSanPham + ", khangNuoc=" + khangNuoc + ", khoangTruCot=" 
+                + khoangTruCot + ", sizeMat=" + sizeMat + ", hinhDang=" 
+                + hinhDang + ", doDay=" + doDay + ", dongMay=" + dongMay 
+                + ", chatLieuDay=" + chatLieuDay + ", chatLieuKinh=" + chatLieuKinh 
+                + ", xuatXu=" + xuatXu + ", chatLieuVo=" + chatLieuVo 
+                + ", mauVo=" + mauVo + ", mauMat=" + mauMat + ", ghiChu=" 
+                + ghiChu + ", trangThai=" + trangThai + '}';
+    }
+
 }

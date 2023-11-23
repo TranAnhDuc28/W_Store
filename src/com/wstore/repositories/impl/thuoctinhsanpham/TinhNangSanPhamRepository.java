@@ -11,7 +11,9 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -43,8 +45,15 @@ public class TinhNangSanPhamRepository implements ITinhNangSanPhamRepository {
     }
 
     @Override
-    public boolean insert(TinhNangSanPham tnsp) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void insert(List<TinhNangSanPham> list) {
+//       int checkInsert = 0;
+//        String sql = "insert into TinhNangSanPham(id_san_pham, id_tinh_nang) values (?, ?);";
+//        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+//            pstm.setInt(1, tnsp.getIdSanPham());
+//            checkInsert = pstm.executeUpdate();
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
     }
 
     @Override

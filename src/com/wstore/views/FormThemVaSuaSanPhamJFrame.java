@@ -4,8 +4,24 @@
  */
 package com.wstore.views;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.FlatLaf;
+import com.wstore.domainmodels.SanPham;
+import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuDay;
+import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuKinh;
+import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuVo;
+import com.wstore.domainmodels.thuoctinhsanpham.DongMay;
+import com.wstore.domainmodels.thuoctinhsanpham.DongSanPham;
+import com.wstore.domainmodels.thuoctinhsanpham.Mau;
+import com.wstore.domainmodels.thuoctinhsanpham.ThuongHieu;
+import com.wstore.domainmodels.thuoctinhsanpham.TinhNang;
+import com.wstore.domainmodels.thuoctinhsanpham.TinhNangSanPham;
+import com.wstore.domainmodels.thuoctinhsanpham.XuatXu;
 import com.wstore.services.IDongSanPhamService;
+import com.wstore.services.ISanPhamService;
 import com.wstore.services.IThuocTinhSanPhamService;
+import com.wstore.services.ITinhNangSanPhamService;
+import com.wstore.services.impl.SanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuDayService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuKinhService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuVoService;
@@ -14,6 +30,7 @@ import com.wstore.services.impl.thuoctinhsanpham.DongSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.MauService;
 import com.wstore.services.impl.thuoctinhsanpham.PhongCachService;
 import com.wstore.services.impl.thuoctinhsanpham.ThuongHieuService;
+import com.wstore.services.impl.thuoctinhsanpham.TinhNangSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.TinhNangService;
 import com.wstore.services.impl.thuoctinhsanpham.XuatXuService;
 import com.wstore.utilities.Helper;
@@ -38,6 +55,8 @@ import com.wstore.views.thuoctinhsanpham.FormThuongHieuJDialog;
 import com.wstore.views.thuoctinhsanpham.FormTinhNangJDialog;
 import com.wstore.views.thuoctinhsanpham.FormXuatXuJDialog;
 import java.awt.Dimension;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -47,6 +66,9 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
+    private ISanPhamService sanPhamService = new SanPhamService();
+    private ITinhNangSanPhamService tinhNangSanPhamService = new TinhNangSanPhamService();
+    private FormSanPhamJPanel formSanPhamJPanel = new FormSanPhamJPanel();
     private final IThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
     private final IThuocTinhSanPhamService dongMayService = new DongMayService();
     private final IThuocTinhSanPhamService xuatXuService = new XuatXuService();
@@ -58,22 +80,23 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     private final IDongSanPhamService dongSanPhamService = new DongSanPhamService();
     private final IThuocTinhSanPhamService phongCachService = new PhongCachService();
     private final IThuocTinhSanPhamService tinhNangService = new TinhNangService();
-    private final DefaultComboBoxModel dcbmThuongHieu = new DefaultComboBoxModel();
-    private final DefaultComboBoxModel dcbmDongMay = new DefaultComboBoxModel();
-    private final DefaultComboBoxModel dcbmXuatXu = new DefaultComboBoxModel();
-    private final DefaultComboBoxModel dcbmMauVo = new DefaultComboBoxModel();
-    private final DefaultComboBoxModel dcbmMauMat = new DefaultComboBoxModel();
-    private final DefaultComboBoxModel dcbmChatLieuDay = new DefaultComboBoxModel();
-    private final DefaultComboBoxModel dcbmChatLieuKinh = new DefaultComboBoxModel();
-    private final DefaultComboBoxModel dcbmChatLieuVo = new DefaultComboBoxModel();
-    private final DefaultComboBoxModel dcbmDongSanPham = new DefaultComboBoxModel();
-    private final DefaultComboBoxModel dcbmTinhNang = new DefaultComboBoxModel();
-    private final DefaultComboBoxModel dcbmPhongCach = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmThuongHieu = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmDongMay = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmXuatXu = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmMauVo = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmMauMat = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmChatLieuDay = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmChatLieuKinh = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmChatLieuVo = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmDongSanPham = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmTinhNang = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmPhongCach = new DefaultComboBoxModel();
 
     private String hinhAnh = null;
 
     public FormThemVaSuaSanPhamJFrame() {
         initComponents();
+        init();
         cboThuongHieu.setModel(dcbmThuongHieu);
         cboDongMay.setModel(dcbmDongMay);
         cboXuatXu.setModel(dcbmXuatXu);
@@ -94,8 +117,16 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         loadDataCboChatLieuDay();
         loadDataCboChatLieuKinh();
         loadDataCboChatLieuVo();
+        loadDataCboHinhDang();
+        loadDataCboDoiTuongSuDung();
         loadDataCboTinhNang();
         loadDataCboPhongCach();
+    }
+
+    private void init() {
+        txtMaSanPham.putClientProperty(
+                FlatClientProperties.PLACEHOLDER_TEXT,
+                "Mã sản phẩm tự động");
     }
 
     @SuppressWarnings("unchecked")
@@ -217,6 +248,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setOpaque(false);
 
+        txtMaSanPham.setEditable(false);
+        txtMaSanPham.setBackground(new java.awt.Color(255, 255, 255));
         txtMaSanPham.setPreferredSize(new java.awt.Dimension(250, 30));
 
         jLabel4.setText("Mã sản phẩm");
@@ -225,10 +258,12 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
         jLabel5.setText("Mã vạch");
 
+        txtGiaNhap.setText("0");
         txtGiaNhap.setPreferredSize(new java.awt.Dimension(250, 30));
 
         jLabel6.setText("Giá nhập");
 
+        txtGiaBan.setText("0");
         txtGiaBan.setPreferredSize(new java.awt.Dimension(250, 30));
 
         jLabel8.setText("Giá bán");
@@ -735,13 +770,18 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         });
         jPanel12.add(btnResetCboChatLieuVo);
 
-        cboHinhDang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mặt tròn", "Mặt vuông", "Mặt chữ nhật", "Đa giác" }));
         cboHinhDang.setPreferredSize(new java.awt.Dimension(220, 30));
 
-        cboDoiTuongSuDong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unisex", "Nam", "Nữ", "Trẻ em" }));
         cboDoiTuongSuDong.setPreferredSize(new java.awt.Dimension(220, 30));
 
+        txtKhangNuoc.setText("0");
         txtKhangNuoc.setPreferredSize(new java.awt.Dimension(220, 30));
+
+        txtSizeMat.setText("0");
+
+        txtDoDay.setText("0");
+
+        txtKhoangTruCot.setText("0");
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -854,8 +894,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMaVach, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtMaVach, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnInMaVach, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
@@ -919,6 +959,11 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         btnLuu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnLuu.setIconTextGap(5);
         btnLuu.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnLuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuuActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnLuu);
         jToolBar1.add(jSeparator1);
 
@@ -1066,6 +1111,113 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         loadDataCboPhongCach();
     }//GEN-LAST:event_btnResetCboPhongCachActionPerformed
 
+    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
+        if (!validateForm()) {
+            if (sanPhamService.insert(getDataToForm())) {
+                Helper.alert(this, "Thêm thành công");
+                formSanPhamJPanel.initPagination(sanPhamService.getAll(
+                        formSanPhamJPanel.page,
+                        formSanPhamJPanel.pageSize));
+
+            }
+        }
+    }//GEN-LAST:event_btnLuuActionPerformed
+
+    private SanPham getDataToForm() {
+        SanPham sp = new SanPham();
+        sp.setMaSanPham(txtMaSanPham.getText().trim());
+        sp.setMaHangHoa(txtMaVach.getText().trim());
+        sp.setSoLuongTon(Integer.valueOf(spnSoLuong.getValue().toString().trim()));
+        sp.setGiaNhap(BigDecimal.valueOf(Long.parseLong(txtGiaNhap.getText().trim())));
+        sp.setDonGia(BigDecimal.valueOf(Long.parseLong(txtGiaBan.getText().trim())));
+        ThuongHieuViewModel th = null;
+        if (dcbmThuongHieu.getSelectedItem() != null) {
+            th = (ThuongHieuViewModel) dcbmThuongHieu.getSelectedItem();
+            sp.setThuongHieu(new ThuongHieu(th.getMaThuongHieu()));
+        } else {
+            sp.setThuongHieu(new ThuongHieu(null));
+        }
+        if (dcbmDongSanPham.getSelectedItem() != null) {
+            sp.setDongSanPham(dcbmDongSanPham.getSelectedItem().toString());
+        } else {
+            sp.setDongSanPham(null);
+        }
+        XuatXuViewModel xx = null;
+        if (dcbmXuatXu.getSelectedItem() != null) {
+            xx = (XuatXuViewModel) dcbmXuatXu.getSelectedItem();
+            sp.setXuatXu(new XuatXu(xx.getMaXuatXu()));
+        } else {
+            sp.setXuatXu(new XuatXu(null));
+        }
+        MauViewModel mv = null;
+        if (dcbmMauVo.getSelectedItem() != null) {
+            mv = (MauViewModel) dcbmMauVo.getSelectedItem();
+            sp.setMauVo(new Mau(mv.getMaMau()));
+        } else {
+            sp.setMauVo(new Mau(null));
+        }
+        MauViewModel mm = null;
+        if (dcbmMauMat.getSelectedItem() != null) {
+            mm = (MauViewModel) dcbmMauMat.getSelectedItem();
+            sp.setMauMat(new Mau(mm.getMaMau()));
+        } else {
+            sp.setMauMat(new Mau(null));
+        }
+        DongMayViewModel dm = null;
+        if (dcbmDongMay.getSelectedItem() != null) {
+            dm = (DongMayViewModel) dcbmDongMay.getSelectedItem();
+            sp.setDongMay(new DongMay(dm.getIdDongMay()));
+        } else {
+            sp.setDongMay(new DongMay(null));
+        }
+        ChatLieuDayViewModel cld = null;
+        if (dcbmChatLieuDay.getSelectedItem() != null) {
+            cld = (ChatLieuDayViewModel) dcbmChatLieuDay.getSelectedItem();
+            sp.setChatLieuDay(new ChatLieuDay(cld.getMaChatLieuDay()));
+        } else {
+            sp.setChatLieuDay(new ChatLieuDay(null));
+        }
+        ChatLieuKinhViewModel clk = null;
+        if (dcbmChatLieuKinh.getSelectedItem() != null) {
+            clk = (ChatLieuKinhViewModel) dcbmChatLieuKinh.getSelectedItem();
+            sp.setChatLieuKinh(new ChatLieuKinh(clk.getMaChatLieuKinh()));
+        } else {
+            sp.setChatLieuKinh(new ChatLieuKinh(null));
+        }
+        ChatLieuVoViewModel clv = null;
+        if (dcbmChatLieuVo.getSelectedItem() != null) {
+            clv = (ChatLieuVoViewModel) dcbmChatLieuVo.getSelectedItem();
+            sp.setChatLieuVo(new ChatLieuVo(clv.getIdChatLieuVo()));
+        } else {
+            sp.setChatLieuVo(new ChatLieuVo(null));
+        }
+        sp.setHinhDang(cboHinhDang.getSelectedItem().toString());
+        sp.setDoiTuongSuDung(cboDoiTuongSuDong.getSelectedItem().toString());
+        sp.setKhangNuoc(Integer.valueOf(txtKhangNuoc.getText().trim()));
+        sp.setSizeMat(Float.valueOf(txtSizeMat.getText().trim()));
+        sp.setDoDay(Float.valueOf(txtDoDay.getText().trim()));
+        sp.setKhoangTruCot(Integer.valueOf(txtKhoangTruCot.getText().trim()));
+        return sp;
+    }
+
+    private List<TinhNangSanPham> getDataTinhNangToForm() {
+        List<TinhNangViewModel> listTnspView = cboTinhNang.getSelectedItems();
+        int id = sanPhamService.findByMa(txtMaSanPham.getText().trim()).getId();
+        List<TinhNangSanPham> listTnspModel = new ArrayList<>();
+        if (!listTnspView.isEmpty()) {
+            for (TinhNangViewModel tnspView : listTnspView) {
+                TinhNangSanPham tnspModel = new TinhNangSanPham();
+                tnspModel.setIdSanPham(id);
+                tnspModel.setIdTinhNang(tnspView.getMaTinhNang());
+            }
+        }
+        return listTnspModel;
+    }
+
+    private boolean validateForm() {
+        return false;
+    }
+
     private void loadDataCboThuongHieu() {
         List<ThuongHieuViewModel> list = thuongHieuService.getAll();
         dcbmThuongHieu.removeAllElements();
@@ -1151,7 +1303,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         }
         cboDongSanPham.setSelectedIndex(-1);
     }
-    
+
     private void loadDataCboTinhNang() {
         List<TinhNangViewModel> list = tinhNangService.getAll();
         dcbmTinhNang.removeAllElements();
@@ -1160,14 +1312,28 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         }
         cboTinhNang.setSelectedItem(null);
     }
-    
+
     private void loadDataCboPhongCach() {
         List<PhongCachViewModel> list = phongCachService.getAll();
         dcbmPhongCach.removeAllElements();
-        for (PhongCachViewModel clv : list) {
-            dcbmPhongCach.addElement(clv);
+        for (PhongCachViewModel pc : list) {
+            dcbmPhongCach.addElement(pc);
         }
         cboPhongCach.setSelectedItem(null);
+    }
+
+    private void loadDataCboHinhDang() {
+        cboHinhDang.addItem("Mặt tròn");
+        cboHinhDang.addItem("Mặt vuông");
+        cboHinhDang.addItem("Mặt chữ nhật");
+        cboHinhDang.addItem("Đa giác");
+    }
+
+    private void loadDataCboDoiTuongSuDung() {
+        cboDoiTuongSuDong.addItem("Unisex");
+        cboDoiTuongSuDong.addItem("Nam");
+        cboDoiTuongSuDong.addItem("Nữ");
+        cboDoiTuongSuDong.addItem("Trẻ em");
     }
 
     public static void main(String args[]) {
