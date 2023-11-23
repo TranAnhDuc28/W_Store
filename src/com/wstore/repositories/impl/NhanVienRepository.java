@@ -16,7 +16,7 @@ public class NhanVienRepository implements INhanVienRepository {
 
     @Override
     public List<NhanVien> getAll(int page, int pageSize, int trangThai) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
     }
 
     @Override
