@@ -1072,7 +1072,26 @@ insert into TinhNangSanPham(id_san_pham, id_tinh_nang) values (71, 18);
 
 
 
+-- data table NhanVien
+select * from NhanVien
 
+
+insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
+values ('ducta', 'duc123', N'Trần Anh Đức', 1, '1999-01-01', '001202087634', N'Hà Nội', '0986543876', 'ductaph30986@fpt.edu.vn', 1, 'No image', default, default);
+insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
+values ('chunghlb', 'chung123', N'Hoàng Lê Bảo Chung', 1, '1999-01-01', '001837237372', N'Hà Nội', '0933376389', 'chunghlb@fpt.edu.vn', 1, 'anh2.jpg', default, default);
+insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
+values ('longng', 'duc123', N'Trần Anh Đức', 1, '1999-01-01', '001202087634', N'Hà Nội', '0986543876', 'ductaph30986@fpt.edu.vn', 1, 'No image', default, default)
+insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
+values ('nguyenlk', 'duc123', N'Trần Anh Đức', 1, '1999-01-01', '001202087634', N'Hà Nội', '0986543876', 'ductaph30986@fpt.edu.vn', 1, 'No image', default, default)
+insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
+values ('ducta', 'duc123', N'Trần Anh Đức', 1, '1999-01-01', '001202087634', N'Hà Nội', '0986543876', 'ductaph30986@fpt.edu.vn', 0, 'No image', default, default)
+insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
+values ('ducta', 'duc123', N'Trần Anh Đức', 1, '1999-01-01', '001202087634', N'Hà Nội', '0986543876', 'ductaph30986@fpt.edu.vn', 0, 'No image', default, default)
+insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
+values ('ducta', 'duc123', N'Trần Anh Đức', 1, '1999-01-01', '001202087634', N'Hà Nội', '0986543876', 'ductaph30986@fpt.edu.vn', 0, 'No image', default, default)
+insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
+values ('ducta', 'duc123', N'Trần Anh Đức', 1, '1999-01-01', '001202087634', N'Hà Nội', '0986543876', 'ductaph30986@fpt.edu.vn', 0, 'No image', default, default)
 
 
 

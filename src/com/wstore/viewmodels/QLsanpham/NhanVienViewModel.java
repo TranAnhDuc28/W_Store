@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.wstore.domainmodels;
+package com.wstore.viewmodels.QLsanpham;
 
+import com.wstore.utilities.status.StatusNhanVien;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -11,7 +12,8 @@ import java.sql.Timestamp;
  *
  * @author ducan
  */
-public class NhanVien {
+public class NhanVienViewModel {
+
     private Integer id;
     private String maNhanVien;
     private String matKhau;
@@ -28,10 +30,10 @@ public class NhanVien {
     private String ghiChu;
     private Integer trangThai;
 
-    public NhanVien() {
+    public NhanVienViewModel() {
     }
 
-    public NhanVien(Integer id, String maNhanVien, String matKhau, String hoTen, Boolean gioiTinh, Date ngaySinh, String canCuocCongDan, String diaChi, String soDienThoai, String email, Integer vaiTro, Timestamp ngayTao, String hinhAnh, String ghiChu, Integer trangThai) {
+    public NhanVienViewModel(Integer id, String maNhanVien, String matKhau, String hoTen, Boolean gioiTinh, Date ngaySinh, String canCuocCongDan, String diaChi, String soDienThoai, String email, Integer vaiTro, Timestamp ngayTao, String hinhAnh, String ghiChu, Integer trangThai) {
         this.id = id;
         this.maNhanVien = maNhanVien;
         this.matKhau = matKhau;
@@ -169,7 +171,11 @@ public class NhanVien {
         this.trangThai = trangThai;
     }
 
-    
-    
-    
+    public Object[] toDataRow() {
+        return new Object[]{maNhanVien, hoTen,
+            gioiTinh ? "Nam" : "Nữ", ngaySinh,
+            soDienThoai, email, canCuocCongDan, diaChi,
+            vaiTro == 0 ? "Nhân viên" : "Quản lý", ngayTao,
+            trangThai == 0 ? "Đang làm việc" : "Đã nghỉ việc"};
+    }
 }

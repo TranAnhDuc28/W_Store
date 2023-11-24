@@ -5,6 +5,7 @@
 package com.wstore.services;
 
 import com.wstore.domainmodels.NhanVien;
+import com.wstore.viewmodels.QLsanpham.NhanVienViewModel;
 import java.util.List;
 
 /**
@@ -12,15 +13,13 @@ import java.util.List;
  * @author ducan
  */
 public interface INhanVienService {
-    List<NhanVien> getAll(int page, int pageSize, int trangThai);
+    List<NhanVienViewModel> getAll(int page, int pageSize, int trangThai);
 
     boolean insert(NhanVien obj);
 
     boolean update(NhanVien obj, int id);
 
     boolean updateStatus(int trangThai, int id);
-
-    boolean delete(int id);
 
     NhanVien findByMa(String ma);
 

@@ -186,7 +186,7 @@ drop table NhanVien
 go
 create table NhanVien(
 	id int identity(1,1) not null,
-	ma_nhan_vien char(8) not null,
+	ma_nhan_vien varchar(12) not null,
 	mat_khau varchar(max),
 	ho_ten nvarchar(100) not null,
 	gioi_tinh bit not null,
@@ -199,7 +199,7 @@ create table NhanVien(
 	hinh_anh varchar(max),
 	ngay_tao datetime2 default getdate(),
 	ghi_chu nvarchar(255),
-	trang_thai int default 1 
+	trang_thai int default 0
 )
 go
 

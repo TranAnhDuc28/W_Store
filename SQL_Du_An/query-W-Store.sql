@@ -63,10 +63,10 @@ where id_san_pham = 2;
 --query NhanVien
 select * from NhanVien
 
-SELECT id, ma_nhan_vien , mat_khau, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai
-		, can_cuoc_cong_dan, email ,dia_chi, vai_tro, hinh_anh, ghi_chu, trang_thai
-FROM NhanVien
-WHERE trang_thai = 1
-ORDER BY id
-OFFSET 1 ROWS
-FETCH NEXT 1 ROWS ONLY;
+select id, ma_nhan_vien , mat_khau, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai
+		, can_cuoc_cong_dan, email ,dia_chi, vai_tro, ngay_tao, hinh_anh, ghi_chu, trang_thai
+from NhanVien
+where trang_thai = 1
+order by id
+offset ? rows
+fetch next ? rows only;
