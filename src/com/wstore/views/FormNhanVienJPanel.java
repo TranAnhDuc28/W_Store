@@ -782,7 +782,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     private void btnRefeshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefeshActionPerformed
         imageName = null;
         lblHinhAnh.setIcon(null);
-        lblHinhAnh.setText("HÌNH ẢNH");
+        lblHinhAnh.setText("Hình ảnh");
     }//GEN-LAST:event_btnRefeshActionPerformed
 
     private void cboTrangThaiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTrangThaiItemStateChanged
