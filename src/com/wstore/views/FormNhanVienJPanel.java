@@ -8,6 +8,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.wstore.domainmodels.NhanVien;
 import com.wstore.services.INhanVienService;
 import com.wstore.services.impl.NhanVienService;
+import com.wstore.utilities.HashPassword;
 import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.NhanVienViewModel;
 import java.sql.Date;
@@ -142,6 +143,11 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         btnMoi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnMoi.setIconTextGap(5);
         btnMoi.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnMoi);
         jToolBar1.add(jSeparator5);
 
@@ -151,6 +157,11 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         btnThem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnThem.setIconTextGap(5);
         btnThem.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnThem);
         jToolBar1.add(jSeparator1);
 
@@ -160,6 +171,11 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         btnDieuChinh.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnDieuChinh.setIconTextGap(5);
         btnDieuChinh.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnDieuChinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDieuChinhActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnDieuChinh);
         jToolBar1.add(jSeparator2);
 
@@ -169,6 +185,11 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         btnXoa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnXoa.setIconTextGap(5);
         btnXoa.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnXoa);
         jToolBar1.add(jSeparator3);
 
@@ -178,6 +199,11 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         btnXuatExcel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnXuatExcel.setIconTextGap(5);
         btnXuatExcel.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnXuatExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatExcelActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnXuatExcel);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -423,9 +449,19 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         btnChonAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/upload-image24x24.png"))); // NOI18N
         btnChonAnh.setText("Chọn ảnh");
         btnChonAnh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnChonAnh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonAnhActionPerformed(evt);
+            }
+        });
 
         btnRefesh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/refresh16x16.png"))); // NOI18N
         btnRefesh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRefesh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefeshActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -466,6 +502,11 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         jLabel16.setText("Tìm kiếm");
 
         cboTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang làm việc", "Đã nghỉ việc" }));
+        cboTrangThai.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboTrangThaiItemStateChanged(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel19.setText("Trạng thái");
@@ -637,9 +678,9 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
                                                 .addComponent(jLabel2))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(849, 849, 849)
-                                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
@@ -707,10 +748,62 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     private void tblDSNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSNhanVienMouseClicked
         index = tblDSNhanVien.getSelectedRow();
         if (index >= 0) {
-           btnThem.setEnabled(false);
+            btnThem.setEnabled(false);
+            psfMatKhau.setEnabled(false);
         }
         showData();
     }//GEN-LAST:event_tblDSNhanVienMouseClicked
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        clearForm();
+        initPagination(nhanVienService.getAll(page, pageSize, trangThai));
+    }//GEN-LAST:event_btnMoiActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnDieuChinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDieuChinhActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDieuChinhActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXuatExcelActionPerformed
+
+    private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonAnhActionPerformed
+        imageName = Helper.chonAnh("images//images-nguoi", lblHinhAnh);
+    }//GEN-LAST:event_btnChonAnhActionPerformed
+
+    private void btnRefeshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefeshActionPerformed
+        imageName = null;
+        lblHinhAnh.setIcon(null);
+        lblHinhAnh.setText("HÌNH ẢNH");
+    }//GEN-LAST:event_btnRefeshActionPerformed
+
+    private void cboTrangThaiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTrangThaiItemStateChanged
+        initPagination(nhanVienService.getAll(page, pageSize, trangThai));
+        clearForm();
+        if (cboTrangThai.getSelectedIndex() == 0) {
+            btnMoi.setEnabled(true);
+            btnThem.setEnabled(true);
+            btnDieuChinh.setEnabled(true);
+            btnXoa.setEnabled(false);
+            btnChupAnh.setEnabled(true);
+            btnChonAnh.setEnabled(true);
+        } else {
+            btnMoi.setEnabled(false);
+            btnThem.setEnabled(false);
+            btnDieuChinh.setEnabled(false);
+            btnXoa.setEnabled(true);
+            btnChupAnh.setEnabled(false);
+            btnChonAnh.setEnabled(false);
+        }
+    }//GEN-LAST:event_cboTrangThaiItemStateChanged
 
     private void initPagination(List<NhanVienViewModel> list) {
         trangThai = cboTrangThai.getSelectedIndex();
@@ -736,7 +829,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     private NhanVien getDataToForm() {
         NhanVien nv = new NhanVien();
         nv.setMaNhanVien(txtMaNhanVien.getText().trim());
-        nv.setMatKhau(String.valueOf(psfMatKhau.getPassword()));
+        nv.setMatKhau(HashPassword.hashPassword(String.valueOf(psfMatKhau.getPassword())));
         nv.setHoTen(txtHoVaTen.getText().trim());
         if (rdoNam.isSelected()) {
             nv.setGioiTinh(true);
@@ -779,7 +872,6 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     private void showData() {
         NhanVienViewModel nv = listNVs.get(index);
         txtMaNhanVien.setText(nv.getMaNhanVien());
-        psfMatKhau.setText(nv.getMatKhau());
         txtHoVaTen.setText(nv.getHoTen());
         if (nv.getGioiTinh()) {
             rdoNam.setSelected(true);
@@ -815,6 +907,12 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         lblHinhAnh.setText("Hình ảnh");
         index = -1;
         tblDSNhanVien.clearSelection();
+        btnThem.setEnabled(true);
+        psfMatKhau.setEnabled(true);
+    }
+
+    private boolean validateForm() {
+        return false;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

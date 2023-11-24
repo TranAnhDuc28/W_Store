@@ -15,13 +15,11 @@ public interface INhanVienRepository {
 
     List<NhanVien> getAll(int page, int pageSize, int trangThai);
 
-    boolean insert(NhanVien obj);
+    boolean insert(NhanVien nv);
 
-    boolean update(NhanVien obj, int id);
+    boolean update(NhanVien nv, int id);
 
     boolean updateStatus(int trangThai, int id);
-
-    boolean delete(int id);
 
     NhanVien findByMa(String ma);
 

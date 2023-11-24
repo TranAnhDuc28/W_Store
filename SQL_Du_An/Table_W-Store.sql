@@ -186,7 +186,7 @@ drop table NhanVien
 go
 create table NhanVien(
 	id int identity(1,1) not null,
-	ma_nhan_vien varchar(12) not null,
+	ma_nhan_vien varchar(12) unique not null,
 	mat_khau varchar(max),
 	ho_ten nvarchar(100) not null,
 	gioi_tinh bit not null,

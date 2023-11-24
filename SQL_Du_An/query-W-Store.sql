@@ -70,3 +70,16 @@ where trang_thai = 1
 order by id
 offset ? rows
 fetch next ? rows only;
+
+
+insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh
+					, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro
+					, hinh_anh, ghi_chu, trang_thai)
+values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default);	
+
+update NhanVien
+set ho_ten = ?, gioi_tinh, ngay_sinh = ?, can_cuoc_cong_dan = ?, 
+dia_chi = ?, so_dien_thoai = ?, email = ?, vai_tro = ?, hinh_anh = ?, ghi_chu = ?
+where id = ?;
+
+select *from NhanVien where ho_ten like N'%%'
