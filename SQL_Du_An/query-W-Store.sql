@@ -78,8 +78,8 @@ insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh
 values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default);	
 
 update NhanVien
-set ho_ten = ?, gioi_tinh, ngay_sinh = ?, can_cuoc_cong_dan = ?, 
+set ho_ten = ?, gioi_tinh = ?, ngay_sinh = ?, can_cuoc_cong_dan = ?, 
 dia_chi = ?, so_dien_thoai = ?, email = ?, vai_tro = ?, hinh_anh = ?, ghi_chu = ?
 where id = ?;
 
-select *from NhanVien where ho_ten like N'%%'
+select * from NhanVien where ho_ten like N'%%'

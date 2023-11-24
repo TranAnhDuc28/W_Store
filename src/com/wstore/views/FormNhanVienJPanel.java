@@ -10,9 +10,13 @@ import com.wstore.services.INhanVienService;
 import com.wstore.services.impl.NhanVienService;
 import com.wstore.utilities.HashPassword;
 import com.wstore.utilities.Helper;
+import com.wstore.utilities.status.StatusNhanVien;
 import com.wstore.viewmodels.QLsanpham.NhanVienViewModel;
 import java.sql.Date;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -39,16 +43,12 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     }
 
     private void init() {
-        txtTimKiemNhanVien.putClientProperty(
-                FlatClientProperties.PLACEHOLDER_TEXT,
+        txtTimKiemNhanVien.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,
                 "Nhập nội dung tìm kiếm...");
-        txtTimKiemNhanVien.putClientProperty(
-                FlatClientProperties.TEXT_FIELD_SHOW_CLEAR_BUTTON,
+        txtTimKiemNhanVien.putClientProperty(FlatClientProperties.TEXT_FIELD_SHOW_CLEAR_BUTTON,
                 true);
-        psfMatKhau.putClientProperty(FlatClientProperties.STYLE, "showRevealButton:true");
-        txtMaNhanVien.putClientProperty(
-                FlatClientProperties.PLACEHOLDER_TEXT,
-                "Mã nhân viên tự động");
+        psfMatKhau.putClientProperty(FlatClientProperties.STYLE,
+                "showRevealButton:true");
     }
 
     /**
@@ -217,7 +217,6 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Mã nhân viên (*)");
 
-        txtMaNhanVien.setEditable(false);
         txtMaNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         txtMaNhanVien.setPreferredSize(new java.awt.Dimension(300, 30));
 
@@ -240,6 +239,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         jLabel7.setPreferredSize(new java.awt.Dimension(88, 16));
 
         txtNgaySinh.setBackground(new java.awt.Color(243, 243, 243));
+        txtNgaySinh.setDateFormatString("yyyy-MM-dd");
         txtNgaySinh.setPreferredSize(new java.awt.Dimension(300, 30));
 
         jLabel12.setText("CCCD (*)");
@@ -622,6 +622,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         });
         tblDSNhanVien.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tblDSNhanVien.setRowHeight(30);
+        tblDSNhanVien.setSelectionBackground(new java.awt.Color(137, 187, 201));
         tblDSNhanVien.getTableHeader().setReorderingAllowed(false);
         tblDSNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -646,9 +647,20 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         jPanel8.add(jScrollPane3, java.awt.BorderLayout.CENTER);
 
         chkChonTat.setText("All");
+        chkChonTat.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkChonTatItemStateChanged(evt);
+            }
+        });
 
         btnKhoiPhuc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/restore.png"))); // NOI18N
         btnKhoiPhuc.setText("Khôi phục");
+        btnKhoiPhuc.setEnabled(false);
+        btnKhoiPhuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhoiPhucActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -749,7 +761,6 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         index = tblDSNhanVien.getSelectedRow();
         if (index >= 0) {
             btnThem.setEnabled(false);
-            psfMatKhau.setEnabled(false);
         }
         showData();
     }//GEN-LAST:event_tblDSNhanVienMouseClicked
@@ -760,15 +771,70 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        // TODO add your handling code here:
+        if (nhanVienService.findByMa(txtMaNhanVien.getText().trim()) != null) {
+            Helper.alert(this, "Mã nhân viên đã tồn tại, vui lòng nhập mã khác!");
+            txtMaNhanVien.requestFocus();
+            return;
+        }
+        if (!validateForm()) {
+            if (nhanVienService.insert(getDataToForm())) {
+                Helper.alert(this, "Thêm thành công!");
+                initPagination(nhanVienService.getAll(page, pageSize, trangThai));
+                clearForm();
+            } else {
+                Helper.alert(this, "Thêm thất bại!");
+            }
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnDieuChinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDieuChinhActionPerformed
-        // TODO add your handling code here:
+        index = tblDSNhanVien.getSelectedRow();
+        if (index < 0) {
+            Helper.alert(this, "Vui lòng chọn thông tin nhân viên muốn sửa!");
+            return;
+        }
+        if (!validateForm()) {
+            if (Helper.comfirm(this, "Xác nhận sửa?")) {
+                int id = listNVs.get(index).getId();
+                if (nhanVienService.update(getDataToForm(), id)) {
+                    Helper.alert(this, "Sửa thành công!");
+                    initPagination(nhanVienService.getAll(page, pageSize, trangThai));
+                    tblDSNhanVien.setRowSelectionInterval(index, index);
+                    showData();
+                } else {
+                    Helper.alert(this, "Sửa thất bại!");
+                }
+            }
+        }
     }//GEN-LAST:event_btnDieuChinhActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
+        int selectedRowCount = tblDSNhanVien.getSelectedRowCount();
+        if (selectedRowCount == 0) {
+            Helper.alert(this, "Vui lòng chọn thông tin nhân viên muốn xóa!");
+            return;
+        }
+        if (selectedRowCount == 1) {
+            index = tblDSNhanVien.getSelectedRow();
+            if (Helper.comfirm(this, "Xác nhận thao tác? Bạn muốn thay đổi trạng thái nhân viên thành nghỉ việc? ")) {
+                Integer id = listNVs.get(index).getId();
+                nhanVienService.updateStatusOfAnStaff(1, id);
+                initPagination(nhanVienService.getAll(page, pageSize, trangThai));
+                clearForm();
+            }
+            System.out.println("Update 1");
+        } else {
+            List<Integer> listID = new ArrayList<>();
+            int count = tblDSNhanVien.getSelectedRows().length;
+            for (int i = 0; i < count; i++) {
+                listID.add(listNVs.get(i).getId());
+            }
+            if (Helper.comfirm(this, "Xác nhận thao tác? Bạn muốn thay đổi trạng thái nhân viên thành nghỉ việc? ")) {
+                nhanVienService.updateSatusOfStaffs(1, listID);
+                initPagination(nhanVienService.getAll(page, pageSize, trangThai));
+                clearForm();
+            }
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
@@ -788,22 +854,54 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     private void cboTrangThaiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTrangThaiItemStateChanged
         initPagination(nhanVienService.getAll(page, pageSize, trangThai));
         clearForm();
-        if (cboTrangThai.getSelectedIndex() == 0) {
-            btnMoi.setEnabled(true);
-            btnThem.setEnabled(true);
-            btnDieuChinh.setEnabled(true);
-            btnXoa.setEnabled(false);
-            btnChupAnh.setEnabled(true);
-            btnChonAnh.setEnabled(true);
-        } else {
-            btnMoi.setEnabled(false);
-            btnThem.setEnabled(false);
-            btnDieuChinh.setEnabled(false);
+        if (cboTrangThai.getSelectedIndex() == StatusNhanVien.DANG_LAM_VIEC) {
             btnXoa.setEnabled(true);
-            btnChupAnh.setEnabled(false);
-            btnChonAnh.setEnabled(false);
+            btnKhoiPhuc.setEnabled(false);
+        } else if (cboTrangThai.getSelectedIndex() == StatusNhanVien.DA_NGHI_VIEC){
+            btnXoa.setEnabled(false);
+            btnKhoiPhuc.setEnabled(true);
         }
     }//GEN-LAST:event_cboTrangThaiItemStateChanged
+
+    private void btnKhoiPhucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoiPhucActionPerformed
+        int selectedRowCount = tblDSNhanVien.getSelectedRowCount();
+        if (selectedRowCount == 0) {
+            Helper.alert(this, "Vui lòng chọn thông tin nhân viên muốn khôi phục!");
+            return;
+        }
+        if (selectedRowCount == 1) {
+            index = tblDSNhanVien.getSelectedRow();
+            if (Helper.comfirm(this, "Xác nhận khôi phục? ")) {
+                Integer id = listNVs.get(index).getId();
+                nhanVienService.updateStatusOfAnStaff(0, id);
+                initPagination(nhanVienService.getAll(page, pageSize, trangThai));
+                clearForm();
+            }
+            System.out.println("Update 1");
+        } else {
+            List<Integer> listID = new ArrayList<>();
+            int count = tblDSNhanVien.getSelectedRows().length;
+            for (int i = 0; i < count; i++) {
+                listID.add(listNVs.get(i).getId());
+            }
+            if (Helper.comfirm(this, "Xác nhận khôi phục? ")) {
+                nhanVienService.updateSatusOfStaffs(0, listID);
+                initPagination(nhanVienService.getAll(page, pageSize, trangThai));
+                clearForm();
+            }
+            System.out.println("Update nhiều");
+        }
+    }//GEN-LAST:event_btnKhoiPhucActionPerformed
+
+    private void chkChonTatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkChonTatItemStateChanged
+        if (chkChonTat.isSelected()) {
+            int rowCount = tblDSNhanVien.getRowCount();
+            tblDSNhanVien.setRowSelectionInterval(0, rowCount - 1);
+        } else {
+            tblDSNhanVien.clearSelection();
+        }
+
+    }//GEN-LAST:event_chkChonTatItemStateChanged
 
     private void initPagination(List<NhanVienViewModel> list) {
         trangThai = cboTrangThai.getSelectedIndex();
@@ -836,7 +934,8 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         } else {
             nv.setGioiTinh(false);
         }
-        nv.setNgaySinh(new Date(txtNgaySinh.getDate().getTime()));
+        java.util.Date ngaySinh = txtNgaySinh.getDate();
+        nv.setNgaySinh(ngaySinh != null ? new Date(ngaySinh.getTime()) : null);
         nv.setSoDienThoai(txtSoDienThoai.getText().trim());
         nv.setCanCuocCongDan(txtCCCD.getText().trim());
         nv.setEmail(txtEmail.getText().trim());
@@ -850,20 +949,14 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         String hinh = null;
         if (imageName != null) {
             hinh = imageName;
+            imageName = null;
         } else {
-            // kiểm tra trong TH cập nhật hoặc thêm k chọn ảnh
-            // Trên dữ liệu đã có đường dẫn ảnh thì giữ nguyên ảnh đó
-//            if (index >= 0 && tblQLNV.getValueAt(index, 8) != null
-//                    && !(tblQLNV.getValueAt(index, 8).equals("No avatar"))) {
-//                hinh = tblQLNV.getValueAt(index, 8).toString();
-//                // TH refesh ảnh -> k gắn ảnh
-//                // đưa khung ảnh về mặc định k icon
-//                if (lblImage.getIcon() == null) {
-//                    hinh = "No avatar";
-//                }
-//            } else { // nếu không thì gán text No Avartar
-//                hinh = "No avatar";
-//            }
+            if (index >= 0) {
+                if (lblHinhAnh.getIcon() == null) {
+                    hinh = "No image";
+                }
+                hinh = listNVs.get(index).getHinhAnh();
+            }
         }
         nv.setHinhAnh(hinh);
         return nv;
@@ -873,17 +966,21 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         NhanVienViewModel nv = listNVs.get(index);
         txtMaNhanVien.setText(nv.getMaNhanVien());
         txtHoVaTen.setText(nv.getHoTen());
-        if (nv.getGioiTinh()) {
+        if (nv.getGioiTinh().equalsIgnoreCase(rdoNam.getText())) {
             rdoNam.setSelected(true);
         } else {
             rdoNu.setSelected(true);
         }
-        txtNgaySinh.setDate(nv.getNgaySinh());
+        try {
+            txtNgaySinh.setDate(Helper.sdfNgayThang.parse(nv.getNgaySinh()));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
         txtSoDienThoai.setText(nv.getSoDienThoai());
         txtCCCD.setText(nv.getCanCuocCongDan());
         txtEmail.setText(nv.getEmail());
         txtDiaChi.setText(nv.getDiaChi());
-        if (nv.getVaiTro() == 1) {
+        if (nv.getVaiTro().equalsIgnoreCase(chkQuanLy.getText())) {
             chkQuanLy.setSelected(true);
         } else {
             chkNhanVien.setSelected(true);
@@ -894,6 +991,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     }
 
     private void clearForm() {
+        txtMaNhanVien.setText("");
         psfMatKhau.setText("");
         txtHoVaTen.setText("");
         rdoNam.setSelected(true);
@@ -906,12 +1004,15 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         lblHinhAnh.setIcon(null);
         lblHinhAnh.setText("Hình ảnh");
         index = -1;
-        tblDSNhanVien.clearSelection();
         btnThem.setEnabled(true);
         psfMatKhau.setEnabled(true);
+        tblDSNhanVien.clearSelection();
     }
 
     private boolean validateForm() {
+        if (Helper.checkRongJDateChooser(this, txtNgaySinh, "Chưa chọn ngày sinh")) {
+            return true;
+        }
         return false;
     }
 

@@ -91,7 +91,7 @@ public class NhanVienRepository implements INhanVienRepository {
     public boolean update(NhanVien nv, int id) {
         int checkUpdate = 0;
         String sql = "update NhanVien\n"
-                + "set ma_nhan_vien = ?, ho_ten = ?, gioi_tinh, ngay_sinh = ?, can_cuoc_cong_dan = ?, \n"
+                + "set ma_nhan_vien = ?, ho_ten = ?, gioi_tinh = ?, ngay_sinh = ?, can_cuoc_cong_dan = ?, \n"
                 + "dia_chi = ?, so_dien_thoai = ?, email = ?, vai_tro = ?, hinh_anh = ?, ghi_chu = ?\n"
                 + "where id = ?;";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
@@ -106,21 +106,7 @@ public class NhanVienRepository implements INhanVienRepository {
             pstm.setInt(9, nv.getVaiTro());
             pstm.setString(10, nv.getHinhAnh());
             pstm.setString(11, nv.getGhiChu());
-            pstm.setInt(12, nv.getId());
-            checkUpdate = pstm.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return checkUpdate > 0;
-    }
-
-    @Override
-    public boolean updateStatus(int trangThai, int id) {
-        int checkUpdate = 0;
-        String sql = "update NhanVien set trang_thai = ? where id = ?;";
-        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
-            pstm.setInt(1, trangThai);
-            pstm.setInt(2, id);
+            pstm.setInt(12, id);
             checkUpdate = pstm.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -230,6 +216,53 @@ public class NhanVienRepository implements INhanVienRepository {
             e.printStackTrace();
         }
         return checkUpdate > 0;
+    }
+
+    @Override
+    public boolean updateStatusOfAnStaff(int trangThai, int id) {
+        int checkUpdate = 0;
+        String sql = "update NhanVien set trang_thai = ? where id = ?;";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setInt(1, trangThai);
+            pstm.setInt(2, id);
+            checkUpdate = pstm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return checkUpdate > 0;
+    }
+
+    @Override
+    public void updateSatusOfStaffs(int trangThai, List<Integer> listID) {
+        int results[];
+        String sql = "update NhanVien set trang_thai = ? where id = ?;";
+        try (Connection cn = DBConnect.getConnection();) {
+            cn.setAutoCommit(false);
+            try (PreparedStatement pstm = cn.prepareStatement(sql);) {
+                int sizeList = listID.size();
+                for (int i = 0; i < sizeList; i++) {
+                    pstm.setInt(1, trangThai);
+                    pstm.setInt(2, listID.get(i));
+                    pstm.addBatch();
+                }
+                
+                // chạy batch và lấy kết quả
+                results = pstm.executeBatch();
+                
+                // check lỗi
+                for (int i = 0; i < results.length; i++) {
+                    if (results[i] == PreparedStatement.EXECUTE_FAILED) {
+                        System.out.println("Error in statement at index " + i);
+                    }
+                }
+                cn.commit();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                cn.rollback();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

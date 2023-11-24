@@ -13,17 +13,20 @@ import java.util.List;
  * @author ducan
  */
 public interface INhanVienService {
+    
     List<NhanVienViewModel> getAll(int page, int pageSize, int trangThai);
 
-    boolean insert(NhanVien obj);
+    boolean insert(NhanVien nv);
 
-    boolean update(NhanVien obj, int id);
+    boolean update(NhanVien nv, int id);
 
-    boolean updateStatus(int trangThai, int id);
+    boolean updateStatusOfAnStaff(int trangThai, int id);
+    
+    void updateSatusOfStaffs(int trangThai, List<Integer> listID); 
 
     NhanVien findByMa(String ma);
 
-    List<NhanVien> findByNameOrMa(int page, int pageSize, int trangThai, String name);
+    List<NhanVienViewModel> findByNameOrMa(int page, int pageSize, int trangThai, String name);
 
     int getCountRecord(int trangThai);
 

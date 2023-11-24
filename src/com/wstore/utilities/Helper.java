@@ -32,6 +32,7 @@ import javax.swing.JTextField;
 public class Helper {
 
     public static Image ICON_APP;
+    public static SimpleDateFormat sdfNgayThangThoiGian = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
     public static SimpleDateFormat sdfNgayThang = new SimpleDateFormat("dd/MM/yyyy");
     public static DecimalFormat dfTien = new DecimalFormat("###,###.##");
     public static Dimension dimensionJFileChooser = new Dimension(800, 500);

@@ -8,6 +8,7 @@ import com.wstore.domainmodels.NhanVien;
 import com.wstore.repositories.INhanVienRepository;
 import com.wstore.repositories.impl.NhanVienRepository;
 import com.wstore.services.INhanVienService;
+import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.NhanVienViewModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,45 +32,62 @@ public class NhanVienService implements INhanVienService {
                     nv.getMaNhanVien(),
                     nv.getMatKhau(),
                     nv.getHoTen(),
-                    nv.getGioiTinh(),
-                    nv.getNgaySinh(),
+                    nv.getGioiTinh() ? "Nam" : "Nữ",
+                    Helper.sdfNgayThang.format(nv.getNgaySinh()),
                     nv.getCanCuocCongDan(),
                     nv.getDiaChi(),
                     nv.getSoDienThoai(),
                     nv.getEmail(),
-                    nv.getVaiTro(),
-                    nv.getNgayTao(),
+                    nv.getVaiTro() == 0 ? "Nhân viên" : "Quản lý",
+                    Helper.sdfNgayThangThoiGian.format(nv.getNgayTao()),
                     nv.getHinhAnh(),
                     nv.getGhiChu(),
-                    nv.getTrangThai());
+                    nv.getTrangThai() == 0 ? "Đang làm việc" : "Đã nghỉ việc");
             listNVView.add(nvView);
         }
         return listNVView;
     }
 
     @Override
-    public boolean insert(NhanVien obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean insert(NhanVien nv) {
+        return nhanVienRepository.insert(nv);
     }
 
     @Override
-    public boolean update(NhanVien obj, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean updateStatus(int trangThai, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean update(NhanVien nv, int id) {
+        return nhanVienRepository.update(nv, id);
     }
 
     @Override
     public NhanVien findByMa(String ma) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return nhanVienRepository.findByMa(ma);
     }
 
     @Override
-    public List<NhanVien> findByNameOrMa(int page, int pageSize, int trangThai, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<NhanVienViewModel> findByNameOrMa(int page, int pageSize, int trangThai, String name) {
+        List<NhanVien> listNV = nhanVienRepository.findByNameOrMa(page, pageSize, trangThai, name);
+
+        List<NhanVienViewModel> listNVView = new ArrayList<>();
+        for (NhanVien nv : listNV) {
+            NhanVienViewModel nvView = new NhanVienViewModel(
+                    nv.getId(),
+                    nv.getMaNhanVien(),
+                    nv.getMatKhau(),
+                    nv.getHoTen(),
+                    nv.getGioiTinh() ? "Nam" : "Nữ",
+                    Helper.sdfNgayThang.format(nv.getNgaySinh()),
+                    nv.getCanCuocCongDan(),
+                    nv.getDiaChi(),
+                    nv.getSoDienThoai(),
+                    nv.getEmail(),
+                    nv.getVaiTro() == 0 ? "Nhân viên" : "Quản lý",
+                    Helper.sdfNgayThangThoiGian.format(nv.getNgayTao()),
+                    nv.getHinhAnh(),
+                    nv.getGhiChu(),
+                    nv.getTrangThai() == 0 ? "Đang làm việc" : "Đã nghỉ việc");
+            listNVView.add(nvView);
+        }
+        return listNVView;
     }
 
     @Override
@@ -79,7 +97,17 @@ public class NhanVienService implements INhanVienService {
 
     @Override
     public boolean updatePassword(String newPassword, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return nhanVienRepository.updatePassword(newPassword, id);
+    }
+
+    @Override
+    public boolean updateStatusOfAnStaff(int trangThai, int id) {
+        return nhanVienRepository.updateStatusOfAnStaff(trangThai, id);
+    }
+
+    @Override
+    public void updateSatusOfStaffs(int trangThai, List<Integer> listID) {
+        nhanVienRepository.updateSatusOfStaffs(trangThai, listID);
     }
 
 }

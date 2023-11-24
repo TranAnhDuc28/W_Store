@@ -4,7 +4,7 @@
  */
 package com.wstore.viewmodels.QLsanpham;
 
-import com.wstore.utilities.status.StatusNhanVien;
+import com.wstore.utilities.Helper;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -18,22 +18,22 @@ public class NhanVienViewModel {
     private String maNhanVien;
     private String matKhau;
     private String hoTen;
-    private Boolean gioiTinh;
-    private Date ngaySinh;
+    private String gioiTinh;
+    private String ngaySinh;
     private String canCuocCongDan;
     private String diaChi;
     private String soDienThoai;
     private String email;
-    private Integer vaiTro;
-    private Timestamp ngayTao;
+    private String vaiTro;
+    private String ngayTao;
     private String hinhAnh;
     private String ghiChu;
-    private Integer trangThai;
+    private String trangThai;
 
     public NhanVienViewModel() {
     }
 
-    public NhanVienViewModel(Integer id, String maNhanVien, String matKhau, String hoTen, Boolean gioiTinh, Date ngaySinh, String canCuocCongDan, String diaChi, String soDienThoai, String email, Integer vaiTro, Timestamp ngayTao, String hinhAnh, String ghiChu, Integer trangThai) {
+    public NhanVienViewModel(Integer id, String maNhanVien, String matKhau, String hoTen, String gioiTinh, String ngaySinh, String canCuocCongDan, String diaChi, String soDienThoai, String email, String vaiTro, String ngayTao, String hinhAnh, String ghiChu, String trangThai) {
         this.id = id;
         this.maNhanVien = maNhanVien;
         this.matKhau = matKhau;
@@ -83,19 +83,19 @@ public class NhanVienViewModel {
         this.hoTen = hoTen;
     }
 
-    public Boolean getGioiTinh() {
+    public String getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(Boolean gioiTinh) {
+    public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
-    public Date getNgaySinh() {
+    public String getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
+    public void setNgaySinh(String ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
@@ -131,19 +131,19 @@ public class NhanVienViewModel {
         this.email = email;
     }
 
-    public Integer getVaiTro() {
+    public String getVaiTro() {
         return vaiTro;
     }
 
-    public void setVaiTro(Integer vaiTro) {
+    public void setVaiTro(String vaiTro) {
         this.vaiTro = vaiTro;
     }
 
-    public Timestamp getNgayTao() {
+    public String getNgayTao() {
         return ngayTao;
     }
 
-    public void setNgayTao(Timestamp ngayTao) {
+    public void setNgayTao(String ngayTao) {
         this.ngayTao = ngayTao;
     }
 
@@ -163,19 +163,16 @@ public class NhanVienViewModel {
         this.ghiChu = ghiChu;
     }
 
-    public Integer getTrangThai() {
+    public String getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(Integer trangThai) {
+    public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
     }
 
     public Object[] toDataRow() {
-        return new Object[]{maNhanVien, hoTen,
-            gioiTinh ? "Nam" : "Nữ", ngaySinh,
-            soDienThoai, email, canCuocCongDan, diaChi,
-            vaiTro == 0 ? "Nhân viên" : "Quản lý", ngayTao,
-            trangThai == 0 ? "Đang làm việc" : "Đã nghỉ việc"};
+        return new Object[]{maNhanVien, hoTen, gioiTinh, ngaySinh, soDienThoai,
+            email, canCuocCongDan, diaChi, vaiTro, ngayTao, trangThai};
     }
 }
