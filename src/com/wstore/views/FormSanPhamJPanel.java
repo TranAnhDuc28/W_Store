@@ -11,11 +11,22 @@ import com.wstore.services.ITinhNangSanPhamService;
 import com.wstore.services.impl.SanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.PhongCachSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.TinhNangSanPhamService;
+import com.wstore.utilities.Helper;
+import com.wstore.utilities.excel.WriteExcel;
 import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JProgressBar;
+import javax.swing.SwingWorker;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,12 +41,14 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     FormThemVaSuaSanPhamJFrame formThemVaSuaSanPham;
     private DefaultTableModel dtmTblSanPham;
     private List<SanPhamViewModel> listSP;
-    private Integer trangThai = 0;
+    private int trangThai = 0;
     private int index = -1;
-    public Integer page = 1;
-    private Integer tongSoBanGhi = 0;
-    private Integer totalPage = 1;
-    public Integer pageSize = 10;
+    public int page = 1;
+    private int tongSoBanGhi = 0;
+    private int totalPage = 1;
+    public int pageSize = 10;
+    private Thread thread;
+    private ProgressExportExcel progressExportExcel;
 
     public FormSanPhamJPanel() {
         initComponents();
@@ -54,11 +67,11 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btnSua = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        jButton3 = new javax.swing.JButton();
+        btnNgungKinhDoanh = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
-        jButton4 = new javax.swing.JButton();
+        btnNhapExcel = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
-        jButton5 = new javax.swing.JButton();
+        btnXuatExcel = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         txtTimKiemSanPham = new javax.swing.JTextField();
@@ -85,8 +98,8 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
         lblTongSoBanGhi = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton10 = new javax.swing.JButton();
+        chkChonTat = new javax.swing.JCheckBox();
+        btnKhoiPhuc = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(241, 246, 251));
         setPreferredSize(new java.awt.Dimension(1140, 800));
@@ -127,52 +140,58 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jToolBar1.add(btnSua);
         jToolBar1.add(jSeparator2);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/xoa32x32.png"))); // NOI18N
-        jButton3.setText("Ngừng kinh doanh");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton3.setIconTextGap(5);
-        jButton3.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnNgungKinhDoanh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/xoa32x32.png"))); // NOI18N
+        btnNgungKinhDoanh.setText("Ngừng kinh doanh");
+        btnNgungKinhDoanh.setFocusable(false);
+        btnNgungKinhDoanh.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnNgungKinhDoanh.setIconTextGap(5);
+        btnNgungKinhDoanh.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnNgungKinhDoanh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnNgungKinhDoanhActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton3);
+        jToolBar1.add(btnNgungKinhDoanh);
         jToolBar1.add(jSeparator3);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/import-excel32x32.png"))); // NOI18N
-        jButton4.setText("Nhập từ excel");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton4.setIconTextGap(5);
-        jButton4.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnNhapExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/import-excel32x32.png"))); // NOI18N
+        btnNhapExcel.setText("Nhập từ excel");
+        btnNhapExcel.setFocusable(false);
+        btnNhapExcel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnNhapExcel.setIconTextGap(5);
+        btnNhapExcel.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnNhapExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnNhapExcelActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton4);
+        jToolBar1.add(btnNhapExcel);
         jToolBar1.add(jSeparator4);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/export-excel32x32.png"))); // NOI18N
-        jButton5.setText("Xuất excel");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton5.setIconTextGap(5);
-        jButton5.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnXuatExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/export-excel32x32.png"))); // NOI18N
+        btnXuatExcel.setText("Xuất excel");
+        btnXuatExcel.setFocusable(false);
+        btnXuatExcel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnXuatExcel.setIconTextGap(5);
+        btnXuatExcel.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnXuatExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnXuatExcelActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton5);
+        jToolBar1.add(btnXuatExcel);
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel8.setOpaque(false);
 
         jPanel4.setBackground(new java.awt.Color(243, 243, 243));
         jPanel4.setOpaque(false);
+
+        txtTimKiemSanPham.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemSanPhamKeyReleased(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Tìm kiếm");
@@ -182,18 +201,18 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(txtTimKiemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTimKiemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTimKiemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTimKiemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel5.setBackground(new java.awt.Color(243, 243, 243));
@@ -356,10 +375,20 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         lblTongSoBanGhi.setPreferredSize(new java.awt.Dimension(125, 16));
         jPanel.add(lblTongSoBanGhi);
 
-        jCheckBox1.setText("All");
+        chkChonTat.setText("All");
+        chkChonTat.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkChonTatItemStateChanged(evt);
+            }
+        });
 
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/restore.png"))); // NOI18N
-        jButton10.setText("Khôi phục");
+        btnKhoiPhuc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/restore.png"))); // NOI18N
+        btnKhoiPhuc.setText("Khôi phục");
+        btnKhoiPhuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhoiPhucActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -370,31 +399,33 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
+                        .addComponent(chkChonTat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnKhoiPhuc)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 514, Short.MAX_VALUE)
+                        .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBox1)))
+                        .addComponent(btnKhoiPhuc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chkChonTat)))
                 .addContainerGap())
         );
 
@@ -470,17 +501,79 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         showData();
     }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnNgungKinhDoanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNgungKinhDoanhActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnNgungKinhDoanhActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnNhapExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapExcelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnNhapExcelActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
+        btnXuatExcel.setEnabled(false);
+        ProgressJDialog progressJDialog = new ProgressJDialog(null, true);
+        if (progressExportExcel != null && !progressExportExcel.isDone()) {
+            progressExportExcel.cancel(true);
+        }
+        progressExportExcel = new ProgressExportExcel(progressJDialog.pgbLoadData, progressJDialog);
+        progressExportExcel.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
+                    // Enable the button when the task is done
+                    btnXuatExcel.setEnabled(true);
+                    JFileChooser jfc = new JFileChooser();
+                    jfc.setDialogTitle("Export excel");
+                    jfc.setPreferredSize(Helper.dimensionJFileChooser);
+                    FileNameExtensionFilter excelFilter = new FileNameExtensionFilter("Microsoft Excel (*.xlsx)",
+                            "xlsx");
+                    jfc.setFileFilter(excelFilter);
+                    SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy_hhmmss");
+                    jfc.setSelectedFile(new File(("DanhSachSanPham_" + sdf.format(new java.util.Date()) + ".xlsx")));
+                    int choose = jfc.showSaveDialog(null);
+                    if (choose == JFileChooser.APPROVE_OPTION) {
+                        File excelFilePath = jfc.getSelectedFile();
+                        String filePath = excelFilePath.getPath();
+                        try {
+                            WriteExcel.writeExcel(tblDSSanPham, progressExportExcel.listData, filePath);
+                            Helper.alert(FormSanPhamJPanel.this, "Xuất file thành công");
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                            Helper.alert(FormSanPhamJPanel.this, "Xuất file thất bại");
+                        }
+                    }
+                }
+            }
+        });
+        progressExportExcel.execute();
+        progressJDialog.setVisible(true);
+    }//GEN-LAST:event_btnXuatExcelActionPerformed
+
+    private void txtTimKiemSanPhamKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemSanPhamKeyReleased
+
+    }//GEN-LAST:event_txtTimKiemSanPhamKeyReleased
+
+    private void btnKhoiPhucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoiPhucActionPerformed
+        int count = sanPhamService.getRecordCount();
+        int offset = 1;
+        int batchSize = 100;  // Adjust the batch size based on your needs
+        int totalPages = (int) Math.ceil((double) count / batchSize);
+        List<SanPhamViewModel> listData = new ArrayList<>();
+
+        for (int page = 1; page <= totalPages; page++) {
+            offset = (page - 1) * batchSize + 1;
+            listData.addAll(sanPhamService.getAll(page, batchSize));
+        }
+    }//GEN-LAST:event_btnKhoiPhucActionPerformed
+
+    private void chkChonTatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkChonTatItemStateChanged
+        if (chkChonTat.isSelected()) {
+            int rowCount = tblDSSanPham.getRowCount();
+            tblDSSanPham.setRowSelectionInterval(0, rowCount - 1);
+        } else {
+            tblDSSanPham.clearSelection();
+        }
+    }//GEN-LAST:event_chkChonTatItemStateChanged
 
     private void init() {
         txtTimKiemSanPham.putClientProperty(
@@ -500,8 +593,8 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
 
     public void initPagination(List<SanPhamViewModel> list) {
         tongSoBanGhi = sanPhamService.getRecordCount();
-        pageSize = Integer.valueOf(cboSoBanGhi.getSelectedItem().toString());
-        totalPage = (int) Math.ceil(tongSoBanGhi.doubleValue() / pageSize.doubleValue());
+        pageSize = Integer.parseInt(cboSoBanGhi.getSelectedItem().toString());
+        totalPage = (int) Math.ceil((double) tongSoBanGhi / pageSize);
         if (page > totalPage) {
             page = 1;
         }
@@ -517,6 +610,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         for (SanPhamViewModel sp : list) {
             dtmTblSanPham.addRow(sp.toDataRow());
         }
+
     }
 
     private void showData() {
@@ -549,22 +643,21 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         formThemVaSuaSanPham.cboPhongCach.setSelectedItems(listPCSP);
         formThemVaSuaSanPham.setVisible(true);
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnKhoiPhuc;
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnNgungKinhDoanh;
+    private javax.swing.JButton btnNhapExcel;
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXuatExcel;
     private javax.swing.JComboBox<String> cboSoBanGhi;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox chkChonTat;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
@@ -594,4 +687,45 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblDSSanPham;
     private javax.swing.JTextField txtTimKiemSanPham;
     // End of variables declaration//GEN-END:variables
+}
+
+class ProgressExportExcel extends SwingWorker<Void, Void> {
+
+    private final JProgressBar progressBar;
+    private final ProgressJDialog progressJDialog;
+    private final ISanPhamService sanPhamService = new SanPhamService();
+    List<SanPhamViewModel> listData = new ArrayList<>();
+
+    public ProgressExportExcel(JProgressBar progressBar, ProgressJDialog progressJDialog) {
+        this.progressBar = progressBar;
+        this.progressJDialog = progressJDialog;
+    }
+
+    @Override
+    protected Void doInBackground() throws Exception {
+        progressBar.setIndeterminate(true);
+        int count = sanPhamService.getRecordCount();
+        int offset = 1;
+        int batchSize = 100;
+        int totalPages = (int) Math.ceil((double) count / batchSize);
+
+        for (int page = 1; page <= totalPages; page++) {
+            offset = (page - 1) * batchSize;
+            listData.addAll(sanPhamService.getAll(offset, batchSize));
+
+            // Update progress
+//            int value = (int) (((double) page / totalPages) * 100);
+//            System.out.println(value);
+//            progressBar.setValue(value);
+//            System.out.println(value);
+        }
+        return null;
+    }
+
+    @Override
+    protected void done() {
+        progressBar.setIndeterminate(false);
+        System.out.println("Succecfully");
+        progressJDialog.dispose();
+    }
 }

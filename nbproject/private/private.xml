@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/com/wstore/domainmodels/NhanVien.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>171</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/viewmodels/QLsanpham/SanPhamViewModel.java</file>
             <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/views/FormNhanVienJPanel.java</file>
-            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/utilities/status/StatusNhanVien.java</file>
-            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/repositories/impl/NhanVienRepository.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/services/impl/SanPhamService.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/repositories/impl/SanPhamRepository.java</file>
             <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/viewmodels/QLsanpham/NhanVienViewModel.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/views/ProgressJDialog.java</file>
             <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/repositories/INhanVienRepository.java</file>
-            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/services/INhanVienService.java</file>
-            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/services/impl/NhanVienService.java</file>
-            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/domainmodels/NhanVien.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/views/FormSanPhamJPanel.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/application/Application.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/views/FormQuanTriJFrame.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/services/ISanPhamService.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/utilities/Helper.java</file>
         </group>
     </open-files>
 </project-private>

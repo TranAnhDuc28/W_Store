@@ -287,13 +287,12 @@ public class SanPhamViewModel {
         this.trangThai = trangThai;
     }
 
-    
-    
     public Object[] toDataRow() {
-        return new Object[]{maSanPham, thuongHieu, maHangHoa, 
+        return new Object[]{maSanPham, thuongHieu, maHangHoa,
             Helper.dfTien.format(giaNhap), Helper.dfTien.format(donGia),
             doiTuongSuDung, dongSanPham, dongMay, chatLieuDay, chatLieuKinh,
             khangNuoc, khoangTruCot, sizeMat, xuatXu, chatLieuVo,
-            hinhDang, mauVo, phongCach, tinhNang, doDay, mauMat, hinhAnh};
+            hinhDang, mauVo, phongCach, tinhNang, doDay, mauMat, hinhAnh,
+            trangThai ? "Đang kinh doanh" : "Ngừng kinh doanh"};
     }
 }

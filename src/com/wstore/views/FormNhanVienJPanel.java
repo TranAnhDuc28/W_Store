@@ -12,11 +12,16 @@ import com.wstore.utilities.HashPassword;
 import com.wstore.utilities.Helper;
 import com.wstore.utilities.status.StatusNhanVien;
 import com.wstore.viewmodels.QLsanpham.NhanVienViewModel;
+import com.wstore.utilities.excel.WriteExcel;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ListSelectionModel;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -217,7 +222,6 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Mã nhân viên (*)");
 
-        txtMaNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         txtMaNhanVien.setPreferredSize(new java.awt.Dimension(300, 30));
 
         jLabel10.setText("Họ và tên (*)");
@@ -497,6 +501,12 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         );
 
         jPanel5.setOpaque(false);
+
+        txtTimKiemNhanVien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemNhanVienKeyReleased(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel16.setText("Tìm kiếm");
@@ -838,7 +848,27 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
-        // TODO add your handling code here:
+        int count = nhanVienService.getCountRecord(trangThai);
+        List<NhanVienViewModel> listData = nhanVienService.getAll(1, count, trangThai);
+        JFileChooser jfc = new JFileChooser();
+        jfc.setDialogTitle("Export excel");
+        jfc.setPreferredSize(Helper.dimensionJFileChooser);
+        FileNameExtensionFilter excelFilter = new FileNameExtensionFilter("Microsoft Excel (*.xlsx)",
+                "xlsx");
+        jfc.setFileFilter(excelFilter);
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy_hhmmss");
+        jfc.setSelectedFile(new File(("DanhSachNhanVien_" + sdf.format(new java.util.Date()) + ".xlsx")));
+        int choose = jfc.showSaveDialog(this);
+        if (choose == JFileChooser.APPROVE_OPTION) {
+            File excelFilePath = jfc.getSelectedFile();
+            String filePath = excelFilePath.getPath();
+            try {
+                WriteExcel.writeExcel(tblDSNhanVien, listData, filePath);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+           Helper.alert(this, "Xuất file thành công");
+        }
     }//GEN-LAST:event_btnXuatExcelActionPerformed
 
     private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonAnhActionPerformed
@@ -857,7 +887,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         if (cboTrangThai.getSelectedIndex() == StatusNhanVien.DANG_LAM_VIEC) {
             btnXoa.setEnabled(true);
             btnKhoiPhuc.setEnabled(false);
-        } else if (cboTrangThai.getSelectedIndex() == StatusNhanVien.DA_NGHI_VIEC){
+        } else if (cboTrangThai.getSelectedIndex() == StatusNhanVien.DA_NGHI_VIEC) {
             btnXoa.setEnabled(false);
             btnKhoiPhuc.setEnabled(true);
         }
@@ -900,8 +930,12 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
         } else {
             tblDSNhanVien.clearSelection();
         }
-
     }//GEN-LAST:event_chkChonTatItemStateChanged
+
+    private void txtTimKiemNhanVienKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemNhanVienKeyReleased
+        String name = txtTimKiemNhanVien.getText();
+        initPagination(nhanVienService.findByNameOrMa(page, pageSize, trangThai, name));
+    }//GEN-LAST:event_txtTimKiemNhanVienKeyReleased
 
     private void initPagination(List<NhanVienViewModel> list) {
         trangThai = cboTrangThai.getSelectedIndex();
@@ -1010,8 +1044,14 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     }
 
     private boolean validateForm() {
-        if (Helper.checkRongJDateChooser(this, txtNgaySinh, "Chưa chọn ngày sinh")) {
+        if (Helper.checkRongJDateChooser(this, txtNgaySinh, "Vui lòng chọn ngày sinh!")) {
             return true;
+        }
+        if (Helper.checkRongTextField(this, txtMaNhanVien, "Vui lòng nhập mã nhân viên")) {
+            return false;
+        }
+        if (Helper.checkRongTextField(this, txtHoVaTen, "Vui lòng nhập tên cho nhân viên!")) {
+            return false;
         }
         return false;
     }

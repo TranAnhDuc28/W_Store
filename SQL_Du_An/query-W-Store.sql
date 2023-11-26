@@ -71,6 +71,17 @@ order by id
 offset ? rows
 fetch next ? rows only;
 
+select *
+from NhanVien
+order by id
+offset 10 rows
+fetch next 10 rows only;
+
+select *
+from SanPham
+order by id
+offset 100 rows
+fetch next 100 rows only;
 
 insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh
 					, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro

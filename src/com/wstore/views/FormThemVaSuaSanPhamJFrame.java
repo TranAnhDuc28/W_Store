@@ -5,16 +5,13 @@
 package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import com.formdev.flatlaf.FlatLaf;
 import com.wstore.domainmodels.SanPham;
 import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuDay;
 import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuKinh;
 import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuVo;
 import com.wstore.domainmodels.thuoctinhsanpham.DongMay;
-import com.wstore.domainmodels.thuoctinhsanpham.DongSanPham;
 import com.wstore.domainmodels.thuoctinhsanpham.Mau;
 import com.wstore.domainmodels.thuoctinhsanpham.ThuongHieu;
-import com.wstore.domainmodels.thuoctinhsanpham.TinhNang;
 import com.wstore.domainmodels.thuoctinhsanpham.TinhNangSanPham;
 import com.wstore.domainmodels.thuoctinhsanpham.XuatXu;
 import com.wstore.services.IDongSanPhamService;

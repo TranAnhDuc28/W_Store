@@ -89,7 +89,7 @@ public class Helper {
         } else {
             Image img = null;
             try {
-                img = ImageIO.read(new File(dicrectoryPath + "\\" + hinhHienThi));
+                img = ImageIO.read(new File(dicrectoryPath + "/" + hinhHienThi));
             } catch (IOException ex) {
                 alert(null, ex.getMessage());
             }
