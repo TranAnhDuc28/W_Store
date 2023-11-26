@@ -138,7 +138,41 @@ public class SanPhamRepository implements ISanPhamRepository {
 
     @Override
     public boolean update(SanPham sp, int idSanPham) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int checkUpdate = 0;
+        String sql = "update SanPham\n"
+                + "set ma_san_pham = ?, id_thuong_hieu = ?, ma_hang_hoa = ?, gia_nhap = ?, don_gia = ?, so_luong_ton = ?, hinh_anh = ?, doi_tuong_su_dung = ?\n"
+                + "	, dong_san_pham = ?, khang_nuoc = ?, khoang_tru_cot = ?, size_mat = ?, hinh_dang = ?, do_day = ?, id_dong_may = ?\n"
+                + "	, id_chat_lieu_day = ?, id_chat_lieu_kinh = ?, id_xuat_xu = ?, id_chat_lieu_vo = ?, id_mau_vo = ?, id_mau_mat = ?, ghi_chu = ?\n"
+                + "where id = ?;";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setString(1, sp.getMaSanPham());
+            pstm.setObject(2, sp.getThuongHieu().getId());
+            pstm.setString(3, sp.getMaHangHoa());
+            pstm.setBigDecimal(4, sp.getGiaNhap());
+            pstm.setBigDecimal(5, sp.getDonGia());
+            pstm.setInt(6, sp.getSoLuongTon());
+            pstm.setString(7, sp.getHinhAnh());
+            pstm.setString(8, sp.getDoiTuongSuDung());
+            pstm.setString(9, sp.getDongSanPham());
+            pstm.setInt(10, sp.getKhangNuoc());
+            pstm.setInt(11, sp.getKhoangTruCot());
+            pstm.setFloat(12, sp.getSizeMat());
+            pstm.setString(13, sp.getHinhDang());
+            pstm.setFloat(14, sp.getDoDay());
+            pstm.setObject(15, (sp.getDongMay() == null || sp.getDongMay().getId() == 0) ? null : sp.getDongMay().getId());
+            pstm.setObject(16, (sp.getChatLieuDay() == null || sp.getChatLieuDay().getId() == 0) ? null : sp.getChatLieuDay().getId());
+            pstm.setObject(17, (sp.getChatLieuKinh() == null || sp.getChatLieuKinh().getId() == 0) ? null : sp.getChatLieuKinh().getId());
+            pstm.setObject(18, (sp.getXuatXu() == null || sp.getXuatXu().getId() == 0) ? null : sp.getXuatXu().getId());
+            pstm.setObject(19, (sp.getChatLieuVo() == null || sp.getChatLieuVo().getId() == 0) ? null : sp.getChatLieuVo().getId());
+            pstm.setObject(20, (sp.getMauVo() == null || sp.getMauVo().getId() == 0) ? null : sp.getMauVo().getId());
+            pstm.setObject(21, (sp.getMauMat() == null || sp.getMauMat().getId() == 0) ? null : sp.getMauMat().getId());
+            pstm.setString(22, sp.getGhiChu());
+            pstm.setInt(23, idSanPham);
+            checkUpdate = pstm.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return checkUpdate > 0;
     }
 
     @Override

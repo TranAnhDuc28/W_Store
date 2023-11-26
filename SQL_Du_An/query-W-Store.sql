@@ -49,9 +49,23 @@ fetch next ? rows only;
 
 select id from SanPham where ma_san_pham = 'SP000108'
 
-insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,default);
+insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung
+		, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may
+		, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, ghi_chu, trang_thai) 
+values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,default);
 
+
+update SanPham
+set ma_san_pham = ?, id_thuong_hieu = ?, ma_hang_hoa = ?, gia_nhap = ?, don_gia = ?, so_luong_ton = ?, hinh_anh = ?, doi_tuong_su_dung = ?
+	, dong_san_pham = ?, khang_nuoc = ?, khoang_tru_cot = ?, size_mat = ?, hinh_dang = ?, do_day = ?, id_dong_may = ?
+	, id_chat_lieu_day = ?, id_chat_lieu_kinh = ?, id_xuat_xu = ?, id_chat_lieu_vo = ?, id_mau_vo = ?, id_mau_mat = ?, ghi_chu = ?
+where id = ?;
+
+update SanPham
+set id_dong_may = 0
+where id = 111;
+
+select * from DongMay 
 
 -- query DongSanPham
 select id, ten_dong_san_pham, id_thuong_hieu, trang_thai 

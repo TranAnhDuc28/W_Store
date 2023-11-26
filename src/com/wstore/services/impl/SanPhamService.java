@@ -105,7 +105,7 @@ public class SanPhamService implements ISanPhamService {
 
     @Override
     public boolean update(SanPham sp, int idSanPham) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return sanPhamRepository.update(sp, idSanPham);
     }
 
     @Override

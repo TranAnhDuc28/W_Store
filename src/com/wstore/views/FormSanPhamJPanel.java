@@ -61,7 +61,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     private IPhongCachSanPhamService phongCachSanPhamService = new PhongCachSanPhamService();
     FormThemVaSuaSanPhamJFrame formThemVaSuaSanPham;
     private DefaultTableModel dtmTblSanPham;
-    private List<SanPhamViewModel> listSP;
+    protected List<SanPhamViewModel> listSP;
     private int trangThai = 0;
     private int index = -1;
     public int page = 1;
@@ -618,13 +618,25 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXuatExcelActionPerformed
 
     private void txtTimKiemSanPhamKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemSanPhamKeyReleased
-//        String name = txtTimKiemSanPham.getText();
+        String name = txtTimKiemSanPham.getText();
 //        initPagination(sanPhamService.findByNameOrMa(page, pageSize, name));
+        if (!name.trim().isEmpty()) {
+            cboSoBanGhi.setEnabled(false);
+            btnFirst.setEnabled(false);
+            btnPrev.setEnabled(false);
+            btnNext.setEnabled(false);
+            btnLast.setEnabled(false);
+        } else {
+            cboSoBanGhi.setEnabled(true);
+            btnFirst.setEnabled(true);
+            btnPrev.setEnabled(true);
+            btnNext.setEnabled(true);
+            btnLast.setEnabled(true);
+        }
         SwingWorker<List<SanPhamViewModel>, Void> woker = new SwingWorker<List<SanPhamViewModel>, Void>() {
             @Override
             protected List<SanPhamViewModel> doInBackground() throws Exception {
-                String name = txtTimKiemSanPham.getText();
-                return sanPhamService.findByNameOrMa(page, pageSize, name);
+                return sanPhamService.findByNameOrMa(1, 100, name);
             }
 
             @Override
@@ -682,7 +694,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
 //        }
     }
 
-    public void initPagination(List<SanPhamViewModel> list) {   
+    public void initPagination(List<SanPhamViewModel> list) {
         tongSoBanGhi = sanPhamService.getRecordCount();
         pageSize = Integer.parseInt(cboSoBanGhi.getSelectedItem().toString());
         totalPage = (int) Math.ceil((double) tongSoBanGhi / pageSize);
@@ -810,8 +822,8 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnNgungKinhDoanh;
     private javax.swing.JButton btnNhapExcel;
     private javax.swing.JButton btnPrev;
-    private javax.swing.JButton btnSua;
-    private javax.swing.JButton btnThem;
+    public javax.swing.JButton btnSua;
+    public javax.swing.JButton btnThem;
     private javax.swing.JButton btnXuatExcel;
     private javax.swing.JComboBox<String> cboChatLieuDay;
     private javax.swing.JComboBox<String> cboChatLieuKinh;
@@ -847,7 +859,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblPageOfTotalPage;
     private javax.swing.JLabel lblTongSoBanGhi;
     private javax.swing.JTabbedPane tabbebQLSanPham;
-    private javax.swing.JTable tblDSSanPham;
+    protected javax.swing.JTable tblDSSanPham;
     private javax.swing.JTextField txtTimKiemSanPham;
     // End of variables declaration//GEN-END:variables
 }

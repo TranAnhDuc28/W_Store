@@ -231,8 +231,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btnLuu = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        btnLuuVaNhapMoi = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JToolBar.Separator();
         btnDong = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -248,7 +246,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setOpaque(false);
 
-        txtMaSanPham.setEditable(false);
         txtMaSanPham.setBackground(new java.awt.Color(255, 255, 255));
         txtMaSanPham.setPreferredSize(new java.awt.Dimension(250, 30));
 
@@ -967,15 +964,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         jToolBar1.add(btnLuu);
         jToolBar1.add(jSeparator1);
 
-        btnLuuVaNhapMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/luu-va-lam-moi32x32.png"))); // NOI18N
-        btnLuuVaNhapMoi.setText("Lưu và Nhập mới");
-        btnLuuVaNhapMoi.setFocusable(false);
-        btnLuuVaNhapMoi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnLuuVaNhapMoi.setIconTextGap(5);
-        btnLuuVaNhapMoi.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jToolBar1.add(btnLuuVaNhapMoi);
-        jToolBar1.add(jSeparator2);
-
         btnDong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/cancel32x32.png"))); // NOI18N
         btnDong.setText("Đóng");
         btnDong.setFocusable(false);
@@ -1114,17 +1102,41 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResetCboPhongCachActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        if (!validateForm()) {
-            if (sanPhamService.insert(getDataToForm())) {
-                Helper.alert(this, "Thêm thành công");
-                formSanPhamJPanel.initPagination(sanPhamService.getAll(
-                        formSanPhamJPanel.page,
-                        formSanPhamJPanel.pageSize));
-                clearForm();
-            } else {
-                Helper.alert(this, "Thêm thất bại");
+        if (formSanPhamJPanel.btnThem.isSelected()) {
+            System.out.println("Bạn đang chọ thêm");
+            if (!validateForm()) {
+                if (sanPhamService.insert(getDataToForm())) {
+                    Helper.alert(this, "Thêm thành công");
+                    formSanPhamJPanel.initPagination(sanPhamService.getAll(
+                            formSanPhamJPanel.page,
+                            formSanPhamJPanel.pageSize));
+                    clearForm();
+                } else {
+                    Helper.alert(this, "Thêm thất bại");
+                }
+            }
+        } else {
+            System.out.println("Bạn đang chọn sửa");
+            if (Helper.comfirm(null, "Xác nhận sửa?")) {
+                if (!validateForm()) {
+                    int rowSelected = formSanPhamJPanel.tblDSSanPham.getSelectedRow();
+                    System.out.println("Row: " + rowSelected);
+                    int idSanPham = formSanPhamJPanel.listSP.get(rowSelected).getId();
+                    System.out.println("ID-SP: " + idSanPham);
+                    if (sanPhamService.update(getDataToForm(), idSanPham)) {
+                        Helper.alert(this, "Sửa thành công");
+                        formSanPhamJPanel.initPagination(sanPhamService.getAll(
+                                formSanPhamJPanel.page,
+                                formSanPhamJPanel.pageSize));
+                        formSanPhamJPanel.tblDSSanPham.setRowSelectionInterval(rowSelected, rowSelected);
+                    } else {
+                        Helper.alert(this, "Sửa thất bại");
+                    }
+                }
             }
         }
+
+
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private SanPham getDataToForm() {
@@ -1141,11 +1153,14 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         } else {
             sp.setThuongHieu(null);
         }
+        System.out.println("ID thương hiệu: " + ((sp.getThuongHieu()== null || sp.getThuongHieu().getId() == 0) ? null : sp.getThuongHieu().getId()));
+
         if (dcbmDongSanPham.getSelectedItem() != null) {
             sp.setDongSanPham(dcbmDongSanPham.getSelectedItem().toString());
         } else {
             sp.setDongSanPham(null);
         }
+
         XuatXuViewModel xx = null;
         if (dcbmXuatXu.getSelectedItem() != null) {
             xx = (XuatXuViewModel) dcbmXuatXu.getSelectedItem();
@@ -1153,6 +1168,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         } else {
             sp.setXuatXu(null);
         }
+        System.out.println("ID xuất xứ: " + ((sp.getXuatXu() == null || sp.getXuatXu().getId() == 0) ? null : sp.getXuatXu().getId()));
+
         MauViewModel mv = null;
         if (dcbmMauVo.getSelectedItem() != null) {
             mv = (MauViewModel) dcbmMauVo.getSelectedItem();
@@ -1160,6 +1177,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         } else {
             sp.setMauVo(null);
         }
+        System.out.println("ID màu vỏ: " + ((sp.getMauVo() == null || sp.getMauVo().getId() == 0) ? null : sp.getMauVo().getId()));
+
         MauViewModel mm = null;
         if (dcbmMauMat.getSelectedItem() != null) {
             mm = (MauViewModel) dcbmMauMat.getSelectedItem();
@@ -1167,6 +1186,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         } else {
             sp.setMauMat(null);
         }
+        System.out.println("ID màu mặt: " + ((sp.getMauMat() == null || sp.getMauMat().getId() == 0) ? null : sp.getMauMat().getId()));
+
         DongMayViewModel dm = null;
         if (dcbmDongMay.getSelectedItem() != null) {
             dm = (DongMayViewModel) dcbmDongMay.getSelectedItem();
@@ -1174,6 +1195,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         } else {
             sp.setDongMay(null);
         }
+        System.out.println("ID dòng máy: " + ((sp.getDongMay() == null || sp.getDongMay().getId() == 0) ? null : sp.getDongMay().getId()));
+
         ChatLieuDayViewModel cld = null;
         if (dcbmChatLieuDay.getSelectedItem() != null) {
             cld = (ChatLieuDayViewModel) dcbmChatLieuDay.getSelectedItem();
@@ -1181,6 +1204,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         } else {
             sp.setChatLieuDay(null);
         }
+        System.out.println("ID chất liệu dây: " + ((sp.getChatLieuDay() == null || sp.getChatLieuDay().getId() == 0) ? null : sp.getChatLieuDay().getId()));
+
         ChatLieuKinhViewModel clk = null;
         if (dcbmChatLieuKinh.getSelectedItem() != null) {
             clk = (ChatLieuKinhViewModel) dcbmChatLieuKinh.getSelectedItem();
@@ -1188,6 +1213,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         } else {
             sp.setChatLieuKinh(null);
         }
+        System.out.println("ID chất liệu kính: " + ((sp.getChatLieuKinh() == null || sp.getChatLieuKinh().getId() == 0) ? null : sp.getChatLieuKinh().getId()));
+
         ChatLieuVoViewModel clv = null;
         if (dcbmChatLieuVo.getSelectedItem() != null) {
             clv = (ChatLieuVoViewModel) dcbmChatLieuVo.getSelectedItem();
@@ -1195,6 +1222,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         } else {
             sp.setChatLieuVo(null);
         }
+        System.out.println("ID chất liệu vỏ: " + ((sp.getChatLieuVo() == null || sp.getChatLieuVo().getId() == 0) ? null : sp.getChatLieuVo().getId()));
+
         sp.setHinhDang(cboHinhDang.getSelectedItem().toString());
         sp.setDoiTuongSuDung(cboDoiTuongSuDung.getSelectedItem().toString());
         sp.setKhangNuoc(Integer.valueOf(txtKhangNuoc.getText().trim()));
@@ -1408,7 +1437,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDong;
     private javax.swing.JButton btnInMaVach;
     private javax.swing.JButton btnLuu;
-    private javax.swing.JButton btnLuuVaNhapMoi;
     private javax.swing.JButton btnReseCboChatLieuDay;
     private javax.swing.JButton btnResetAnh;
     private javax.swing.JButton btnResetCboChatLieuVo;
@@ -1491,7 +1519,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblHinhAnh;
