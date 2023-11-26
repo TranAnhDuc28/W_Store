@@ -105,10 +105,10 @@ public class SanPhamRepository implements ISanPhamRepository {
                 + "dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, "
                 + "do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, "
                 + "id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, ghi_chu, trang_thai) \n"
-                + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,default);";
+                + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,default);";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
             pstm.setString(1, sp.getMaSanPham());
-            pstm.setInt(2, sp.getThuongHieu().getId());
+            pstm.setObject(2, sp.getThuongHieu().getId());
             pstm.setString(3, sp.getMaHangHoa());
             pstm.setBigDecimal(4, sp.getGiaNhap());
             pstm.setBigDecimal(5, sp.getDonGia());
@@ -121,14 +121,14 @@ public class SanPhamRepository implements ISanPhamRepository {
             pstm.setFloat(12, sp.getSizeMat());
             pstm.setString(13, sp.getHinhDang());
             pstm.setFloat(14, sp.getDoDay());
-            pstm.setInt(15, sp.getDongMay().getId());
-            pstm.setInt(16, sp.getChatLieuDay().getId());
-            pstm.setInt(17, sp.getChatLieuKinh().getId());
-            pstm.setInt(18, sp.getXuatXu().getId());
-            pstm.setInt(19, sp.getChatLieuVo().getId());
-            pstm.setInt(20, sp.getMauMat().getId());
-            pstm.setInt(21, sp.getMauVo().getId());
-            pstm.setString(21, sp.getGhiChu());
+            pstm.setObject(15, sp.getDongMay() == null ? null : sp.getDongMay().getId());
+            pstm.setObject(16, sp.getChatLieuDay() == null ? null : sp.getChatLieuDay().getId());
+            pstm.setObject(17, sp.getChatLieuKinh() == null ? null : sp.getChatLieuKinh().getId());
+            pstm.setObject(18, sp.getXuatXu() == null ? null : sp.getXuatXu().getId());
+            pstm.setObject(19, sp.getChatLieuVo() == null ? null : sp.getChatLieuVo().getId());
+            pstm.setObject(20, sp.getMauVo() == null ? null : sp.getMauVo().getId());
+            pstm.setObject(21, sp.getMauMat() == null ? null : sp.getMauMat().getId());
+            pstm.setString(22, sp.getGhiChu());
             checkInsert = pstm.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -162,8 +162,74 @@ public class SanPhamRepository implements ISanPhamRepository {
     }
 
     @Override
-    public List<SanPham> findByNameOrMa(int page, int pageSize, int trangThai, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<SanPham> findByNameOrMa(int page, int pageSize, String name) {
+        List<SanPham> list = new ArrayList<>();
+
+        String sql = "select sp.id, sp.ma_san_pham, id_thuong_hieu, th.ten_thuong_hieu, sp.ma_hang_hoa\n"
+                + "     , sp.gia_nhap, sp.don_gia, sp.so_luong_ton, sp.hinh_anh, sp.doi_tuong_su_dung\n"
+                + "     , sp.dong_san_pham, sp.khang_nuoc, sp.khoang_tru_cot, sp.size_mat\n"
+                + "     , sp.hinh_dang, sp.do_day, sp.id_dong_may, dm.ten_dong_may, sp.id_chat_lieu_day\n"
+                + "     , cld.ten_chat_lieu_day, sp.id_chat_lieu_kinh, clk.ten_chat_lieu_kinh\n"
+                + "     , sp.id_xuat_xu, xx.noi_xuat_xu, sp.id_chat_lieu_vo, clv.ten_chat_lieu_vo\n"
+                + "     , sp.id_mau_vo, mv.ten_mau as mau_vo, sp.id_mau_mat, mm.ten_mau as mau_mat, sp.ghi_chu, sp.trang_thai\n"
+                + "from SanPham sp \n"
+                + "     left join ThuongHieu th on sp.id_thuong_hieu = th.id\n"
+                + "     left join DongMay dm on sp.id_dong_may = dm.id\n"
+                + "     left join ChatLieuDay cld on sp.id_chat_lieu_day = cld.id\n"
+                + "     left join ChatLieuKinh clk on sp.id_chat_lieu_kinh = clk.id\n"
+                + "     left join ChatLieuVo clv on sp.id_chat_lieu_vo = clv.id\n"
+                + "     left join XuatXu xx on sp.id_xuat_xu = xx.id\n"
+                + "     left join Mau mv on sp.id_mau_vo = mv.id\n"
+                + "     left join Mau mm on sp.id_mau_mat = mm.id\n"
+                + "where sp.ma_san_pham like '%" + name + "%' or sp.ma_hang_hoa like '%" + name + "%' or th.ten_thuong_hieu like '%" + name + "%'\n"
+                + "order by sp.id\n"
+                + "offset ? rows\n"
+                + "fetch next ? rows only;";
+
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setInt(1, (page - 1) * pageSize);
+            pstm.setInt(2, pageSize);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                SanPham sp = new SanPham(
+                        rs.getInt("id"),
+                        rs.getString("ma_san_pham"),
+                        new ThuongHieu(rs.getInt("id_thuong_hieu"),
+                                rs.getString("ten_thuong_hieu")),
+                        rs.getString("ma_hang_hoa"),
+                        rs.getBigDecimal("gia_nhap"),
+                        rs.getBigDecimal("don_gia"),
+                        rs.getInt("so_luong_ton"),
+                        rs.getString("hinh_anh"),
+                        rs.getString("doi_tuong_su_dung"),
+                        rs.getString("dong_san_pham"),
+                        rs.getInt("khang_nuoc"),
+                        rs.getInt("khoang_tru_cot"),
+                        rs.getFloat("size_mat"),
+                        rs.getString("hinh_dang"),
+                        rs.getFloat("do_day"),
+                        new DongMay(rs.getInt("id_dong_may"),
+                                rs.getString("ten_dong_may")),
+                        new ChatLieuDay(rs.getInt("id_chat_lieu_day"),
+                                rs.getString("ten_chat_lieu_day")),
+                        new ChatLieuKinh(rs.getInt("id_chat_lieu_kinh"),
+                                rs.getString("ten_chat_lieu_kinh")),
+                        new XuatXu(rs.getInt("id_xuat_xu"),
+                                rs.getString("noi_xuat_xu")),
+                        new ChatLieuVo(rs.getInt("id_chat_lieu_vo"),
+                                rs.getString("ten_chat_lieu_vo")),
+                        new Mau(rs.getInt("id_mau_vo"),
+                                rs.getString("mau_vo")),
+                        new Mau(rs.getInt("id_mau_mat"),
+                                rs.getString("mau_mat")),
+                        rs.getString("ghi_chu"),
+                        rs.getBoolean("trang_thai"));
+                list.add(sp);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     @Override
@@ -181,6 +247,11 @@ public class SanPhamRepository implements ISanPhamRepository {
             ex.printStackTrace();
         }
         return sp;
+    }
+
+    @Override
+    public List<SanPham> filter(String condition) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

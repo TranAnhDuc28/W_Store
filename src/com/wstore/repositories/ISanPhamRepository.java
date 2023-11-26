@@ -25,5 +25,7 @@ public interface ISanPhamRepository {
     
     int getRecordCount();
     
-    List<SanPham> findByNameOrMa(int page, int pageSize, int trangThai, String name);
+    List<SanPham> findByNameOrMa(int page, int pageSize, String name);
+    
+    List<SanPham> filter(String condition);
 }

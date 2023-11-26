@@ -109,8 +109,61 @@ public class SanPhamService implements ISanPhamService {
     }
 
     @Override
-    public List<SanPham> findByNameOrMa(int page, int pageSize, int trangThai, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<SanPhamViewModel> findByNameOrMa(int page, int pageSize, String name) {
+        List<SanPham> listSanPham = sanPhamRepository.findByNameOrMa(page, pageSize, name);
+
+        List<SanPhamViewModel> listSanPhamView = new ArrayList<>();
+        for (SanPham sanPham : listSanPham) {
+            int idSanPham = sanPham.getId();
+            Set<TinhNangViewModel> listTNSP = tinhNangRepository.getAllByIdSanPham(sanPham.getId());
+            Set<PhongCachViewModel> listPCSP = phongCachRepository.getAllByIdSanPham(sanPham.getId());
+
+            SanPhamViewModel sanPhamView = new SanPhamViewModel(
+                    idSanPham,
+                    sanPham.getMaSanPham(),
+                    new ThuongHieuViewModel(
+                            sanPham.getThuongHieu().getId(),
+                            sanPham.getThuongHieu().getTenThuongHieu()),
+                    sanPham.getMaHangHoa(),
+                    sanPham.getGiaNhap(),
+                    sanPham.getDonGia(),
+                    sanPham.getSoLuongTon(),
+                    sanPham.getHinhAnh(),
+                    sanPham.getDoiTuongSuDung(),
+                    sanPham.getDongSanPham(),
+                    sanPham.getKhangNuoc(),
+                    sanPham.getKhoangTruCot(),
+                    sanPham.getSizeMat(),
+                    sanPham.getHinhDang(),
+                    sanPham.getDoDay(),
+                    new DongMayViewModel(
+                            sanPham.getDongMay().getId(),
+                            sanPham.getDongMay().getTenDongMay()),
+                    new ChatLieuDayViewModel(
+                            sanPham.getChatLieuDay().getId(),
+                            sanPham.getChatLieuDay().getTenChatLieuDay()),
+                    new ChatLieuKinhViewModel(
+                            sanPham.getChatLieuKinh().getId(),
+                            sanPham.getChatLieuKinh().getTenChatLieuKinh()),
+                    new XuatXuViewModel(
+                            sanPham.getXuatXu().getId(),
+                            sanPham.getXuatXu().getNoiXuatXu()),
+                    new ChatLieuVoViewModel(
+                            sanPham.getChatLieuVo().getId(),
+                            sanPham.getChatLieuVo().getTenChatLieuVo()),
+                    new MauViewModel(
+                            sanPham.getMauVo().getId(),
+                            sanPham.getMauVo().getTenMau()),
+                    Helper.removeDauNgoacVuong(listPCSP.toString()),
+                    Helper.removeDauNgoacVuong(listTNSP.toString()),
+                    new MauViewModel(
+                            sanPham.getMauMat().getId(),
+                            sanPham.getMauMat().getTenMau()),
+                    sanPham.getGhiChu(),
+                    sanPham.getTrangThai());
+            listSanPhamView.add(sanPhamView);
+        }
+        return listSanPhamView;
     }
 
     @Override
@@ -134,5 +187,5 @@ public class SanPhamService implements ISanPhamService {
     public SanPham findByMa(String ma) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

@@ -22,7 +22,7 @@ public interface ISanPhamService {
 
     boolean update(SanPham sp, int idSanPham);
     
-    List<SanPham> findByNameOrMa(int page, int pageSize, int trangThai, String name);
+    List<SanPhamViewModel> findByNameOrMa(int page, int pageSize, String name);
     
     int getRecordCount();
     

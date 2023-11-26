@@ -52,10 +52,12 @@ import com.wstore.views.thuoctinhsanpham.FormThuongHieuJDialog;
 import com.wstore.views.thuoctinhsanpham.FormTinhNangJDialog;
 import com.wstore.views.thuoctinhsanpham.FormXuatXuJDialog;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -65,7 +67,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
     private ISanPhamService sanPhamService = new SanPhamService();
     private ITinhNangSanPhamService tinhNangSanPhamService = new TinhNangSanPhamService();
-    private FormSanPhamJPanel formSanPhamJPanel = new FormSanPhamJPanel();
+    private FormSanPhamJPanel formSanPhamJPanel;
     private final IThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
     private final IThuocTinhSanPhamService dongMayService = new DongMayService();
     private final IThuocTinhSanPhamService xuatXuService = new XuatXuService();
@@ -91,9 +93,10 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
     private String hinhAnh = null;
 
-    public FormThemVaSuaSanPhamJFrame() {
+    public FormThemVaSuaSanPhamJFrame(JPanel panel) {
         initComponents();
         init();
+        this.formSanPhamJPanel = (FormSanPhamJPanel) panel;
         cboThuongHieu.setModel(dcbmThuongHieu);
         cboDongMay.setModel(dcbmDongMay);
         cboXuatXu.setModel(dcbmXuatXu);
@@ -216,7 +219,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         btnThemChatLieuVo = new javax.swing.JButton();
         btnResetCboChatLieuVo = new javax.swing.JButton();
         cboHinhDang = new javax.swing.JComboBox<>();
-        cboDoiTuongSuDong = new javax.swing.JComboBox<>();
+        cboDoiTuongSuDung = new javax.swing.JComboBox<>();
         txtKhangNuoc = new javax.swing.JTextField();
         txtSizeMat = new javax.swing.JTextField();
         txtDoDay = new javax.swing.JTextField();
@@ -769,7 +772,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
         cboHinhDang.setPreferredSize(new java.awt.Dimension(220, 30));
 
-        cboDoiTuongSuDong.setPreferredSize(new java.awt.Dimension(220, 30));
+        cboDoiTuongSuDung.setPreferredSize(new java.awt.Dimension(220, 30));
 
         txtKhangNuoc.setText("0");
         txtKhangNuoc.setPreferredSize(new java.awt.Dimension(220, 30));
@@ -808,7 +811,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
                             .addGroup(jPanel22Layout.createSequentialGroup()
                                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cboHinhDang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboDoiTuongSuDong, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(cboDoiTuongSuDung, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(76, 76, 76)))
                         .addContainerGap())))
         );
@@ -830,7 +833,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cboHinhDang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboDoiTuongSuDong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboDoiTuongSuDung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtKhangNuoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1089,7 +1092,9 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChonAnhActionPerformed
 
     private void btnResetAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetAnhActionPerformed
-        // TODO add your handling code here:
+        hinhAnh = null;
+        lblHinhAnh.setIcon(null);
+        lblHinhAnh.setText("Hình ảnh");
     }//GEN-LAST:event_btnResetAnhActionPerformed
 
     private void btnThemTinhNangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTinhNangActionPerformed
@@ -1115,7 +1120,9 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
                 formSanPhamJPanel.initPagination(sanPhamService.getAll(
                         formSanPhamJPanel.page,
                         formSanPhamJPanel.pageSize));
-
+                clearForm();
+            } else {
+                Helper.alert(this, "Thêm thất bại");
             }
         }
     }//GEN-LAST:event_btnLuuActionPerformed
@@ -1132,7 +1139,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
             th = (ThuongHieuViewModel) dcbmThuongHieu.getSelectedItem();
             sp.setThuongHieu(new ThuongHieu(th.getMaThuongHieu()));
         } else {
-            sp.setThuongHieu(new ThuongHieu(null));
+            sp.setThuongHieu(null);
         }
         if (dcbmDongSanPham.getSelectedItem() != null) {
             sp.setDongSanPham(dcbmDongSanPham.getSelectedItem().toString());
@@ -1144,52 +1151,52 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
             xx = (XuatXuViewModel) dcbmXuatXu.getSelectedItem();
             sp.setXuatXu(new XuatXu(xx.getMaXuatXu()));
         } else {
-            sp.setXuatXu(new XuatXu(null));
+            sp.setXuatXu(null);
         }
         MauViewModel mv = null;
         if (dcbmMauVo.getSelectedItem() != null) {
             mv = (MauViewModel) dcbmMauVo.getSelectedItem();
             sp.setMauVo(new Mau(mv.getMaMau()));
         } else {
-            sp.setMauVo(new Mau(null));
+            sp.setMauVo(null);
         }
         MauViewModel mm = null;
         if (dcbmMauMat.getSelectedItem() != null) {
             mm = (MauViewModel) dcbmMauMat.getSelectedItem();
             sp.setMauMat(new Mau(mm.getMaMau()));
         } else {
-            sp.setMauMat(new Mau(null));
+            sp.setMauMat(null);
         }
         DongMayViewModel dm = null;
         if (dcbmDongMay.getSelectedItem() != null) {
             dm = (DongMayViewModel) dcbmDongMay.getSelectedItem();
             sp.setDongMay(new DongMay(dm.getIdDongMay()));
         } else {
-            sp.setDongMay(new DongMay(null));
+            sp.setDongMay(null);
         }
         ChatLieuDayViewModel cld = null;
         if (dcbmChatLieuDay.getSelectedItem() != null) {
             cld = (ChatLieuDayViewModel) dcbmChatLieuDay.getSelectedItem();
             sp.setChatLieuDay(new ChatLieuDay(cld.getMaChatLieuDay()));
         } else {
-            sp.setChatLieuDay(new ChatLieuDay(null));
+            sp.setChatLieuDay(null);
         }
         ChatLieuKinhViewModel clk = null;
         if (dcbmChatLieuKinh.getSelectedItem() != null) {
             clk = (ChatLieuKinhViewModel) dcbmChatLieuKinh.getSelectedItem();
             sp.setChatLieuKinh(new ChatLieuKinh(clk.getMaChatLieuKinh()));
         } else {
-            sp.setChatLieuKinh(new ChatLieuKinh(null));
+            sp.setChatLieuKinh(null);
         }
         ChatLieuVoViewModel clv = null;
         if (dcbmChatLieuVo.getSelectedItem() != null) {
             clv = (ChatLieuVoViewModel) dcbmChatLieuVo.getSelectedItem();
             sp.setChatLieuVo(new ChatLieuVo(clv.getIdChatLieuVo()));
         } else {
-            sp.setChatLieuVo(new ChatLieuVo(null));
+            sp.setChatLieuVo(null);
         }
         sp.setHinhDang(cboHinhDang.getSelectedItem().toString());
-        sp.setDoiTuongSuDung(cboDoiTuongSuDong.getSelectedItem().toString());
+        sp.setDoiTuongSuDung(cboDoiTuongSuDung.getSelectedItem().toString());
         sp.setKhangNuoc(Integer.valueOf(txtKhangNuoc.getText().trim()));
         sp.setSizeMat(Float.valueOf(txtSizeMat.getText().trim()));
         sp.setDoDay(Float.valueOf(txtDoDay.getText().trim()));
@@ -1211,7 +1218,36 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         return listTnspModel;
     }
 
+    private void clearForm() {
+        txtMaSanPham.setText(sanPhamService.getMaSanPhamTuDongSinh());
+        txtMaVach.setText("");
+        spnSoLuong.setValue(0);
+        txtGiaNhap.setText("0");
+        txtGiaBan.setText("0");
+        cboThuongHieu.setSelectedIndex(-1);
+        cboDongSanPham.setSelectedIndex(-1);
+        cboXuatXu.setSelectedIndex(-1);
+        cboMauVo.setSelectedIndex(-1);
+        cboMauMat.setSelectedIndex(-1);
+        cboDongMay.setSelectedIndex(-1);
+        cboChatLieuDay.setSelectedIndex(-1);
+        cboChatLieuKinh.setSelectedIndex(-1);
+        cboChatLieuVo.setSelectedIndex(-1);
+        cboHinhDang.setSelectedIndex(0);
+        cboDoiTuongSuDung.setSelectedIndex(0);
+        cboTinhNang.clearSelectedItems();
+        cboPhongCach.clearSelectedItems();
+        txtKhangNuoc.setText("0");
+        txtSizeMat.setText("0");
+        txtDoDay.setText("0");
+        txtKhoangTruCot.setText("0");
+    }
+
     private boolean validateForm() {
+        if (cboThuongHieu.getSelectedItem() == null) {
+            Helper.alert(this, "Vui lòng chọn thương hiệu cho sản phẩm!");
+            return true;
+        }
         return false;
     }
 
@@ -1327,44 +1363,44 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }
 
     private void loadDataCboDoiTuongSuDung() {
-        cboDoiTuongSuDong.addItem("Unisex");
-        cboDoiTuongSuDong.addItem("Nam");
-        cboDoiTuongSuDong.addItem("Nữ");
-        cboDoiTuongSuDong.addItem("Trẻ em");
+        cboDoiTuongSuDung.addItem("Unisex");
+        cboDoiTuongSuDung.addItem("Nam");
+        cboDoiTuongSuDung.addItem("Nữ");
+        cboDoiTuongSuDung.addItem("Trẻ em");
     }
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormThemVaSuaSanPhamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormThemVaSuaSanPhamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormThemVaSuaSanPhamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormThemVaSuaSanPhamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormThemVaSuaSanPhamJFrame().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(FormThemVaSuaSanPhamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(FormThemVaSuaSanPhamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(FormThemVaSuaSanPhamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(FormThemVaSuaSanPhamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new FormThemVaSuaSanPhamJFrame().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChonAnh;
@@ -1399,7 +1435,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     javax.swing.JComboBox<String> cboChatLieuDay;
     javax.swing.JComboBox<String> cboChatLieuKinh;
     javax.swing.JComboBox<String> cboChatLieuVo;
-    javax.swing.JComboBox<String> cboDoiTuongSuDong;
+    javax.swing.JComboBox<String> cboDoiTuongSuDung;
     javax.swing.JComboBox<String> cboDongMay;
     javax.swing.JComboBox<String> cboDongSanPham;
     javax.swing.JComboBox<String> cboHinhDang;
