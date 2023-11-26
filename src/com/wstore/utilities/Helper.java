@@ -207,4 +207,22 @@ public class Helper {
     public static String removeDauNgoacVuong(String str) {
         return str.replaceAll("\\[|\\]", "");
     }
+
+    public static boolean isValidNumber(String text) {
+        try {
+            Integer.valueOf(text);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isValidDecimal(String text) {
+        try {
+            Double.valueOf(text);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

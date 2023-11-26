@@ -12,20 +12,22 @@ import java.util.List;
  * @author ducan
  */
 public interface ISanPhamRepository {
-    
+
     List<SanPham> getAll(int page, int pageSize);
-    
+
     SanPham findByMa(String ma);
-    
+
     boolean insert(SanPham sp);
-    
+
     boolean update(SanPham sp, int idSanPham);
-    
-    boolean updateStatus(int trangThai, int idSanPham);
-    
+
+    boolean updateAStatus(int trangThai, int idSanPham);
+
+    void updateStatuses(int trangThai, List<Integer> listID);
+
     int getRecordCount();
-    
+
     List<SanPham> findByNameOrMa(int page, int pageSize, String name);
-    
+
     List<SanPham> filter(String condition);
 }

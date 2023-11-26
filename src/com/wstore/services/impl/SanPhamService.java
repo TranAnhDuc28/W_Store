@@ -188,4 +188,14 @@ public class SanPhamService implements ISanPhamService {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
+    public boolean updateAStatus(int trangThai, int idSanPham) {
+        return sanPhamRepository.updateAStatus(trangThai, idSanPham);
+    }
+
+    @Override
+    public void updateStatuses(int trangThai, List<Integer> listID) {
+        sanPhamRepository.updateStatuses(trangThai, listID);
+    }
+
 }
