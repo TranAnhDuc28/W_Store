@@ -42,7 +42,7 @@ public class SanPham {
     private Mau mauVo;
     private Mau mauMat;
     private String ghiChu;
-    private Boolean trangThai;
+    private Integer trangThai;
 
     public SanPham() {
     }
@@ -51,7 +51,7 @@ public class SanPham {
         this.id = id;
     }
 
-    public SanPham(Integer id, String maSanPham, ThuongHieu thuongHieu, String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc, Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, DongMay dongMay, ChatLieuDay chatLieuDay, ChatLieuKinh chatLieuKinh, XuatXu xuatXu, ChatLieuVo chatLieuVo, Mau mauVo, Mau mauMat, String ghiChu, Boolean trangThai) {
+    public SanPham(Integer id, String maSanPham, ThuongHieu thuongHieu, String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc, Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, DongMay dongMay, ChatLieuDay chatLieuDay, ChatLieuKinh chatLieuKinh, XuatXu xuatXu, ChatLieuVo chatLieuVo, Mau mauVo, Mau mauMat, String ghiChu, Integer trangThai) {
         this.id = id;
         this.maSanPham = maSanPham;
         this.thuongHieu = thuongHieu;
@@ -261,28 +261,28 @@ public class SanPham {
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
     }
-    
-    public Boolean getTrangThai() {
+
+    public Integer getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(Boolean trangThai) {
+    public void setTrangThai(Integer trangThai) {
         this.trangThai = trangThai;
     }
 
     @Override
     public String toString() {
-        return "SanPham{" + "id=" + id + ", maSanPham=" + maSanPham 
-                + ", thuongHieu=" + thuongHieu + ", maHangHoa=" + maHangHoa 
-                + ", giaNhap=" + giaNhap + ", donGia=" + donGia 
-                + ", soLuongTon=" + soLuongTon + ", hinhAnh=" + hinhAnh 
-                + ", doiTuongSuDung=" + doiTuongSuDung + ", dongSanPham=" 
-                + dongSanPham + ", khangNuoc=" + khangNuoc + ", khoangTruCot=" 
-                + khoangTruCot + ", sizeMat=" + sizeMat + ", hinhDang=" 
-                + hinhDang + ", doDay=" + doDay + ", dongMay=" + dongMay 
-                + ", chatLieuDay=" + chatLieuDay + ", chatLieuKinh=" + chatLieuKinh 
-                + ", xuatXu=" + xuatXu + ", chatLieuVo=" + chatLieuVo 
-                + ", mauVo=" + mauVo + ", mauMat=" + mauMat + ", ghiChu=" 
+        return "SanPham{" + "id=" + id + ", maSanPham=" + maSanPham
+                + ", thuongHieu=" + thuongHieu + ", maHangHoa=" + maHangHoa
+                + ", giaNhap=" + giaNhap + ", donGia=" + donGia
+                + ", soLuongTon=" + soLuongTon + ", hinhAnh=" + hinhAnh
+                + ", doiTuongSuDung=" + doiTuongSuDung + ", dongSanPham="
+                + dongSanPham + ", khangNuoc=" + khangNuoc + ", khoangTruCot="
+                + khoangTruCot + ", sizeMat=" + sizeMat + ", hinhDang="
+                + hinhDang + ", doDay=" + doDay + ", dongMay=" + dongMay
+                + ", chatLieuDay=" + chatLieuDay + ", chatLieuKinh=" + chatLieuKinh
+                + ", xuatXu=" + xuatXu + ", chatLieuVo=" + chatLieuVo
+                + ", mauVo=" + mauVo + ", mauMat=" + mauMat + ", ghiChu="
                 + ghiChu + ", trangThai=" + trangThai + '}';
     }
 

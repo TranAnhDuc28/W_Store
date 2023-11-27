@@ -6,15 +6,15 @@ package com.wstore.services.impl.thuoctinhsanpham;
 
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.ChatLieuVoRepository;
-import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuVoViewModel;
 import java.util.List;
+import com.wstore.services.IQLThuocTinhSanPhamService;
 
 /**
  *
  * @author ducan
  */
-public class ChatLieuVoService implements IThuocTinhSanPhamService<ChatLieuVoViewModel>{
+public class ChatLieuVoService implements IQLThuocTinhSanPhamService<ChatLieuVoViewModel>{
 
     private final IThuocTinhSanPhamRepository chatLieuRepository
             = new ChatLieuVoRepository();

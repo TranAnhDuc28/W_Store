@@ -10,7 +10,7 @@ package com.wstore.utilities.status;
  */
 public class StatusSanPham {
 
-    public static final boolean DANG_KINH_DOANH = true;
+    public static final int DANG_KINH_DOANH = 0;
 
-    public static final boolean NGUNG_KINH_DOANH = false;
+    public static final int NGUNG_KINH_DOANH = 1;
 }

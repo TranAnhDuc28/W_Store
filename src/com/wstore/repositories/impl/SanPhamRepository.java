@@ -28,7 +28,7 @@ import java.util.List;
 public class SanPhamRepository implements ISanPhamRepository {
 
     @Override
-    public List<SanPham> getAll(int page, int pageSize) {
+    public List<SanPham> getAll(int page, int pageSize, int trangThai) {
         List<SanPham> list = new ArrayList<>();
 
         String sql = "select sp.id, sp.ma_san_pham, id_thuong_hieu, th.ten_thuong_hieu, sp.ma_hang_hoa\n"
@@ -47,13 +47,15 @@ public class SanPhamRepository implements ISanPhamRepository {
                 + "left join XuatXu xx on sp.id_xuat_xu = xx.id\n"
                 + "left join Mau mv on sp.id_mau_vo = mv.id\n"
                 + "left join Mau mm on sp.id_mau_mat = mm.id\n"
+                + "where sp.trang_thai = ?\n"
                 + "order by sp.id\n"
                 + "offset ? rows\n"
                 + "fetch next ? rows only;";
 
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
-            pstm.setInt(1, (page - 1) * pageSize);
-            pstm.setInt(2, pageSize);
+            pstm.setInt(1, trangThai);
+            pstm.setInt(2, (page - 1) * pageSize);
+            pstm.setInt(3, pageSize);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 SanPham sp = new SanPham(
@@ -88,7 +90,7 @@ public class SanPhamRepository implements ISanPhamRepository {
                         new Mau(rs.getInt("id_mau_mat"),
                                 rs.getString("mau_mat")),
                         rs.getString("ghi_chu"),
-                        rs.getBoolean("trang_thai"));
+                        rs.getInt("trang_thai"));
                 list.add(sp);
             }
         } catch (SQLException e) {
@@ -238,7 +240,7 @@ public class SanPhamRepository implements ISanPhamRepository {
     }
 
     @Override
-    public List<SanPham> findByNameOrMa(int page, int pageSize, String name) {
+    public List<SanPham> findByNameOrMa(int page, int pageSize, String name, int trangThai) {
         List<SanPham> list = new ArrayList<>();
 
         String sql = "select sp.id, sp.ma_san_pham, id_thuong_hieu, th.ten_thuong_hieu, sp.ma_hang_hoa\n"
@@ -257,14 +259,15 @@ public class SanPhamRepository implements ISanPhamRepository {
                 + "     left join XuatXu xx on sp.id_xuat_xu = xx.id\n"
                 + "     left join Mau mv on sp.id_mau_vo = mv.id\n"
                 + "     left join Mau mm on sp.id_mau_mat = mm.id\n"
-                + "where sp.ma_san_pham like '%" + name + "%' or sp.ma_hang_hoa like '%" + name + "%' or th.ten_thuong_hieu like '%" + name + "%'\n"
+                + "where sp.ma_san_pham like '%" + name + "%' or sp.ma_hang_hoa like '%" + name + "%' or th.ten_thuong_hieu like '%" + name + "%' and sp.trang_thai = ?\n"
                 + "order by sp.id\n"
                 + "offset ? rows\n"
                 + "fetch next ? rows only;";
 
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
-            pstm.setInt(1, (page - 1) * pageSize);
-            pstm.setInt(2, pageSize);
+            pstm.setInt(1, trangThai);
+            pstm.setInt(2, (page - 1) * pageSize);
+            pstm.setInt(3, pageSize);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 SanPham sp = new SanPham(
@@ -299,7 +302,7 @@ public class SanPhamRepository implements ISanPhamRepository {
                         new Mau(rs.getInt("id_mau_mat"),
                                 rs.getString("mau_mat")),
                         rs.getString("ghi_chu"),
-                        rs.getBoolean("trang_thai"));
+                        rs.getInt("trang_thai"));
                 list.add(sp);
             }
         } catch (SQLException e) {
@@ -328,6 +331,22 @@ public class SanPhamRepository implements ISanPhamRepository {
     @Override
     public List<SanPham> filter(String condition) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int getRecordCountByTrangThai(int trangThai) {
+          int count = 0;
+        String sql = "select COUNT(*) from SanPham where trang_thai = ?";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setInt(1, trangThai);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return count;
     }
 
 }

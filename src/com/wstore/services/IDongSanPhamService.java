@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author ducan
  */
-public interface IDongSanPhamService extends IThuocTinhSanPhamService<DongSanPham> {
+public interface IDongSanPhamService extends IQLThuocTinhSanPhamService<DongSanPham> {
 
     List<DongSanPhamViewModel> getAllByIDThuongHieu(int idThuongHieu);
 }

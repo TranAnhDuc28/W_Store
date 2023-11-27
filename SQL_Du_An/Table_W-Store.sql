@@ -144,7 +144,7 @@ create table SanPham(
 	id_mau_vo int,
 	id_mau_mat int,
 	ghi_chu nvarchar(max),
-	trang_thai int default 1 not null,
+	trang_thai int default 0 not null,
 	constraint san_pham_PK primary key (id),
 	constraint thuong_hieu_FK_tbl_SanPham foreign key (id_thuong_hieu) references ThuongHieu(id),
 	constraint dong_may_FK_tbl_SanPham foreign key (id_dong_may) references DongMay(id),

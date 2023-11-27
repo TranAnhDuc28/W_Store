@@ -45,12 +45,12 @@ public class SanPhamViewModel {
     private String tinhNang;
     private MauViewModel mauMat;
     private String ghiChu;
-    private Boolean trangThai;
+    private Integer trangThai;
 
     public SanPhamViewModel() {
     }
 
-    public SanPhamViewModel(Integer id, String maSanPham, ThuongHieuViewModel thuongHieu, String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc, Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, DongMayViewModel dongMay, ChatLieuDayViewModel chatLieuDay, ChatLieuKinhViewModel chatLieuKinh, XuatXuViewModel xuatXu, ChatLieuVoViewModel chatLieuVo, MauViewModel mauVo, String phongCach, String tinhNang, MauViewModel mauMat, String ghiChu, Boolean trangThai) {
+    public SanPhamViewModel(Integer id, String maSanPham, ThuongHieuViewModel thuongHieu, String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc, Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, DongMayViewModel dongMay, ChatLieuDayViewModel chatLieuDay, ChatLieuKinhViewModel chatLieuKinh, XuatXuViewModel xuatXu, ChatLieuVoViewModel chatLieuVo, MauViewModel mauVo, String phongCach, String tinhNang, MauViewModel mauMat, String ghiChu, Integer trangThai) {
         this.id = id;
         this.maSanPham = maSanPham;
         this.thuongHieu = thuongHieu;
@@ -279,13 +279,14 @@ public class SanPhamViewModel {
         this.ghiChu = ghiChu;
     }
 
-    public Boolean getTrangThai() {
+    public Integer getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(Boolean trangThai) {
+    public void setTrangThai(Integer trangThai) {
         this.trangThai = trangThai;
     }
+
 
     public Object[] toDataRow() {
         return new Object[]{maSanPham, thuongHieu, maHangHoa,
@@ -293,6 +294,6 @@ public class SanPhamViewModel {
             doiTuongSuDung, dongSanPham, dongMay, chatLieuDay, chatLieuKinh,
             khangNuoc, khoangTruCot, sizeMat, xuatXu, chatLieuVo,
             hinhDang, mauVo, phongCach, tinhNang, doDay, mauMat, hinhAnh,
-            trangThai ? "Đang kinh doanh" : "Ngừng kinh doanh"};
+            trangThai == 0 ? "Đang kinh doanh" : "Ngừng kinh doanh"};
     }
 }

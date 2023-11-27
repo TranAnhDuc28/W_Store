@@ -6,15 +6,18 @@ package com.wstore.services;
 
 import com.wstore.domainmodels.SanPham;
 import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
+import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
 import java.util.List;
 
 /**
  *
  * @author ducan
  */
-public interface ISanPhamService {
+public interface IQLSanPhamService {
 
-    List<SanPhamViewModel> getAll(int page, int pageSize);
+    List<SanPhamViewModel> getAll(int page, int pageSize, int trangThai);
+    
+    List<SanPhamBanHangViewModel> getAllSanPhamBanHang(int page, int pageSize, int trangThai);
 
     SanPham findByMa(String ma);
 
@@ -26,9 +29,11 @@ public interface ISanPhamService {
 
     void updateStatuses(int trangThai, List<Integer> listID);
 
-    List<SanPhamViewModel> findByNameOrMa(int page, int pageSize, String name);
+    List<SanPhamViewModel> findByNameOrMa(int page, int pageSize, String name, int trangThai);
 
     int getRecordCount();
+
+    int getRecordCountByTrangThai(int trangThai);
 
     String getMaSanPhamTuDongSinh();
 }

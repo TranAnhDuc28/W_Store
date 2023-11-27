@@ -7,11 +7,11 @@ package com.wstore.views;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.wstore.domainmodels.NhanVien;
 import com.wstore.services.INhanVienService;
-import com.wstore.services.impl.NhanVienService;
+import com.wstore.services.impl.QLNhanVienService;
 import com.wstore.utilities.HashPassword;
 import com.wstore.utilities.Helper;
 import com.wstore.utilities.status.StatusNhanVien;
-import com.wstore.viewmodels.QLsanpham.NhanVienViewModel;
+import com.wstore.viewmodels.NhanVienViewModel;
 import com.wstore.utilities.excel.WriteExcel;
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +30,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormNhanVienJPanel extends javax.swing.JPanel {
 
-    private final INhanVienService nhanVienService = new NhanVienService();
+    private final INhanVienService nhanVienService = new QLNhanVienService();
     private DefaultTableModel dtmNhanVien = new DefaultTableModel();
     private List<NhanVienViewModel> listNVs;
     private int index = -1;
@@ -815,32 +815,6 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
                     Helper.alert(this, "Sửa thất bại!");
                 }
             }
-            int selectedRowCount = tblDSNhanVien.getSelectedRowCount();
-            if (selectedRowCount == 0) {
-                Helper.alert(this, "Vui lòng chọn thông tin nhân viên muốn xóa!");
-                return;
-            }
-            if (selectedRowCount == 1) {
-                index = tblDSNhanVien.getSelectedRow();
-                if (Helper.comfirm(this, "Xác nhận thao tác? Bạn muốn thay đổi trạng thái nhân viên thành nghỉ việc? ")) {
-                    Integer id = listNVs.get(index).getId();
-                    nhanVienService.updateStatusOfAnStaff(1, id);
-                    initPagination(nhanVienService.getAll(page, pageSize, trangThai));
-                    clearForm();
-                }
-                System.out.println("Update 1");
-            } else {
-                List<Integer> listID = new ArrayList<>();
-                int count = tblDSNhanVien.getSelectedRows().length;
-                for (int i = 0; i < count; i++) {
-                    listID.add(listNVs.get(i).getId());
-                }
-                if (Helper.comfirm(this, "Xác nhận thao tác? Bạn muốn thay đổi trạng thái nhân viên thành nghỉ việc? ")) {
-                    nhanVienService.updateSatusOfStaffs(1, listID);
-                    initPagination(nhanVienService.getAll(page, pageSize, trangThai));
-                    clearForm();
-                }
-            }
         }
     }//GEN-LAST:event_btnDieuChinhActionPerformed
 
@@ -1012,11 +986,14 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
             hinh = imageName;
             imageName = null;
         } else {
-            if (index >= 0) {
+            String hinhAnhPresent = listNVs.get(index).getHinhAnh();
+            if (index >= 0 && hinhAnhPresent != null && !(hinhAnhPresent.equals("No image"))) {
+                hinh = hinhAnhPresent;
                 if (lblHinhAnh.getIcon() == null) {
                     hinh = "No image";
                 }
-                hinh = listNVs.get(index).getHinhAnh();
+            } else {
+                hinh = "No image";
             }
         }
         nv.setHinhAnh(hinh);

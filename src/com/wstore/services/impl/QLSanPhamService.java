@@ -11,7 +11,6 @@ import com.wstore.repositories.ITinhNangSanPhamRepository;
 import com.wstore.repositories.impl.SanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.PhongCachSanPhamReporitory;
 import com.wstore.repositories.impl.thuoctinhsanpham.TinhNangSanPhamRepository;
-import com.wstore.services.ISanPhamService;
 import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayViewModel;
@@ -26,12 +25,15 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.XuatXuViewModel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import com.wstore.services.IQLSanPhamService;
+import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
+import java.math.BigDecimal;
 
 /**
  *
  * @author ducan
  */
-public class SanPhamService implements ISanPhamService {
+public class QLSanPhamService implements IQLSanPhamService {
 
     private final ISanPhamRepository sanPhamRepository
             = new SanPhamRepository();
@@ -41,8 +43,8 @@ public class SanPhamService implements ISanPhamService {
             = new PhongCachSanPhamReporitory();
 
     @Override
-    public List<SanPhamViewModel> getAll(int page, int pageSize) {
-        List<SanPham> listSanPham = sanPhamRepository.getAll(page, pageSize);
+    public List<SanPhamViewModel> getAll(int page, int pageSize, int trangThai) {
+        List<SanPham> listSanPham = sanPhamRepository.getAll(page, pageSize, trangThai);
 
         List<SanPhamViewModel> listSanPhamView = new ArrayList<>();
         for (SanPham sanPham : listSanPham) {
@@ -109,8 +111,8 @@ public class SanPhamService implements ISanPhamService {
     }
 
     @Override
-    public List<SanPhamViewModel> findByNameOrMa(int page, int pageSize, String name) {
-        List<SanPham> listSanPham = sanPhamRepository.findByNameOrMa(page, pageSize, name);
+    public List<SanPhamViewModel> findByNameOrMa(int page, int pageSize, String name, int trangThai) {
+        List<SanPham> listSanPham = sanPhamRepository.findByNameOrMa(page, pageSize, name, trangThai);
 
         List<SanPhamViewModel> listSanPhamView = new ArrayList<>();
         for (SanPham sanPham : listSanPham) {
@@ -180,7 +182,7 @@ public class SanPhamService implements ISanPhamService {
     }
 
     public static void main(String[] args) {
-        System.out.println(new SanPhamService().getMaSanPhamTuDongSinh());
+        System.out.println(new QLSanPhamService().getMaSanPhamTuDongSinh());
     }
 
     @Override
@@ -198,4 +200,32 @@ public class SanPhamService implements ISanPhamService {
         sanPhamRepository.updateStatuses(trangThai, listID);
     }
 
+    @Override
+    public int getRecordCountByTrangThai(int trangThai) {
+        return sanPhamRepository.getRecordCountByTrangThai(trangThai);
+    }
+
+    @Override
+    public List<SanPhamBanHangViewModel> getAllSanPhamBanHang(int page, int pageSize, int trangThai) {
+        List<SanPham> listSanPham = sanPhamRepository.getAll(page, pageSize, trangThai);
+        
+        
+        List<SanPhamBanHangViewModel> listSanPhamBanHang = new ArrayList<>();
+        for (SanPham sanPham : listSanPham) {
+            Float sizeMat = sanPham.getSizeMat();
+            
+            SanPhamBanHangViewModel sanPhamBanHang = new SanPhamBanHangViewModel(
+                    sanPham.getId(),
+                    sanPham.getHinhAnh(),
+                    sanPham.getMaSanPham(),
+                    sanPham.getThuongHieu().toString() 
+                            + " " + sizeMat.intValue() + "mm" 
+                            + " " + sanPham.getDoiTuongSuDung() 
+                            + " " + sanPham.getMaHangHoa(),
+                    sanPham.getSoLuongTon(),
+                    sanPham.getDonGia());
+            listSanPhamBanHang.add(sanPhamBanHang);
+        }
+        return listSanPhamBanHang;
+    }
 }

@@ -5,7 +5,7 @@
 package com.wstore.services;
 
 import com.wstore.domainmodels.NhanVien;
-import com.wstore.viewmodels.QLsanpham.NhanVienViewModel;
+import com.wstore.viewmodels.NhanVienViewModel;
 import java.util.List;
 
 /**

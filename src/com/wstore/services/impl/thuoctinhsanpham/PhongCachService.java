@@ -6,15 +6,15 @@ package com.wstore.services.impl.thuoctinhsanpham;
 
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.PhongCachRepository;
-import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import java.util.List;
+import com.wstore.services.IQLThuocTinhSanPhamService;
 
 /**
  *
  * @author ducan
  */
-public class PhongCachService implements IThuocTinhSanPhamService<PhongCachViewModel> {
+public class PhongCachService implements IQLThuocTinhSanPhamService<PhongCachViewModel> {
 
     private final IThuocTinhSanPhamRepository phongcahRepository 
             = new PhongCachRepository();

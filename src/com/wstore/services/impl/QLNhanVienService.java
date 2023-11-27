@@ -9,7 +9,7 @@ import com.wstore.repositories.INhanVienRepository;
 import com.wstore.repositories.impl.NhanVienRepository;
 import com.wstore.services.INhanVienService;
 import com.wstore.utilities.Helper;
-import com.wstore.viewmodels.QLsanpham.NhanVienViewModel;
+import com.wstore.viewmodels.NhanVienViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author ducan
  */
-public class NhanVienService implements INhanVienService {
+public class QLNhanVienService implements INhanVienService {
 
     private INhanVienRepository nhanVienRepository = new NhanVienRepository();
 

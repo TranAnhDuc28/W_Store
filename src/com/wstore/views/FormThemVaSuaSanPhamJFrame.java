@@ -15,10 +15,8 @@ import com.wstore.domainmodels.thuoctinhsanpham.ThuongHieu;
 import com.wstore.domainmodels.thuoctinhsanpham.TinhNangSanPham;
 import com.wstore.domainmodels.thuoctinhsanpham.XuatXu;
 import com.wstore.services.IDongSanPhamService;
-import com.wstore.services.ISanPhamService;
-import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.ITinhNangSanPhamService;
-import com.wstore.services.impl.SanPhamService;
+import com.wstore.services.impl.QLSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuDayService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuKinhService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuVoService;
@@ -57,6 +55,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
+import com.wstore.services.IQLSanPhamService;
+import com.wstore.services.IQLThuocTinhSanPhamService;
 
 /**
  *
@@ -64,20 +64,20 @@ import javax.swing.JPanel;
  */
 public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
-    private ISanPhamService sanPhamService = new SanPhamService();
+    private IQLSanPhamService sanPhamService = new QLSanPhamService();
     private ITinhNangSanPhamService tinhNangSanPhamService = new TinhNangSanPhamService();
     private FormSanPhamJPanel formSanPhamJPanel;
-    private final IThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
-    private final IThuocTinhSanPhamService dongMayService = new DongMayService();
-    private final IThuocTinhSanPhamService xuatXuService = new XuatXuService();
-    private final IThuocTinhSanPhamService mauVoService = new MauService();
-    private final IThuocTinhSanPhamService mauMatService = new MauService();
-    private final IThuocTinhSanPhamService chatLieuDayService = new ChatLieuDayService();
-    private final IThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
-    private final IThuocTinhSanPhamService chatLieuVoService = new ChatLieuVoService();
+    private final IQLThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
+    private final IQLThuocTinhSanPhamService dongMayService = new DongMayService();
+    private final IQLThuocTinhSanPhamService xuatXuService = new XuatXuService();
+    private final IQLThuocTinhSanPhamService mauVoService = new MauService();
+    private final IQLThuocTinhSanPhamService mauMatService = new MauService();
+    private final IQLThuocTinhSanPhamService chatLieuDayService = new ChatLieuDayService();
+    private final IQLThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
+    private final IQLThuocTinhSanPhamService chatLieuVoService = new ChatLieuVoService();
     private final IDongSanPhamService dongSanPhamService = new DongSanPhamService();
-    private final IThuocTinhSanPhamService phongCachService = new PhongCachService();
-    private final IThuocTinhSanPhamService tinhNangService = new TinhNangService();
+    private final IQLThuocTinhSanPhamService phongCachService = new PhongCachService();
+    private final IQLThuocTinhSanPhamService tinhNangService = new TinhNangService();
     DefaultComboBoxModel dcbmThuongHieu = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmDongMay = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmXuatXu = new DefaultComboBoxModel();
@@ -89,8 +89,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     DefaultComboBoxModel dcbmDongSanPham = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmTinhNang = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmPhongCach = new DefaultComboBoxModel();
-
-    private String hinhAnh = null;
+    private String tenHinhAnh = null;
+    private int rowSelected = -1;
 
     public FormThemVaSuaSanPhamJFrame(JPanel panel) {
         initComponents();
@@ -245,7 +245,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setOpaque(false);
 
-        txtMaSanPham.setBackground(new java.awt.Color(255, 255, 255));
         txtMaSanPham.setPreferredSize(new java.awt.Dimension(250, 30));
 
         jLabel4.setText("Mã sản phẩm");
@@ -1074,11 +1073,11 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChupAnhActionPerformed
 
     private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonAnhActionPerformed
-        hinhAnh = Helper.chonAnh("images", lblHinhAnh);
+        tenHinhAnh = Helper.chonAnh("images", lblHinhAnh);
     }//GEN-LAST:event_btnChonAnhActionPerformed
 
     private void btnResetAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetAnhActionPerformed
-        hinhAnh = null;
+        tenHinhAnh = null;
         lblHinhAnh.setIcon(null);
         lblHinhAnh.setText("Hình ảnh");
     }//GEN-LAST:event_btnResetAnhActionPerformed
@@ -1100,7 +1099,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResetCboPhongCachActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        int rowSelected = formSanPhamJPanel.tblDSSanPham.getSelectedRow();
+        rowSelected = formSanPhamJPanel.tblDSSanPham.getSelectedRow();
         if (rowSelected < 0) {
             System.out.println("Bạn đang chọn thêm");
             if (!validateForm()) {
@@ -1108,7 +1107,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
                     Helper.alert(this, "Thêm thành công");
                     formSanPhamJPanel.initPagination(sanPhamService.getAll(
                             formSanPhamJPanel.page,
-                            formSanPhamJPanel.pageSize));
+                            formSanPhamJPanel.pageSize,
+                            formSanPhamJPanel.trangThai));
                     clearForm();
                 } else {
                     Helper.alert(this, "Thêm thất bại");
@@ -1125,7 +1125,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
                         Helper.alert(this, "Sửa thành công");
                         formSanPhamJPanel.initPagination(sanPhamService.getAll(
                                 formSanPhamJPanel.page,
-                                formSanPhamJPanel.pageSize));
+                                formSanPhamJPanel.pageSize,
+                                formSanPhamJPanel.trangThai));
                         formSanPhamJPanel.tblDSSanPham.setRowSelectionInterval(rowSelected, rowSelected);
                     } else {
                         Helper.alert(this, "Sửa thất bại");
@@ -1228,6 +1229,22 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         sp.setSizeMat(Float.valueOf(spnSizeMat.getValue().toString()));
         sp.setDoDay(Float.valueOf(spnDoDay.getValue().toString()));
         sp.setKhoangTruCot(Integer.valueOf(spnKhoangTruCot.getValue().toString()));
+        String hinh = null;
+        if (tenHinhAnh != null) {
+            hinh = tenHinhAnh;
+            tenHinhAnh = null;
+        } else {
+            Object hinhAnhOnTbl = formSanPhamJPanel.tblDSSanPham.getValueAt(rowSelected, 21);
+            if (rowSelected >= 0 && hinhAnhOnTbl != null && !(hinhAnhOnTbl.equals("No image"))) {
+                hinh = hinhAnhOnTbl.toString();
+                if (lblHinhAnh.getIcon() == null) {
+                    hinh = "No image";
+                }
+            } else {
+                hinh = "No image";
+            }
+        }
+        sp.setHinhAnh(hinh);
         return sp;
     }
 
@@ -1519,7 +1536,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JLabel lblHinhAnh;
+    public javax.swing.JLabel lblHinhAnh;
     protected javax.swing.JSpinner spnDoDay;
     protected javax.swing.JSpinner spnGiaBan;
     protected javax.swing.JSpinner spnGiaNhap;

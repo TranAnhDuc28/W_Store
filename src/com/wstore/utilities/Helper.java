@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -224,5 +225,10 @@ public class Helper {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+    
+    public static ImageIcon scaledImage(ImageIcon image, int width, int height) {
+        return new ImageIcon( image.getImage()
+                .getScaledInstance(width, height, Image.SCALE_SMOOTH));
     }
 }

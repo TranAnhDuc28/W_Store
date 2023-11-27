@@ -4,12 +4,12 @@
  */
 package com.wstore.views.thuoctinhsanpham;
 
-import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuVoService;
 import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuVoViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import com.wstore.services.IQLThuocTinhSanPhamService;
 
 /**
  *
@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormChatLieuVoJDialog extends javax.swing.JDialog {
 
-    private final IThuocTinhSanPhamService chatLieuVoService = new ChatLieuVoService();
+    private final IQLThuocTinhSanPhamService chatLieuVoService = new ChatLieuVoService();
     private DefaultTableModel dtmChatLieuVo;
     private List<ChatLieuVoViewModel> listChatLieuVo;
     private int index = -1;

@@ -5,7 +5,7 @@
 package com.wstore.utilities.excel;
 
 import com.wstore.utilities.Helper;
-import com.wstore.viewmodels.QLsanpham.NhanVienViewModel;
+import com.wstore.viewmodels.NhanVienViewModel;
 import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -244,7 +244,7 @@ public class WriteExcel {
         cell = row.createCell(21);
         cell.setCellValue(sp.getHinhAnh());
         cell = row.createCell(22);
-        cell.setCellValue(sp.getTrangThai() ? "Đang kinh doanh" : "Ngừng kinh doanh");
+        cell.setCellValue(sp.getTrangThai() == 0 ? "Đang kinh doanh" : "Ngừng kinh doanh");
     }
     
      public static void write(NhanVienViewModel nv, Row row) {

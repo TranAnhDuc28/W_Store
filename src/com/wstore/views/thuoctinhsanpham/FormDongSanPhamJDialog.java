@@ -7,7 +7,6 @@ package com.wstore.views.thuoctinhsanpham;
 import com.wstore.domainmodels.thuoctinhsanpham.DongSanPham;
 import com.wstore.domainmodels.thuoctinhsanpham.ThuongHieu;
 import com.wstore.services.IDongSanPhamService;
-import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.DongSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ThuongHieuService;
 import com.wstore.utilities.Helper;
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
+import com.wstore.services.IQLThuocTinhSanPhamService;
 
 /**
  *
@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormDongSanPhamJDialog extends javax.swing.JDialog {
 
-    private final IThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
+    private final IQLThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
     private final IDongSanPhamService dongSanPhamService = new DongSanPhamService();
     private final DefaultComboBoxModel dcbmThuongHieu = new DefaultComboBoxModel();
     private DefaultTableModel dtmDongSanPham;

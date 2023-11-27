@@ -4,13 +4,13 @@
  */
 package com.wstore.views.thuoctinhsanpham;
 
-import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuKinhService;
 import com.wstore.swing.table.TableTextAlignmentCellRender;
 import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import com.wstore.services.IQLThuocTinhSanPhamService;
 
 /**
  *
@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormChatLieuKinhJDialog extends javax.swing.JDialog {
 
-    private final IThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
+    private final IQLThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
     private DefaultTableModel dtmChatLieuKinh;
     private List<ChatLieuKinhViewModel> listChatLieuKinh;
     private int index = -1;

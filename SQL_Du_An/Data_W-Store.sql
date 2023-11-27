@@ -772,6 +772,7 @@ select * from PhongCach
 select * from SanPham
  
 -- data table PhongCachSanPham
+select * from PhongCachSanPham
 
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (2, 5);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (3, 5);
@@ -838,8 +839,6 @@ insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (62, 1);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (62, 3);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (71, 1);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (100, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (71, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (100, 3);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (13, 6);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (13, 1);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (67, 6);
@@ -857,8 +856,6 @@ insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (89, 10);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (5, 8);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (29, 8);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (29, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (2, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (3, 5);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (16, 5);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (32, 5);
 insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (45, 5);

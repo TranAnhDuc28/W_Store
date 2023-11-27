@@ -4,12 +4,12 @@
  */
 package com.wstore.views.thuoctinhsanpham;
 
-import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.MauService;
 import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.MauViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import com.wstore.services.IQLThuocTinhSanPhamService;
 
 /**
  *
@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormMauJDialog extends javax.swing.JDialog {
 
-    private final IThuocTinhSanPhamService mauSevice = new MauService();
+    private final IQLThuocTinhSanPhamService mauSevice = new MauService();
     private DefaultTableModel dtmMau = new DefaultTableModel();
     int index = -1;
     List<MauViewModel> listMau;

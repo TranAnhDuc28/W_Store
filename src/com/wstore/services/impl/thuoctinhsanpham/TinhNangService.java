@@ -6,15 +6,15 @@ package com.wstore.services.impl.thuoctinhsanpham;
 
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.TinhNangRepository;
-import com.wstore.services.IThuocTinhSanPhamService;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import java.util.List;
+import com.wstore.services.IQLThuocTinhSanPhamService;
 
 /**
  *
  * @author ducan
  */
-public class TinhNangService implements IThuocTinhSanPhamService<TinhNangViewModel> {
+public class TinhNangService implements IQLThuocTinhSanPhamService<TinhNangViewModel> {
 
     private final IThuocTinhSanPhamRepository tinhSanPhamRepository 
             = new TinhNangRepository();
