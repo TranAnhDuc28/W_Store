@@ -199,14 +199,16 @@ create table NhanVien(
 	hinh_anh varchar(max),
 	ngay_tao datetime2 default getdate(),
 	ghi_chu nvarchar(255),
-	trang_thai int default 0
+	trang_thai int default 0,
+	constraint nhan_vien_PK primary key (id)
 )
 go
 
-if OBJECT_ID('KhanhHang') is not null
-drop table KhanhHang
+
+if OBJECT_ID('KhachHang') is not null
+drop table KhachHang
 go
-create table KhanhHang(
+create table KhachHang(
 	id int identity(1,1) not null,
 	ma_khach_hang char(8) not null,
 	ho_ten nvarchar(100) not null,
@@ -218,7 +220,91 @@ create table KhanhHang(
 	hinh_anh varchar(max),
 	ngay_tao datetime2 default getdate(),
 	ghi_chu nvarchar(255),
-	trang_thai int default 1 
+	trang_thai int default 1,
+	constraint khach_hang_PK primary key (id)
 )
 go
 
+
+if OBJECT_ID('HoaDon') is not null
+drop table HoaDon
+go
+create table HoaDon(
+	id int identity(1,1) not null,
+	ma_hoa_don char(8) not null,
+	ngay_tao datetime2 default getdate(),
+	ten_khach_hang nvarchar(100),
+	dia_chi nvarchar(255),
+	so_dien_thoai varchar(20),
+	ngay_thanh_toan datetime2,
+	ngay_giao_hang datetime2,
+	ngay_ship datetime2,
+	tien_ship decimal(10,0) default 0,
+	tien_coc decimal(10,0) default 0,
+	ngay_nhan_hang datetime2,
+	ghi_chu nvarchar(255),
+	trang_thai int default 1,
+	id_nhan_vien int not null,
+	id_khach_hang int,
+	constraint hoa_don_PK primary key (id),
+	constraint nhan_vien_FK_tbl_HoaDon foreign key (id_nhan_vien) references NhanVien(id),
+	constraint khach_hang_FK_tbl_HoaDon foreign key (id_khach_hang) references KhachHang(id)
+)
+go
+
+if OBJECT_ID('HinhThucThanhToan') is not null
+drop table HinhThucThanhToan
+go
+create table HinhThucThanhToan(
+	id int identity(1,1) not null,
+	loai_hinh_thanh_toan nvarchar(100),
+	trang_thai int default 1,
+	id_hoa_don int not null,
+	constraint hinh_thuc_thanh_toan_PK primary key (id),
+	constraint hoa_don_FK_tbl_HinhThucThanhToan foreign key (id_hoa_don) references HoaDon(id),
+)
+go
+
+if OBJECT_ID('HoaDonChiTiet') is not null
+drop table HoaDonChiTiet
+go
+create table HoaDonChiTiet(
+	id bigint identity(1,1) not null,
+	id_san_pham int not null,
+	id_hoa_don int not null,
+	so_luong int default 0,
+	don_gia decimal(10,0) default 0,
+	don_gia_sau_khuyen_mai decimal(10,0) default 0,
+	constraint hoa_don_chi_tiet_PK primary key (id),
+	constraint san_pham_FK_tbl_HoaDonChiTiet foreign key (id_san_pham) references SanPham(id),
+	constraint hoa_don_FK_tbl_HoaDonChiTiet foreign key (id_hoa_don) references HoaDon(id)
+)
+go
+
+if OBJECT_ID('ChuongTrinhKhuyenMai') is not null
+drop table ChuongTrinhKhuyenMai
+go
+create table ChuongTrinhKhuyenMai(
+	id int identity(1,1) not null,
+	ten_chuong_trinh nvarchar(255) not null,
+	ngay_bat_dau datetime2 not null,
+	ngay_ket_thuc datetime2 not null,
+	hinh_thuc_giam_gia nvarchar(100),
+	gia_tri_giam int,
+	trang_thai int default 0,
+	constraint chuong_trinh_khuyen_mai_PK primary key (id),
+)
+go
+
+
+if OBJECT_ID('SanPhamKhuyenMai') is not null
+drop table SanPhamKhuyenMai
+go
+create table SanPhamKhuyenMai(
+	id_san_pham int not null,
+	id_chuong_trinh_khuyen_mai int not null,
+	constraint san_pham_khuyen_mai_PK primary key (id_san_pham, id_chuong_trinh_khuyen_mai),
+	constraint san_pham_FK_tbl_SanPhamKhuyenMai foreign key (id_san_pham) references SanPham(id),
+	constraint chuong_trinh_khuyen_mai_FK_tbl_SanPhamKhuyenMai foreign key (id_chuong_trinh_khuyen_mai) references ChuongTrinhKhuyenMai(id)
+)
+go

@@ -20,6 +20,7 @@ import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -61,10 +62,10 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
     private void customJTable() {
         tblDSSanPham.getColumnModel().getColumn(0).setCellRenderer(new TableImageCellRender());
-        tblDSSanPham.getColumnModel().getColumn(5).setCellRenderer(new TableActionCellRender());
-        tblDSSanPham.getColumnModel().getColumn(5).setCellEditor(new TableActionCellEditor(tableSanPhamActionEvent()));
-        TableTextAlignmentCellRender textCenter = new TableTextAlignmentCellRender();
-        tblDSSanPham.getColumnModel().getColumn(2).setCellRenderer(textCenter);
+        tblDSSanPham.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
+        tblDSSanPham.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(tableSanPhamActionEvent()));
+//        TableTextAlignmentCellRender textCenter = new TableTextAlignmentCellRender();
+//        tblDSSanPham.getColumnModel().getColumn(2).setCellRenderer(textCenter);
     }
 
     private TableActionEvent tableSanPhamActionEvent() {
@@ -169,17 +170,17 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         tblDSSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblDSSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Hình ảnh", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá", ""
+                "Hình ảnh", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá", "Giá khuyến mãi", ""
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -205,10 +206,19 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
             tblDSSanPham.getColumnModel().getColumn(4).setMinWidth(150);
             tblDSSanPham.getColumnModel().getColumn(4).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(4).setMaxWidth(150);
-            tblDSSanPham.getColumnModel().getColumn(5).setMinWidth(60);
-            tblDSSanPham.getColumnModel().getColumn(5).setPreferredWidth(60);
-            tblDSSanPham.getColumnModel().getColumn(5).setMaxWidth(60);
+            tblDSSanPham.getColumnModel().getColumn(5).setMinWidth(150);
+            tblDSSanPham.getColumnModel().getColumn(5).setPreferredWidth(150);
+            tblDSSanPham.getColumnModel().getColumn(5).setMaxWidth(150);
+            tblDSSanPham.getColumnModel().getColumn(6).setMinWidth(60);
+            tblDSSanPham.getColumnModel().getColumn(6).setPreferredWidth(60);
+            tblDSSanPham.getColumnModel().getColumn(6).setMaxWidth(60);
         }
+
+        txtTimKiemSanPham.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemSanPhamKeyReleased(evt);
+            }
+        });
 
         jPanel8.setBackground(new java.awt.Color(243, 243, 243));
         jPanel8.setOpaque(false);
@@ -227,10 +237,20 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
         btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/first16x16.png"))); // NOI18N
         btnFirst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
         jPanel8.add(btnFirst);
 
         btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/prev16x16.png"))); // NOI18N
         btnPrev.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
         jPanel8.add(btnPrev);
 
         lblPageOfTotalPage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -241,12 +261,23 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
         btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/next16x16.png"))); // NOI18N
         btnNext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
         jPanel8.add(btnNext);
 
         btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/last16x16.png"))); // NOI18N
         btnLast.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
         jPanel8.add(btnLast);
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Tìm kiếm:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -288,26 +319,19 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", ""
+                "Mã sản phẩm", "Tên sản phẩm", "Số lượng ", "Đơn giá", "Thành tiền"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
         jTable3.setRowHeight(30);
-        jTable3.setShowGrid(false);
+        jTable3.setShowGrid(true);
         jTable3.setShowHorizontalLines(true);
         jTable3.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(jTable3);
@@ -734,6 +758,68 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     private void cboSoBanGhiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboSoBanGhiItemStateChanged
         initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
     }//GEN-LAST:event_cboSoBanGhiItemStateChanged
+
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        page = 1;
+        initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
+    }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        if (page > 1) {
+            page--;
+            initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
+        }
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if (page < totalPage) {
+            page++;
+            initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
+        }
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        page = totalPage;
+        initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
+    }//GEN-LAST:event_btnLastActionPerformed
+
+    private void txtTimKiemSanPhamKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemSanPhamKeyReleased
+         String name = txtTimKiemSanPham.getText();
+        //        initPagination(sanPhamService.findByNameOrMa(page, pageSize, name));
+        if (!name.trim().isEmpty()) {
+            cboSoBanGhi.setEnabled(false);
+            btnFirst.setEnabled(false);
+            btnPrev.setEnabled(false);
+            btnNext.setEnabled(false);
+            btnLast.setEnabled(false);
+            lblPageOfTotalPage.setEnabled(false);
+            SwingWorker<List<SanPhamBanHangViewModel>, Void> woker = new SwingWorker<List<SanPhamBanHangViewModel>, Void>() {
+                @Override
+                protected List<SanPhamBanHangViewModel> doInBackground() throws Exception {
+                    return sanPhamService.findSPBanHangByNameOrMa(1, 50, name, trangThai);
+                }
+
+                @Override
+                protected void done() {
+                    try {
+                        List<SanPhamBanHangViewModel> searchResult = get();
+                        initPagination(searchResult);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            woker.execute();
+        } else {
+            cboSoBanGhi.setEnabled(true);
+            btnFirst.setEnabled(true);
+            btnPrev.setEnabled(true);
+            btnNext.setEnabled(true);
+            btnLast.setEnabled(true);
+            lblPageOfTotalPage.setEnabled(true);
+            initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
+        }
+    }//GEN-LAST:event_txtTimKiemSanPhamKeyReleased
 
     public void initPagination(List<SanPhamBanHangViewModel> list) {
         tongSoBanGhiTheoTrangThai = sanPhamService.getRecordCountByTrangThai(trangThai);

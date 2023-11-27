@@ -111,7 +111,7 @@ public class QLSanPhamService implements IQLSanPhamService {
     }
 
     @Override
-    public List<SanPhamViewModel> findByNameOrMa(int page, int pageSize, String name, int trangThai) {
+    public List<SanPhamViewModel> findSPByNameOrMa(int page, int pageSize, String name, int trangThai) {
         List<SanPham> listSanPham = sanPhamRepository.findByNameOrMa(page, pageSize, name, trangThai);
 
         List<SanPhamViewModel> listSanPhamView = new ArrayList<>();
@@ -208,8 +208,30 @@ public class QLSanPhamService implements IQLSanPhamService {
     @Override
     public List<SanPhamBanHangViewModel> getAllSanPhamBanHang(int page, int pageSize, int trangThai) {
         List<SanPham> listSanPham = sanPhamRepository.getAll(page, pageSize, trangThai);
-        
-        
+          
+        List<SanPhamBanHangViewModel> listSanPhamBanHang = new ArrayList<>();
+        for (SanPham sanPham : listSanPham) {
+            Float sizeMat = sanPham.getSizeMat();
+            
+            SanPhamBanHangViewModel sanPhamBanHang = new SanPhamBanHangViewModel(
+                    sanPham.getId(),
+                    sanPham.getHinhAnh(),
+                    sanPham.getMaSanPham(),
+                    sanPham.getThuongHieu().toString() 
+                            + " " + sizeMat.intValue() + "mm" 
+                            + " " + sanPham.getDoiTuongSuDung() 
+                            + " " + sanPham.getMaHangHoa(),
+                    sanPham.getSoLuongTon(),
+                    sanPham.getDonGia());
+            listSanPhamBanHang.add(sanPhamBanHang);
+        }
+        return listSanPhamBanHang;
+    }
+
+    @Override
+    public List<SanPhamBanHangViewModel> findSPBanHangByNameOrMa(int page, int pageSize, String name, int trangThai) {
+        List<SanPham> listSanPham = sanPhamRepository.findByNameOrMa(page, pageSize, name, trangThai);
+          
         List<SanPhamBanHangViewModel> listSanPhamBanHang = new ArrayList<>();
         for (SanPham sanPham : listSanPham) {
             Float sizeMat = sanPham.getSizeMat();

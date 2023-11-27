@@ -86,6 +86,6 @@ public class SanPhamBanHangViewModel {
         return new Object[] {
             Helper.scaledImage(
                     new ImageIcon("images/images-san-pham/" + hinhAnh), 70, 70)
-                , maSanPham, tenSanPham, soLuong, donGia};
+                , maSanPham, tenSanPham, soLuong, Helper.dfTien.format(donGia)};
     }
 }

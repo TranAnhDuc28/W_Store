@@ -725,7 +725,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
             SwingWorker<List<SanPhamViewModel>, Void> woker = new SwingWorker<List<SanPhamViewModel>, Void>() {
                 @Override
                 protected List<SanPhamViewModel> doInBackground() throws Exception {
-                    return sanPhamService.findByNameOrMa(1, 50, name, trangThai);
+                    return sanPhamService.findSPByNameOrMa(1, 50, name, trangThai);
                 }
 
                 @Override

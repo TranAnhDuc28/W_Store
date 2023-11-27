@@ -16,7 +16,7 @@ import java.util.List;
 public interface IQLSanPhamService {
 
     List<SanPhamViewModel> getAll(int page, int pageSize, int trangThai);
-    
+
     List<SanPhamBanHangViewModel> getAllSanPhamBanHang(int page, int pageSize, int trangThai);
 
     SanPham findByMa(String ma);
@@ -29,7 +29,9 @@ public interface IQLSanPhamService {
 
     void updateStatuses(int trangThai, List<Integer> listID);
 
-    List<SanPhamViewModel> findByNameOrMa(int page, int pageSize, String name, int trangThai);
+    List<SanPhamViewModel> findSPByNameOrMa(int page, int pageSize, String name, int trangThai);
+
+    List<SanPhamBanHangViewModel> findSPBanHangByNameOrMa(int page, int pageSize, String name, int trangThai);
 
     int getRecordCount();
 
