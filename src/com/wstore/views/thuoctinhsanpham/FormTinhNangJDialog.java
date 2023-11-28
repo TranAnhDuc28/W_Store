@@ -5,11 +5,11 @@ import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 public class FormTinhNangJDialog extends javax.swing.JDialog {
 
-    private final IQLThuocTinhSanPhamService tinhNangService = new TinhNangService();
+    private final IThuocTinhSanPhamService tinhNangService = new TinhNangService();
     private DefaultTableModel dtmTinhNang = new DefaultTableModel();
     private int index = -1;
     private List<TinhNangViewModel> listTinhNang;

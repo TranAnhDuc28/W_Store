@@ -11,7 +11,7 @@ import java.util.List;
  * @author ducan
  * @param <E>
  */
-public interface IQLThuocTinhSanPhamService<E> {
+public interface IThuocTinhSanPhamService<E> {
 
     List<E> getAll();
 

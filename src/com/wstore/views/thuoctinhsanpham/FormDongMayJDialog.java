@@ -9,7 +9,7 @@ import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.DongMayViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
@@ -17,7 +17,7 @@ import com.wstore.services.IQLThuocTinhSanPhamService;
  */
 public class FormDongMayJDialog extends javax.swing.JDialog {
 
-    private final IQLThuocTinhSanPhamService dongMayService = new DongMayService();
+    private final IThuocTinhSanPhamService dongMayService = new DongMayService();
     private DefaultTableModel dtmDongMay;
     private List<DongMayViewModel> listDongMay;
     private int index = -1;

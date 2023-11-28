@@ -5,23 +5,18 @@
 package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import com.wstore.services.IQLSanPhamService;
 import com.wstore.services.impl.QLSanPhamService;
 import com.wstore.swing.table.TableActionCellEditor;
 import com.wstore.swing.table.TableActionCellRender;
 import com.wstore.swing.table.TableActionEvent;
 import com.wstore.swing.table.TableImageCellRender;
-import com.wstore.swing.table.TableTextAlignmentCellRender;
-import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
 import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
 import java.awt.Frame;
-import java.awt.Image;
 import java.util.List;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
+import com.wstore.services.ISanPhamService;
 
 /**
  *
@@ -30,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
 public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
     private Frame formBanHangJFrame;
-    private IQLSanPhamService sanPhamService = new QLSanPhamService();
+    private ISanPhamService sanPhamService = new QLSanPhamService();
     private DefaultTableModel dtmTblSanPham;
     private List<SanPhamBanHangViewModel> listSP;
     public int trangThai = 0;
@@ -45,7 +40,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         this.formBanHangJFrame = parent;
         init();
         customJTable();
-        initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, 0));
+        initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
     }
 
     private void init() {

@@ -55,8 +55,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
-import com.wstore.services.IQLSanPhamService;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.ISanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
@@ -64,20 +64,20 @@ import com.wstore.services.IQLThuocTinhSanPhamService;
  */
 public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
-    private IQLSanPhamService sanPhamService = new QLSanPhamService();
+    private ISanPhamService sanPhamService = new QLSanPhamService();
     private ITinhNangSanPhamService tinhNangSanPhamService = new TinhNangSanPhamService();
     private FormSanPhamJPanel formSanPhamJPanel;
-    private final IQLThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
-    private final IQLThuocTinhSanPhamService dongMayService = new DongMayService();
-    private final IQLThuocTinhSanPhamService xuatXuService = new XuatXuService();
-    private final IQLThuocTinhSanPhamService mauVoService = new MauService();
-    private final IQLThuocTinhSanPhamService mauMatService = new MauService();
-    private final IQLThuocTinhSanPhamService chatLieuDayService = new ChatLieuDayService();
-    private final IQLThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
-    private final IQLThuocTinhSanPhamService chatLieuVoService = new ChatLieuVoService();
+    private final IThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
+    private final IThuocTinhSanPhamService dongMayService = new DongMayService();
+    private final IThuocTinhSanPhamService xuatXuService = new XuatXuService();
+    private final IThuocTinhSanPhamService mauVoService = new MauService();
+    private final IThuocTinhSanPhamService mauMatService = new MauService();
+    private final IThuocTinhSanPhamService chatLieuDayService = new ChatLieuDayService();
+    private final IThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
+    private final IThuocTinhSanPhamService chatLieuVoService = new ChatLieuVoService();
     private final IDongSanPhamService dongSanPhamService = new DongSanPhamService();
-    private final IQLThuocTinhSanPhamService phongCachService = new PhongCachService();
-    private final IQLThuocTinhSanPhamService tinhNangService = new TinhNangService();
+    private final IThuocTinhSanPhamService phongCachService = new PhongCachService();
+    private final IThuocTinhSanPhamService tinhNangService = new TinhNangService();
     DefaultComboBoxModel dcbmThuongHieu = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmDongMay = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmXuatXu = new DefaultComboBoxModel();

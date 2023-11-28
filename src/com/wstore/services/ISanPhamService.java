@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author ducan
  */
-public interface IQLSanPhamService {
+public interface ISanPhamService {
 
     List<SanPhamViewModel> getAll(int page, int pageSize, int trangThai);
 

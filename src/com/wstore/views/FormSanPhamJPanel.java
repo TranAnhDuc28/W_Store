@@ -38,8 +38,8 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import com.wstore.services.IQLSanPhamService;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.ISanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
@@ -47,16 +47,16 @@ import com.wstore.services.IQLThuocTinhSanPhamService;
  */
 public class FormSanPhamJPanel extends javax.swing.JPanel {
 
-    private final IQLThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
-    private final IQLThuocTinhSanPhamService dongMayService = new DongMayService();
-    private final IQLThuocTinhSanPhamService chatLieuDayService = new ChatLieuDayService();
-    private final IQLThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
+    private final IThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
+    private final IThuocTinhSanPhamService dongMayService = new DongMayService();
+    private final IThuocTinhSanPhamService chatLieuDayService = new ChatLieuDayService();
+    private final IThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
     private final IDongSanPhamService dongSanPhamService = new DongSanPhamService();
     DefaultComboBoxModel dcbmThuongHieu = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmDongMay = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmChatLieuDay = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmChatLieuKinh = new DefaultComboBoxModel();
-    private final IQLSanPhamService sanPhamService = new QLSanPhamService();
+    private final ISanPhamService sanPhamService = new QLSanPhamService();
     private final ITinhNangSanPhamService tinhNangSanPhamService = new TinhNangSanPhamService();
     private final IPhongCachSanPhamService phongCachSanPhamService = new PhongCachSanPhamService();
     FormThemVaSuaSanPhamJFrame formThemVaSuaSanPham;
@@ -957,7 +957,7 @@ class ProgressExportExcel extends SwingWorker<Void, Void> {
 
     private final JProgressBar progressBar;
     private final ProgressJDialog progressJDialog;
-    private final IQLSanPhamService sanPhamService = new QLSanPhamService();
+    private final ISanPhamService sanPhamService = new QLSanPhamService();
     List<SanPhamViewModel> listData = new ArrayList<>();
 
     public ProgressExportExcel(JProgressBar progressBar, ProgressJDialog progressJDialog) {

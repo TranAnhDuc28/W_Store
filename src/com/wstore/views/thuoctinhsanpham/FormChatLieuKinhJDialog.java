@@ -10,7 +10,7 @@ import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
@@ -18,7 +18,7 @@ import com.wstore.services.IQLThuocTinhSanPhamService;
  */
 public class FormChatLieuKinhJDialog extends javax.swing.JDialog {
 
-    private final IQLThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
+    private final IThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
     private DefaultTableModel dtmChatLieuKinh;
     private List<ChatLieuKinhViewModel> listChatLieuKinh;
     private int index = -1;

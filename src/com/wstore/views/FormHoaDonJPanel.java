@@ -33,7 +33,6 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jButton5 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
-        jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -91,14 +90,6 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
         jButton5.setMargin(new java.awt.Insets(5, 14, 5, 14));
         jToolBar1.add(jButton5);
         jToolBar1.add(jSeparator3);
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/xoa32x32.png"))); // NOI18N
-        jButton3.setText("Hủy");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton3.setIconTextGap(5);
-        jButton3.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jToolBar1.add(jButton3);
 
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -254,7 +245,6 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

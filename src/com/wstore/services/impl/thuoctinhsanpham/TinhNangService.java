@@ -8,13 +8,13 @@ import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.TinhNangRepository;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import java.util.List;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
  * @author ducan
  */
-public class TinhNangService implements IQLThuocTinhSanPhamService<TinhNangViewModel> {
+public class TinhNangService implements IThuocTinhSanPhamService<TinhNangViewModel> {
 
     private final IThuocTinhSanPhamRepository tinhSanPhamRepository 
             = new TinhNangRepository();

@@ -25,15 +25,15 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.XuatXuViewModel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import com.wstore.services.IQLSanPhamService;
 import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
 import java.math.BigDecimal;
+import com.wstore.services.ISanPhamService;
 
 /**
  *
  * @author ducan
  */
-public class QLSanPhamService implements IQLSanPhamService {
+public class QLSanPhamService implements ISanPhamService {
 
     private final ISanPhamRepository sanPhamRepository
             = new SanPhamRepository();

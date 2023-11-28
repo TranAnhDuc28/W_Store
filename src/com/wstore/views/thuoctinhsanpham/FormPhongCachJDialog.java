@@ -9,7 +9,7 @@ import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
@@ -17,7 +17,7 @@ import com.wstore.services.IQLThuocTinhSanPhamService;
  */
 public class FormPhongCachJDialog extends javax.swing.JDialog {
 
-    private final IQLThuocTinhSanPhamService phongcachsevice = new PhongCachService();
+    private final IThuocTinhSanPhamService phongcachsevice = new PhongCachService();
     DefaultTableModel dtmPhongCach = new DefaultTableModel();
     int index = -1;
     List<PhongCachViewModel> listPhongCach;

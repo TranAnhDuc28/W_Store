@@ -9,7 +9,7 @@ import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.XuatXuViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
@@ -17,7 +17,7 @@ import com.wstore.services.IQLThuocTinhSanPhamService;
  */
 public class FormXuatXuJDialog extends javax.swing.JDialog {
 
-    private final IQLThuocTinhSanPhamService xuatxuseService = new XuatXuService();
+    private final IThuocTinhSanPhamService xuatxuseService = new XuatXuService();
     private DefaultTableModel xuatxumodel = new DefaultTableModel();
     int index = -1;
     private List<XuatXuViewModel> listXuatXu;

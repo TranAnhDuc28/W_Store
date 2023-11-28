@@ -8,13 +8,13 @@ import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.XuatXuRepository;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.XuatXuViewModel;
 import java.util.List;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
  * @author ducan
  */
-public class XuatXuService implements IQLThuocTinhSanPhamService<XuatXuViewModel>{
+public class XuatXuService implements IThuocTinhSanPhamService<XuatXuViewModel>{
     
     private final IThuocTinhSanPhamRepository xuatXuService 
             = new XuatXuRepository();

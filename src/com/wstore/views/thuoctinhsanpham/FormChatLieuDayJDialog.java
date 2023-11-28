@@ -10,7 +10,7 @@ import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
@@ -18,7 +18,7 @@ import com.wstore.services.IQLThuocTinhSanPhamService;
  */
 public class FormChatLieuDayJDialog extends javax.swing.JDialog {
 
-    private final IQLThuocTinhSanPhamService chatLieuDayService = new ChatLieuDayService();
+    private final IThuocTinhSanPhamService chatLieuDayService = new ChatLieuDayService();
     private DefaultTableModel dtmChatLieuDay;
     private List<ChatLieuDayViewModel> listChatLieuDay;
     private int index = -1;

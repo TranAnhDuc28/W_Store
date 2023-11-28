@@ -10,7 +10,7 @@ import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
@@ -18,7 +18,7 @@ import com.wstore.services.IQLThuocTinhSanPhamService;
  */
 public class FormThuongHieuJDialog extends javax.swing.JDialog {
 
-    private final IQLThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
+    private final IThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
     private DefaultTableModel dtmThuongHieu;
     private List<ThuongHieuViewModel> listThuongHieu;
     private String imageName = null;

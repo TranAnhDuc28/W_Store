@@ -8,13 +8,13 @@ import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.DongMayRepository;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.DongMayViewModel;
 import java.util.List;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
  * @author ducan
  */
-public class DongMayService implements IQLThuocTinhSanPhamService<DongMayViewModel> {
+public class DongMayService implements IThuocTinhSanPhamService<DongMayViewModel> {
 
     private final IThuocTinhSanPhamRepository dongMayRepository 
             = new DongMayRepository();

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
@@ -24,7 +24,7 @@ import com.wstore.services.IQLThuocTinhSanPhamService;
  */
 public class FormDongSanPhamJDialog extends javax.swing.JDialog {
 
-    private final IQLThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
+    private final IThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
     private final IDongSanPhamService dongSanPhamService = new DongSanPhamService();
     private final DefaultComboBoxModel dcbmThuongHieu = new DefaultComboBoxModel();
     private DefaultTableModel dtmDongSanPham;

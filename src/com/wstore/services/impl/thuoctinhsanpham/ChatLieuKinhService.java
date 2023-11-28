@@ -8,13 +8,13 @@ import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.ChatLieuKinhRepository;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhViewModel;
 import java.util.List;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
  * @author ducan
  */
-public class ChatLieuKinhService implements IQLThuocTinhSanPhamService<ChatLieuKinhViewModel> {
+public class ChatLieuKinhService implements IThuocTinhSanPhamService<ChatLieuKinhViewModel> {
 
     private final IThuocTinhSanPhamRepository chatLieuKinhRepository 
             = new ChatLieuKinhRepository();

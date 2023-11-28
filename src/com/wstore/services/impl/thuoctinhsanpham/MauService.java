@@ -8,13 +8,13 @@ import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.repositories.impl.thuoctinhsanpham.MauRepository;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.MauViewModel;
 import java.util.List;
-import com.wstore.services.IQLThuocTinhSanPhamService;
+import com.wstore.services.IThuocTinhSanPhamService;
 
 /**
  *
  * @author ducan
  */
-public class MauService implements IQLThuocTinhSanPhamService<MauViewModel> {
+public class MauService implements IThuocTinhSanPhamService<MauViewModel> {
 
     private final IThuocTinhSanPhamRepository mauRepository 
             = new MauRepository();
