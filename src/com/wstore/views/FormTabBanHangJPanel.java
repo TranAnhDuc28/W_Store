@@ -5,7 +5,7 @@
 package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import com.wstore.services.impl.QLSanPhamService;
+import com.wstore.services.impl.SanPhamService;
 import com.wstore.swing.table.TableActionCellEditor;
 import com.wstore.swing.table.TableActionCellRender;
 import com.wstore.swing.table.TableActionEvent;
@@ -25,7 +25,7 @@ import com.wstore.services.ISanPhamService;
 public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
     private Frame formBanHangJFrame;
-    private ISanPhamService sanPhamService = new QLSanPhamService();
+    private ISanPhamService sanPhamService = new SanPhamService();
     private DefaultTableModel dtmTblSanPham;
     private List<SanPhamBanHangViewModel> listSP;
     public int trangThai = 0;

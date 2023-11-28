@@ -1,5 +1,6 @@
 package com.wstore.views;
 
+import com.wstore.utilities.Helper;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -7,9 +8,13 @@ import javax.swing.JPanel;
 
 public class FormQuanTriJFrame extends javax.swing.JFrame {
 
+    private int vaiTro = Helper.USER_LOGIN.getVaiTro();
+
     public FormQuanTriJFrame() {
         initComponents();
         init();
+        lblNhanVienDangNhap.setText(Helper.USER_LOGIN.getHoTen());
+        lblVaiTro.setText(vaiTro == 0 ? "Nhân viên" : "Quản lý");
     }
 
     private void init() {
@@ -39,8 +44,8 @@ public class FormQuanTriJFrame extends javax.swing.JFrame {
         lblThongTinCaNhan = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblVaiTro = new javax.swing.JLabel();
+        lblNhanVienDangNhap = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblTrangChu = new javax.swing.JLabel();
@@ -76,6 +81,10 @@ public class FormQuanTriJFrame extends javax.swing.JFrame {
         jPanel3.setOpaque(false);
 
         jLabel2.setText("Nhân viên:");
+
+        lblVaiTro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        lblNhanVienDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel5.setText("Vai trò:");
 
@@ -290,21 +299,21 @@ public class FormQuanTriJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lblVaiTro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblNhanVienDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNhanVienDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
@@ -444,14 +453,23 @@ public class FormQuanTriJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHoaDonMouseClicked
 
     private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
+        if (vaiTro == 0) {
+            return;
+        }
         showPnl(new FormNhanVienJPanel());
     }//GEN-LAST:event_lblNhanVienMouseClicked
 
     private void lblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMouseClicked
+        if (vaiTro == 0) {
+            return;
+        }
         showPnl(new FormKhuyenMaiJPanel());
     }//GEN-LAST:event_lblKhuyenMaiMouseClicked
 
     private void lblThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseClicked
+        if (vaiTro == 0) {
+            return;
+        }
         showPnl(new FormThongKeJPanel());
     }//GEN-LAST:event_lblThongKeMouseClicked
 
@@ -492,8 +510,6 @@ public class FormQuanTriJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -503,10 +519,12 @@ public class FormQuanTriJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblKhachHang;
     private javax.swing.JLabel lblKhuyenMai;
     private javax.swing.JLabel lblNhanVien;
+    private javax.swing.JLabel lblNhanVienDangNhap;
     private javax.swing.JLabel lblSanPham;
     private javax.swing.JLabel lblThongKe;
     private javax.swing.JLabel lblThongTinCaNhan;
     private javax.swing.JLabel lblTrangChu;
+    private javax.swing.JLabel lblVaiTro;
     private javax.swing.JPanel pnlMainForm;
     // End of variables declaration//GEN-END:variables
 }

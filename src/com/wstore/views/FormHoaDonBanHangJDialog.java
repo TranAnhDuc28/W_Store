@@ -48,7 +48,7 @@ public class FormHoaDonBanHangJDialog extends javax.swing.JDialog {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Mã hóa đơn", "Ngày tạo", "Khách hàng", "Người tạo", "Trạng thái"
+                "Mã hóa đơn", "Ngày tạo", "Tên khách hàng", "Nhân viên", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {

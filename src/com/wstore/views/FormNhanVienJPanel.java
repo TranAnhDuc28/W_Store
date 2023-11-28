@@ -7,8 +7,8 @@ package com.wstore.views;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.wstore.domainmodels.NhanVien;
 import com.wstore.services.INhanVienService;
-import com.wstore.services.impl.QLNhanVienService;
-import com.wstore.utilities.HashPassword;
+import com.wstore.services.impl.NhanVienService;
+import com.wstore.utilities.BamMatKhau;
 import com.wstore.utilities.Helper;
 import com.wstore.utilities.status.StatusNhanVien;
 import com.wstore.viewmodels.NhanVienViewModel;
@@ -30,7 +30,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormNhanVienJPanel extends javax.swing.JPanel {
 
-    private final INhanVienService nhanVienService = new QLNhanVienService();
+    private final INhanVienService nhanVienService = new NhanVienService();
     private DefaultTableModel dtmNhanVien = new DefaultTableModel();
     private List<NhanVienViewModel> listNVs;
     private int index = -1;
@@ -962,7 +962,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     private NhanVien getDataToForm() {
         NhanVien nv = new NhanVien();
         nv.setMaNhanVien(txtMaNhanVien.getText().trim());
-        nv.setMatKhau(HashPassword.hashPassword(String.valueOf(psfMatKhau.getPassword())));
+        nv.setMatKhau(BamMatKhau.hashPassword(String.valueOf(psfMatKhau.getPassword())));
         nv.setHoTen(txtHoVaTen.getText().trim());
         if (rdoNam.isSelected()) {
             nv.setGioiTinh(true);

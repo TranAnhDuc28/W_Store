@@ -33,7 +33,7 @@ import com.wstore.services.ISanPhamService;
  *
  * @author ducan
  */
-public class QLSanPhamService implements ISanPhamService {
+public class SanPhamService implements ISanPhamService {
 
     private final ISanPhamRepository sanPhamRepository
             = new SanPhamRepository();
@@ -182,7 +182,7 @@ public class QLSanPhamService implements ISanPhamService {
     }
 
     public static void main(String[] args) {
-        System.out.println(new QLSanPhamService().getMaSanPhamTuDongSinh());
+        System.out.println(new SanPhamService().getMaSanPhamTuDongSinh());
     }
 
     @Override

@@ -16,7 +16,7 @@ import com.wstore.domainmodels.thuoctinhsanpham.TinhNangSanPham;
 import com.wstore.domainmodels.thuoctinhsanpham.XuatXu;
 import com.wstore.services.IDongSanPhamService;
 import com.wstore.services.ITinhNangSanPhamService;
-import com.wstore.services.impl.QLSanPhamService;
+import com.wstore.services.impl.SanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuDayService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuKinhService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuVoService;
@@ -64,7 +64,7 @@ import com.wstore.services.IThuocTinhSanPhamService;
  */
 public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
-    private ISanPhamService sanPhamService = new QLSanPhamService();
+    private ISanPhamService sanPhamService = new SanPhamService();
     private ITinhNangSanPhamService tinhNangSanPhamService = new TinhNangSanPhamService();
     private FormSanPhamJPanel formSanPhamJPanel;
     private final IThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();

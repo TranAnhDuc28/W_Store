@@ -5,6 +5,7 @@
 package com.wstore.utilities;
 
 import com.toedter.calendar.JDateChooser;
+import com.wstore.domainmodels.NhanVien;
 //import duanmau.model.NhanVien;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -17,9 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -37,7 +36,7 @@ public class Helper {
     public static SimpleDateFormat sdfNgayThang = new SimpleDateFormat("dd/MM/yyyy");
     public static DecimalFormat dfTien = new DecimalFormat("###,###.##");
     public static Dimension dimensionJFileChooser = new Dimension(800, 500);
-//    public static NhanVien USER_LOGIN = null;
+    public static NhanVien USER_LOGIN = null;
 
     public static Image getIconApp() {
         String fileName = "src\\com\\wstore\\icons\\logo.png";
@@ -46,9 +45,10 @@ public class Helper {
     }
 
     // đăng xuẩt
-//    public static void logout() {
-//        Helper.USER_LOGIN = null;
-//    }
+    public static void logout() {
+        Helper.USER_LOGIN = null;
+    }
+    
     // dialog thông báo
     public static void alert(Component component, String message) {
         JOptionPane.showMessageDialog(component, message,

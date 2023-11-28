@@ -8,7 +8,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.wstore.services.IDongSanPhamService;
 import com.wstore.services.IPhongCachSanPhamService;
 import com.wstore.services.ITinhNangSanPhamService;
-import com.wstore.services.impl.QLSanPhamService;
+import com.wstore.services.impl.SanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuDayService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuKinhService;
 import com.wstore.services.impl.thuoctinhsanpham.DongMayService;
@@ -56,7 +56,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     DefaultComboBoxModel dcbmDongMay = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmChatLieuDay = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmChatLieuKinh = new DefaultComboBoxModel();
-    private final ISanPhamService sanPhamService = new QLSanPhamService();
+    private final ISanPhamService sanPhamService = new SanPhamService();
     private final ITinhNangSanPhamService tinhNangSanPhamService = new TinhNangSanPhamService();
     private final IPhongCachSanPhamService phongCachSanPhamService = new PhongCachSanPhamService();
     FormThemVaSuaSanPhamJFrame formThemVaSuaSanPham;
@@ -957,7 +957,7 @@ class ProgressExportExcel extends SwingWorker<Void, Void> {
 
     private final JProgressBar progressBar;
     private final ProgressJDialog progressJDialog;
-    private final ISanPhamService sanPhamService = new QLSanPhamService();
+    private final ISanPhamService sanPhamService = new SanPhamService();
     List<SanPhamViewModel> listData = new ArrayList<>();
 
     public ProgressExportExcel(JProgressBar progressBar, ProgressJDialog progressJDialog) {

@@ -20,7 +20,6 @@ public class HoaDon {
     private String soDienThoai;
     private Timestamp ngayThanhToan;
     private Timestamp ngayGiaoHang;
-    private Timestamp ngayShip;
     private BigDecimal tienShip;
     private BigDecimal tienCoc;
     private Timestamp ngayNhanHang;
@@ -32,7 +31,7 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public HoaDon(Integer id, String maHoaDon, Timestamp ngayTao, String tenKhachHang, String diaChi, String soDienThoai, Timestamp ngayThanhToan, Timestamp ngayGiaoHang, Timestamp ngayShip, BigDecimal tienShip, BigDecimal tienCoc, Timestamp ngayNhanHang, String ghiChu, Integer trangThai, NhanVien idNhanVien, KhachHang idKhachHang) {
+    public HoaDon(Integer id, String maHoaDon, Timestamp ngayTao, String tenKhachHang, String diaChi, String soDienThoai, Timestamp ngayThanhToan, Timestamp ngayGiaoHang, BigDecimal tienShip, BigDecimal tienCoc, Timestamp ngayNhanHang, String ghiChu, Integer trangThai, NhanVien idNhanVien, KhachHang idKhachHang) {
         this.id = id;
         this.maHoaDon = maHoaDon;
         this.ngayTao = ngayTao;
@@ -41,7 +40,6 @@ public class HoaDon {
         this.soDienThoai = soDienThoai;
         this.ngayThanhToan = ngayThanhToan;
         this.ngayGiaoHang = ngayGiaoHang;
-        this.ngayShip = ngayShip;
         this.tienShip = tienShip;
         this.tienCoc = tienCoc;
         this.ngayNhanHang = ngayNhanHang;
@@ -113,14 +111,6 @@ public class HoaDon {
 
     public void setNgayGiaoHang(Timestamp ngayGiaoHang) {
         this.ngayGiaoHang = ngayGiaoHang;
-    }
-
-    public Timestamp getNgayShip() {
-        return ngayShip;
-    }
-
-    public void setNgayShip(Timestamp ngayShip) {
-        this.ngayShip = ngayShip;
     }
 
     public BigDecimal getTienShip() {

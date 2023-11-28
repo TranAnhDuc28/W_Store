@@ -28,6 +28,10 @@ public class KhachHang {
     public KhachHang() {
     }
 
+    public KhachHang(Integer id) {
+        this.id = id;
+    }
+
     public KhachHang(Integer id, String maKhachHang, String hoTen, Boolean gioiTinh, Date ngaySinh, String soDienThoai, String email, String diaChi, Timestamp ngayTao, String ghiChu, String hinhAnh, Integer trangThai) {
         this.id = id;
         this.maKhachHang = maKhachHang;

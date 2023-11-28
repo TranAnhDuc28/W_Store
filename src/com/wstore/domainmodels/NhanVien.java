@@ -31,6 +31,13 @@ public class NhanVien {
     public NhanVien() {
     }
 
+    public NhanVien(Integer id, String maNhanVien, String hoTen) {
+        this.id = id;
+        this.maNhanVien = maNhanVien;
+        this.hoTen = hoTen;
+    }
+    
+
     public NhanVien(Integer id, String maNhanVien, String matKhau, String hoTen, Boolean gioiTinh, Date ngaySinh, String canCuocCongDan, String diaChi, String soDienThoai, String email, Integer vaiTro, Timestamp ngayTao, String hinhAnh, String ghiChu, Integer trangThai) {
         this.id = id;
         this.maNhanVien = maNhanVien;

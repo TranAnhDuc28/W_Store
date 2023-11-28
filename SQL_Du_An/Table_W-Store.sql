@@ -231,14 +231,13 @@ drop table HoaDon
 go
 create table HoaDon(
 	id int identity(1,1) not null,
-	ma_hoa_don char(8) not null,
+	ma_hoa_don varchar(25) not null,
 	ngay_tao datetime2 default getdate(),
 	ten_khach_hang nvarchar(100),
 	dia_chi nvarchar(255),
 	so_dien_thoai varchar(20),
 	ngay_thanh_toan datetime2,
 	ngay_giao_hang datetime2,
-	ngay_ship datetime2,
 	tien_ship decimal(10,0) default 0,
 	tien_coc decimal(10,0) default 0,
 	ngay_nhan_hang datetime2,

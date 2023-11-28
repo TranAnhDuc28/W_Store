@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author ducan
  */
-public class HashPassword {
+public class BamMatKhau {
 
     public static void main(String[] args) {
 

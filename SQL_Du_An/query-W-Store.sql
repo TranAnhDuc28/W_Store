@@ -133,3 +133,12 @@ dia_chi = ?, so_dien_thoai = ?, email = ?, vai_tro = ?, hinh_anh = ?, ghi_chu = 
 where id = ?;
 
 select * from NhanVien where ho_ten like N'%%'
+
+
+-- query HoaDon
+select * from HoaDon
+
+select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi, ngay_thanh_toan, ngay_giao_hang
+		, tien_ship, tien_coc, ngay_nhan_hang, hd.ghi_chu, hd.trang_thai, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
+from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
+				left join KhachHang kh on hd.id_khach_hang = kh.id

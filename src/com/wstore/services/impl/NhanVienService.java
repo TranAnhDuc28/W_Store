@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author ducan
  */
-public class QLNhanVienService implements INhanVienService {
+public class NhanVienService implements INhanVienService {
 
     private INhanVienRepository nhanVienRepository = new NhanVienRepository();
 

@@ -96,16 +96,39 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã hóa đơn", "Ngày tạo", "Tên khách hàng", "Số điện thoại", "Địa chỉ", "Nhân viên", "Ngày thanh toán", "Hình thức thanh toán", "Tổng tiền", "Trạng thái", "Ghi chú"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTable1.setEnabled(false);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(170);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(5).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(6).setPreferredWidth(170);
+            jTable1.getColumnModel().getColumn(7).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(8).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(9).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(10).setPreferredWidth(150);
+        }
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
