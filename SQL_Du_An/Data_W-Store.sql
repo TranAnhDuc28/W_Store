@@ -1111,11 +1111,25 @@ values ('HD112923122033', default, N'Ngô Thị Bích', '0986383628', N'Hà Nộ
 select * from HoaDon
 
 -- data table HoaDonChiTiet
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, gia_ban_sau_khuyen_mai) 
-values(1, 1, 2, 510000, 510000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, gia_ban_sau_khuyen_mai) 
-values(2, 1, 1, 1200000, 1200000);
+truncate table HoaDonChiTiet
 
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
+values(1, 1, 2, 510000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
+values(2, 1, 1, 1200000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
+values(1, 3, 3, 510000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
+values(1, 2, 1, 510000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
+values(2, 2, 1, 1200000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
+values(3, 6, 2, 1020000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
+values(4, 7, 2, 390000);
+
+
+select *from HoaDonChiTiet
 
 -- data table HinhThucThanhToan
 insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)

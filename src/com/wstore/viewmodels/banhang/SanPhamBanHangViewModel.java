@@ -23,6 +23,12 @@ public class SanPhamBanHangViewModel {
     public SanPhamBanHangViewModel() {
     }
 
+    public SanPhamBanHangViewModel(Integer id, String maSanPham, String tenSanPham) {
+        this.id = id;
+        this.maSanPham = maSanPham;
+        this.tenSanPham = tenSanPham;
+    }
+
     public SanPhamBanHangViewModel(Integer id, String hinhAnh, String maSanPham, String tenSanPham, Integer soLuong, BigDecimal donGia) {
         this.id = id;
         this.hinhAnh = hinhAnh;

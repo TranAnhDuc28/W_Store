@@ -218,7 +218,6 @@ public class SanPhamService implements ISanPhamService {
                     sanPham.getHinhAnh(),
                     sanPham.getMaSanPham(),
                     sanPham.getThuongHieu().toString() 
-                            + " " + sizeMat.intValue() + "mm" 
                             + " " + sanPham.getDoiTuongSuDung() 
                             + " " + sanPham.getMaHangHoa(),
                     sanPham.getSoLuongTon(),
@@ -241,7 +240,6 @@ public class SanPhamService implements ISanPhamService {
                     sanPham.getHinhAnh(),
                     sanPham.getMaSanPham(),
                     sanPham.getThuongHieu().toString() 
-                            + " " + sizeMat.intValue() + "mm" 
                             + " " + sanPham.getDoiTuongSuDung() 
                             + " " + sanPham.getMaHangHoa(),
                     sanPham.getSoLuongTon(),

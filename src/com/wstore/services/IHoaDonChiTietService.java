@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface IHoaDonChiTietService {
     
-    List<HoaDonChiTietViewModel> getAllByHoaDonID(String id);
+    List<HoaDonChiTietViewModel> getAllByHoaDonID(int id);
 
-    boolean addListOrder(String hoaDonID, List<HoaDon> lists);
+    boolean addListOrder(int idHoaDon, List<HoaDon> lists);
 }

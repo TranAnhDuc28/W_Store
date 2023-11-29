@@ -210,6 +210,9 @@ public class Helper {
     }
 
     public static boolean isValidNumber(String text) {
+        if (text == null) {
+            return false;
+        }
         try {
             Integer.valueOf(text);
             return true;

@@ -28,7 +28,7 @@ public class HoaDonRepository implements IHoaDonRepository {
         List<HoaDonViewModel> list = new ArrayList<>();
         String sql = "select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi\n"
                 + "		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan\n"
-                + "		, sum(hdct.gia_ban_sau_khuyen_mai) as tong_tien, hd.ghi_chu, hd.trang_thai\n"
+                + "		, sum(hdct.so_luong * hdct.don_gia) as tong_tien, hd.ghi_chu, hd.trang_thai\n"
                 + "		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang\n"
                 + "from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id\n"
                 + "		left join KhachHang kh on hd.id_khach_hang = kh.id\n"
@@ -79,7 +79,7 @@ public class HoaDonRepository implements IHoaDonRepository {
         List<HoaDonViewModel> list = new ArrayList<>();
         String sql = "select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi\n"
                 + "		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan\n"
-                + "		, sum(hdct.gia_ban_sau_khuyen_mai) as tong_tien, hd.ghi_chu, hd.trang_thai\n"
+                + "		, sum(hdct.so_luong * hdct.don_gia) as tong_tien, hd.ghi_chu, hd.trang_thai\n"
                 + "		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang\n"
                 + "from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id\n"
                 + "		left join KhachHang kh on hd.id_khach_hang = kh.id\n"

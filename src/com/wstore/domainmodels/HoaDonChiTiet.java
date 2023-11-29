@@ -4,7 +4,6 @@
  */
 package com.wstore.domainmodels;
 
-import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
 import java.math.BigDecimal;
 
 /**
@@ -12,9 +11,8 @@ import java.math.BigDecimal;
  * @author ducan
  */
 public class HoaDonChiTiet {
-
     private Long id;
-    private SanPhamBanHangViewModel sanPham;
+    private SanPham sanPham;
     private HoaDon idHoaDon;
     private Integer soLuong;
     private BigDecimal donGia;
@@ -22,13 +20,15 @@ public class HoaDonChiTiet {
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(Long id, SanPhamBanHangViewModel idSanPham, HoaDon idHoaDon, Integer soLuong, BigDecimal donGia) {
+    public HoaDonChiTiet(Long id, SanPham sanPham, HoaDon idHoaDon, Integer soLuong, BigDecimal donGia) {
         this.id = id;
-        this.sanPham = idSanPham;
+        this.sanPham = sanPham;
         this.idHoaDon = idHoaDon;
         this.soLuong = soLuong;
         this.donGia = donGia;
     }
+
+    
 
     public Long getId() {
         return id;
@@ -38,13 +38,14 @@ public class HoaDonChiTiet {
         this.id = id;
     }
 
-    public SanPhamBanHangViewModel getIdSanPham() {
+    public SanPham getSanPham() {
         return sanPham;
     }
 
-    public void setIdSanPham(SanPhamBanHangViewModel idSanPham) {
-        this.sanPham = idSanPham;
+    public void setSanPham(SanPham sanPham) {
+        this.sanPham = sanPham;
     }
+
 
     public HoaDon getIdHoaDon() {
         return idHoaDon;
@@ -68,16 +69,5 @@ public class HoaDonChiTiet {
 
     public void setDonGia(BigDecimal donGia) {
         this.donGia = donGia;
-    }
-    
-    public BigDecimal getThanhTien() {
-        return donGia.multiply(new BigDecimal(soLuong));
-    }
-
-    public Object[] toDataRow() {
-        return new Object[]{
-            sanPham.getMaSanPham(),
-            sanPham.getTenSanPham(),
-            soLuong, donGia, getThanhTien()};
     }
 }

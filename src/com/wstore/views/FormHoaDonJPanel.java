@@ -145,7 +145,6 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
             }
         });
         tblHoaDon.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        tblHoaDon.setEnabled(false);
         jScrollPane1.setViewportView(tblHoaDon);
         if (tblHoaDon.getColumnModel().getColumnCount() > 0) {
             tblHoaDon.getColumnModel().getColumn(0).setPreferredWidth(150);

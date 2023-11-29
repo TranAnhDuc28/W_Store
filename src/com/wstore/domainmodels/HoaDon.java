@@ -31,6 +31,10 @@ public class HoaDon {
     public HoaDon() {
     }
 
+    public HoaDon(Integer id) {
+        this.id = id;
+    }
+
     public HoaDon(Integer id, String maHoaDon, Timestamp ngayTao, String tenKhachHang, String diaChi, String soDienThoai, Timestamp ngayThanhToan, Timestamp ngayGiaoHang, BigDecimal tienShip, BigDecimal tienCoc, Timestamp ngayNhanHang, String ghiChu, Integer trangThai, NhanVien idNhanVien, KhachHang idKhachHang) {
         this.id = id;
         this.maHoaDon = maHoaDon;

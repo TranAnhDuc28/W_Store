@@ -140,7 +140,7 @@ select * from HoaDon
 
 select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
 		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan
-		, sum(hdct.gia_ban_sau_khuyen_mai) as tong_tien, hd.ghi_chu, hd.trang_thai
+		, sum(hdct.so_luong * hdct.don_gia) as tong_tien, hd.ghi_chu, hd.trang_thai
 		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
 from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
 				left join KhachHang kh on hd.id_khach_hang = kh.id
@@ -156,7 +156,7 @@ fetch next 10 rows only
 
 select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
 		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan
-		, sum(hdct.gia_ban_sau_khuyen_mai) as tong_tien, hd.ghi_chu, hd.trang_thai
+		, sum(hdct.so_luong * hdct.don_gia) as tong_tien, hd.ghi_chu, hd.trang_thai
 		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
 from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
 		left join KhachHang kh on hd.id_khach_hang = kh.id
@@ -169,3 +169,12 @@ having hd.trang_thai = 0
 order by hd.id
 offset 0 rows
 fetch next 5 rows only
+
+
+-- query HoaDonChiTiet
+select hdct.id, hdct.id_san_pham, sp.ma_san_pham, tt.ten_thuong_hieu, sp.doi_tuong_su_dung, sp.ma_hang_hoa, hdct.id_hoa_don, hdct.so_luong, hdct.don_gia
+from HoaDonChitiet hdct join SanPham sp on hdct.id_san_pham = sp.id
+						join ThuongHieu tt on sp.id_thuong_hieu = tt.id
+						join HoaDon hd on hdct.id_hoa_don = hd.id
+where hdct.id_hoa_don = 2
+group by hdct.id, hdct.id_san_pham, sp.ma_san_pham, tt.ten_thuong_hieu, sp.doi_tuong_su_dung, sp.ma_hang_hoa, hdct.id_hoa_don, hdct.so_luong, hdct.don_gia						

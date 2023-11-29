@@ -5,7 +5,7 @@
 package com.wstore.viewmodels;
 
 import com.wstore.domainmodels.HoaDon;
-import com.wstore.domainmodels.SanPham;
+import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
 import java.math.BigDecimal;
 
 /**
@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  */
 public class HoaDonChiTietViewModel {
     private Long id;
-    private SanPham sanPham;
+    private SanPhamBanHangViewModel sanPham;
     private HoaDon hoaDon;
     private Integer soLuong;
     private BigDecimal donGia;
@@ -22,10 +22,10 @@ public class HoaDonChiTietViewModel {
     public HoaDonChiTietViewModel() {
     }
 
-    public HoaDonChiTietViewModel(Long id, SanPham idSanPham, HoaDon idHoaDon, Integer soLuong, BigDecimal donGia) {
+    public HoaDonChiTietViewModel(Long id, SanPhamBanHangViewModel sanPham, HoaDon hoaDon, Integer soLuong, BigDecimal donGia) {
         this.id = id;
-        this.sanPham = idSanPham;
-        this.hoaDon = idHoaDon;
+        this.sanPham = sanPham;
+        this.hoaDon = hoaDon;
         this.soLuong = soLuong;
         this.donGia = donGia;
     }
@@ -38,12 +38,20 @@ public class HoaDonChiTietViewModel {
         this.id = id;
     }
 
-    public SanPham getIdSanPham() {
+    public SanPhamBanHangViewModel getSanPham() {
         return sanPham;
     }
 
-    public void setIdSanPham(SanPham idSanPham) {
-        this.sanPham = idSanPham;
+    public void setSanPham(SanPhamBanHangViewModel sanPham) {
+        this.sanPham = sanPham;
+    }
+
+    public HoaDon getHoaDon() {
+        return hoaDon;
+    }
+
+    public void setHoaDon(HoaDon hoaDon) {
+        this.hoaDon = hoaDon;
     }
 
     public HoaDon getIdHoaDon() {
@@ -77,6 +85,6 @@ public class HoaDonChiTietViewModel {
     public Object[] toDataRow() {
         return new Object[] {
             sanPham.getMaSanPham(),
-        sanPham.getThuongHieu().getTenThuongHieu() + sanPham.get};
+        sanPham.getTenSanPham(), soLuong, donGia, getThanhTien()};
     }
 }

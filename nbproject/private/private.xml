@@ -12,15 +12,21 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/repositories/IHoaDonRepository.java</file>
-            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/viewmodels/HoaDonViewModel.java</file>
             <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/views/FormHoaDonJPanel.java</file>
-            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/repositories/impl/NhanVienRepository.java</file>
-            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/repositories/impl/HoaDonRepository.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/services/impl/HoaDonChiTietService.java</file>
             <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/views/FormHoaDonBanHangJDialog.java</file>
             <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/services/IHoaDonService.java</file>
-            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/viewmodels/banhang/HoaDonBanHangViewModel.java</file>
-            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/utilities/status/StatusHoaDon.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/utilities/Helper.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/repositories/IPhongCachSanPhamRepository.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/viewmodels/banhang/SanPhamBanHangViewModel.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/views/FormTabBanHangJPanel.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/services/IHoaDonChiTietService.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/services/impl/SanPhamService.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/repositories/impl/HoaDonRepository.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/repositories/impl/HoaDonChiTietRepository.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/repositories/IHoaDonChiTietRepository.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/services/impl/HoaDonService.java</file>
+            <file>file:/D:/MON%20HOC%20O%20TRUONG/Du_An_1/W_Store/src/com/wstore/viewmodels/HoaDonChiTietViewModel.java</file>
         </group>
     </open-files>
 </project-private>

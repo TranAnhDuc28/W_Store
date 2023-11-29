@@ -4,10 +4,30 @@
  */
 package com.wstore.services.impl;
 
+import com.wstore.domainmodels.HoaDon;
+import com.wstore.repositories.IHoaDonChiTietRepository;
+import com.wstore.repositories.impl.HoaDonChiTietRepository;
+import com.wstore.services.IHoaDonChiTietService;
+import com.wstore.viewmodels.HoaDonChiTietViewModel;
+import java.util.List;
+
 /**
  *
  * @author ducan
  */
-public class HoaDonChiTietService {
+public class HoaDonChiTietService implements IHoaDonChiTietService{
+    
+    private final IHoaDonChiTietRepository hoaDonChiTietRepository = 
+            new HoaDonChiTietRepository();
+
+    @Override
+    public List<HoaDonChiTietViewModel> getAllByHoaDonID(int id) {
+        return hoaDonChiTietRepository.getAllByHoaDonID(id);
+    }
+
+    @Override
+    public boolean addListOrder(int idHoaDon, List<HoaDon> lists) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
