@@ -1095,14 +1095,43 @@ values ('anhtp', '88bc42ee01ec1836dd1dc33b505aad6d8855cc76e2c0d3dcf61da6844f156a
 -- data table HoaDon
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
 values ('HD1128231133', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
+values ('HD112923043755', default, N'Khách hàng lẻ', N'Tại cửa hàng', 0, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
+values ('HD112923080128', default, N'Khách hàng lẻ', N'Tại cửa hàng', 0, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
+values ('HD112923090317', default, N'Khách hàng lẻ', N'Tại cửa hàng', 0, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
+values ('HD112923101701', default, N'Khách hàng lẻ', N'Tại cửa hàng', 0, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, trang_thai, id_nhan_vien) 
+values ('HD112923111701', default, N'Nguyễn Văn Nam', '0986383628', N'Hà Nội', 3, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, trang_thai, id_nhan_vien) 
+values ('HD112923122033', default, N'Ngô Thị Bích', '0986383628', N'Hà Nội', 4, 1);
+
+select * from HoaDon
+
+-- data table HoaDonChiTiet
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, gia_ban_sau_khuyen_mai) 
+values(1, 1, 2, 510000, 510000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, gia_ban_sau_khuyen_mai) 
+values(2, 1, 1, 1200000, 1200000);
 
 
+-- data table HinhThucThanhToan
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 1);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 2);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 3);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 4);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 5);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 6);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 7);
 
 
-
-
-
-
-
-
-
+-- data table ChuongTrinhKhuyenMai

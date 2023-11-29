@@ -5,6 +5,7 @@
 package com.wstore.repositories;
 
 import com.wstore.domainmodels.HoaDon;
+import com.wstore.viewmodels.HoaDonViewModel;
 import java.util.List;
 
 /**
@@ -13,13 +14,17 @@ import java.util.List;
  */
 public interface IHoaDonRepository {
 
-    List<HoaDon> getAll(int page, int pageSize);
+    List<HoaDonViewModel> getAll(int page, int pageSize);
 
-    List<HoaDon> getAllByTrangThai(int page, int pageSize, int trangThai);
+    List<HoaDonViewModel> getAllByTrangThai(int page, int pageSize, int trangThai);
 
     HoaDon getOne(String id);
 
     boolean insert(HoaDon hoaDon);
 
     boolean update(HoaDon hoaDon, int id);
+
+    int getCountRecord();
+
+    int getCountRecordByTrangThai(int trangThai);
 }

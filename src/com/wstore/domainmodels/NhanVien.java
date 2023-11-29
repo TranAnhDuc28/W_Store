@@ -176,7 +176,10 @@ public class NhanVien {
         this.trangThai = trangThai;
     }
 
-    
+        @Override
+    public String toString() {
+        return maNhanVien + " - " + hoTen;
+    }
     
     
 }

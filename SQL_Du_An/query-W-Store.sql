@@ -138,7 +138,34 @@ select * from NhanVien where ho_ten like N'%%'
 -- query HoaDon
 select * from HoaDon
 
-select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi, ngay_thanh_toan, ngay_giao_hang
-		, tien_ship, tien_coc, ngay_nhan_hang, hd.ghi_chu, hd.trang_thai, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
+select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
+		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan
+		, sum(hdct.gia_ban_sau_khuyen_mai) as tong_tien, hd.ghi_chu, hd.trang_thai
+		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
 from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
 				left join KhachHang kh on hd.id_khach_hang = kh.id
+				left join HoaDonChiTiet hdct on hd.id = hdct.id_hoa_don
+				left join HinhThucThanhToan httt on hd.id = httt.id_hoa_don
+group by  hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
+		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan
+		, hd.ghi_chu, hd.trang_thai, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
+order by hd.id
+offset 0 rows
+fetch next 10 rows only				
+
+
+select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
+		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan
+		, sum(hdct.gia_ban_sau_khuyen_mai) as tong_tien, hd.ghi_chu, hd.trang_thai
+		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
+from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
+		left join KhachHang kh on hd.id_khach_hang = kh.id
+		left join HoaDonChiTiet hdct on hd.id = hdct.id_hoa_don
+		left join HinhThucThanhToan httt on hd.id = httt.id_hoa_don
+group by  hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
+		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan
+		, hd.ghi_chu, hd.trang_thai, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
+having hd.trang_thai = 0
+order by hd.id
+offset 0 rows
+fetch next 5 rows only

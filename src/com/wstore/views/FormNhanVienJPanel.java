@@ -38,7 +38,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     private Integer page = 1;
     private Integer totalRowData = 0;
     private Integer totalPage = 1;
-    private Integer pageSize = 10;
+    private Integer pageSize = 15;
     private String imageName = null;
 
     public FormNhanVienJPanel() {

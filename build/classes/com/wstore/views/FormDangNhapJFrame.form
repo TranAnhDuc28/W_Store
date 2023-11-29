@@ -147,6 +147,9 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtTaiKhoan">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ducta"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -158,6 +161,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtMatKhau">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="duc123"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>

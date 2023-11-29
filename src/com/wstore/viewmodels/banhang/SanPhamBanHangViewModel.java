@@ -5,9 +5,7 @@
 package com.wstore.viewmodels.banhang;
 
 import com.wstore.utilities.Helper;
-import java.awt.Image;
 import java.math.BigDecimal;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**

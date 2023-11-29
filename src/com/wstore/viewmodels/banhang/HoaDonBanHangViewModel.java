@@ -4,6 +4,7 @@
  */
 package com.wstore.viewmodels.banhang;
 
+import com.wstore.domainmodels.NhanVien;
 import java.sql.Timestamp;
 
 /**
@@ -11,21 +12,22 @@ import java.sql.Timestamp;
  * @author ducan
  */
 public class HoaDonBanHangViewModel {
+
     private Integer id;
     private String maHoaDon;
     private Timestamp ngayTao;
     private String tenKhachHang;
-    private String nhanVien;
+    private NhanVien nhanVien;
     private Integer trangThai;
 
     public HoaDonBanHangViewModel() {
     }
 
-    public HoaDonBanHangViewModel(Integer id, String maHoaDon, Timestamp ngayTao, String khachHang, String nhanVien, Integer trangThai) {
+    public HoaDonBanHangViewModel(Integer id, String maHoaDon, Timestamp ngayTao, String tenKhachHang, NhanVien nhanVien, Integer trangThai) {
         this.id = id;
         this.maHoaDon = maHoaDon;
         this.ngayTao = ngayTao;
-        this.tenKhachHang = khachHang;
+        this.tenKhachHang = tenKhachHang;
         this.nhanVien = nhanVien;
         this.trangThai = trangThai;
     }
@@ -54,19 +56,19 @@ public class HoaDonBanHangViewModel {
         this.ngayTao = ngayTao;
     }
 
-    public String getKhachHang() {
+    public String getTenKhachHang() {
         return tenKhachHang;
     }
 
-    public void setKhachHang(String khachHang) {
-        this.tenKhachHang = khachHang;
+    public void setTenKhachHang(String tenKhachHang) {
+        this.tenKhachHang = tenKhachHang;
     }
 
-    public String getNhanVien() {
+    public NhanVien getNhanVien() {
         return nhanVien;
     }
 
-    public void setNhanVien(String nhanVien) {
+    public void setNhanVien(NhanVien nhanVien) {
         this.nhanVien = nhanVien;
     }
 
@@ -77,11 +79,11 @@ public class HoaDonBanHangViewModel {
     public void setTrangThai(Integer trangThai) {
         this.trangThai = trangThai;
     }
-    
+
     public Object[] toDataRow() {
-        return new Object[] {maHoaDon, ngayTao, tenKhachHang, nhanVien
-                , trangThai == 0 ? "Chờ thanh toán" 
-                : trangThai == 3 ? "Chờ giao hàng"
-                : "Đang giao hàng"};
+        return new Object[]{maHoaDon, ngayTao, tenKhachHang, nhanVien,
+             trangThai == 0 ? "Chờ thanh toán"
+            : trangThai == 3 ? "Chờ giao hàng"
+            : "Đang giao hàng"};
     }
 }
