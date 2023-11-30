@@ -11,9 +11,10 @@ import java.math.BigDecimal;
  * @author ducan
  */
 public class HoaDonChiTiet {
+
     private Long id;
     private SanPham sanPham;
-    private HoaDon idHoaDon;
+    private HoaDon hoaDon;
     private Integer soLuong;
     private BigDecimal donGia;
 
@@ -23,12 +24,10 @@ public class HoaDonChiTiet {
     public HoaDonChiTiet(Long id, SanPham sanPham, HoaDon idHoaDon, Integer soLuong, BigDecimal donGia) {
         this.id = id;
         this.sanPham = sanPham;
-        this.idHoaDon = idHoaDon;
+        this.hoaDon = idHoaDon;
         this.soLuong = soLuong;
         this.donGia = donGia;
     }
-
-    
 
     public Long getId() {
         return id;
@@ -46,13 +45,12 @@ public class HoaDonChiTiet {
         this.sanPham = sanPham;
     }
 
-
-    public HoaDon getIdHoaDon() {
-        return idHoaDon;
+    public HoaDon getHoaDon() {
+        return hoaDon;
     }
 
-    public void setIdHoaDon(HoaDon idHoaDon) {
-        this.idHoaDon = idHoaDon;
+    public void setHoaDon(HoaDon hoaDon) {
+        this.hoaDon = hoaDon;
     }
 
     public Integer getSoLuong() {

@@ -163,9 +163,11 @@ public class FormHoaDonBanHangJDialog extends javax.swing.JDialog {
                     formTabBanHangJPanel.pageSize,
                     formTabBanHangJPanel.trangThai));
             rowSelected = tblHoaDon.getSelectedRow();
-            int idHoaDon = listHD.get(rowSelected).getId();
+            HoaDonViewModel hd = listHD.get(rowSelected);
+            int idHoaDon = hd.getId();
             formTabBanHangJPanel.loadDataToTblGioHang(hoaDonChiTietService.getAllByHoaDonID(idHoaDon));
-            showDataHoaDonTaiQuay();
+            formTabBanHangJPanel.showHoaDonDuocChon(hd);
+            formTabBanHangJPanel.showDataHoaDonTaiQuay(listHD.get(rowSelected));
             this.dispose();
         }
     }//GEN-LAST:event_btnXacNhanActionPerformed
@@ -206,17 +208,8 @@ public class FormHoaDonBanHangJDialog extends javax.swing.JDialog {
         dcbmTrangThai.addElement(StatusHoaDon.CHO_GIAO_HANG);
         dcbmTrangThai.addElement(StatusHoaDon.DANG_GIAO_HANG);
     }
-    
-    private void showDataHoaDonTaiQuay() {
-        HoaDonViewModel hd = listHD.get(rowSelected);
-        formTabBanHangJPanel.txtTenKH.setText(hd.getTenKhachHang());
-        formTabBanHangJPanel.txtSDT.setText(hd.getSoDienThoai());
-        formTabBanHangJPanel.txtDiaChi.setText(hd.getDiaChi());
-        formTabBanHangJPanel.txtMaHD.setText(hd.getMaHoaDon());
-        formTabBanHangJPanel.txtNgayTao.setText(Helper.sdfNgayThangThoiGian.format(hd.getNgayTao()));
-        formTabBanHangJPanel.txtNhanVien.setText(hd.getNhanVien().toString());
-        formTabBanHangJPanel.txtTongTien.setText(hd.getTongTien().toString());
-    }
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnXacNhan;

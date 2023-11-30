@@ -1093,6 +1093,8 @@ values ('anhtp', '88bc42ee01ec1836dd1dc33b505aad6d8855cc76e2c0d3dcf61da6844f156a
 
 
 -- data table HoaDon
+truncate table HoaDon
+
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
 values ('HD1128231133', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
@@ -1147,5 +1149,7 @@ values (N'Tiền mặt', 6);
 insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
 values (N'Tiền mặt', 7);
 
+truncate table HinhThucThanhToan
 
 -- data table ChuongTrinhKhuyenMai
+

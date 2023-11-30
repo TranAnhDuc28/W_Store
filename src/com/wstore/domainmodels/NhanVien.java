@@ -31,6 +31,10 @@ public class NhanVien {
     public NhanVien() {
     }
 
+    public NhanVien(Integer id) {
+        this.id = id;
+    }
+
     public NhanVien(Integer id, String maNhanVien, String hoTen) {
         this.id = id;
         this.maNhanVien = maNhanVien;

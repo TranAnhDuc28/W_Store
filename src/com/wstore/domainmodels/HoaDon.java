@@ -25,8 +25,8 @@ public class HoaDon {
     private Timestamp ngayNhanHang;
     private String ghiChu;
     private Integer trangThai;
-    private NhanVien idNhanVien;
-    private KhachHang idKhachHang;
+    private Integer idNhanVien;
+    private Integer idKhachHang;
 
     public HoaDon() {
     }
@@ -35,7 +35,7 @@ public class HoaDon {
         this.id = id;
     }
 
-    public HoaDon(Integer id, String maHoaDon, Timestamp ngayTao, String tenKhachHang, String diaChi, String soDienThoai, Timestamp ngayThanhToan, Timestamp ngayGiaoHang, BigDecimal tienShip, BigDecimal tienCoc, Timestamp ngayNhanHang, String ghiChu, Integer trangThai, NhanVien idNhanVien, KhachHang idKhachHang) {
+    public HoaDon(Integer id, String maHoaDon, Timestamp ngayTao, String tenKhachHang, String diaChi, String soDienThoai, Timestamp ngayThanhToan, Timestamp ngayGiaoHang, BigDecimal tienShip, BigDecimal tienCoc, Timestamp ngayNhanHang, String ghiChu, Integer trangThai, Integer idNhanVien, Integer idKhachHang) {
         this.id = id;
         this.maHoaDon = maHoaDon;
         this.ngayTao = ngayTao;
@@ -157,21 +157,23 @@ public class HoaDon {
         this.trangThai = trangThai;
     }
 
-    public NhanVien getIdNhanVien() {
+    public Integer getIdNhanVien() {
         return idNhanVien;
     }
 
-    public void setIdNhanVien(NhanVien idNhanVien) {
+    public void setIdNhanVien(Integer idNhanVien) {
         this.idNhanVien = idNhanVien;
     }
 
-    public KhachHang getIdKhachHang() {
+    public Integer getIdKhachHang() {
         return idKhachHang;
     }
 
-    public void setIdKhachHang(KhachHang idKhachHang) {
+    public void setIdKhachHang(Integer idKhachHang) {
         this.idKhachHang = idKhachHang;
     }
+
+   
     
     
 }

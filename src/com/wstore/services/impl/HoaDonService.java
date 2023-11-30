@@ -4,6 +4,7 @@
  */
 package com.wstore.services.impl;
 
+import com.wstore.domainmodels.HoaDon;
 import com.wstore.repositories.IHoaDonRepository;
 import com.wstore.repositories.impl.HoaDonRepository;
 import com.wstore.services.IHoaDonService;
@@ -36,5 +37,15 @@ public class HoaDonService implements IHoaDonService{
     @Override
     public int getCountRecordByTrangThai(int trangThai) {
         return hoaDonRepository.getCountRecordByTrangThai(trangThai);
+    }
+
+    @Override
+    public boolean insert(HoaDon hd) {
+        return hoaDonRepository.insert(hd);
+    }
+
+    @Override
+    public HoaDonViewModel findByMa(String maHD) {
+        return hoaDonRepository.findByMa(maHD);
     }
 }

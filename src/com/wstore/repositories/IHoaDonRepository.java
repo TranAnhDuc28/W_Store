@@ -18,11 +18,11 @@ public interface IHoaDonRepository {
 
     List<HoaDonViewModel> getAllByTrangThai(int page, int pageSize, int trangThai);
 
-    HoaDon getOne(String id);
-
     boolean insert(HoaDon hoaDon);
 
     boolean update(HoaDon hoaDon, int id);
+    
+    HoaDonViewModel findByMa(String maHD);
 
     int getCountRecord();
 

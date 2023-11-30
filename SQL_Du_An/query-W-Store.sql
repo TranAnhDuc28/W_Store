@@ -170,6 +170,14 @@ order by hd.id
 offset 0 rows
 fetch next 5 rows only
 
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
+values (?, ?, ?, ?, default, ?);
+
+select id, ma_hoa_don, ngay_tao, ten_khach_hang  from HoaDon where ma_hoa_don = 'HD301123111957'
+
+select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, hd.trang_thai
+from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
+where ma_hoa_don = ;
 
 -- query HoaDonChiTiet
 select hdct.id, hdct.id_san_pham, sp.ma_san_pham, tt.ten_thuong_hieu, sp.doi_tuong_su_dung, sp.ma_hang_hoa, hdct.id_hoa_don, hdct.so_luong, hdct.don_gia
@@ -178,3 +186,6 @@ from HoaDonChitiet hdct join SanPham sp on hdct.id_san_pham = sp.id
 						join HoaDon hd on hdct.id_hoa_don = hd.id
 where hdct.id_hoa_don = 2
 group by hdct.id, hdct.id_san_pham, sp.ma_san_pham, tt.ten_thuong_hieu, sp.doi_tuong_su_dung, sp.ma_hang_hoa, hdct.id_hoa_don, hdct.so_luong, hdct.don_gia						
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia)
+values(?, ?, ?, ?);

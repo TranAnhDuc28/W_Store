@@ -42,8 +42,8 @@ public class HoaDonChiTietRepository implements IHoaDonChiTietRepository {
                                         rs.getInt("id_san_pham"),
                                         rs.getString("ma_san_pham"),
                                         rs.getString("ten_thuong_hieu")
-                                + " " + rs.getString("doi_tuong_su_dung")
-                                + " " + rs.getString("ma_hang_hoa")),
+                                        + " " + rs.getString("doi_tuong_su_dung")
+                                        + " " + rs.getString("ma_hang_hoa")),
                                 new HoaDon(rs.getInt("id_hoa_don")),
                                 rs.getInt("so_luong"),
                                 rs.getBigDecimal("don_gia"));
@@ -57,8 +57,38 @@ public class HoaDonChiTietRepository implements IHoaDonChiTietRepository {
     }
 
     @Override
-    public boolean addListOrder(int idHoaDon, List<HoaDon> lists) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void insertListOrderDetails(int idHoaDon, List<HoaDonChiTietViewModel> lists) {
+        int results[];
+        String sql = "insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia)\n"
+                + "values(?, ?, ?, ?);";
+        try (Connection cn = DBConnect.getConnection();) {
+            cn.setAutoCommit(false);
+            try (PreparedStatement pstm = cn.prepareStatement(sql);) {
+                for (HoaDonChiTietViewModel hdct : lists) {
+                    pstm.setInt(1, hdct.getSanPham().getId());
+                    pstm.setInt(2, hdct.getHoaDon().getId());
+                    pstm.setInt(3, hdct.getSoLuong());
+                    pstm.setBigDecimal(4, hdct.getDonGia());
+                    pstm.addBatch();
+                }
+
+                // chạy batch và lấy kết quả
+                results = pstm.executeBatch();
+
+                // check lỗi
+                for (int i = 0; i < results.length; i++) {
+                    if (results[i] == PreparedStatement.EXECUTE_FAILED) {
+                        System.out.println("Error in statement at index " + i);
+                    }
+                }
+                cn.commit();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                cn.rollback();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

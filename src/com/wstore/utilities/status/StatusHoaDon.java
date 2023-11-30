@@ -51,6 +51,15 @@ public enum StatusHoaDon {
         }
         return CHO_THANH_TOAN.value;
     }
+    
+    public static String getNameByValue(int value) {
+        for (StatusHoaDon os : values()) {
+            if (os.value == value) {
+                return os.name;
+            }
+        }
+        return CHO_THANH_TOAN.name;
+    }
 
     @Override
     public String toString() {

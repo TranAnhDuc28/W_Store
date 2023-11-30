@@ -4,7 +4,6 @@
  */
 package com.wstore.repositories;
 
-import com.wstore.domainmodels.HoaDon;
 import com.wstore.viewmodels.HoaDonChiTietViewModel;
 import java.util.List;
 
@@ -16,6 +15,6 @@ public interface IHoaDonChiTietRepository {
     
     List<HoaDonChiTietViewModel> getAllByHoaDonID(int id);
 
-    boolean addListOrder(int idHoaDon, List<HoaDon> lists);
+    void insertListOrderDetails(int idHoaDon, List<HoaDonChiTietViewModel> lists);
     
 }

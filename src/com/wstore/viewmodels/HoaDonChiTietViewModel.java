@@ -13,6 +13,7 @@ import java.math.BigDecimal;
  * @author ducan
  */
 public class HoaDonChiTietViewModel {
+
     private Long id;
     private SanPhamBanHangViewModel sanPham;
     private HoaDon hoaDon;
@@ -77,14 +78,16 @@ public class HoaDonChiTietViewModel {
     public void setDonGia(BigDecimal donGia) {
         this.donGia = donGia;
     }
-    
+
     public BigDecimal getThanhTien() {
         return donGia.multiply(new BigDecimal(soLuong));
     }
-    
+
     public Object[] toDataRow() {
-        return new Object[] {
+        return new Object[]{
             sanPham.getMaSanPham(),
-        sanPham.getTenSanPham(), soLuong, donGia, getThanhTien()};
+            sanPham.getTenSanPham(), soLuong,
+            donGia,
+            getThanhTien()};
     }
 }

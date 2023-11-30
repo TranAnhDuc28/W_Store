@@ -4,6 +4,7 @@
  */
 package com.wstore.services;
 
+import com.wstore.domainmodels.HoaDon;
 import com.wstore.viewmodels.HoaDonViewModel;
 import java.util.List;
 
@@ -16,8 +17,12 @@ public interface IHoaDonService {
     List<HoaDonViewModel> getAll(int page, int pageSize);
 
     List<HoaDonViewModel> getAllByTrangThai(int page, int pageSize, int trangThai);
+    
+    boolean insert(HoaDon hd);
 
     int getCountRecord();
 
     int getCountRecordByTrangThai(int trangThai);
+    
+    HoaDonViewModel findByMa(String maHD);
 }

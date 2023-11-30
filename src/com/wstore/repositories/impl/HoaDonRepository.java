@@ -128,13 +128,20 @@ public class HoaDonRepository implements IHoaDonRepository {
     }
 
     @Override
-    public HoaDon getOne(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public boolean insert(HoaDon hoaDon) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int checkInsert = 0;
+        String query = "insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, trang_thai, id_nhan_vien) \n"
+                + "values (?, ?, ?, default, ?);";
+        try (Connection con = DBConnect.getConnection(); PreparedStatement ps = con.prepareStatement(query);) {
+            ps.setString(1, hoaDon.getMaHoaDon());
+            ps.setTimestamp(2, hoaDon.getNgayTao());
+            ps.setString(3, hoaDon.getTenKhachHang());
+            ps.setInt(4, hoaDon.getIdNhanVien());
+            checkInsert = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }
+        return checkInsert > 0;
     }
 
     @Override
@@ -171,6 +178,33 @@ public class HoaDonRepository implements IHoaDonRepository {
             ex.printStackTrace();
         }
         return count;
+    }
+
+    @Override
+    public HoaDonViewModel findByMa(String maHD) {
+        HoaDonViewModel hd = null;
+        String sql = "select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, hd.trang_thai\n"
+                + "from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id\n"
+                + "where ma_hoa_don = ?;";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setObject(1, maHD);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                hd = new HoaDonViewModel();
+                hd.setId(rs.getInt("id"));
+                hd.setMaHoaDon(rs.getString("ma_hoa_don"));
+                hd.setNgayTao(rs.getTimestamp("ngay_tao"));
+                hd.setTenKhachHang(rs.getString("ten_khach_hang"));
+                hd.setNhanVien(new NhanVien(
+                        rs.getInt("id_nhan_vien"),
+                        rs.getString("ma_nhan_vien"),
+                        rs.getString("ho_ten")));
+                hd.setTrangThai(rs.getInt("trang_thai"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return hd;
     }
 
 }

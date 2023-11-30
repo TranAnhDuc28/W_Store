@@ -242,7 +242,7 @@ create table HoaDon(
 	tien_coc decimal(10,0) default 0,
 	ngay_nhan_hang datetime2,
 	ghi_chu nvarchar(255),
-	trang_thai int default 1,
+	trang_thai int default 0,
 	id_nhan_vien int not null,
 	id_khach_hang int,
 	constraint hoa_don_PK primary key (id),

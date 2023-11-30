@@ -26,8 +26,8 @@ public class HoaDonChiTietService implements IHoaDonChiTietService{
     }
 
     @Override
-    public boolean addListOrder(int idHoaDon, List<HoaDon> lists) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void addListOrder(int idHoaDon, List<HoaDonChiTietViewModel> lists) {
+        hoaDonChiTietRepository.insertListOrderDetails(idHoaDon, lists);
     }
     
 }
