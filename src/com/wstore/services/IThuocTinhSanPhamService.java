@@ -15,9 +15,12 @@ public interface IThuocTinhSanPhamService<E> {
 
     List<E> getAll();
 
+    List<E> getAllByTrangThai(boolean trangThai);
+
     boolean insert(E obj);
 
     boolean update(E obj, int id);
 
-    boolean updateHienThi(E obj);
+    void updatesHienThi(List<E> list);
+
 }

@@ -35,7 +35,14 @@ public class ChatLieuKinhService implements IThuocTinhSanPhamService<ChatLieuKin
     }
 
     @Override
-    public boolean updateHienThi(ChatLieuKinhViewModel clk) {
-        return chatLieuKinhRepository.updateHienThi(clk);
+    public List<ChatLieuKinhViewModel> getAllByTrangThai(boolean trangThai) {
+        return chatLieuKinhRepository.getAllByTrangThai(trangThai);
     }
+
+    @Override
+    public void updatesHienThi(List<ChatLieuKinhViewModel> list) {
+        chatLieuKinhRepository.updatesHienThi(list);
+    }
+    
+    
 }

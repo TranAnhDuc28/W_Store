@@ -16,7 +16,7 @@ import com.wstore.services.IThuocTinhSanPhamService;
  */
 public class MauService implements IThuocTinhSanPhamService<MauViewModel> {
 
-    private final IThuocTinhSanPhamRepository mauRepository 
+    private final IThuocTinhSanPhamRepository mauRepository
             = new MauRepository();
 
     @Override
@@ -34,9 +34,15 @@ public class MauService implements IThuocTinhSanPhamService<MauViewModel> {
         return mauRepository.update(m, id);
     }
 
+
     @Override
-    public boolean updateHienThi(MauViewModel m) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<MauViewModel> getAllByTrangThai(boolean trangThai) {
+        return mauRepository.getAllByTrangThai(trangThai);
+    }
+
+    @Override
+    public void updatesHienThi(List<MauViewModel> list) {
+        mauRepository.updatesHienThi(list);
     }
 
 }

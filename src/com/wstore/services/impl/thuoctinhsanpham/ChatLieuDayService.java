@@ -34,8 +34,12 @@ public class ChatLieuDayService implements IThuocTinhSanPhamService<ChatLieuDayV
     }
 
     @Override
-    public boolean updateHienThi(ChatLieuDayViewModel cld) {
-        return chatLieuDayRepository.updateHienThi(cld);
+    public List<ChatLieuDayViewModel> getAllByTrangThai(boolean trangThai) {
+        return chatLieuDayRepository.getAllByTrangThai(trangThai);
     }
 
+    @Override
+    public void updatesHienThi(List<ChatLieuDayViewModel> list) {
+        chatLieuDayRepository.updatesHienThi(list);
+    }
 }

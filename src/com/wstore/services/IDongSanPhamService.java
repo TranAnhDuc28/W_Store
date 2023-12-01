@@ -15,4 +15,7 @@ import java.util.List;
 public interface IDongSanPhamService extends IThuocTinhSanPhamService<DongSanPham> {
 
     List<DongSanPhamViewModel> getAllByIDThuongHieu(int idThuongHieu);
+
+    List<DongSanPhamViewModel> getAllByIDThuongHieuAndTrangThai(int idThuongHieu, boolean trangThai);
+
 }

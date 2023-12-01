@@ -30,12 +30,17 @@ public class DongMayService implements IThuocTinhSanPhamService<DongMayViewModel
     }
 
     @Override
-    public boolean updateHienThi(DongMayViewModel dm) {
-        return dongMayRepository.updateHienThi(dm);
+    public boolean update(DongMayViewModel dm, int id) {
+        return dongMayRepository.update(dm, id);
     }
 
     @Override
-    public boolean update(DongMayViewModel dm, int id) {
-        return dongMayRepository.update(dm, id);
+    public List<DongMayViewModel> getAllByTrangThai(boolean trangThai) {
+        return dongMayRepository.getAllByTrangThai(trangThai);
+    }
+
+    @Override
+    public void updatesHienThi(List<DongMayViewModel> list) {
+        dongMayRepository.updatesHienThi(list);
     }
 }

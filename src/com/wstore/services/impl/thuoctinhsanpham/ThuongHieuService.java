@@ -35,7 +35,13 @@ public class ThuongHieuService implements IThuocTinhSanPhamService<ThuongHieuVie
     }
 
     @Override
-    public boolean updateHienThi(ThuongHieuViewModel obj) {
-        return thuongHieuRepository.updateHienThi(obj);
+    public List<ThuongHieuViewModel> getAllByTrangThai(boolean trangThai) {
+        return thuongHieuRepository.getAllByTrangThai(trangThai);
     }
+
+    @Override
+    public void updatesHienThi(List<ThuongHieuViewModel> list) {
+        thuongHieuRepository.updatesHienThi(list);
+    }
+
 }

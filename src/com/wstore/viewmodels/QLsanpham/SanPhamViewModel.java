@@ -290,7 +290,7 @@ public class SanPhamViewModel {
 
     public Object[] toDataRow() {
         return new Object[]{maSanPham, thuongHieu, maHangHoa,
-            Helper.dfTien.format(giaNhap), Helper.dfTien.format(donGia),
+            Helper.dfTien.format(giaNhap), Helper.dfTien.format(donGia), soLuongTon,
             doiTuongSuDung, dongSanPham, dongMay, chatLieuDay, chatLieuKinh,
             khangNuoc, khoangTruCot, sizeMat, xuatXu, chatLieuVo,
             hinhDang, mauVo, phongCach, tinhNang, doDay, mauMat, hinhAnh,

@@ -280,7 +280,19 @@ public class FormDongSanPhamJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnCapNhatHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatHienThiActionPerformed
-        // TODO add your handling code here:
+        int rowCount = tblDongSanPham.getRowCount();
+        if (Helper.comfirm(this, "Xác nhận cập nhật hiển thị giá trị?")) {
+            List<DongSanPham> list = new ArrayList<>();
+            for (int i = 0; i < rowCount; i++) {
+                DongSanPham dsp = new DongSanPham();
+                dsp.setId(Integer.valueOf(tblDongSanPham.getValueAt(i, 0).toString()));
+                dsp.setTrangThai(Boolean.valueOf(tblDongSanPham.getValueAt(i, 2).toString()));
+                list.add(dsp);
+            }
+            dongSanPhamService.updatesHienThi(list);
+            clearForm();
+            loadDataToTable();
+        }
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
     private void loadCboThuongHieu() {

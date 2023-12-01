@@ -313,17 +313,17 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
 
         tblDSSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã sản phẩm", "Thương hiệu", "Mã hàng hóa", "Giá nhập", "Giá bán", "Đối tượng sử dụng", "Dòng sản phẩm", "Dòng máy", "Chất liệu dây", "Chất liệu kính", "Kháng nước", "Khoảng trữ cót", "Size mặt", "Xuất xứ", "Chất liệu vỏ", "Hình dạng mặt", "Màu vỏ", "Phong cách", "Tính năng", "Độ dầy", "Màu mặt", "Hình ảnh", "Trạng thái"
+                "Mã sản phẩm", "Thương hiệu", "Mã hàng hóa", "Giá nhập", "Giá bán", "Số lượng tồn", "Đối tượng sử dụng", "Dòng sản phẩm", "Dòng máy", "Chất liệu dây", "Chất liệu kính", "Kháng nước", "Khoảng trữ cót", "Size mặt", "Xuất xứ", "Chất liệu vỏ", "Hình dạng mặt", "Màu vỏ", "Phong cách", "Tính năng", "Độ dầy", "Màu mặt", "Hình ảnh", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -344,7 +344,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
             tblDSSanPham.getColumnModel().getColumn(2).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(3).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(4).setPreferredWidth(150);
-            tblDSSanPham.getColumnModel().getColumn(5).setPreferredWidth(150);
+            tblDSSanPham.getColumnModel().getColumn(5).setPreferredWidth(100);
             tblDSSanPham.getColumnModel().getColumn(6).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(7).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(8).setPreferredWidth(150);
@@ -353,15 +353,16 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
             tblDSSanPham.getColumnModel().getColumn(11).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(12).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(13).setPreferredWidth(150);
-            tblDSSanPham.getColumnModel().getColumn(14).setPreferredWidth(170);
-            tblDSSanPham.getColumnModel().getColumn(15).setPreferredWidth(150);
+            tblDSSanPham.getColumnModel().getColumn(14).setPreferredWidth(150);
+            tblDSSanPham.getColumnModel().getColumn(15).setPreferredWidth(170);
             tblDSSanPham.getColumnModel().getColumn(16).setPreferredWidth(150);
-            tblDSSanPham.getColumnModel().getColumn(17).setPreferredWidth(200);
-            tblDSSanPham.getColumnModel().getColumn(18).setPreferredWidth(400);
-            tblDSSanPham.getColumnModel().getColumn(19).setPreferredWidth(150);
+            tblDSSanPham.getColumnModel().getColumn(17).setPreferredWidth(150);
+            tblDSSanPham.getColumnModel().getColumn(18).setPreferredWidth(200);
+            tblDSSanPham.getColumnModel().getColumn(19).setPreferredWidth(400);
             tblDSSanPham.getColumnModel().getColumn(20).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(21).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(22).setPreferredWidth(150);
+            tblDSSanPham.getColumnModel().getColumn(23).setPreferredWidth(150);
         }
 
         jPanel7.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -595,6 +596,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
                 initPagination(sanPhamService.getAll(page, pageSize, trangThai));
                 chkChonTat.setSelected(false);
             }
+            System.out.println("Update nhiều");
         }
     }//GEN-LAST:event_btnNgungKinhDoanhActionPerformed
 
@@ -895,7 +897,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         List<PhongCachViewModel> listPCSP = new ArrayList<>(phongCachSanPhamService.getAllByIdSanPham(sp.getId()));
         formThemVaSuaSanPham.cboPhongCach.clearSelectedItems();
         formThemVaSuaSanPham.cboPhongCach.setSelectedItems(listPCSP);
-         Helper.showHinhAnh("images\\images-san-pham",
+        Helper.showHinhAnh("images\\images-san-pham",
                 formThemVaSuaSanPham.lblHinhAnh, sp.getHinhAnh());
         formThemVaSuaSanPham.setVisible(true);
     }
@@ -953,12 +955,13 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 }
 
-class ProgressExportExcel extends SwingWorker<Void, Void> {
+class ProgressExportExcel extends SwingWorker<List<SanPhamViewModel>, Void> {
 
     private final JProgressBar progressBar;
     private final ProgressJDialog progressJDialog;
     private final ISanPhamService sanPhamService = new SanPhamService();
     List<SanPhamViewModel> listData = new ArrayList<>();
+    int offset = 1;
 
     public ProgressExportExcel(JProgressBar progressBar, ProgressJDialog progressJDialog) {
         this.progressBar = progressBar;
@@ -966,24 +969,19 @@ class ProgressExportExcel extends SwingWorker<Void, Void> {
     }
 
     @Override
-    protected Void doInBackground() throws Exception {
+    protected List<SanPhamViewModel> doInBackground() throws Exception {
         progressBar.setIndeterminate(true);
         int count = sanPhamService.getRecordCount();
-        int offset = 1;
         int batchSize = 100;
         int totalPages = (int) Math.ceil((double) count / batchSize);
 
         for (int page = 1; page <= totalPages; page++) {
-            offset = (page - 1) * batchSize;
-            listData.addAll(sanPhamService.getAll(offset, batchSize, 1));
-
-            // Update progress
-//            int value = (int) (((double) page / totalPages) * 100);
-//            System.out.println(value);
-//            progressBar.setValue(value);
-//            System.out.println(value);
+            offset = (page - 1) * batchSize + 1;
+            System.out.println("Điểm bắt đầu lấy: " + offset);
+            listData.addAll(sanPhamService.getAll(offset, batchSize, 0));
+            System.out.println("Số bản ghi: " + listData.size());
         }
-        return null;
+        return listData;
     }
 
     @Override

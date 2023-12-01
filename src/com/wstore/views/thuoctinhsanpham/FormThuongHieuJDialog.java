@@ -11,6 +11,7 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import com.wstore.services.IThuocTinhSanPhamService;
+import java.util.ArrayList;
 
 /**
  *
@@ -297,7 +298,19 @@ public class FormThuongHieuJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnCapNhatHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatHienThiActionPerformed
-
+        int rowCount = tblThuongHieu.getRowCount();
+        if (Helper.comfirm(this, "Xác nhận cập nhật hiển thị giá trị?")) {
+            List<ThuongHieuViewModel> list = new ArrayList<>();
+            for (int i = 0; i < rowCount; i++) {
+                ThuongHieuViewModel tt = new ThuongHieuViewModel();
+                tt.setMaThuongHieu(Integer.valueOf(tblThuongHieu.getValueAt(i, 0).toString()));
+                tt.setHienThi(Boolean.valueOf(tblThuongHieu.getValueAt(i, 3).toString()));
+                list.add(tt);
+            }
+            thuongHieuService.updatesHienThi(list);
+            clearForm();
+            loadDataToTable();
+        }
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
     private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonAnhActionPerformed

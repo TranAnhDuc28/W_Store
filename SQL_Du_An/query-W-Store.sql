@@ -16,12 +16,11 @@ from SanPham sp
 	left join XuatXu xx on sp.id_xuat_xu = xx.id
 	left join Mau mv on sp.id_mau_vo = mv.id
 	left join Mau mm on sp.id_mau_mat = mm.id
-	left join TinhNangSanPham tnsp on sp.id = tnsp.id_san_pham
-	left join TinhNang tn on tnsp.id_tinh_nang = tn.id
 order by sp.id
-offset ? rows
-fetch next ? rows only;
+offset 0 rows
+fetch next 100 rows only;
 
+select *from SanPham
 
 select sp.id, sp.ma_san_pham, id_thuong_hieu, th.ten_thuong_hieu, sp.ma_hang_hoa
     , sp.gia_nhap, sp.don_gia, sp.so_luong_ton, sp.hinh_anh, sp.doi_tuong_su_dung
@@ -40,8 +39,6 @@ from SanPham sp
 	left join XuatXu xx on sp.id_xuat_xu = xx.id
 	left join Mau mv on sp.id_mau_vo = mv.id
 	left join Mau mm on sp.id_mau_mat = mm.id
-	left join TinhNangSanPham tnsp on sp.id = tnsp.id_san_pham
-	left join TinhNang tn on tnsp.id_tinh_nang = tn.id
 where sp.ma_san_pham like '%%' or sp.ma_hang_hoa like '%06%' or th.ten_thuong_hieu like '%%'	
 order by sp.id
 offset ? rows
@@ -65,6 +62,10 @@ update SanPham
 set id_dong_may = 0
 where id = 111;
 
+-- query thuoc tinh san pham
+
+update ThuongHieu set trang_thai = false where id = ?;
+
 select * from DongMay 
 
 -- query DongSanPham
@@ -75,6 +76,7 @@ where id_thuong_hieu = ?;
 update DongSanPham
 set ten_dong_san_pham = ?
 where id = ? and id_thuong_hieu = ?;
+
 
 
 --query TinhNangSanPham
@@ -107,8 +109,8 @@ select id, ma_nhan_vien , mat_khau, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai
 from NhanVien
 where trang_thai = 1
 order by id
-offset ? rows
-fetch next ? rows only;
+offset 0 rows
+fetch next 100 rows only;
 
 select *
 from NhanVien

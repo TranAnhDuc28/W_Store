@@ -79,7 +79,7 @@ go
 create table XuatXu(
 	id int identity(1,1) not null,
 	noi_xuat_xu nvarchar(100) not null,
-	trang_thai bit default 1 not null,
+	trang_thai bit default 0 not null,
 	constraint noi_xuat_xu_PK primary key (id),
 )
 go

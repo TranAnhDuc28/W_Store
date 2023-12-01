@@ -6,6 +6,7 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import com.wstore.services.IThuocTinhSanPhamService;
+import java.util.ArrayList;
 
 public class FormTinhNangJDialog extends javax.swing.JDialog {
 
@@ -237,7 +238,19 @@ public class FormTinhNangJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnCapNhatHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatHienThiActionPerformed
-        // TODO add your handling code here:
+        int rowCount = tblTinhNang.getRowCount();
+        if (Helper.comfirm(this, "Xác nhận cập nhật hiển thị giá trị?")) {
+            List<TinhNangViewModel> list = new ArrayList<>();
+            for (int i = 0; i < rowCount; i++) {
+                TinhNangViewModel tn = new TinhNangViewModel();
+                tn.setMaTinhNang(Integer.valueOf(tblTinhNang.getValueAt(i, 0).toString()));
+                tn.setHienThi(Boolean.valueOf(tblTinhNang.getValueAt(i, 2).toString()));
+                list.add(tn);
+            }
+            tinhNangService.updatesHienThi(list);
+            clearForm();
+            loadDataToTable();
+        }
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
     private void loadDataToTable() {

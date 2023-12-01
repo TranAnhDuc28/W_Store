@@ -4,7 +4,6 @@
  */
 package com.wstore.repositories.impl.thuoctinhsanpham;
 
-import com.wstore.domainmodels.thuoctinhsanpham.ChatLieuDay;
 import java.util.List;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.utilities.DBConnect;
@@ -12,6 +11,7 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -33,11 +33,30 @@ public class ChatLieuDayRepository implements IThuocTinhSanPhamRepository<ChatLi
                         rs.getBoolean("trang_thai"));
                 list.add(cld);
             }
-            return list;
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return null;
+        return list;
+    }
+
+    @Override
+    public List<ChatLieuDayViewModel> getAllByTrangThai(boolean trangThai) {
+        List<ChatLieuDayViewModel> list = new ArrayList<>();
+        String sql = "select id, ten_chat_lieu_day, trang_thai from ChatLieuDay where trang_thai = ?";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setBoolean(1, trangThai);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                ChatLieuDayViewModel cld = new ChatLieuDayViewModel(
+                        rs.getInt("id"),
+                        rs.getString("ten_chat_lieu_day"),
+                        rs.getBoolean("trang_thai"));
+                list.add(cld);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     @Override
@@ -56,9 +75,7 @@ public class ChatLieuDayRepository implements IThuocTinhSanPhamRepository<ChatLi
     @Override
     public boolean update(ChatLieuDayViewModel cld, int id) {
         int checkUpdate = 0;
-        String sql = "update ChatLieuDay\n"
-                + "set ten_chat_lieu_day= ?\n"
-                + "where id=?";
+        String sql = "update ChatLieuDay set ten_chat_lieu_day = ? where id = ?";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
             pstm.setString(1, cld.getTenChatLieuDay());
             pstm.setInt(2, id);
@@ -70,9 +87,33 @@ public class ChatLieuDayRepository implements IThuocTinhSanPhamRepository<ChatLi
     }
 
     @Override
-    public boolean updateHienThi(ChatLieuDayViewModel cld) {
-        String sql = "update ChatLieuDay set trang_thai =? where id = ?";
-        return true;
+    public void updatesHienThi(List<ChatLieuDayViewModel> list) {
+        int results[];
+        String sql = "update ChatLieuDay set trang_thai = ? where id = ?;";
+        try (Connection cn = DBConnect.getConnection();) {
+            cn.setAutoCommit(false);
+            try (PreparedStatement pstm = cn.prepareStatement(sql);) {
+                for (ChatLieuDayViewModel cld : list) {
+                    pstm.setBoolean(1, cld.getHienThi());
+                    pstm.setInt(2, cld.getMaChatLieuDay());
+                    pstm.addBatch();
+                }
+                // chạy batch và lấy kết quả
+                results = pstm.executeBatch();
+                // check lỗi
+                for (int i = 0; i < results.length; i++) {
+                    if (results[i] == PreparedStatement.EXECUTE_FAILED) {
+                        System.out.println("Error in statement at index " + i);
+                    }
+                }
+                cn.commit();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                cn.rollback();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

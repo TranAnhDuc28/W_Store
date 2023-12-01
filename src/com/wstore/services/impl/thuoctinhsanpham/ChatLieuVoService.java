@@ -16,26 +16,33 @@ import com.wstore.services.IThuocTinhSanPhamService;
  */
 public class ChatLieuVoService implements IThuocTinhSanPhamService<ChatLieuVoViewModel>{
 
-    private final IThuocTinhSanPhamRepository chatLieuRepository
+    private final IThuocTinhSanPhamRepository chatLieuVoRepository
             = new ChatLieuVoRepository();
 
     @Override
     public List<ChatLieuVoViewModel> getAll() {
-        return chatLieuRepository.getAll();
+        return chatLieuVoRepository.getAll();
     }
 
     @Override
     public boolean insert(ChatLieuVoViewModel clv) {
-        return chatLieuRepository.insert(clv);
+        return chatLieuVoRepository.insert(clv);
     }
 
     @Override
     public boolean update(ChatLieuVoViewModel clv, int id) {
-        return chatLieuRepository.update(clv, id);
+        return chatLieuVoRepository.update(clv, id);
     }
 
     @Override
-    public boolean updateHienThi(ChatLieuVoViewModel clv) {
-        return chatLieuRepository.updateHienThi(clv);
+    public List<ChatLieuVoViewModel> getAllByTrangThai(boolean trangThai) {
+        return chatLieuVoRepository.getAllByTrangThai(trangThai);
     }
+
+    @Override
+    public void updatesHienThi(List<ChatLieuVoViewModel> list) {
+        chatLieuVoRepository.updatesHienThi(list);
+    }
+    
+    
 }

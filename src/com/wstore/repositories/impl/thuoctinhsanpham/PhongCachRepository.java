@@ -4,7 +4,6 @@
  */
 package com.wstore.repositories.impl.thuoctinhsanpham;
 
-import com.wstore.domainmodels.thuoctinhsanpham.PhongCach;
 import java.util.List;
 import com.wstore.repositories.IThuocTinhSanPhamRepository;
 import com.wstore.utilities.DBConnect;
@@ -12,6 +11,7 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -26,6 +26,26 @@ public class PhongCachRepository implements IThuocTinhSanPhamRepository<PhongCac
         String sql = "select id, ten_phong_cach, trang_thai from PhongCach";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement ptms = cn.prepareStatement(sql);) {
             ResultSet rs = ptms.executeQuery();
+            while (rs.next()) {
+                PhongCachViewModel pc = new PhongCachViewModel();
+                pc.setMaPhongCach(rs.getInt("id"));
+                pc.setTenPhongCach(rs.getString("ten_phong_cach"));
+                pc.setHienThi(rs.getBoolean("trang_thai"));
+                list.add(pc);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public List<PhongCachViewModel> getAllByTrangThai(boolean trangThai) {
+        List<PhongCachViewModel> list = new ArrayList<>();
+        String sql = "select id, ten_phong_cach, trang_thai from PhongCach where trang_thai = ?";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setBoolean(1, trangThai);
+            ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 PhongCachViewModel pc = new PhongCachViewModel();
                 pc.setMaPhongCach(rs.getInt("id"));
@@ -70,8 +90,33 @@ public class PhongCachRepository implements IThuocTinhSanPhamRepository<PhongCac
     }
 
     @Override
-    public boolean updateHienThi(PhongCachViewModel obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void updatesHienThi(List<PhongCachViewModel> list) {
+        int results[];
+        String sql = "update PhongCach set trang_thai = ? where id = ?;";
+        try (Connection cn = DBConnect.getConnection();) {
+            cn.setAutoCommit(false);
+            try (PreparedStatement pstm = cn.prepareStatement(sql);) {
+                for (PhongCachViewModel pc : list) {
+                    pstm.setBoolean(1, pc.getHienThi());
+                    pstm.setInt(2, pc.getMaPhongCach());
+                    pstm.addBatch();
+                }
+                // chạy batch và lấy kết quả
+                results = pstm.executeBatch();
+                // check lỗi
+                for (int i = 0; i < results.length; i++) {
+                    if (results[i] == PreparedStatement.EXECUTE_FAILED) {
+                        System.out.println("Error in statement at index " + i);
+                    }
+                }
+                cn.commit();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                cn.rollback();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

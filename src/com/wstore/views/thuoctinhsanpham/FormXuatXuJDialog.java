@@ -10,6 +10,7 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.XuatXuViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import com.wstore.services.IThuocTinhSanPhamService;
+import java.util.ArrayList;
 
 /**
  *
@@ -249,7 +250,19 @@ public class FormXuatXuJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnCapNhatHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatHienThiActionPerformed
-        // TODO add your handling code here:
+        int rowCount = tblXuatXu.getRowCount();
+        if (Helper.comfirm(this, "Xác nhận cập nhật hiển thị giá trị?")) {
+            List<XuatXuViewModel> list = new ArrayList<>();
+            for (int i = 0; i < rowCount; i++) {
+                XuatXuViewModel xx = new XuatXuViewModel();
+                xx.setMaXuatXu(Integer.valueOf(tblXuatXu.getValueAt(i, 0).toString()));
+                xx.setHienThi(Boolean.valueOf(tblXuatXu.getValueAt(i, 2).toString()));
+                list.add(xx);
+            }
+            xuatxuseService.updatesHienThi(list);
+            clearForm();
+            loadDataToTable();
+        }
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
     private void loadDataToTable() {

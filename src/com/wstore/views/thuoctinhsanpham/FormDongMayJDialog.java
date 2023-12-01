@@ -10,6 +10,7 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.DongMayViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import com.wstore.services.IThuocTinhSanPhamService;
+import java.util.ArrayList;
 
 /**
  *
@@ -251,7 +252,19 @@ public class FormDongMayJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnCapNhatHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatHienThiActionPerformed
-        // TODO add your handling code here:
+       int rowCount = tblDongMay.getRowCount();
+        if (Helper.comfirm(this, "Xác nhận cập nhật hiển thị giá trị?")) {
+            List<DongMayViewModel> list = new ArrayList<>();
+            for (int i = 0; i < rowCount; i++) {
+                DongMayViewModel dm = new DongMayViewModel();
+                dm.setIdDongMay(Integer.valueOf(tblDongMay.getValueAt(i, 0).toString()));
+                dm.setHienThi(Boolean.valueOf(tblDongMay.getValueAt(i, 2).toString()));
+                list.add(dm);
+            }
+            dongMayService.updatesHienThi(list);
+            clearForm();
+            loadDataToTable();
+        }
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
     private void loadDataToTable() {

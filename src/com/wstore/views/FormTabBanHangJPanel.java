@@ -54,6 +54,12 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     private int tongSoBanGhiTheoTrangThai = 0;
     private int totalPage = 1;
     public int pageSize = 15;
+    int tongTien = 0;
+    int tienGiamGia = 0;
+    int tienThanhToan = 0;
+    int tienKhachDua = 0;
+    int tienKhachCK = 0;
+    int tienThua = 0;
 
     public FormTabBanHangJPanel(Frame parent) {
         initComponents();
@@ -198,7 +204,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, true
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -331,10 +337,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
         tblGioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Mã sản phẩm", "Tên sản phẩm", "Số lượng ", "Đơn giá", "Thành tiền"
@@ -506,6 +509,11 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
         txtTienKhachDua.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtTienKhachDua.setText("0");
+        txtTienKhachDua.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTienKhachDuaKeyReleased(evt);
+            }
+        });
 
         jLabel20.setText("Tiền khách CK");
 
@@ -899,6 +907,16 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTienKhachChietKhauActionPerformed
 
+    private void txtTienKhachDuaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyReleased
+        try {
+            tienKhachDua = Integer.parseInt(txtTienKhachDua.getText());
+        } catch (Exception e) {
+        }
+        tienThua = tienKhachDua - tienThanhToan;
+        System.out.println(tienThua);
+        txtTienThua.setText(Helper.dfTien.format(tienThua));
+    }//GEN-LAST:event_txtTienKhachDuaKeyReleased
+
     public void initPagination(List<SanPhamBanHangViewModel> list) {
         tongSoBanGhiTheoTrangThai = sanPhamService.getRecordCountByTrangThai(trangThai);
         pageSize = Integer.parseInt(cboSoBanGhi.getSelectedItem().toString());
@@ -985,22 +1003,21 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         txtNgayTao.setText(Helper.sdfNgayThangThoiGian.format(hd.getNgayTao()));
         txtNhanVien.setText(hd.getNhanVien().toString());
         int rowGioHang = tblGioHang.getRowCount();
-        int tongTien = 0;
         for (int i = 0; i < rowGioHang; i++) {
             tongTien += Integer.valueOf(tblGioHang.getValueAt(i, 4).toString());
         }
-        txtTongTien.setText(String.valueOf(tongTien));
-        int thanhToan = tongTien - Integer.parseInt(txtGiamGiaKM.getText().trim());
-        txtThanhToan.setText(String.valueOf(thanhToan));
+        txtTongTien.setText(Helper.dfTien.format(tongTien));
+        tienThanhToan = tongTien - Integer.parseInt(txtGiamGiaKM.getText().trim());
+        txtThanhToan.setText(Helper.dfTien.format(tienThanhToan));
     }
-    
+
     public void showHoaDonDuocChon(HoaDonViewModel hd) {
         lblHoaDonDangMuaHang.setText(
-                    hd.getMaHoaDon() + " | "
-                    + Helper.sdfNgayThangThoiGian.format(hd.getNgayTao()) + " | "
-                    + hd.getTenKhachHang() + " | "
-                    + hd.getNhanVien() + " | "
-                    + StatusHoaDon.getNameByValue(hd.getTrangThai()));
+                hd.getMaHoaDon() + " | "
+                + Helper.sdfNgayThangThoiGian.format(hd.getNgayTao()) + " | "
+                + hd.getTenKhachHang() + " | "
+                + hd.getNhanVien() + " | "
+                + StatusHoaDon.getNameByValue(hd.getTrangThai()));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

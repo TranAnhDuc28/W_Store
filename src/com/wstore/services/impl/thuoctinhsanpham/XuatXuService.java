@@ -35,8 +35,14 @@ public class XuatXuService implements IThuocTinhSanPhamService<XuatXuViewModel>{
     }
 
     @Override
-    public boolean updateHienThi(XuatXuViewModel obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void updatesHienThi(List<XuatXuViewModel> list) {
+        xuatXuService.updatesHienThi(list);
     }
+
+    @Override
+    public List<XuatXuViewModel> getAllByTrangThai(boolean trangThai) {
+        return xuatXuService.getAllByTrangThai(trangThai);
+    }
+
     
 }

@@ -10,6 +10,7 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.MauViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import com.wstore.services.IThuocTinhSanPhamService;
+import java.util.ArrayList;
 
 /**
  *
@@ -252,7 +253,19 @@ public class FormMauJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnCapNhatHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatHienThiActionPerformed
-        // TODO add your handling code here:
+        int rowCount = tblMau.getRowCount();
+        if (Helper.comfirm(this, "Xác nhận cập nhật hiển thị giá trị?")) {
+            List<MauViewModel> list = new ArrayList<>();
+            for (int i = 0; i < rowCount; i++) {
+                MauViewModel m = new MauViewModel();
+                m.setMaMau(Integer.valueOf(tblMau.getValueAt(i, 0).toString()));
+                m.setHienThi(Boolean.valueOf(tblMau.getValueAt(i, 2).toString()));
+                list.add(m);
+            }
+            mauSevice.updatesHienThi(list);
+            clearForm();
+            loadDataToTable();
+        }
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
     private void loadDataToTable() {

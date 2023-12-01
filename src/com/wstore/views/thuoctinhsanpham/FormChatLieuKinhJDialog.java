@@ -11,6 +11,7 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import com.wstore.services.IThuocTinhSanPhamService;
+import java.util.ArrayList;
 
 /**
  *
@@ -258,7 +259,19 @@ public class FormChatLieuKinhJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnCapNhatHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatHienThiActionPerformed
-        // TODO add your handling code here:
+        int rowCount = tblChatLieuKinh.getRowCount();
+        if (Helper.comfirm(this, "Xác nhận cập nhật hiển thị giá trị?")) {
+            List<ChatLieuKinhViewModel> list = new ArrayList<>();
+            for (int i = 0; i < rowCount; i++) {
+                ChatLieuKinhViewModel clk = new ChatLieuKinhViewModel();
+                clk.setMaChatLieuKinh(Integer.valueOf(tblChatLieuKinh.getValueAt(i, 0).toString()));
+                clk.setHienThi(Boolean.valueOf(tblChatLieuKinh.getValueAt(i, 2).toString()));
+                list.add(clk);
+            }
+            chatLieuKinhService.updatesHienThi(list);
+            clearForm();
+            loadDataToTable();
+        }
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
     private void loadDataToTable() {

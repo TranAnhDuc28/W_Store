@@ -18,27 +18,22 @@ import java.util.List;
  */
 public class DongSanPhamService implements IDongSanPhamService {
 
-    private final IDongSanPhamRepository dongSanPhamRepository 
+    private final IDongSanPhamRepository dongSanPhamRepository
             = new DongSanPhamRepository();
 
     @Override
     public List<DongSanPhamViewModel> getAllByIDThuongHieu(int idThuongHieu) {
         List<DongSanPham> listDongSanPham = dongSanPhamRepository.getAllByIDThuongHieu(idThuongHieu);
-        
+
         List<DongSanPhamViewModel> listDongSanPhamViewModel = new ArrayList<>();
         for (DongSanPham dsp : listDongSanPham) {
             DongSanPhamViewModel dongSanPhamViewModel = new DongSanPhamViewModel(
-                    dsp.getId(), 
-                    dsp.getTenDongSanPham(), 
+                    dsp.getId(),
+                    dsp.getTenDongSanPham(),
                     dsp.getTrangThai());
             listDongSanPhamViewModel.add(dongSanPhamViewModel);
         }
         return listDongSanPhamViewModel;
-    }
-
-    @Override
-    public List<DongSanPham> getAll() {
-        return dongSanPhamRepository.getAll();
     }
 
     @Override
@@ -51,9 +46,35 @@ public class DongSanPhamService implements IDongSanPhamService {
         return dongSanPhamRepository.update(dsp, id);
     }
 
+
     @Override
-    public boolean updateHienThi(DongSanPham dsp) {
-        return dongSanPhamRepository.updateHienThi(dsp);
+    public List<DongSanPhamViewModel> getAllByIDThuongHieuAndTrangThai(int idThuongHieu, boolean trangThai) {
+        List<DongSanPham> listDongSanPham
+                = dongSanPhamRepository.getAllByIDThuongHieuAndTrangThai(idThuongHieu, trangThai);
+
+        List<DongSanPhamViewModel> listDongSanPhamViewModel = new ArrayList<>();
+        for (DongSanPham dsp : listDongSanPham) {
+            DongSanPhamViewModel dongSanPhamViewModel = new DongSanPhamViewModel(
+                    dsp.getId(),
+                    dsp.getTenDongSanPham(),
+                    dsp.getTrangThai());
+            listDongSanPhamViewModel.add(dongSanPhamViewModel);
+        }
+        return listDongSanPhamViewModel;
     }
 
+    @Override
+    public List<DongSanPham> getAll() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<DongSanPham> getAllByTrangThai(boolean trangThai) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void updatesHienThi(List<DongSanPham> list) {
+        dongSanPhamRepository.updatesHienThi(list);
+    }
 }

@@ -16,26 +16,33 @@ import com.wstore.services.IThuocTinhSanPhamService;
  */
 public class PhongCachService implements IThuocTinhSanPhamService<PhongCachViewModel> {
 
-    private final IThuocTinhSanPhamRepository phongcahRepository 
+    private final IThuocTinhSanPhamRepository phongcachRepository
             = new PhongCachRepository();
 
     @Override
     public List<PhongCachViewModel> getAll() {
-        return phongcahRepository.getAll();
+        return phongcachRepository.getAll();
     }
 
     @Override
     public boolean insert(PhongCachViewModel pc) {
-        return phongcahRepository.insert(pc);
+        return phongcachRepository.insert(pc);
     }
 
     @Override
     public boolean update(PhongCachViewModel pc, int id) {
-        return phongcahRepository.update(pc, id);
+        return phongcachRepository.update(pc, id);
+    }
+
+
+    @Override
+    public List<PhongCachViewModel> getAllByTrangThai(boolean trangThai) {
+        return phongcachRepository.getAllByTrangThai(trangThai);
     }
 
     @Override
-    public boolean updateHienThi(PhongCachViewModel pc) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void updatesHienThi(List<PhongCachViewModel> list) {
+        phongcachRepository.updatesHienThi(list);
     }
+
 }

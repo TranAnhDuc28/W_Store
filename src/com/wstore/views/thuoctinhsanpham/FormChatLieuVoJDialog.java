@@ -10,6 +10,7 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuVoViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import com.wstore.services.IThuocTinhSanPhamService;
+import java.util.ArrayList;
 
 /**
  *
@@ -250,7 +251,19 @@ public class FormChatLieuVoJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnCapNhatHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatHienThiActionPerformed
-        // TODO add your handling code here:
+       int rowCount = tblChatLieuVo.getRowCount();
+        if (Helper.comfirm(this, "Xác nhận cập nhật hiển thị giá trị?")) {
+            List<ChatLieuVoViewModel> list = new ArrayList<>();
+            for (int i = 0; i < rowCount; i++) {
+                ChatLieuVoViewModel clv = new ChatLieuVoViewModel();
+                clv.setIdChatLieuVo(Integer.valueOf(tblChatLieuVo.getValueAt(i, 0).toString()));
+                clv.setHienThi(Boolean.valueOf(tblChatLieuVo.getValueAt(i, 2).toString()));
+                list.add(clv);
+            }
+            chatLieuVoService.updatesHienThi(list);
+            clearForm();
+            loadDataToTable();
+        }
     }//GEN-LAST:event_btnCapNhatHienThiActionPerformed
 
     private void clearForm() {

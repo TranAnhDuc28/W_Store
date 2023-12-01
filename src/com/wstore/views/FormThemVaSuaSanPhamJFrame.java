@@ -1296,7 +1296,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }
 
     private void loadDataCboThuongHieu() {
-        List<ThuongHieuViewModel> list = thuongHieuService.getAll();
+        List<ThuongHieuViewModel> list = thuongHieuService.getAllByTrangThai(true);
         dcbmThuongHieu.removeAllElements();
         for (ThuongHieuViewModel th : list) {
             dcbmThuongHieu.addElement(th);
@@ -1305,7 +1305,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }
 
     private void loadDataCboDongMay() {
-        List<DongMayViewModel> list = dongMayService.getAll();
+        List<DongMayViewModel> list = dongMayService.getAllByTrangThai(true);
         dcbmDongMay.removeAllElements();
         for (DongMayViewModel dm : list) {
             dcbmDongMay.addElement(dm);
@@ -1314,7 +1314,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }
 
     private void loadDataCboXuatXu() {
-        List<XuatXuViewModel> list = xuatXuService.getAll();
+        List<XuatXuViewModel> list = xuatXuService.getAllByTrangThai(true);
         dcbmXuatXu.removeAllElements();
         for (XuatXuViewModel xx : list) {
             dcbmXuatXu.addElement(xx);
@@ -1323,7 +1323,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }
 
     private void loadDataCboMauVo() {
-        List<MauViewModel> list = mauVoService.getAll();
+        List<MauViewModel> list = mauVoService.getAllByTrangThai(true);
         dcbmMauVo.removeAllElements();
         for (MauViewModel mv : list) {
             dcbmMauVo.addElement(mv);
@@ -1332,7 +1332,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }
 
     private void loadDataCboMauMat() {
-        List<MauViewModel> list = mauMatService.getAll();
+        List<MauViewModel> list = mauMatService.getAllByTrangThai(true);
         dcbmMauMat.removeAllElements();
         for (MauViewModel mm : list) {
             dcbmMauMat.addElement(mm);
@@ -1341,7 +1341,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }
 
     private void loadDataCboChatLieuDay() {
-        List<ChatLieuDayViewModel> list = chatLieuDayService.getAll();
+        List<ChatLieuDayViewModel> list = chatLieuDayService.getAllByTrangThai(true);
         dcbmChatLieuDay.removeAllElements();
         for (ChatLieuDayViewModel cld : list) {
             dcbmChatLieuDay.addElement(cld);
@@ -1350,7 +1350,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }
 
     private void loadDataCboChatLieuKinh() {
-        List<ChatLieuKinhViewModel> list = chatLieuKinhService.getAll();
+        List<ChatLieuKinhViewModel> list = chatLieuKinhService.getAllByTrangThai(true);
         dcbmChatLieuKinh.removeAllElements();
         for (ChatLieuKinhViewModel clk : list) {
             dcbmChatLieuKinh.addElement(clk);
@@ -1359,7 +1359,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }
 
     private void loadDataCboChatLieuVo() {
-        List<ChatLieuVoViewModel> list = chatLieuVoService.getAll();
+        List<ChatLieuVoViewModel> list = chatLieuVoService.getAllByTrangThai(true);
         dcbmChatLieuVo.removeAllElements();
         for (ChatLieuVoViewModel clv : list) {
             dcbmChatLieuVo.addElement(clv);
@@ -1373,7 +1373,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         if (th != null) {
             idThuongHieu = th.getMaThuongHieu();
         }
-        List<DongSanPhamViewModel> list = dongSanPhamService.getAllByIDThuongHieu(idThuongHieu);
+        List<DongSanPhamViewModel> list = dongSanPhamService.getAllByIDThuongHieuAndTrangThai(idThuongHieu, true);
         dcbmDongSanPham.removeAllElements();
         for (DongSanPhamViewModel dsp : list) {
             dcbmDongSanPham.addElement(dsp.getTenDongSanPham());
@@ -1382,7 +1382,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }
 
     private void loadDataCboTinhNang() {
-        List<TinhNangViewModel> list = tinhNangService.getAll();
+        List<TinhNangViewModel> list = tinhNangService.getAllByTrangThai(true);
         dcbmTinhNang.removeAllElements();
         for (TinhNangViewModel tn : list) {
             dcbmTinhNang.addElement(tn);
@@ -1391,7 +1391,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     }
 
     private void loadDataCboPhongCach() {
-        List<PhongCachViewModel> list = phongCachService.getAll();
+        List<PhongCachViewModel> list = phongCachService.getAllByTrangThai(true);
         dcbmPhongCach.removeAllElements();
         for (PhongCachViewModel pc : list) {
             dcbmPhongCach.addElement(pc);

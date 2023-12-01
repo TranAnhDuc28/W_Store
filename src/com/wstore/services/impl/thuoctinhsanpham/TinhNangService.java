@@ -16,27 +16,32 @@ import com.wstore.services.IThuocTinhSanPhamService;
  */
 public class TinhNangService implements IThuocTinhSanPhamService<TinhNangViewModel> {
 
-    private final IThuocTinhSanPhamRepository tinhSanPhamRepository 
+    private final IThuocTinhSanPhamRepository tinhNangRepository
             = new TinhNangRepository();
 
     @Override
     public List<TinhNangViewModel> getAll() {
-        return tinhSanPhamRepository.getAll();
+        return tinhNangRepository.getAll();
     }
 
     @Override
     public boolean insert(TinhNangViewModel tn) {
-        return tinhSanPhamRepository.insert(tn);
-    }
-
-    @Override
-    public boolean updateHienThi(TinhNangViewModel tn) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return tinhNangRepository.insert(tn);
     }
 
     @Override
     public boolean update(TinhNangViewModel tn, int id) {
-        return tinhSanPhamRepository.update(tn, id);
+        return tinhNangRepository.update(tn, id);
+    }
+
+    @Override
+    public List<TinhNangViewModel> getAllByTrangThai(boolean trangThai) {
+        return tinhNangRepository.getAllByTrangThai(trangThai);
+    }
+
+    @Override
+    public void updatesHienThi(List<TinhNangViewModel> list) {
+        tinhNangRepository.updatesHienThi(list);
     }
 
 }

@@ -12,8 +12,10 @@ import java.util.List;
  *
  * @author ducan
  */
-public interface IDongSanPhamRepository extends IThuocTinhSanPhamRepository<DongSanPham>{
-    
+public interface IDongSanPhamRepository extends IThuocTinhSanPhamRepository<DongSanPham> {
+
     List<DongSanPham> getAllByIDThuongHieu(int idThuongHieu);
-   
+
+    List<DongSanPham> getAllByIDThuongHieuAndTrangThai(int idThuongHieu, boolean trangThai);
+
 }
