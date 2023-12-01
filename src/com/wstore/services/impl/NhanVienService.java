@@ -102,12 +102,12 @@ public class NhanVienService implements INhanVienService {
 
     @Override
     public boolean updateStatusOfAnStaff(int trangThai, int id) {
-        return nhanVienRepository.updateStatusOfAnStaff(trangThai, id);
+        return nhanVienRepository.updateStatus(trangThai, id);
     }
 
     @Override
     public void updateSatusOfStaffs(int trangThai, List<Integer> listID) {
-        nhanVienRepository.updateSatusOfStaffs(trangThai, listID);
+        nhanVienRepository.updatesSatus(trangThai, listID);
     }
 
 }

@@ -1066,21 +1066,18 @@ insert into TinhNangSanPham(id_san_pham, id_tinh_nang) values (71, 13);
 insert into TinhNangSanPham(id_san_pham, id_tinh_nang) values (71, 18);
 
 
-
-
-
 -- data table NhanVien
 select * from NhanVien
 
 
 insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
-values ('ducta', '1e2f316fce0207ecb7f34229b365767fd9a3c8803c9b3c5410a1aa5b05c33d75', N'Trần Anh Đức', 1, '1999-01-01', '001202087634', N'Hà Nội', '0986543876', 'ductaph30986@fpt.edu.vn', 1, 'No image', default, default);
+values ('ducta', '1e2f316fce0207ecb7f34229b365767fd9a3c8803c9b3c5410a1aa5b05c33d75', N'Trần Anh Đức', 1, '1999-01-01', '001202087634', N'Hà Nội', '0986543876', 'ductaph30986@fpt.edu.vn', 1, 'Diep-Co-Thanh.jpg', default, default);
 insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
 values ('chunghlb', 'ed1f19ae96267ae162e0bc92c7f604778444cbda7f694d7e8ac31418bea86ae7', N'Hoàng Lê Bảo Chung', 1, '2000-03-03', '001837237372', N'Hà Nội', '0933376389', 'chunghlb@fpt.edu.vn', 1, 'anh2.jpg', default, default);
 insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
-values ('longng', 'f5eaf16c8ba5cfa0c97a11e73f2ae375eb8c97653794d9911cffbed1124371e1', N'Nguyễn Gia Long', 1, '1999-02-02', '001736356354', N'Vĩnh Phúc', '0986736383', 'longng@fpt.edu.vn', 1, 'No image', default, default)
+values ('longng', 'f5eaf16c8ba5cfa0c97a11e73f2ae375eb8c97653794d9911cffbed1124371e1', N'Nguyễn Gia Long', 1, '1999-02-02', '001736356354', N'Vĩnh Phúc', '0986736383', 'longng@fpt.edu.vn', 1, 'Tay-mon-xuy-tuyet.jpg', default, default)
 insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
-values ('nguyenlk', '6f6c9c051e1146b2d54e5d728fdc95758165dc0bd2f1115e13361b9efff56a89', N'Lê Khoa Nguyên', 1, '1998-05-05', '001248505990', N'Hà Nội', '0984849494', 'nguyen@fpt.edu.vn', 1, 'No image', default, default)
+values ('nguyenlk', '6f6c9c051e1146b2d54e5d728fdc95758165dc0bd2f1115e13361b9efff56a89', N'Lê Khoa Nguyên', 1, '1998-05-05', '001248505990', N'Hà Nội', '0984849494', 'nguyen@fpt.edu.vn', 1, 'luc-tieu-phung.jpg', default, default)
 insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
 values ('dungltt', '2bf33dad05eb008b7610b9c89b4f3dabe96e4a58635e623382ba748891e4c71a', N'Lê Thi Thùy Dung', 0, '1998-11-11', '001284364664', N'Phú Thọ', '0984889484', 'dung@fpt.edu.vn', 0, 'No image', default, default)
 insert into NhanVien(ma_nhan_vien, mat_khau, ho_ten, gioi_tinh, ngay_sinh, can_cuoc_cong_dan, dia_chi, so_dien_thoai, email, vai_tro, hinh_anh, ngay_tao, trang_thai)
@@ -1093,7 +1090,6 @@ values ('anhtp', '88bc42ee01ec1836dd1dc33b505aad6d8855cc76e2c0d3dcf61da6844f156a
 
 
 -- data table HoaDon
-truncate table HoaDon
 
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
 values ('HD1128231133', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
@@ -1113,7 +1109,6 @@ values ('HD112923122033', default, N'Ngô Thị Bích', '0986383628', N'Hà Nộ
 select * from HoaDon
 
 -- data table HoaDonChiTiet
-truncate table HoaDonChiTiet
 
 insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
 values(1, 1, 2, 510000);
@@ -1149,7 +1144,21 @@ values (N'Tiền mặt', 6);
 insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
 values (N'Tiền mặt', 7);
 
-truncate table HinhThucThanhToan
+-- data table KhachHang
+truncate table KhachHang
 
--- data table ChuongTrinhKhuyenMai
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000001', N'Nguyễn Văn A', 1 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000002', N'Nguyễn Văn B', 1 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000003', N'Nguyễn Vân C', 0 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000004', N'Nguyễn Văn D', 1 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000005', N'Nguyễn Văn AN', 1 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000006', N'Nguyễn Văn F', 0 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000007', N'Nguyễn Văn Q', 1 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
 

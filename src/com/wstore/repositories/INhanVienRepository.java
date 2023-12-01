@@ -19,9 +19,9 @@ public interface INhanVienRepository {
 
     boolean update(NhanVien nv, int id);
 
-    boolean updateStatusOfAnStaff(int trangThai, int id);
+    boolean updateStatus(int trangThai, int id);
 
-    void updateSatusOfStaffs(int trangThai, List<Integer> listID);
+    void updatesSatus(int trangThai, List<Integer> listID);
 
     NhanVien findByMa(String ma);
 

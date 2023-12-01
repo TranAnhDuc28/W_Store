@@ -13,7 +13,9 @@ import java.util.List;
  */
 public interface ISanPhamRepository {
 
-    List<SanPham> getAll(int page, int pageSize, int trangThai);
+    List<SanPham> getAll(int page, int pageSize);
+
+    List<SanPham> getAllByTrangThai(int page, int pageSize, int trangThai);
 
     SanPham findByMa(String ma);
 
@@ -26,7 +28,7 @@ public interface ISanPhamRepository {
     void updateStatuses(int trangThai, List<Integer> listID);
 
     int getRecordCountByTrangThai(int trangThai);
-    
+
     int getRecordCount();
 
     List<SanPham> findByNameOrMa(int page, int pageSize, String name, int trangThai);

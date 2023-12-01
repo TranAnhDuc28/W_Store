@@ -154,7 +154,7 @@ public class NhanVienRepository implements INhanVienRepository {
         String sql = "select id, ma_nhan_vien , mat_khau, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai\n"
                 + ", can_cuoc_cong_dan, email ,dia_chi, vai_tro, ngay_tao, hinh_anh, ghi_chu, trang_thai\n"
                 + "from NhanVien\n"
-                + "where trang_thai = ? and ho_ten like N'%" + name + "%'\n"
+                + "where trang_thai = ? and ho_ten like N'%" + name + "%' or ma_nhan_vien like N'%" + name + "%'\n"
                 + "order by id\n"
                 + "offset ? rows\n"
                 + "fetch next ? rows only;";
@@ -219,7 +219,7 @@ public class NhanVienRepository implements INhanVienRepository {
     }
 
     @Override
-    public boolean updateStatusOfAnStaff(int trangThai, int id) {
+    public boolean updateStatus(int trangThai, int id) {
         int checkUpdate = 0;
         String sql = "update NhanVien set trang_thai = ? where id = ?;";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
@@ -233,7 +233,7 @@ public class NhanVienRepository implements INhanVienRepository {
     }
 
     @Override
-    public void updateSatusOfStaffs(int trangThai, List<Integer> listID) {
+    public void updatesSatus(int trangThai, List<Integer> listID) {
         int results[];
         String sql = "update NhanVien set trang_thai = ? where id = ?;";
         try (Connection cn = DBConnect.getConnection();) {

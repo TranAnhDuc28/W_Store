@@ -40,6 +40,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import com.wstore.services.ISanPhamService;
 import com.wstore.services.IThuocTinhSanPhamService;
+import com.wstore.utilities.status.StatusSanPham;
+import javax.swing.JPanel;
 
 /**
  *
@@ -610,7 +612,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         if (progressExportExcel != null && !progressExportExcel.isDone()) {
             progressExportExcel.cancel(true);
         }
-        progressExportExcel = new ProgressExportExcel(progressJDialog.pgbLoadData, progressJDialog);
+        progressExportExcel = new ProgressExportExcel(progressJDialog.pgbLoadData, progressJDialog, this);
         progressExportExcel.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
@@ -922,7 +924,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cboHinhDangMat;
     private javax.swing.JComboBox<String> cboSoBanGhi;
     private javax.swing.JComboBox<String> cboThuongHieu;
-    private javax.swing.JComboBox<String> cboTrangThai;
+    javax.swing.JComboBox<String> cboTrangThai;
     private javax.swing.JCheckBox chkChonTat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -959,28 +961,28 @@ class ProgressExportExcel extends SwingWorker<List<SanPhamViewModel>, Void> {
 
     private final JProgressBar progressBar;
     private final ProgressJDialog progressJDialog;
+    private FormSanPhamJPanel formSanPhamJPanel;
     private final ISanPhamService sanPhamService = new SanPhamService();
     List<SanPhamViewModel> listData = new ArrayList<>();
-    int offset = 1;
 
-    public ProgressExportExcel(JProgressBar progressBar, ProgressJDialog progressJDialog) {
+    public ProgressExportExcel(JProgressBar progressBar, ProgressJDialog progressJDialog, JPanel jPanel) {
         this.progressBar = progressBar;
         this.progressJDialog = progressJDialog;
+        this.formSanPhamJPanel = (FormSanPhamJPanel) jPanel;
     }
 
     @Override
     protected List<SanPhamViewModel> doInBackground() throws Exception {
         progressBar.setIndeterminate(true);
-        int count = sanPhamService.getRecordCount();
-        int batchSize = 100;
-        int totalPages = (int) Math.ceil((double) count / batchSize);
-
-        for (int page = 1; page <= totalPages; page++) {
-            offset = (page - 1) * batchSize + 1;
-            System.out.println("Điểm bắt đầu lấy: " + offset);
-            listData.addAll(sanPhamService.getAll(offset, batchSize, 0));
-            System.out.println("Số bản ghi: " + listData.size());
+        int trangThai = formSanPhamJPanel.cboTrangThai.getSelectedIndex();
+        int count = 0;
+        if (trangThai == StatusSanPham.DANG_KINH_DOANH) {
+            count = sanPhamService.getRecordCountByTrangThai(StatusSanPham.DANG_KINH_DOANH);
+        } else {
+            count = sanPhamService.getRecordCountByTrangThai(StatusSanPham.NGUNG_KINH_DOANH);
         }
+        listData.addAll(sanPhamService.getAll(1, count, 0));
+        System.out.println("Số bản ghi: " + listData.size());
         return listData;
     }
 

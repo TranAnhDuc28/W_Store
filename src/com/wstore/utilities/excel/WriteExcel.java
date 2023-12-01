@@ -5,6 +5,7 @@
 package com.wstore.utilities.excel;
 
 import com.wstore.utilities.Helper;
+import com.wstore.viewmodels.KhachHangViewModel;
 import com.wstore.viewmodels.NhanVienViewModel;
 import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
 import java.io.FileOutputStream;
@@ -90,6 +91,9 @@ public class WriteExcel {
 
         // Write data
         rowIndex++;
+        if (listData.isEmpty()) {
+            return;
+        }
         T obj = listData.get(0);
         if (obj.getClass() == SanPhamViewModel.class) {
             for (T o : listData) {
@@ -107,6 +111,15 @@ public class WriteExcel {
                 // Write data on row
                 NhanVienViewModel nv = (NhanVienViewModel) o;
                 write(nv, row);
+                rowIndex++;
+            }
+        } else if (obj.getClass() == KhachHangViewModel.class) {
+            for (T o : listData) {
+                // Create row
+                row = sheet.createRow(rowIndex);
+                // Write data on row
+                KhachHangViewModel kh = (KhachHangViewModel) o;
+                write(kh, row);
                 rowIndex++;
             }
         }
@@ -196,8 +209,8 @@ public class WriteExcel {
             workbook.write(os);
         }
     }
-    
-     // Write data
+
+    // Write data
     public static void write(SanPhamViewModel sp, Row row) {
         Cell cell = row.createCell(0);;
         cell.setCellValue(sp.getMaSanPham());
@@ -246,8 +259,8 @@ public class WriteExcel {
         cell = row.createCell(22);
         cell.setCellValue(sp.getTrangThai() == 0 ? "Đang kinh doanh" : "Ngừng kinh doanh");
     }
-    
-     public static void write(NhanVienViewModel nv, Row row) {
+
+    public static void write(NhanVienViewModel nv, Row row) {
         Cell cell = row.createCell(0);;
         cell.setCellValue(nv.getMaNhanVien());
         cell = row.createCell(1);
@@ -270,6 +283,28 @@ public class WriteExcel {
         cell.setCellValue(nv.getNgayTao());
         cell = row.createCell(10);
         cell.setCellValue(nv.getTrangThai());
-       
     }
+    
+        public static void write(KhachHangViewModel nv, Row row){
+         Cell cell = row.createCell(0);;
+         cell.setCellValue(nv.getMaKhachHang());
+         cell = row.createCell(1);
+         cell.setCellValue(nv.getHoTen());
+         cell = row.createCell(2);
+         cell.setCellValue(nv.getGioiTinh() ?"Nam" :"Nữ");
+         cell = row.createCell(3);
+         cell.setCellValue(nv.getNgaySinh());
+         cell = row.createCell(4);
+         cell.setCellValue(nv.getSoDienThoai());
+         cell = row.createCell(5);
+         cell.setCellValue(nv.getEmail());
+         cell = row.createCell(6);
+         cell.setCellValue(nv.getDiaChi());
+         cell = row.createCell(7);
+         cell.setCellValue(nv.getHinhAnh());
+         cell = row.createCell(8);
+         cell.setCellValue(nv.getNgayTao());
+         cell = row.createCell(9);
+         cell.setCellValue(nv.getGhiChu());
+     }
 }

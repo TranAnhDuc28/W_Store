@@ -217,10 +217,10 @@ create table KhachHang(
 	so_dien_thoai varchar(20),
 	email varchar(255),
 	dia_chi nvarchar(255),
-	hinh_anh varchar(max),
+	hinh_anh varchar(max) default 'No image',
 	ngay_tao datetime2 default getdate(),
 	ghi_chu nvarchar(255),
-	trang_thai int default 1,
+	trang_thai int default 0,
 	constraint khach_hang_PK primary key (id)
 )
 go

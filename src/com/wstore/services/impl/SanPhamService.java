@@ -44,7 +44,7 @@ public class SanPhamService implements ISanPhamService {
 
     @Override
     public List<SanPhamViewModel> getAll(int page, int pageSize, int trangThai) {
-        List<SanPham> listSanPham = sanPhamRepository.getAll(page, pageSize, trangThai);
+        List<SanPham> listSanPham = sanPhamRepository.getAllByTrangThai(page, pageSize, trangThai);
 
         List<SanPhamViewModel> listSanPhamView = new ArrayList<>();
         for (SanPham sanPham : listSanPham) {
@@ -207,7 +207,7 @@ public class SanPhamService implements ISanPhamService {
 
     @Override
     public List<SanPhamBanHangViewModel> getAllSanPhamBanHang(int page, int pageSize, int trangThai) {
-        List<SanPham> listSanPham = sanPhamRepository.getAll(page, pageSize, trangThai);
+        List<SanPham> listSanPham = sanPhamRepository.getAllByTrangThai(page, pageSize, trangThai);
           
         List<SanPhamBanHangViewModel> listSanPhamBanHang = new ArrayList<>();
         for (SanPham sanPham : listSanPham) {

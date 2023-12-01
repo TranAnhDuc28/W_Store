@@ -28,7 +28,12 @@ import java.util.List;
 public class SanPhamRepository implements ISanPhamRepository {
 
     @Override
-    public List<SanPham> getAll(int page, int pageSize, int trangThai) {
+    public List<SanPham> getAll(int page, int pageSize) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<SanPham> getAllByTrangThai(int page, int pageSize, int trangThai) {
         List<SanPham> list = new ArrayList<>();
 
         String sql = "select sp.id, sp.ma_san_pham, id_thuong_hieu, th.ten_thuong_hieu, sp.ma_hang_hoa\n"
@@ -335,7 +340,7 @@ public class SanPhamRepository implements ISanPhamRepository {
 
     @Override
     public int getRecordCountByTrangThai(int trangThai) {
-          int count = 0;
+        int count = 0;
         String sql = "select COUNT(*) from SanPham where trang_thai = ?";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
             pstm.setInt(1, trangThai);

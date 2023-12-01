@@ -5,6 +5,23 @@
 package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.wstore.services.IKhachHangService;
+import com.wstore.services.impl.KhachHangService;
+import com.wstore.utilities.Helper;
+import com.wstore.utilities.excel.WriteExcel;
+import com.wstore.utilities.status.StatusKhachHang;
+import com.wstore.viewmodels.KhachHangViewModel;
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,12 +29,23 @@ import com.formdev.flatlaf.FlatClientProperties;
  */
 public class FormKhachHangJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form KhachHangJPanel
-     */
+    private final IKhachHangService khachHangService = new KhachHangService();
+    private DefaultTableModel dtmKhachHang = new DefaultTableModel();
+    private List<KhachHangViewModel> ListKH;
+    FormThemVaSuaKhachHangJFrame formThemVaSuaKhachHangJFrame;
+    private int index = -1;
+    public Integer trangThai = 0;
+    private int tongSoBanGhi = 0;
+    public Integer page = 1;
+    private Integer totalRowData = 0;
+    private Integer totalPage = 1;
+    public Integer pageSize = 15;
+    private String imageName = null;
+
     public FormKhachHangJPanel() {
         initComponents();
         init();
+        initPagination(khachHangService.getAll(page, pageSize, trangThai));
     }
 
     private void init() {
@@ -34,39 +62,39 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        btnThemKH = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        jButton2 = new javax.swing.JButton();
+        btnDieuChinh = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        jButton3 = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
-        jButton12 = new javax.swing.JButton();
+        btnNhapTuExcel = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
-        jButton5 = new javax.swing.JButton();
+        btnXuatExcel = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
-        jButton6 = new javax.swing.JButton();
+        btnLichSuMuaHang = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         txtTimKiemKhachHang = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cboTrangThai = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblKhachHang = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jButton11 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cboSoBanGhi = new javax.swing.JComboBox<>();
+        btnFirst = new javax.swing.JButton();
+        btnPrev = new javax.swing.JButton();
+        lblPageOfTotalPage = new javax.swing.JLabel();
+        btnNext = new javax.swing.JButton();
+        btnLast = new javax.swing.JButton();
+        lblTongSoBanGhi = new javax.swing.JLabel();
+        btnKhoiPhuc = new javax.swing.JButton();
+        chkChonTat = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(243, 243, 243));
 
@@ -75,68 +103,99 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         jToolBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jToolBar1.setEnabled(false);
 
-        btnThemKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/add32x32.png"))); // NOI18N
-        btnThemKH.setText("Thêm khách hàng");
-        btnThemKH.setFocusable(false);
-        btnThemKH.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnThemKH.setIconTextGap(5);
-        btnThemKH.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        btnThemKH.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/add32x32.png"))); // NOI18N
+        btnThem.setText("Thêm khách hàng");
+        btnThem.setFocusable(false);
+        btnThem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnThem.setIconTextGap(5);
+        btnThem.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemKHActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnThemKH);
+        jToolBar1.add(btnThem);
         jToolBar1.add(jSeparator1);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/chinh-sua32x32.png"))); // NOI18N
-        jButton2.setText("Điều chỉnh");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton2.setIconTextGap(5);
-        jButton2.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jToolBar1.add(jButton2);
+        btnDieuChinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/chinh-sua32x32.png"))); // NOI18N
+        btnDieuChinh.setText("Điều chỉnh");
+        btnDieuChinh.setFocusable(false);
+        btnDieuChinh.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnDieuChinh.setIconTextGap(5);
+        btnDieuChinh.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnDieuChinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDieuChinhActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnDieuChinh);
         jToolBar1.add(jSeparator2);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/xoa32x32.png"))); // NOI18N
-        jButton3.setText("Xóa tạm");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton3.setIconTextGap(5);
-        jButton3.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jToolBar1.add(jButton3);
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/xoa32x32.png"))); // NOI18N
+        btnXoa.setText("Xóa");
+        btnXoa.setFocusable(false);
+        btnXoa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnXoa.setIconTextGap(5);
+        btnXoa.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnXoa);
         jToolBar1.add(jSeparator3);
 
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/import-excel32x32.png"))); // NOI18N
-        jButton12.setText("Nhập từ excel");
-        jButton12.setFocusable(false);
-        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton12.setIconTextGap(5);
-        jButton12.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jToolBar1.add(jButton12);
+        btnNhapTuExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/import-excel32x32.png"))); // NOI18N
+        btnNhapTuExcel.setText("Nhập từ excel");
+        btnNhapTuExcel.setFocusable(false);
+        btnNhapTuExcel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnNhapTuExcel.setIconTextGap(5);
+        btnNhapTuExcel.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnNhapTuExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhapTuExcelActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnNhapTuExcel);
         jToolBar1.add(jSeparator4);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/export-excel32x32.png"))); // NOI18N
-        jButton5.setText("Xuất excel");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton5.setIconTextGap(5);
-        jButton5.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jToolBar1.add(jButton5);
+        btnXuatExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/export-excel32x32.png"))); // NOI18N
+        btnXuatExcel.setText("Xuất excel");
+        btnXuatExcel.setFocusable(false);
+        btnXuatExcel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnXuatExcel.setIconTextGap(5);
+        btnXuatExcel.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnXuatExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatExcelActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnXuatExcel);
         jToolBar1.add(jSeparator5);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/lich-su-mua-hang.png"))); // NOI18N
-        jButton6.setText("Lịch sử mua  hàng");
-        jButton6.setFocusable(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton6.setIconTextGap(5);
-        jButton6.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jToolBar1.add(jButton6);
+        btnLichSuMuaHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/lich-su-mua-hang.png"))); // NOI18N
+        btnLichSuMuaHang.setText("Lịch sử mua hàng");
+        btnLichSuMuaHang.setFocusable(false);
+        btnLichSuMuaHang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnLichSuMuaHang.setIconTextGap(5);
+        btnLichSuMuaHang.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnLichSuMuaHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLichSuMuaHangActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnLichSuMuaHang);
 
         jPanel3.setBackground(new java.awt.Color(241, 246, 251));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jPanel4.setOpaque(false);
+
+        txtTimKiemKhachHang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKhachHangKeyReleased(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Tìm kiếm");
@@ -166,10 +225,10 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel19.setText("Trạng thái");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Khách hàng hiện tại", "Khách hàng xóa tạm" }));
-        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+        cboTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Khách hàng hiện tại", "Khách hàng xóa tạm" }));
+        cboTrangThai.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox2ItemStateChanged(evt);
+                cboTrangThaiItemStateChanged(evt);
             }
         });
 
@@ -181,7 +240,7 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -190,26 +249,35 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
 
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã khách hàng", "Họ tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Email", "Địa chỉ", "Hình ảnh", "Ngày tạo", "Ghi chú"
             }
-        ));
-        jTable1.setRowHeight(30);
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblKhachHang.setRowHeight(30);
+        tblKhachHang.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblKhachHang);
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -223,43 +291,78 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         jLabel2.setText("Số bản ghi:");
         jPanel6.add(jLabel2);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "15", "20", "30", "50", "100" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(70, 25));
-        jPanel6.add(jComboBox1);
+        cboSoBanGhi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "15", "20", "30", "50", "100" }));
+        cboSoBanGhi.setPreferredSize(new java.awt.Dimension(70, 25));
+        cboSoBanGhi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboSoBanGhiItemStateChanged(evt);
+            }
+        });
+        jPanel6.add(cboSoBanGhi);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/first16x16.png"))); // NOI18N
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.add(jButton7);
+        btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/first16x16.png"))); // NOI18N
+        btnFirst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnFirst);
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/prev16x16.png"))); // NOI18N
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.add(jButton8);
+        btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/prev16x16.png"))); // NOI18N
+        btnPrev.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnPrev);
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("1/50");
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel3.setPreferredSize(new java.awt.Dimension(70, 22));
-        jPanel6.add(jLabel3);
+        lblPageOfTotalPage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPageOfTotalPage.setText("1/50");
+        lblPageOfTotalPage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblPageOfTotalPage.setPreferredSize(new java.awt.Dimension(70, 22));
+        jPanel6.add(lblPageOfTotalPage);
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/next16x16.png"))); // NOI18N
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.add(jButton9);
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/next16x16.png"))); // NOI18N
+        btnNext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnNext);
 
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/last16x16.png"))); // NOI18N
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.add(jButton10);
+        btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/last16x16.png"))); // NOI18N
+        btnLast.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnLast);
 
-        jLabel4.setText("Tổng số: ");
-        jLabel4.setMaximumSize(new java.awt.Dimension(125, 16));
-        jLabel4.setPreferredSize(new java.awt.Dimension(125, 16));
-        jPanel6.add(jLabel4);
+        lblTongSoBanGhi.setText("Tổng số: ");
+        lblTongSoBanGhi.setMaximumSize(new java.awt.Dimension(125, 16));
+        lblTongSoBanGhi.setPreferredSize(new java.awt.Dimension(125, 16));
+        jPanel6.add(lblTongSoBanGhi);
 
-        jButton11.setBackground(new java.awt.Color(243, 243, 243));
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/restore.png"))); // NOI18N
-        jButton11.setText("Khôi phục");
-        jButton11.setEnabled(false);
+        btnKhoiPhuc.setBackground(new java.awt.Color(243, 243, 243));
+        btnKhoiPhuc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/restore.png"))); // NOI18N
+        btnKhoiPhuc.setText("Khôi phục");
+        btnKhoiPhuc.setEnabled(false);
+        btnKhoiPhuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhoiPhucActionPerformed(evt);
+            }
+        });
 
-        jCheckBox1.setText("All");
+        chkChonTat.setText("All");
+        chkChonTat.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkChonTatItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -274,9 +377,9 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
+                        .addComponent(chkChonTat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton11)
+                        .addComponent(btnKhoiPhuc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 514, Short.MAX_VALUE)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -293,8 +396,8 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBox1)))
+                        .addComponent(btnKhoiPhuc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chkChonTat)))
                 .addContainerGap())
         );
 
@@ -314,40 +417,225 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
-        if (jComboBox2.getSelectedIndex() == 1) {
-            jButton11.setEnabled(true);
-        } else {
-            jButton11.setEnabled(false);
+    private void cboTrangThaiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTrangThaiItemStateChanged
+        initPagination(khachHangService.getAll(page, pageSize, trangThai));
+        if (cboTrangThai.getSelectedIndex() == StatusKhachHang.KHACH_HANG_HIEN_TAI) {
+            btnXoa.setEnabled(true);
+            btnKhoiPhuc.setEnabled(false);
+        } else if (cboTrangThai.getSelectedIndex() == StatusKhachHang.KHACH_HANG_XOA_TAM) {
+            btnXoa.setEnabled(false);
+            btnKhoiPhuc.setEnabled(true);
         }
-    }//GEN-LAST:event_jComboBox2ItemStateChanged
+    }//GEN-LAST:event_cboTrangThaiItemStateChanged
 
-    private void btnThemKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKHActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         new FormThemVaSuaKhachHangJFrame().setVisible(true);
-    }//GEN-LAST:event_btnThemKHActionPerformed
+    }//GEN-LAST:event_btnThemActionPerformed
 
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        page = 1;
+        initPagination(khachHangService.getAll(page, pageSize, trangThai));
+    }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        if (page > 1) {
+            page--;
+            initPagination(khachHangService.getAll(page, pageSize, trangThai));
+        }
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if (page < totalPage) {
+            page++;
+            initPagination(khachHangService.getAll(page, pageSize, trangThai));
+        }
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        page = totalPage;
+        initPagination(khachHangService.getAll(page, pageSize, trangThai));
+    }//GEN-LAST:event_btnLastActionPerformed
+
+    private void btnDieuChinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDieuChinhActionPerformed
+        index = tblKhachHang.getSelectedRow();
+        if (index < 0) {
+            Helper.alert(this, "Vui lòng chọn thông tin khách hàng muốn sửa!");
+            return;
+        }
+        formThemVaSuaKhachHangJFrame = new FormThemVaSuaKhachHangJFrame();
+        showData();
+    }//GEN-LAST:event_btnDieuChinhActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        int selectedRowCount = tblKhachHang.getSelectedRowCount();
+        if (selectedRowCount == 0) {
+            Helper.alert(this, "Vui lòng chọn thông tin khách hàng muốn xóa!");
+            return;
+        }
+        if (selectedRowCount == 1) {
+            index = tblKhachHang.getSelectedRow();
+            if (Helper.comfirm(this, "Xác nhận thao tác? Bạn muốn thay đổi trạng thái khách hàng xóa tạm? ")) {
+                Integer id = ListKH.get(index).getId();
+                khachHangService.updateStatus(1, id);
+                initPagination(khachHangService.getAll(page, pageSize, trangThai));
+            }
+            System.out.println("Update 1");
+        } else {
+            List<Integer> listID = new ArrayList<>();
+            int count = tblKhachHang.getSelectedRows().length;
+            for (int i = 0; i < count; i++) {
+                listID.add(ListKH.get(i).getId());
+            }
+            if (Helper.comfirm(this, "Xác nhận thao tác? Bạn muốn thay đổi trạng thái khách hàng xóa tạm? ")) {
+                khachHangService.updatesSatus(1, listID);
+                initPagination(khachHangService.getAll(page, pageSize, trangThai));
+            }
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnNhapTuExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapTuExcelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNhapTuExcelActionPerformed
+
+    private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
+        int count = khachHangService.getCountRecordByTrangThai(trangThai);
+        List<KhachHangViewModel> listData = khachHangService.getAll(1, count, trangThai);
+        JFileChooser jfc = new JFileChooser();
+        jfc.setDialogTitle("Export excel");
+        jfc.setPreferredSize(Helper.dimensionJFileChooser);
+        FileNameExtensionFilter excelFilter = new FileNameExtensionFilter("Microsoft Excel (*.xlsx)",
+                "xlsx");
+        jfc.setFileFilter(excelFilter);
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy_hhmmss");
+        jfc.setSelectedFile(new File(("DanhSachKhachHang" + sdf.format(new java.util.Date()) + ".xlsx")));
+        int choose = jfc.showSaveDialog(this);
+        if (choose == JFileChooser.APPROVE_OPTION) {
+            File excelFilePath = jfc.getSelectedFile();
+            String filePath = excelFilePath.getPath();
+            try {
+                WriteExcel.writeExcel(tblKhachHang, listData, filePath);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            Helper.alert(this, "Xuất file thành công");
+        }
+    }//GEN-LAST:event_btnXuatExcelActionPerformed
+
+    private void btnLichSuMuaHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichSuMuaHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLichSuMuaHangActionPerformed
+
+    private void btnKhoiPhucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoiPhucActionPerformed
+        int selectedRowCount = tblKhachHang.getSelectedRowCount();
+        if (selectedRowCount == 0) {
+            Helper.alert(this, "Vui lòng chọn thông tin nhân viên muốn khôi phục!");
+            return;
+        }
+        if (selectedRowCount == 1) {
+            index = tblKhachHang.getSelectedRow();
+            if (Helper.comfirm(this, "Xác nhận khôi phục? ")) {
+                Integer id = ListKH.get(index).getId();
+                khachHangService.updateStatus(0, id);
+                initPagination(khachHangService.getAll(page, pageSize, trangThai));
+            }
+            System.out.println("Update 1");
+        } else {
+            List<Integer> listID = new ArrayList<>();
+            int count = tblKhachHang.getSelectedRows().length;
+            for (int i = 0; i < count; i++) {
+                listID.add(ListKH.get(i).getId());
+            }
+            if (Helper.comfirm(this, "Xác nhận khôi phục? ")) {
+                khachHangService.updatesSatus(0, listID);
+                initPagination(khachHangService.getAll(page, pageSize, trangThai));
+            }
+            System.out.println("Update nhiều");
+        }
+    }//GEN-LAST:event_btnKhoiPhucActionPerformed
+
+    private void chkChonTatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkChonTatItemStateChanged
+        if (chkChonTat.isSelected()) {
+            int rowCount = tblKhachHang.getRowCount();
+            tblKhachHang.setRowSelectionInterval(0, rowCount - 1);
+        } else {
+            tblKhachHang.clearSelection();
+        }
+    }//GEN-LAST:event_chkChonTatItemStateChanged
+
+    private void txtTimKiemKhachHangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKhachHangKeyReleased
+        String name = txtTimKiemKhachHang.getText();
+        initPagination(khachHangService.findByNameOrMaOrSDT(page, pageSize, trangThai, name));
+    }//GEN-LAST:event_txtTimKiemKhachHangKeyReleased
+
+    private void cboSoBanGhiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboSoBanGhiItemStateChanged
+        initPagination(khachHangService.getAll(page, pageSize, trangThai));
+    }//GEN-LAST:event_cboSoBanGhiItemStateChanged
+
+    public void initPagination(List<KhachHangViewModel> list) {
+        trangThai = cboTrangThai.getSelectedIndex();
+        totalRowData = khachHangService.getCountRecordByTrangThai(trangThai);
+        pageSize = Integer.valueOf(cboSoBanGhi.getSelectedItem().toString());
+        totalPage = (int) Math.ceil(totalRowData.doubleValue() / pageSize.doubleValue());
+        if (page > totalPage) {
+            page = 1;
+        }
+        ListKH = list;
+        loadDataToTable(ListKH);
+        lblPageOfTotalPage.setText(page + "/" + totalPage);
+        lblTongSoBanGhi.setText("Tổng số: " + tongSoBanGhi);
+    }
+
+    private void loadDataToTable(List<KhachHangViewModel> list) {
+        dtmKhachHang = (DefaultTableModel) tblKhachHang.getModel();
+        dtmKhachHang.setRowCount(0);
+
+        for (KhachHangViewModel x : list) {
+            dtmKhachHang.addRow(x.toDataRow());
+        }
+    }
+
+    private void showData() {
+        KhachHangViewModel kh = ListKH.get(index);
+        formThemVaSuaKhachHangJFrame.txtMaKhachHang.setText(kh.getMaKhachHang());
+        formThemVaSuaKhachHangJFrame.txtDiaChi.setText(kh.getDiaChi());
+        formThemVaSuaKhachHangJFrame.txtEmail.setText(kh.getEmail());
+        formThemVaSuaKhachHangJFrame.txtGhiChu.setText(kh.getGhiChu());
+        formThemVaSuaKhachHangJFrame.txtHoTen.setText(kh.getHoTen());
+        try {
+            formThemVaSuaKhachHangJFrame.txtNgaySinh.setDate(Helper.sdfNgayThang.parse(kh.getNgaySinh()));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        formThemVaSuaKhachHangJFrame.txtSoDienThoai.setText(kh.getSoDienThoai());
+        Helper.showHinhAnh("images//images-nguoi",
+                formThemVaSuaKhachHangJFrame.lblHinhAnh, kh.getHinhAnh());
+        if (kh.getGioiTinh().equals("Nam")) {
+            formThemVaSuaKhachHangJFrame.rdoNam.setSelected(true);
+        } else {
+            formThemVaSuaKhachHangJFrame.rdoNu.setSelected(false);
+        }
+        formThemVaSuaKhachHangJFrame.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnThemKH;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton btnDieuChinh;
+    private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnKhoiPhuc;
+    private javax.swing.JButton btnLast;
+    private javax.swing.JButton btnLichSuMuaHang;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnNhapTuExcel;
+    private javax.swing.JButton btnPrev;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnXuatExcel;
+    private javax.swing.JComboBox<String> cboSoBanGhi;
+    private javax.swing.JComboBox<String> cboTrangThai;
+    private javax.swing.JCheckBox chkChonTat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -359,8 +647,10 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator5;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblPageOfTotalPage;
+    private javax.swing.JLabel lblTongSoBanGhi;
+    private javax.swing.JTable tblKhachHang;
     private javax.swing.JTextField txtTimKiemKhachHang;
     // End of variables declaration//GEN-END:variables
 }
