@@ -26,8 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
-import java.math.BigDecimal;
 import com.wstore.services.ISanPhamService;
+import java.util.Map;
 
 /**
  *
@@ -109,6 +109,13 @@ public class SanPhamService implements ISanPhamService {
     public boolean update(SanPham sp, int idSanPham) {
         return sanPhamRepository.update(sp, idSanPham);
     }
+    
+    @Override
+    public void updateSoLuong(Map<SanPhamBanHangViewModel, Integer> sanPham) {
+        sanPham.forEach((sp, sl) -> {
+            sanPhamRepository.updateSoLuong(sp.getId(), sl);
+        });
+    }
 
     @Override
     public List<SanPhamViewModel> findSPByNameOrMa(int page, int pageSize, String name, int trangThai) {
@@ -181,10 +188,6 @@ public class SanPhamService implements ISanPhamService {
         return maSanPham;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new SanPhamService().getMaSanPhamTuDongSinh());
-    }
-
     @Override
     public SanPham findByMa(String ma) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -207,45 +210,14 @@ public class SanPhamService implements ISanPhamService {
 
     @Override
     public List<SanPhamBanHangViewModel> getAllSanPhamBanHang(int page, int pageSize, int trangThai) {
-        List<SanPham> listSanPham = sanPhamRepository.getAllByTrangThai(page, pageSize, trangThai);
-          
-        List<SanPhamBanHangViewModel> listSanPhamBanHang = new ArrayList<>();
-        for (SanPham sanPham : listSanPham) {
-            Float sizeMat = sanPham.getSizeMat();
-            
-            SanPhamBanHangViewModel sanPhamBanHang = new SanPhamBanHangViewModel(
-                    sanPham.getId(),
-                    sanPham.getHinhAnh(),
-                    sanPham.getMaSanPham(),
-                    sanPham.getThuongHieu().toString() 
-                            + " " + sanPham.getDoiTuongSuDung() 
-                            + " " + sanPham.getMaHangHoa(),
-                    sanPham.getSoLuongTon(),
-                    sanPham.getDonGia());
-            listSanPhamBanHang.add(sanPhamBanHang);
-        }
-        return listSanPhamBanHang;
+        return sanPhamRepository.getAllSanPhamBanHang(page, pageSize, trangThai);
     }
 
     @Override
     public List<SanPhamBanHangViewModel> findSPBanHangByNameOrMa(int page, int pageSize, String name, int trangThai) {
-        List<SanPham> listSanPham = sanPhamRepository.findByNameOrMa(page, pageSize, name, trangThai);
-          
-        List<SanPhamBanHangViewModel> listSanPhamBanHang = new ArrayList<>();
-        for (SanPham sanPham : listSanPham) {
-            Float sizeMat = sanPham.getSizeMat();
-            
-            SanPhamBanHangViewModel sanPhamBanHang = new SanPhamBanHangViewModel(
-                    sanPham.getId(),
-                    sanPham.getHinhAnh(),
-                    sanPham.getMaSanPham(),
-                    sanPham.getThuongHieu().toString() 
-                            + " " + sanPham.getDoiTuongSuDung() 
-                            + " " + sanPham.getMaHangHoa(),
-                    sanPham.getSoLuongTon(),
-                    sanPham.getDonGia());
-            listSanPhamBanHang.add(sanPhamBanHang);
-        }
-        return listSanPhamBanHang;
+        return sanPhamRepository.findByNameOrMaSanPhamBanHang(page, pageSize, name, trangThai);
     }
+
+    
+    
 }

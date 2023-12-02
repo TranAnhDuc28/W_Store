@@ -1500,6 +1500,9 @@
               <Insets value="[5, 14, 5, 14]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDongActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

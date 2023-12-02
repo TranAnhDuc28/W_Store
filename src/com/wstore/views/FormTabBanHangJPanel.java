@@ -6,7 +6,6 @@ package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.wstore.domainmodels.HoaDon;
-import com.wstore.domainmodels.NhanVien;
 import com.wstore.services.IHoaDonChiTietService;
 import com.wstore.services.IHoaDonService;
 import com.wstore.services.impl.SanPhamService;
@@ -27,10 +26,12 @@ import com.wstore.utilities.Helper;
 import com.wstore.utilities.status.StatusHoaDon;
 import com.wstore.viewmodels.HoaDonChiTietViewModel;
 import com.wstore.viewmodels.HoaDonViewModel;
+import java.awt.event.KeyEvent;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JTextField;
 
 /**
  *
@@ -55,7 +56,10 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     private int totalPage = 1;
     public int pageSize = 15;
     int tongTien = 0;
-    int tienGiamGia = 0;
+    int soLuongMua = 0;
+    int donGiaSP = 0;
+    int tienGiamGiaTrenSP = 0;
+    int tongTienGiamGia = 0;
     int tienThanhToan = 0;
     int tienKhachDua = 0;
     int tienKhachCK = 0;
@@ -156,7 +160,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         txtThanhToan = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        cboHinhThucThanhToan = new javax.swing.JComboBox<>();
         txtNgayTao = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -340,11 +344,11 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã sản phẩm", "Tên sản phẩm", "Số lượng ", "Đơn giá", "Thành tiền"
+                "Mã sản phẩm", "Tên sản phẩm", "Số lượng ", "Đơn giá", "Giảm giá", "Giá bán", "Thành tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, true, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -434,7 +438,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addComponent(jScrollPane3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -498,7 +502,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
         jLabel16.setText("Hình thức thanh toán");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "Chuyển khoản", "Tiền mặt và Chuyển khoản" }));
+        cboHinhThucThanhToan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "Chuyển khoản", "Tiền mặt và Chuyển khoản" }));
 
         txtNgayTao.setEditable(false);
         txtNgayTao.setBackground(new java.awt.Color(255, 255, 255));
@@ -509,9 +513,17 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
         txtTienKhachDua.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtTienKhachDua.setText("0");
+        txtTienKhachDua.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTienKhachDuaFocusLost(evt);
+            }
+        });
         txtTienKhachDua.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTienKhachDuaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTienKhachDuaKeyTyped(evt);
             }
         });
 
@@ -519,12 +531,22 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
         txtTienKhachChietKhau.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtTienKhachChietKhau.setText("0");
-        txtTienKhachChietKhau.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTienKhachChietKhauActionPerformed(evt);
+        txtTienKhachChietKhau.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTienKhachChietKhauFocusLost(evt);
+            }
+        });
+        txtTienKhachChietKhau.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTienKhachChietKhauKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTienKhachChietKhauKeyTyped(evt);
             }
         });
 
+        txtTienThua.setEditable(false);
+        txtTienThua.setBackground(new java.awt.Color(255, 255, 255));
         txtTienThua.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtTienThua.setText("0");
 
@@ -556,7 +578,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cboHinhThucThanhToan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
@@ -620,7 +642,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboHinhThucThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -806,7 +828,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
                     hoaDonChiTietViewModel.setIdHoaDon(new HoaDon(idHoaDon));
                 }
                 hoaDonChiTietService.addListOrder(idHoaDon, listHoaDonChiTiet);
-                Helper.alert(this, "Tạo thành công!");
+                Helper.alert(this, "Tạo hóa đơn thành công!");
             } else {
                 Helper.alert(this, "Tạo hóa đơn thất bại!");
             }
@@ -818,11 +840,11 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnQuetMaActionPerformed
 
     private void btnTimKiemKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemKhachHangActionPerformed
-        // TODO add your handling code here:
+        // TODO add your  code here:
     }//GEN-LAST:event_btnTimKiemKhachHangActionPerformed
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-
+        clearForm();
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
@@ -903,19 +925,50 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBoActionPerformed
 
-    private void txtTienKhachChietKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienKhachChietKhauActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTienKhachChietKhauActionPerformed
-
     private void txtTienKhachDuaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyReleased
-        try {
-            tienKhachDua = Integer.parseInt(txtTienKhachDua.getText());
-        } catch (Exception e) {
-        }
-        tienThua = tienKhachDua - tienThanhToan;
-        System.out.println(tienThua);
+        tienKhachDua = Integer.parseInt(txtTienKhachDua.getText());
+        tienThua = (tienKhachDua + tienKhachCK) - tienThanhToan;
         txtTienThua.setText(Helper.dfTien.format(tienThua));
     }//GEN-LAST:event_txtTienKhachDuaKeyReleased
+
+    private void txtTienKhachDuaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTienKhachDuaFocusLost
+        JTextField source = (JTextField) evt.getSource();
+        String text = source.getText().trim();
+
+        // Kiểm tra xem giá trị có rỗng hoặc không hợp lệ không
+        if (text.isEmpty() || !Helper.isValidNumber(text)) {
+            source.setText("0"); // Đặt giá trị mặc định là 0
+        }
+    }//GEN-LAST:event_txtTienKhachDuaFocusLost
+
+    private void txtTienKhachDuaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyTyped
+        char c = evt.getKeyChar();
+        // Kiểm tra xem ký tự có phải là số không
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume(); // Ngăn chặn ký tự nhập vào nếu không phải là số
+        }
+    }//GEN-LAST:event_txtTienKhachDuaKeyTyped
+
+    private void txtTienKhachChietKhauFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTienKhachChietKhauFocusLost
+        JTextField source = (JTextField) evt.getSource();
+        String text = source.getText().trim();
+        if (text.isEmpty() || !Helper.isValidNumber(text)) {
+            source.setText("0");
+        }
+    }//GEN-LAST:event_txtTienKhachChietKhauFocusLost
+
+    private void txtTienKhachChietKhauKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachChietKhauKeyTyped
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTienKhachChietKhauKeyTyped
+
+    private void txtTienKhachChietKhauKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachChietKhauKeyReleased
+        tienKhachCK = Integer.parseInt(txtTienKhachChietKhau.getText());
+        tienThua = (tienKhachDua + tienKhachCK) - tienThanhToan;
+        txtTienThua.setText(Helper.dfTien.format(tienThua));
+    }//GEN-LAST:event_txtTienKhachChietKhauKeyReleased
 
     public void initPagination(List<SanPhamBanHangViewModel> list) {
         tongSoBanGhiTheoTrangThai = sanPhamService.getRecordCountByTrangThai(trangThai);
@@ -965,6 +1018,8 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
                 sanPham.getTenSanPham()));
         hoaDonChiTietViewModel.setSoLuong(soLuongSPMua);
         hoaDonChiTietViewModel.setDonGia(sanPham.getDonGia());
+        hoaDonChiTietViewModel.setDonGiaKhuyenMai(sanPham.getGiaKhuyenMai());
+        System.out.println(sanPham.getGiaKhuyenMai());
         hoaDonChiTietViewModel.setIdHoaDon(null);
         boolean flag = true;
         if (!listHoaDonChiTiet.isEmpty()) { // kiem tra list hoa don chi tiet có san pham nao k ?
@@ -1004,10 +1059,15 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         txtNhanVien.setText(hd.getNhanVien().toString());
         int rowGioHang = tblGioHang.getRowCount();
         for (int i = 0; i < rowGioHang; i++) {
-            tongTien += Integer.valueOf(tblGioHang.getValueAt(i, 4).toString());
+            donGiaSP = Integer.parseInt(tblGioHang.getValueAt(i, 3).toString());
+            tienGiamGiaTrenSP = Integer.parseInt(tblGioHang.getValueAt(i, 4).toString());
+            soLuongMua = Integer.parseInt(tblGioHang.getValueAt(i, 2).toString());
+            tongTien += donGiaSP * soLuongMua;
+            tongTienGiamGia += tienGiamGiaTrenSP * soLuongMua;
+            tienThanhToan += Integer.parseInt(tblGioHang.getValueAt(i, 6).toString());
         }
         txtTongTien.setText(Helper.dfTien.format(tongTien));
-        tienThanhToan = tongTien - Integer.parseInt(txtGiamGiaKM.getText().trim());
+        txtGiamGiaKM.setText(Helper.dfTien.format(tongTienGiamGia));
         txtThanhToan.setText(Helper.dfTien.format(tienThanhToan));
     }
 
@@ -1018,6 +1078,34 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
                 + hd.getTenKhachHang() + " | "
                 + hd.getNhanVien() + " | "
                 + StatusHoaDon.getNameByValue(hd.getTrangThai()));
+    }
+
+    private void clearForm() {
+        lblHoaDonDangMuaHang.setText("");
+        txtTenKH.setText("Khách hàng lẻ");
+        txtSDT.setText("");
+        txtDiaChi.setText("");
+        txtMaHD.setText("");
+        txtNgayTao.setText("");
+        txtNhanVien.setText("");
+        txtTongTien.setText("0");
+        txtGiamGiaKM.setText("0");
+        txtThanhToan.setText("0");
+        cboHinhThucThanhToan.setSelectedIndex(0);
+        txtTienKhachDua.setText("0");
+        txtTienKhachChietKhau.setText("0");
+        txtTienThua.setText("0");
+        txtGhiChu.setText("");
+        tongTien = 0;
+        soLuongMua = 0;
+        tienGiamGiaTrenSP = 0;
+        tongTienGiamGia = 0;
+        tienThanhToan = 0;
+        tienKhachDua = 0;
+        tienKhachCK = 0;
+        tienThua = 0;
+        listHoaDonChiTiet.clear();
+        dtmTblGioHang.setRowCount(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1032,8 +1120,8 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnTimKiemKhachHang;
     private javax.swing.JComboBox<String> cboCachThucBanHang;
+    javax.swing.JComboBox<String> cboHinhThucThanhToan;
     private javax.swing.JComboBox<String> cboSoBanGhi;
-    javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

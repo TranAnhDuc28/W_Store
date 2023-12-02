@@ -26,7 +26,7 @@ public class HoaDonChiTietRepository implements IHoaDonChiTietRepository {
     public List<HoaDonChiTietViewModel> getAllByHoaDonID(int id) {
         List<HoaDonChiTietViewModel> listHoaDonChiTiets = new ArrayList<>();
         String sql = "select hdct.id, hdct.id_san_pham, sp.ma_san_pham, tt.ten_thuong_hieu, sp.doi_tuong_su_dung,"
-                + " sp.ma_hang_hoa, hdct.id_hoa_don, hdct.so_luong, hdct.don_gia\n"
+                + " sp.ma_hang_hoa, hdct.id_hoa_don, hdct.so_luong, hdct.don_gia, hdct.don_gia_khuyen_mai\n"
                 + "from HoaDonChitiet hdct join SanPham sp on hdct.id_san_pham = sp.id\n"
                 + "			join ThuongHieu tt on sp.id_thuong_hieu = tt.id\n"
                 + "			join HoaDon hd on hdct.id_hoa_don = hd.id\n"
@@ -46,8 +46,8 @@ public class HoaDonChiTietRepository implements IHoaDonChiTietRepository {
                                         + " " + rs.getString("ma_hang_hoa")),
                                 new HoaDon(rs.getInt("id_hoa_don")),
                                 rs.getInt("so_luong"),
-                                rs.getBigDecimal("don_gia"));
-
+                                rs.getBigDecimal("don_gia"),
+                                rs.getBigDecimal("don_gia_khuyen_mai"));
                 listHoaDonChiTiets.add(hoaDonChiTietViewModel);
             }
         } catch (SQLException e) {
@@ -59,8 +59,8 @@ public class HoaDonChiTietRepository implements IHoaDonChiTietRepository {
     @Override
     public void insertListOrderDetails(int idHoaDon, List<HoaDonChiTietViewModel> lists) {
         int results[];
-        String sql = "insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia)\n"
-                + "values(?, ?, ?, ?);";
+        String sql = "insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai)\n"
+                + "values(?, ?, ?, ?, ?);";
         try (Connection cn = DBConnect.getConnection();) {
             cn.setAutoCommit(false);
             try (PreparedStatement pstm = cn.prepareStatement(sql);) {
@@ -69,6 +69,7 @@ public class HoaDonChiTietRepository implements IHoaDonChiTietRepository {
                     pstm.setInt(2, hdct.getHoaDon().getId());
                     pstm.setInt(3, hdct.getSoLuong());
                     pstm.setBigDecimal(4, hdct.getDonGia());
+                    pstm.setBigDecimal(5, hdct.getDonGiaKhuyenMai());
                     pstm.addBatch();
                 }
 

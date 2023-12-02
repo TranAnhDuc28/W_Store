@@ -13,12 +13,14 @@ import javax.swing.ImageIcon;
  * @author ducan
  */
 public class SanPhamBanHangViewModel {
+
     private Integer id;
     private String hinhAnh;
     private String maSanPham;
     private String tenSanPham;
     private Integer soLuong;
     private BigDecimal donGia;
+    private BigDecimal giaKhuyenMai;
 
     public SanPhamBanHangViewModel() {
     }
@@ -29,13 +31,14 @@ public class SanPhamBanHangViewModel {
         this.tenSanPham = tenSanPham;
     }
 
-    public SanPhamBanHangViewModel(Integer id, String hinhAnh, String maSanPham, String tenSanPham, Integer soLuong, BigDecimal donGia) {
+    public SanPhamBanHangViewModel(Integer id, String hinhAnh, String maSanPham, String tenSanPham, Integer soLuong, BigDecimal donGia, BigDecimal giaKhuyenMai) {
         this.id = id;
         this.hinhAnh = hinhAnh;
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
         this.soLuong = soLuong;
         this.donGia = donGia;
+        this.giaKhuyenMai = giaKhuyenMai;
     }
 
     public Integer getId() {
@@ -85,11 +88,21 @@ public class SanPhamBanHangViewModel {
     public void setDonGia(BigDecimal donGia) {
         this.donGia = donGia;
     }
+
+    public BigDecimal getGiaKhuyenMai() {
+        return giaKhuyenMai;
+    }
+
+    public void setGiaKhuyenMai(BigDecimal giaKhuyenMai) {
+        this.giaKhuyenMai = giaKhuyenMai;
+    }
     
+
     public Object[] toDataRow() {
-        return new Object[] {
+        return new Object[]{
             Helper.scaledImage(
-                    new ImageIcon("images/images-san-pham/" + hinhAnh), 70, 70)
-                , maSanPham, tenSanPham, soLuong, Helper.dfTien.format(donGia)};
+            new ImageIcon("images/images-san-pham/" + hinhAnh), 70, 70),
+             maSanPham, tenSanPham, soLuong, Helper.dfTien.format(donGia),
+            Helper.dfTien.format(giaKhuyenMai)};
     }
 }

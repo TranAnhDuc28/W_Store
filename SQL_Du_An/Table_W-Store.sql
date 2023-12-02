@@ -273,6 +273,7 @@ create table HoaDonChiTiet(
 	id_hoa_don int not null,
 	so_luong int default 0,
 	don_gia decimal(10,0) default 0,
+	don_gia_khuyen_mai decimal(10,0) default 0,
 	constraint hoa_don_chi_tiet_PK primary key (id),
 	constraint san_pham_FK_tbl_HoaDonChiTiet foreign key (id_san_pham) references SanPham(id),
 	constraint hoa_don_FK_tbl_HoaDonChiTiet foreign key (id_hoa_don) references HoaDon(id)

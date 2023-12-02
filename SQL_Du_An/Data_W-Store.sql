@@ -1145,20 +1145,136 @@ insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
 values (N'Tiền mặt', 7);
 
 -- data table KhachHang
-truncate table KhachHang
 
 insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
 values ('KH000001', N'Nguyễn Văn A', 1 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
 insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
-values ('KH000002', N'Nguyễn Văn B', 1 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+values ('KH000002', N'Nguyễn Văn B', 1 , '1992-9-16', '0947468373', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
 insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
-values ('KH000003', N'Nguyễn Vân C', 0 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+values ('KH000003', N'Nguyễn Vân C', 0 , '1992-9-16', '0938236263', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
 insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
-values ('KH000004', N'Nguyễn Văn D', 1 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+values ('KH000004', N'Nguyễn Văn D', 1 , '1992-9-16', '0949847264', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
 insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
-values ('KH000005', N'Nguyễn Văn AN', 1 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+values ('KH000005', N'Nguyễn Văn AN', 1 , '1992-9-16', '0921391733', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
 insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
-values ('KH000006', N'Nguyễn Văn F', 0 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+values ('KH000006', N'Nguyễn Văn F', 0 , '1992-9-16', '0932743264', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
 insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
-values ('KH000007', N'Nguyễn Văn Q', 1 , '1992-9-16', '0979075446', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+values ('KH000007', N'Nguyễn Văn Q', 1 , '1992-9-16', '0973283982', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000008', N'Nguyễn Văn A', 1 , '1992-9-16', '0938293972', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000009', N'Nguyễn Văn B', 1 , '1992-9-16', '0923983823', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000010', N'Nguyễn Vân C', 0 , '1992-9-16', '0939273422', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000011', N'Nguyễn Văn D', 1 , '1992-9-16', '0933293773', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000012', N'Nguyễn Văn AN', 1 , '1992-9-16', '0328732836', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000013', N'Nguyễn Văn F', 0 , '1992-9-16', '0937273283', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000014', N'Nguyễn Văn Q', 1 , '1992-9-16', '0938726323', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000015', N'Nguyễn Văn A', 1 , '1992-9-16', '0932783862', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000016', N'Nguyễn Văn B', 1 , '1992-9-16', '0921022210', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000017', N'Nguyễn Vân C', 0 , '1992-9-16', '0932839722', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000018', N'Nguyễn Văn D', 1 , '1992-9-16', '0936535625', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000019', N'Nguyễn Văn AN', 1 , '1992-9-16', '0928937283', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000020', N'Nguyễn Văn F', 0 , '1992-9-16', '0932093009', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
+insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, email, dia_chi, hinh_anh, ngay_tao, ghi_chu, trang_thai)
+values ('KH000021', N'Nguyễn Văn Q', 1 , '1992-9-16', '0990697576', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
 
+-- data table ChuongTrinhKhuyenMai
+truncate table ChuongTrinhKhuyenMai
+insert into ChuongTrinhKhuyenMai(ten_chuong_trinh, ngay_bat_dau, ngay_ket_thuc, hinh_thuc_giam_gia, gia_tri_giam, trang_thai)
+values (N'Thích thì giảm', '2023-12-01 08:00:00', '2023-12-10 17:30:00', N'Phần trăm', 10, default);
+insert into ChuongTrinhKhuyenMai(ten_chuong_trinh, ngay_bat_dau, ngay_ket_thuc, hinh_thuc_giam_gia, gia_tri_giam, trang_thai)
+values (N'Thích thì giảm 2', '2023-12-01 08:00:00', '2023-12-20 17:30:00', N'Tiền mặt', 300000, default);
+
+select * from ChuongTrinhKhuyenMai
+
+
+-- data table SanPhamKhuyenMai
+truncate table SanPhamKhuyenMai
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(1,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(2,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(3,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(4,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(5,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(6,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(7,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(8,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(9,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(10,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(11,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(12,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(13,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(14,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(15,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(16,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(17,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(18,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(19,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(20,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(21,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(22,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(23,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(24,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(25,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(26,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(27,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(28,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(29,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(30,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(31,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(32,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(33,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(34,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(35,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(36,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(37,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(38,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(39,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(40,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(41,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(42,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(43,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(44,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(45,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(46,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(47,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(48,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(49,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(50,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(51,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(52,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(53,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(54,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(55,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(56,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(57,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(58,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(59,1);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(60,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(61,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(62,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(63,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(64,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(65,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(66,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(67,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(68,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(69,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(70,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(71,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(72,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(73,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(74,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(75,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(76,2);
+insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(77,2);

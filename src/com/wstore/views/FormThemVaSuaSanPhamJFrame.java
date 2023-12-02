@@ -967,6 +967,11 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         btnDong.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnDong.setIconTextGap(5);
         btnDong.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnDong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDongActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnDong);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1134,9 +1139,11 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
                 }
             }
         }
-
-
     }//GEN-LAST:event_btnLuuActionPerformed
+
+    private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnDongActionPerformed
 
     private SanPham getDataToForm() {
         SanPham sp = new SanPham();

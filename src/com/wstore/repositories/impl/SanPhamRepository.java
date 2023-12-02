@@ -14,6 +14,7 @@ import com.wstore.domainmodels.thuoctinhsanpham.ThuongHieu;
 import com.wstore.domainmodels.thuoctinhsanpham.XuatXu;
 import com.wstore.repositories.ISanPhamRepository;
 import com.wstore.utilities.DBConnect;
+import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,11 +27,6 @@ import java.util.List;
  * @author ducan
  */
 public class SanPhamRepository implements ISanPhamRepository {
-
-    @Override
-    public List<SanPham> getAll(int page, int pageSize) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     @Override
     public List<SanPham> getAllByTrangThai(int page, int pageSize, int trangThai) {
@@ -178,6 +174,20 @@ public class SanPhamRepository implements ISanPhamRepository {
             checkUpdate = pstm.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
+        }
+        return checkUpdate > 0;
+    }
+
+    @Override
+    public boolean updateSoLuong(Integer id, int soLuong) {
+        int checkUpdate = 0;
+        String query = "update SanPham set so_luong_ton = ? where id = ?;";
+        try (Connection con = DBConnect.getConnection(); PreparedStatement ps = con.prepareStatement(query);) {
+            ps.setObject(1, soLuong);
+            ps.setObject(2, id);
+            checkUpdate = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
         }
         return checkUpdate > 0;
     }
@@ -352,6 +362,90 @@ public class SanPhamRepository implements ISanPhamRepository {
             ex.printStackTrace();
         }
         return count;
+    }
+
+    @Override
+    public List<SanPhamBanHangViewModel> getAllSanPhamBanHang(int page, int pageSize, int trangThai) {
+        List<SanPhamBanHangViewModel> list = new ArrayList<>();
+        String sql = "select sp.id, sp.hinh_anh, sp.ma_san_pham, th.ten_thuong_hieu, sp.ma_hang_hoa, sp.don_gia, sp.so_luong_ton,\n"
+                + "	case\n"
+                + "        when ctkm.hinh_thuc_giam_gia = N'Phần trăm' then (sp.don_gia * (1 -  CAST(ctkm.gia_tri_giam AS decimal(10, 0))/100))\n"
+                + "        when ctkm.hinh_thuc_giam_gia = N'Tiền mặt' then sp.don_gia - ctkm.gia_tri_giam\n"
+                + "        else sp.don_gia\n"
+                + "    end as gia_khuyen_mai\n"
+                + "from SanPham sp\n"
+                + "	left join ThuongHieu th on sp.id_thuong_hieu = th.id\n"
+                + "	left join SanPhamKhuyenMai spkm on sp.id = spkm.id_san_pham\n"
+                + "	left join ChuongTrinhKhuyenMai ctkm on spkm.id_chuong_trinh_khuyen_mai = ctkm.id\n"
+                + "where sp.trang_thai = ?\n"
+                + "order by sp.id\n"
+                + "offset ? rows\n"
+                + "fetch next ? rows only;";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setInt(1, trangThai);
+            pstm.setInt(2, (page - 1) * pageSize);
+            pstm.setInt(3, pageSize);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                SanPhamBanHangViewModel sanPhamBanHang = new SanPhamBanHangViewModel();
+                sanPhamBanHang.setId(rs.getInt("id"));
+                sanPhamBanHang.setMaSanPham(rs.getString("ma_san_pham"));
+                sanPhamBanHang.setTenSanPham(rs.getString("ten_thuong_hieu") + " " + rs.getString("ma_hang_hoa"));
+                sanPhamBanHang.setSoLuong(rs.getInt("so_luong_ton"));
+                sanPhamBanHang.setDonGia(rs.getBigDecimal("don_gia"));
+                sanPhamBanHang.setGiaKhuyenMai(rs.getBigDecimal("gia_khuyen_mai"));
+                sanPhamBanHang.setHinhAnh(rs.getString("hinh_anh"));
+                list.add(sanPhamBanHang);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public List<SanPhamBanHangViewModel> findByNameOrMaSanPhamBanHang(int page, int pageSize, String name, int trangThai) {
+        List<SanPhamBanHangViewModel> list = new ArrayList<>();
+        String sql = "select sp.id, sp.hinh_anh, sp.ma_san_pham, th.ten_thuong_hieu, sp.ma_hang_hoa, sp.don_gia, sp.so_luong_ton,\n"
+                + "	case\n"
+                + "        when ctkm.hinh_thuc_giam_gia = N'Phần trăm' then (sp.don_gia * (1 -  CAST(ctkm.gia_tri_giam AS decimal(10, 0))/100))\n"
+                + "        when ctkm.hinh_thuc_giam_gia = N'Tiền mặt' then sp.don_gia - ctkm.gia_tri_giam\n"
+                + "        else sp.don_gia\n"
+                + "    end as gia_khuyen_mai\n"
+                + "from SanPham sp\n"
+                + "	left join ThuongHieu th on sp.id_thuong_hieu = th.id\n"
+                + "	left join SanPhamKhuyenMai spkm on sp.id = spkm.id_san_pham\n"
+                + "	left join ChuongTrinhKhuyenMai ctkm on spkm.id_chuong_trinh_khuyen_mai = ctkm.id\n"
+                + "where sp.ma_san_pham like '%" + name + "%' or sp.ma_hang_hoa like '%" + name + "%' or th.ten_thuong_hieu like '%" + name + "%' and sp.trang_thai = ?\n"
+                + "order by sp.id\n"
+                + "offset ? rows\n"
+                + "fetch next ? rows only;";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setInt(1, trangThai);
+            pstm.setInt(2, (page - 1) * pageSize);
+            pstm.setInt(3, pageSize);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                SanPhamBanHangViewModel sanPhamBanHang = new SanPhamBanHangViewModel();
+                sanPhamBanHang.setId(rs.getInt("id"));
+                sanPhamBanHang.setMaSanPham(rs.getString("ma_san_pham"));
+                sanPhamBanHang.setTenSanPham(rs.getString("ten_thuong_hieu") + " " + rs.getString("ma_hang_hoa"));
+                sanPhamBanHang.setSoLuong(rs.getInt("so_luong_ton"));
+                sanPhamBanHang.setDonGia(rs.getBigDecimal("don_gia"));
+                sanPhamBanHang.setGiaKhuyenMai(rs.getBigDecimal("gia_khuyen_mai"));
+                sanPhamBanHang.setHinhAnh(rs.getString("hinh_anh"));
+                list.add(sanPhamBanHang);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(new SanPhamRepository().getAllSanPhamBanHang(1, 100, 0).size());
     }
 
 }

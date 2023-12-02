@@ -135,6 +135,11 @@ public class HoaDonViewModel extends HoaDonBanHangViewModel {
     }
 
     @Override
+    public String toString() {
+        return "HoaDonViewModel{" + "soDienThoai=" + soDienThoai + ", diaChi=" + diaChi + ", ngayThanhToan=" + ngayThanhToan + ", ngayGiaoHang=" + ngayGiaoHang + ", tienShip=" + tienShip + ", tienCoc=" + tienCoc + ", ngayNhanHang=" + ngayNhanHang + ", hinhThucThanhToan=" + hinhThucThanhToan + ", tongTien=" + tongTien + ", idKhachHang=" + idKhachHang + ", ghiChu=" + ghiChu + '}';
+    }
+
+    @Override
     public Object[] toDataRow() {
         return new Object[]{super.getMaHoaDon(), super.getNgayTao(), super.getTenKhachHang(),
             soDienThoai, diaChi, super.getNhanVien(), ngayThanhToan, hinhThucThanhToan,

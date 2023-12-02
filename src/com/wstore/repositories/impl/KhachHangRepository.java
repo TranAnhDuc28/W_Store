@@ -62,7 +62,7 @@ public class KhachHangRepository implements IKhachHangRepository {
         int checkInsert = 0;
         String sql = "insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai, "
                 + "email, dia_chi , hinh_anh, ngay_tao, ghi_chu, trang_thai)\n"
-                + "values (?,?,?,?,?,?,?,?,default,?,default)";
+                + "values (?,?,?,?,?,?,?,?,?,?,default)";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
             pstm.setString(1, kh.getMaKhachHang());
             pstm.setString(2, kh.getHoTen());
@@ -72,7 +72,8 @@ public class KhachHangRepository implements IKhachHangRepository {
             pstm.setString(6, kh.getEmail());
             pstm.setString(7, kh.getDiaChi());
             pstm.setString(8, kh.getHinhAnh());
-            pstm.setString(9, kh.getGhiChu());
+            pstm.setTimestamp(9, kh.getNgayTao());
+            pstm.setString(10, kh.getGhiChu());
             checkInsert = pstm.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -156,7 +157,7 @@ public class KhachHangRepository implements IKhachHangRepository {
         String sql = "select id, ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai,\n"
                 + "email, dia_chi , hinh_anh, ngay_tao, ghi_chu, trang_thai\n"
                 + "from KhachHang\n"
-                + "where trang_thai = ? and ho_ten like N'%" + name + "%' or ma_khach_hang like N'%" + name + "%' or so_dien_thoai like N'%" + name + "%'\n"
+                + "where ho_ten like N'%" + name + "%' or ma_khach_hang like N'%" + name + "%' or so_dien_thoai like N'%" + name + "%' and trang_thai = ?\n"
                 + "order by id\n"
                 + "offset ? rows\n"
                 + "fetch next ? rows only;";

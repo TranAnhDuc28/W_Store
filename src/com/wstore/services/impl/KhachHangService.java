@@ -23,10 +23,10 @@ public class KhachHangService implements IKhachHangService {
 
     @Override
     public List<KhachHangViewModel> getAll(int page, int pageSize, int trangThai) {
-        List<KhachHang> ListKH = khachHangReposiory.getAll(page, pageSize, trangThai);
+        List<KhachHang> listKH = khachHangReposiory.getAll(page, pageSize, trangThai);
 
-        List<KhachHangViewModel> ListKHView = new ArrayList<>();
-        for (KhachHang kh : ListKH) {
+        List<KhachHangViewModel> listKHView = new ArrayList<>();
+        for (KhachHang kh : listKH) {
             KhachHangViewModel KhView = new KhachHangViewModel();
             KhView.setId(kh.getId());
             KhView.setMaKhachHang(kh.getMaKhachHang());
@@ -40,10 +40,9 @@ public class KhachHangService implements IKhachHangService {
             KhView.setNgayTao(Helper.sdfNgayThangThoiGian.format(kh.getNgayTao()));
             KhView.setGhiChu(kh.getGhiChu());
             KhView.setTrangThai(kh.getTrangThai());
-            ListKHView.add(KhView);
-
+            listKHView.add(KhView);
         }
-        return ListKHView;
+        return listKHView;
     }
 
     @Override
@@ -68,10 +67,10 @@ public class KhachHangService implements IKhachHangService {
 
     @Override
     public List<KhachHangViewModel> findByNameOrMaOrSDT(int page, int pageSize, int trangThai, String name) {
-        List<KhachHang> ListKH = khachHangReposiory.getAll(page, pageSize, trangThai);
+        List<KhachHang> listKH = khachHangReposiory.findByNameOrMaOrSDT(page, pageSize, trangThai, name);
 
-        List<KhachHangViewModel> ListKHView = new ArrayList<>();
-        for (KhachHang kh : ListKH) {
+        List<KhachHangViewModel> listKHView = new ArrayList<>();
+        for (KhachHang kh : listKH) {
             KhachHangViewModel KhView = new KhachHangViewModel();
             KhView.setId(kh.getId());
             KhView.setMaKhachHang(kh.getMaKhachHang());
@@ -85,9 +84,9 @@ public class KhachHangService implements IKhachHangService {
             KhView.setNgayTao(Helper.sdfNgayThangThoiGian.format(kh.getNgayTao()));
             KhView.setGhiChu(kh.getGhiChu());
             KhView.setTrangThai(kh.getTrangThai());
-            ListKHView.add(KhView);
+            listKHView.add(KhView);
         }
-        return ListKHView;
+        return listKHView;
     }
 
     @Override

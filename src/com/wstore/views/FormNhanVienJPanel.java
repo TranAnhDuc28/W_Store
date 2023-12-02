@@ -1048,14 +1048,14 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     }
 
     private boolean validateForm() {
-        if (Helper.checkRongJDateChooser(this, txtNgaySinh, "Vui lòng chọn ngày sinh!")) {
-            return true;
-        }
         if (Helper.checkRongTextField(this, txtMaNhanVien, "Vui lòng nhập mã nhân viên")) {
             return false;
         }
-        if (Helper.checkRongTextField(this, txtHoVaTen, "Vui lòng nhập tên cho nhân viên!")) {
+        if (Helper.checkRongTextField(this, txtHoVaTen, "Vui lòng nhập họ tên nhân viên!")) {
             return false;
+        }
+        if (Helper.checkRongJDateChooser(this, txtNgaySinh, "Vui lòng chọn ngày sinh!")) {
+            return true;
         }
         return false;
     }

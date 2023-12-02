@@ -23,6 +23,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -106,6 +107,15 @@ public class Helper {
     }
 
     public static boolean checkRongTextField(Component component, JTextField txt, String message) {
+        if (txt.getText().trim().isEmpty()) {
+            alert(component, message);
+            txt.requestFocus();
+            return true;
+        }
+        return false;
+    }
+    
+    public static boolean checkRongTextArea(Component component, JTextArea txt, String message) {
         if (txt.getText().trim().isEmpty()) {
             alert(component, message);
             txt.requestFocus();

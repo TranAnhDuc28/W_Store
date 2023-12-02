@@ -17,8 +17,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
@@ -31,16 +29,14 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
 
     private final IKhachHangService khachHangService = new KhachHangService();
     private DefaultTableModel dtmKhachHang = new DefaultTableModel();
-    private List<KhachHangViewModel> ListKH;
+    List<KhachHangViewModel> ListKH;
     FormThemVaSuaKhachHangJFrame formThemVaSuaKhachHangJFrame;
     private int index = -1;
     public Integer trangThai = 0;
-    private int tongSoBanGhi = 0;
     public Integer page = 1;
     private Integer totalRowData = 0;
     private Integer totalPage = 1;
     public Integer pageSize = 15;
-    private String imageName = null;
 
     public FormKhachHangJPanel() {
         initComponents();
@@ -52,9 +48,9 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         txtTimKiemKhachHang.putClientProperty(
                 FlatClientProperties.PLACEHOLDER_TEXT,
                 "Nhập nội dung tìm kiếm...");
-        txtTimKiemKhachHang.putClientProperty(
-                FlatClientProperties.TEXT_FIELD_SHOW_CLEAR_BUTTON,
-                true);
+//        txtTimKiemKhachHang.putClientProperty(
+//                FlatClientProperties.TEXT_FIELD_SHOW_CLEAR_BUTTON,
+//                true);
     }
 
     @SuppressWarnings("unchecked")
@@ -276,6 +272,7 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
             }
         });
         tblKhachHang.setRowHeight(30);
+        tblKhachHang.setSelectionBackground(new java.awt.Color(137, 187, 201));
         tblKhachHang.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblKhachHang);
 
@@ -489,6 +486,7 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
             if (Helper.comfirm(this, "Xác nhận thao tác? Bạn muốn thay đổi trạng thái khách hàng xóa tạm? ")) {
                 khachHangService.updatesSatus(1, listID);
                 initPagination(khachHangService.getAll(page, pageSize, trangThai));
+                chkChonTat.setSelected(false);
             }
         }
     }//GEN-LAST:event_btnXoaActionPerformed
@@ -548,6 +546,7 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
             if (Helper.comfirm(this, "Xác nhận khôi phục? ")) {
                 khachHangService.updatesSatus(0, listID);
                 initPagination(khachHangService.getAll(page, pageSize, trangThai));
+                chkChonTat.setSelected(false);
             }
             System.out.println("Update nhiều");
         }
@@ -564,7 +563,25 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
 
     private void txtTimKiemKhachHangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKhachHangKeyReleased
         String name = txtTimKiemKhachHang.getText();
-        initPagination(khachHangService.findByNameOrMaOrSDT(page, pageSize, trangThai, name));
+        if (!name.trim().isEmpty()) {
+            cboSoBanGhi.setEnabled(false);
+            btnFirst.setEnabled(false);
+            btnPrev.setEnabled(false);
+            btnNext.setEnabled(false);
+            btnLast.setEnabled(false);
+            lblPageOfTotalPage.setEnabled(false);
+            lblTongSoBanGhi.setEnabled(false);
+            initPagination(khachHangService.findByNameOrMaOrSDT(1, 50, trangThai, name));
+        } else {
+            cboSoBanGhi.setEnabled(true);
+            btnFirst.setEnabled(true);
+            btnPrev.setEnabled(true);
+            btnNext.setEnabled(true);
+            btnLast.setEnabled(true);
+            lblPageOfTotalPage.setEnabled(true);
+            lblTongSoBanGhi.setEnabled(true);
+            initPagination(khachHangService.getAll(page, pageSize, trangThai));
+        }
     }//GEN-LAST:event_txtTimKiemKhachHangKeyReleased
 
     private void cboSoBanGhiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboSoBanGhiItemStateChanged
@@ -582,7 +599,7 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         ListKH = list;
         loadDataToTable(ListKH);
         lblPageOfTotalPage.setText(page + "/" + totalPage);
-        lblTongSoBanGhi.setText("Tổng số: " + tongSoBanGhi);
+        lblTongSoBanGhi.setText("Tổng số: " + totalRowData);
     }
 
     private void loadDataToTable(List<KhachHangViewModel> list) {
@@ -650,7 +667,7 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblPageOfTotalPage;
     private javax.swing.JLabel lblTongSoBanGhi;
-    private javax.swing.JTable tblKhachHang;
+    public javax.swing.JTable tblKhachHang;
     private javax.swing.JTextField txtTimKiemKhachHang;
     // End of variables declaration//GEN-END:variables
 }

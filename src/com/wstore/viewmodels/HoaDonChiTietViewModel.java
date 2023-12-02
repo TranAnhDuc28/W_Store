@@ -4,7 +4,9 @@
  */
 package com.wstore.viewmodels;
 
+import com.sun.java.swing.action.HelpAction;
 import com.wstore.domainmodels.HoaDon;
+import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
 import java.math.BigDecimal;
 
@@ -19,16 +21,18 @@ public class HoaDonChiTietViewModel {
     private HoaDon hoaDon;
     private Integer soLuong;
     private BigDecimal donGia;
+    private BigDecimal donGiaKhuyenMai;
 
     public HoaDonChiTietViewModel() {
     }
 
-    public HoaDonChiTietViewModel(Long id, SanPhamBanHangViewModel sanPham, HoaDon hoaDon, Integer soLuong, BigDecimal donGia) {
+    public HoaDonChiTietViewModel(Long id, SanPhamBanHangViewModel sanPham, HoaDon hoaDon, Integer soLuong, BigDecimal donGia, BigDecimal donGiaKhuyenMai) {
         this.id = id;
         this.sanPham = sanPham;
         this.hoaDon = hoaDon;
         this.soLuong = soLuong;
         this.donGia = donGia;
+        this.donGiaKhuyenMai = donGiaKhuyenMai;
     }
 
     public Long getId() {
@@ -80,14 +84,30 @@ public class HoaDonChiTietViewModel {
     }
 
     public BigDecimal getThanhTien() {
-        return donGia.multiply(new BigDecimal(soLuong));
+        return donGiaKhuyenMai.multiply(new BigDecimal(soLuong));
+    }
+
+    public BigDecimal getDonGiaKhuyenMai() {
+        return donGiaKhuyenMai;
+    }
+
+    public void setDonGiaKhuyenMai(BigDecimal donGiaKhuyenMai) {
+        this.donGiaKhuyenMai = donGiaKhuyenMai;
+    }
+
+    @Override
+    public String toString() {
+        return "HoaDonChiTietViewModel{" + "id=" + id + ", sanPham=" + sanPham + ", hoaDon=" + hoaDon + ", soLuong=" + soLuong + ", donGia=" + donGia + ", donGiaKhuyenMai=" + donGiaKhuyenMai + '}';
     }
 
     public Object[] toDataRow() {
         return new Object[]{
             sanPham.getMaSanPham(),
-            sanPham.getTenSanPham(), soLuong,
+            sanPham.getTenSanPham(),
+            soLuong,
             donGia,
-            getThanhTien()};
+            donGia.subtract(donGiaKhuyenMai).intValue(),
+            donGiaKhuyenMai.intValue(),
+            getThanhTien().intValue()};
     }
 }

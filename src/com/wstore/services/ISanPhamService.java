@@ -8,6 +8,7 @@ import com.wstore.domainmodels.SanPham;
 import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
 import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -24,7 +25,9 @@ public interface ISanPhamService {
     boolean insert(SanPham sp);
 
     boolean update(SanPham sp, int idSanPham);
-
+    
+    void updateSoLuong(Map<SanPhamBanHangViewModel, Integer> sanPham);
+    
     boolean updateAStatus(int trangThai, int idSanPham);
 
     void updateStatuses(int trangThai, List<Integer> listID);
