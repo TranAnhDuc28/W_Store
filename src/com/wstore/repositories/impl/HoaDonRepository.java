@@ -213,7 +213,7 @@ public class HoaDonRepository implements IHoaDonRepository {
                 + "	left join KhachHang kh on hd.id_khach_hang = kh.id\n"
                 + "	left join HoaDonChiTiet hdct on hd.id = hdct.id_hoa_don\n"
                 + "	left join HinhThucThanhToan httt on hd.id = httt.id_hoa_don\n"
-                + "where hd.id = ?	";
+                + "where hd.ma_hoa_don = ?	";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
             pstm.setObject(1, maHD);
             ResultSet rs = pstm.executeQuery();
@@ -235,7 +235,6 @@ public class HoaDonRepository implements IHoaDonRepository {
                 hd.setTienCoc(rs.getBigDecimal("tien_coc"));
                 hd.setNgayNhanHang(rs.getTimestamp("ngay_nhan_hang"));
                 hd.setHinhThucThanhToan(rs.getString("loai_hinh_thanh_toan"));
-                hd.setTongTien(rs.getBigDecimal("tong_tien"));
                 hd.setGhiChu(rs.getString("ghi_chu"));
                 hd.setIdKhachHang(new KhachHang(rs.getInt("id_khach_hang")));
                 hd.setTrangThai(rs.getInt("trang_thai"));
