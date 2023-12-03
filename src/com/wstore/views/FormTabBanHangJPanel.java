@@ -543,9 +543,9 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
 
         jLabel20.setText("Tiền khách CK");
 
-        txtTienKhachChietKhau.setEditable(false);
         txtTienKhachChietKhau.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtTienKhachChietKhau.setText("0");
+        txtTienKhachChietKhau.setEnabled(false);
         txtTienKhachChietKhau.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtTienKhachChietKhauFocusLost(evt);
