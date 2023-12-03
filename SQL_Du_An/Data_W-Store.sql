@@ -1110,20 +1110,13 @@ select * from HoaDon
 
 -- data table HoaDonChiTiet
 
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
-values(1, 1, 2, 510000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
-values(2, 1, 1, 1200000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
-values(1, 3, 3, 510000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
-values(1, 2, 1, 510000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
-values(2, 2, 1, 1200000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
-values(3, 6, 2, 1020000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia) 
-values(4, 7, 2, 390000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(1, 1, 2, 510000, 459000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(2, 1, 1, 1200000, 1080000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(1, 3, 3, 510000, 459000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(1, 2, 1, 510000, 459000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(2, 2, 1, 1200000, 1080000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(3, 6, 2, 1020000, 918000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(4, 7, 2, 390000, 351000);
 
 
 select *from HoaDonChiTiet

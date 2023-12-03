@@ -4,9 +4,7 @@
  */
 package com.wstore.viewmodels;
 
-import com.sun.java.swing.action.HelpAction;
 import com.wstore.domainmodels.HoaDon;
-import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
 import java.math.BigDecimal;
 

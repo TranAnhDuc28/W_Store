@@ -184,7 +184,7 @@ from HoaDon
 
 select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
 		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan
-		, sum(hdct.so_luong * hdct.don_gia) as tong_tien, hd.ghi_chu, hd.trang_thai
+		, sum(hdct.so_luong * hdct.don_gia_khuyen_mai) as tong_tien, hd.ghi_chu, hd.trang_thai
 		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
 from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
 	left join KhachHang kh on hd.id_khach_hang = kh.id
@@ -209,10 +209,10 @@ from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
 group by  hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
 		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan
 		, hd.ghi_chu, hd.trang_thai, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
-having hd.trang_thai = 0
+having hd.trang_thai = 1
 order by hd.id
 offset 0 rows
-fetch next 5 rows only
+fetch next 10 rows only
 
 insert into HoaDon
 	(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien)
@@ -227,6 +227,22 @@ select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, id_nhan_vien, nv.ma_nhan_
 from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
 where ma_hoa_don =
 ;
+
+
+update HoaDon
+set ten_khach_hang = ?, dia_chi = ?, so_dien_thoai = ?, ngay_thanh_toan = ?, ngay_giao_hang = ?
+	, tien_ship = ?, tien_coc = ?, ngay_nhan_hang = ?, ghi_chu = ?, trang_thai = ?, id_khach_hang = ?
+where id = ?;
+
+select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
+		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang
+		, httt.loai_hinh_thanh_toan, hd.ghi_chu, hd.trang_thai
+		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
+from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
+	left join KhachHang kh on hd.id_khach_hang = kh.id
+	left join HoaDonChiTiet hdct on hd.id = hdct.id_hoa_don
+	left join HinhThucThanhToan httt on hd.id = httt.id_hoa_don
+where hd.id = ?	
 
 -- query HoaDonChiTiet
 select hdct.id, hdct.id_san_pham, sp.ma_san_pham, tt.ten_thuong_hieu, sp.doi_tuong_su_dung, sp.ma_hang_hoa, hdct.id_hoa_don, hdct.so_luong, hdct.don_gia
@@ -252,6 +268,8 @@ order by id
 
 
 -- 
+
+
 
 
 

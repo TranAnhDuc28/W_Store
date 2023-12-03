@@ -28,7 +28,7 @@ public class HoaDonRepository implements IHoaDonRepository {
         List<HoaDonViewModel> list = new ArrayList<>();
         String sql = "select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi\n"
                 + "		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan\n"
-                + "		, sum(hdct.so_luong * hdct.don_gia) as tong_tien, hd.ghi_chu, hd.trang_thai\n"
+                + "		, sum(hdct.so_luong * hdct.don_gia_khuyen_mai) as tong_tien, hd.ghi_chu, hd.trang_thai\n"
                 + "		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang\n"
                 + "from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id\n"
                 + "		left join KhachHang kh on hd.id_khach_hang = kh.id\n"
@@ -79,7 +79,7 @@ public class HoaDonRepository implements IHoaDonRepository {
         List<HoaDonViewModel> list = new ArrayList<>();
         String sql = "select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi\n"
                 + "		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan\n"
-                + "		, sum(hdct.so_luong * hdct.don_gia) as tong_tien, hd.ghi_chu, hd.trang_thai\n"
+                + "		, sum(hdct.so_luong * hdct.don_gia_khuyen_mai) as tong_tien, hd.ghi_chu, hd.trang_thai\n"
                 + "		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang\n"
                 + "from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id\n"
                 + "		left join KhachHang kh on hd.id_khach_hang = kh.id\n"
@@ -146,7 +146,29 @@ public class HoaDonRepository implements IHoaDonRepository {
 
     @Override
     public boolean update(HoaDon hoaDon, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int checkUpdate = 0;
+        String query = "update HoaDon\n"
+                + "set ten_khach_hang = ?, dia_chi = ?, so_dien_thoai = ?, ngay_thanh_toan = ?, ngay_giao_hang = ?\n"
+                + "	, tien_ship = ?, tien_coc = ?, ngay_nhan_hang = ?, ghi_chu = ?, trang_thai = ?, id_khach_hang = ?\n"
+                + "where id = ?;";
+        try (Connection con = DBConnect.getConnection(); PreparedStatement ps = con.prepareStatement(query);) {
+            ps.setString(1, hoaDon.getTenKhachHang());
+            ps.setString(2, hoaDon.getDiaChi());
+            ps.setString(3, hoaDon.getSoDienThoai());
+            ps.setTimestamp(4, hoaDon.getNgayThanhToan());
+            ps.setTimestamp(5, hoaDon.getNgayGiaoHang());
+            ps.setBigDecimal(6, hoaDon.getTienShip());
+            ps.setBigDecimal(7, hoaDon.getTienCoc());
+            ps.setTimestamp(8, hoaDon.getNgayNhanHang());
+            ps.setString(9, hoaDon.getGhiChu());
+            ps.setInt(10, hoaDon.getTrangThai());
+            ps.setObject(11, hoaDon.getIdKhachHang());
+            ps.setObject(12, id);
+            checkUpdate = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }
+        return checkUpdate > 0;
     }
 
     @Override
@@ -183,9 +205,15 @@ public class HoaDonRepository implements IHoaDonRepository {
     @Override
     public HoaDonViewModel findByMa(String maHD) {
         HoaDonViewModel hd = null;
-        String sql = "select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, hd.trang_thai\n"
+        String sql = "select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi\n"
+                + "		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang\n"
+                + "		, httt.loai_hinh_thanh_toan, hd.ghi_chu, hd.trang_thai\n"
+                + "		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang\n"
                 + "from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id\n"
-                + "where ma_hoa_don = ?;";
+                + "	left join KhachHang kh on hd.id_khach_hang = kh.id\n"
+                + "	left join HoaDonChiTiet hdct on hd.id = hdct.id_hoa_don\n"
+                + "	left join HinhThucThanhToan httt on hd.id = httt.id_hoa_don\n"
+                + "where hd.id = ?	";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
             pstm.setObject(1, maHD);
             ResultSet rs = pstm.executeQuery();
@@ -195,10 +223,21 @@ public class HoaDonRepository implements IHoaDonRepository {
                 hd.setMaHoaDon(rs.getString("ma_hoa_don"));
                 hd.setNgayTao(rs.getTimestamp("ngay_tao"));
                 hd.setTenKhachHang(rs.getString("ten_khach_hang"));
+                hd.setSoDienThoai(rs.getString("so_dien_thoai"));
+                hd.setDiaChi(rs.getString("dia_chi"));
                 hd.setNhanVien(new NhanVien(
                         rs.getInt("id_nhan_vien"),
                         rs.getString("ma_nhan_vien"),
                         rs.getString("ho_ten")));
+                hd.setNgayThanhToan(rs.getTimestamp("ngay_thanh_toan"));
+                hd.setNgayGiaoHang(rs.getTimestamp("ngay_giao_hang"));
+                hd.setTienShip(rs.getBigDecimal("tien_ship"));
+                hd.setTienCoc(rs.getBigDecimal("tien_coc"));
+                hd.setNgayNhanHang(rs.getTimestamp("ngay_nhan_hang"));
+                hd.setHinhThucThanhToan(rs.getString("loai_hinh_thanh_toan"));
+                hd.setTongTien(rs.getBigDecimal("tong_tien"));
+                hd.setGhiChu(rs.getString("ghi_chu"));
+                hd.setIdKhachHang(new KhachHang(rs.getInt("id_khach_hang")));
                 hd.setTrangThai(rs.getInt("trang_thai"));
             }
         } catch (SQLException ex) {

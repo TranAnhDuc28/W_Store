@@ -17,12 +17,14 @@ public interface IHoaDonService {
     List<HoaDonViewModel> getAll(int page, int pageSize);
 
     List<HoaDonViewModel> getAllByTrangThai(int page, int pageSize, int trangThai);
-    
+
     boolean insert(HoaDon hd);
+
+    boolean update(HoaDon hd, int id);
 
     int getCountRecord();
 
     int getCountRecordByTrangThai(int trangThai);
-    
+
     HoaDonViewModel findByMa(String maHD);
 }

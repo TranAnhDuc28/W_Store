@@ -152,6 +152,10 @@ public class FormHoaDonBanHangJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+        int row = tblHoaDon.getSelectedRow();
+        if(row < 0) {
+            return;
+        }
         if (!formTabBanHangJPanel.listHoaDonChiTiet.isEmpty()) {
             if (!Helper.comfirm(this, "Đang có sản phẩm trong giỏ hàng bạn muốn tiếp tục?")) {
                 return;
@@ -163,10 +167,10 @@ public class FormHoaDonBanHangJDialog extends javax.swing.JDialog {
                     formTabBanHangJPanel.pageSize,
                     formTabBanHangJPanel.trangThai));
             rowSelected = tblHoaDon.getSelectedRow();
-            HoaDonViewModel hd = listHD.get(rowSelected);
-            int idHoaDon = hd.getId();
+            formTabBanHangJPanel.hoaDonViewModel =  listHD.get(rowSelected);
+            int idHoaDon = formTabBanHangJPanel.hoaDonViewModel.getId();
             formTabBanHangJPanel.loadDataToTblGioHang(hoaDonChiTietService.getAllByHoaDonID(idHoaDon));
-            formTabBanHangJPanel.showHoaDonDuocChon(hd);
+            formTabBanHangJPanel.showHoaDonDuocChon(formTabBanHangJPanel.hoaDonViewModel);
             formTabBanHangJPanel.showDataHoaDonTaiQuay(listHD.get(rowSelected));
             this.dispose();
         }
