@@ -23,7 +23,6 @@ import com.wstore.services.impl.thuoctinhsanpham.ChatLieuVoService;
 import com.wstore.services.impl.thuoctinhsanpham.DongMayService;
 import com.wstore.services.impl.thuoctinhsanpham.DongSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.MauService;
-import com.wstore.services.impl.thuoctinhsanpham.PhongCachService;
 import com.wstore.services.impl.thuoctinhsanpham.ThuongHieuService;
 import com.wstore.services.impl.thuoctinhsanpham.TinhNangSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.TinhNangService;
@@ -35,7 +34,6 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuVoViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.DongMayViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.DongSanPhamViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.MauViewModel;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.XuatXuViewModel;
@@ -45,7 +43,6 @@ import com.wstore.views.thuoctinhsanpham.FormChatLieuVoJDialog;
 import com.wstore.views.thuoctinhsanpham.FormDongMayJDialog;
 import com.wstore.views.thuoctinhsanpham.FormDongSanPhamJDialog;
 import com.wstore.views.thuoctinhsanpham.FormMauJDialog;
-import com.wstore.views.thuoctinhsanpham.FormPhongCachJDialog;
 import com.wstore.views.thuoctinhsanpham.FormThuongHieuJDialog;
 import com.wstore.views.thuoctinhsanpham.FormTinhNangJDialog;
 import com.wstore.views.thuoctinhsanpham.FormXuatXuJDialog;
@@ -76,7 +73,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     private final IThuocTinhSanPhamService chatLieuKinhService = new ChatLieuKinhService();
     private final IThuocTinhSanPhamService chatLieuVoService = new ChatLieuVoService();
     private final IDongSanPhamService dongSanPhamService = new DongSanPhamService();
-    private final IThuocTinhSanPhamService phongCachService = new PhongCachService();
     private final IThuocTinhSanPhamService tinhNangService = new TinhNangService();
     DefaultComboBoxModel dcbmThuongHieu = new DefaultComboBoxModel();
     DefaultComboBoxModel dcbmDongMay = new DefaultComboBoxModel();
@@ -106,7 +102,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         cboChatLieuVo.setModel(dcbmChatLieuVo);
         cboDongSanPham.setModel(dcbmDongSanPham);
         cboTinhNang.setModel(dcbmTinhNang);
-        cboPhongCach.setModel(dcbmPhongCach);
         loadDataCboThuongHieu();
         loadDataCboDongSanPham();
         loadDataCboDongMay();
@@ -119,7 +114,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         loadDataCboHinhDang();
         loadDataCboDoiTuongSuDung();
         loadDataCboTinhNang();
-        loadDataCboPhongCach();
     }
 
     private void init() {
@@ -160,7 +154,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         cboThuongHieu = new javax.swing.JComboBox<>();
         cboDongSanPham = new javax.swing.JComboBox<>();
         jPanel8 = new javax.swing.JPanel();
@@ -193,10 +186,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         jPanel23 = new javax.swing.JPanel();
         btnThemTinhNang = new javax.swing.JButton();
         btnResetCboTinhNang = new javax.swing.JButton();
-        cboPhongCach = new com.wstore.swing.combobox.ComboBoxMultiSelection();
-        jPanel24 = new javax.swing.JPanel();
-        btnThemPhongCach = new javax.swing.JButton();
-        btnResetCboPhongCach = new javax.swing.JButton();
         jPanel22 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -234,6 +223,11 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sản phẩm");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(241, 246, 251));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -345,7 +339,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         jPanel21.setPreferredSize(new Dimension(410, 370));
 
         jPanel17.setOpaque(false);
-        jPanel17.setLayout(new java.awt.GridLayout(9, 0, 0, 12));
+        jPanel17.setLayout(new java.awt.GridLayout(8, 0, 0, 12));
 
         jLabel2.setText("Thương hiệu");
         jPanel17.add(jLabel2);
@@ -370,9 +364,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
         jLabel25.setText("Tính năng");
         jPanel17.add(jLabel25);
-
-        jLabel24.setText("Phong cách");
-        jPanel17.add(jLabel24);
 
         cboThuongHieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboThuongHieu.setPreferredSize(new java.awt.Dimension(220, 30));
@@ -571,29 +562,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         });
         jPanel23.add(btnResetCboTinhNang);
 
-        cboPhongCach.setPreferredSize(new java.awt.Dimension(72, 30));
-
-        jPanel24.setOpaque(false);
-        jPanel24.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
-
-        btnThemPhongCach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/add16x16.png"))); // NOI18N
-        btnThemPhongCach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnThemPhongCach.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemPhongCachActionPerformed(evt);
-            }
-        });
-        jPanel24.add(btnThemPhongCach);
-
-        btnResetCboPhongCach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/refresh16x16.png"))); // NOI18N
-        btnResetCboPhongCach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnResetCboPhongCach.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetCboPhongCachActionPerformed(evt);
-            }
-        });
-        jPanel24.add(btnResetCboPhongCach);
-
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
@@ -628,20 +596,14 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addComponent(cboPhongCach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)))
+                            .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -673,13 +635,8 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cboTinhNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                                .addComponent(cboPhongCach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)))))
+                            .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -853,8 +810,9 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPanel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                        .addComponent(jPanel22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1095,14 +1053,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         loadDataCboTinhNang();
     }//GEN-LAST:event_btnResetCboTinhNangActionPerformed
 
-    private void btnThemPhongCachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemPhongCachActionPerformed
-        new FormPhongCachJDialog(this, true).setVisible(true);
-    }//GEN-LAST:event_btnThemPhongCachActionPerformed
-
-    private void btnResetCboPhongCachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetCboPhongCachActionPerformed
-        loadDataCboPhongCach();
-    }//GEN-LAST:event_btnResetCboPhongCachActionPerformed
-
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         rowSelected = formSanPhamJPanel.tblDSSanPham.getSelectedRow();
         if (rowSelected < 0) {
@@ -1143,7 +1093,14 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
     private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
         this.dispose();
+        rowSelected = -1;
+        formSanPhamJPanel.tblDSSanPham.clearSelection();
     }//GEN-LAST:event_btnDongActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        rowSelected = -1;
+        formSanPhamJPanel.tblDSSanPham.clearSelection();
+    }//GEN-LAST:event_formWindowClosing
 
     private SanPham getDataToForm() {
         SanPham sp = new SanPham();
@@ -1287,7 +1244,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         cboHinhDang.setSelectedIndex(0);
         cboDoiTuongSuDung.setSelectedIndex(0);
         cboTinhNang.clearSelectedItems();
-        cboPhongCach.clearSelectedItems();
         spnKhangNuoc.setValue(0);
         spnSizeMat.setValue(0);
         spnDoDay.setValue(0);
@@ -1397,15 +1353,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         cboTinhNang.setSelectedItem(null);
     }
 
-    private void loadDataCboPhongCach() {
-        List<PhongCachViewModel> list = phongCachService.getAllByTrangThai(true);
-        dcbmPhongCach.removeAllElements();
-        for (PhongCachViewModel pc : list) {
-            dcbmPhongCach.addElement(pc);
-        }
-        cboPhongCach.setSelectedItem(null);
-    }
-
     private void loadDataCboHinhDang() {
         cboHinhDang.addItem("Mặt tròn");
         cboHinhDang.addItem("Mặt vuông");
@@ -1464,7 +1411,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnResetCboChatLieuVo;
     private javax.swing.JButton btnResetCboDongMay;
     private javax.swing.JButton btnResetCboDongSanPham;
-    private javax.swing.JButton btnResetCboPhongCach;
     private javax.swing.JButton btnResetCboTinhNang;
     private javax.swing.JButton btnResetCboXuatXu;
     private javax.swing.JButton btnResetChatLieuKinh;
@@ -1478,7 +1424,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnThemDongSanPham;
     private javax.swing.JButton btnThemMauMat;
     private javax.swing.JButton btnThemMauVo;
-    private javax.swing.JButton btnThemPhongCach;
     private javax.swing.JButton btnThemThuongHieu;
     private javax.swing.JButton btnThemTinhNang;
     private javax.swing.JButton btnThemXuatXu;
@@ -1491,7 +1436,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     javax.swing.JComboBox<String> cboHinhDang;
     javax.swing.JComboBox<String> cboMauMat;
     javax.swing.JComboBox<String> cboMauVo;
-    com.wstore.swing.combobox.ComboBoxMultiSelection cboPhongCach;
     javax.swing.JComboBox<String> cboThuongHieu;
     com.wstore.swing.combobox.ComboBoxMultiSelection cboTinhNang;
     javax.swing.JComboBox<String> cboXuatXu;
@@ -1510,7 +1454,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1531,7 +1474,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;

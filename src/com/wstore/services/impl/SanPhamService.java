@@ -5,11 +5,9 @@
 package com.wstore.services.impl;
 
 import com.wstore.domainmodels.SanPham;
-import com.wstore.repositories.IPhongCachSanPhamRepository;
 import com.wstore.repositories.ISanPhamRepository;
 import com.wstore.repositories.ITinhNangSanPhamRepository;
 import com.wstore.repositories.impl.SanPhamRepository;
-import com.wstore.repositories.impl.thuoctinhsanpham.PhongCachSanPhamReporitory;
 import com.wstore.repositories.impl.thuoctinhsanpham.TinhNangSanPhamRepository;
 import com.wstore.utilities.Helper;
 import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
@@ -18,7 +16,6 @@ import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuVoViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.DongMayViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.MauViewModel;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.XuatXuViewModel;
@@ -39,8 +36,6 @@ public class SanPhamService implements ISanPhamService {
             = new SanPhamRepository();
     private final ITinhNangSanPhamRepository tinhNangRepository
             = new TinhNangSanPhamRepository();
-    private final IPhongCachSanPhamRepository phongCachRepository
-            = new PhongCachSanPhamReporitory();
 
     @Override
     public List<SanPhamViewModel> getAll(int page, int pageSize, int trangThai) {
@@ -50,7 +45,6 @@ public class SanPhamService implements ISanPhamService {
         for (SanPham sanPham : listSanPham) {
             int idSanPham = sanPham.getId();
             Set<TinhNangViewModel> listTNSP = tinhNangRepository.getAllByIdSanPham(sanPham.getId());
-            Set<PhongCachViewModel> listPCSP = phongCachRepository.getAllByIdSanPham(sanPham.getId());
 
             SanPhamViewModel sanPhamView = new SanPhamViewModel(
                     idSanPham,
@@ -88,7 +82,6 @@ public class SanPhamService implements ISanPhamService {
                     new MauViewModel(
                             sanPham.getMauVo().getId(),
                             sanPham.getMauVo().getTenMau()),
-                    Helper.removeDauNgoacVuong(listPCSP.toString()),
                     Helper.removeDauNgoacVuong(listTNSP.toString()),
                     new MauViewModel(
                             sanPham.getMauMat().getId(),
@@ -125,7 +118,6 @@ public class SanPhamService implements ISanPhamService {
         for (SanPham sanPham : listSanPham) {
             int idSanPham = sanPham.getId();
             Set<TinhNangViewModel> listTNSP = tinhNangRepository.getAllByIdSanPham(sanPham.getId());
-            Set<PhongCachViewModel> listPCSP = phongCachRepository.getAllByIdSanPham(sanPham.getId());
 
             SanPhamViewModel sanPhamView = new SanPhamViewModel(
                     idSanPham,
@@ -163,7 +155,6 @@ public class SanPhamService implements ISanPhamService {
                     new MauViewModel(
                             sanPham.getMauVo().getId(),
                             sanPham.getMauVo().getTenMau()),
-                    Helper.removeDauNgoacVuong(listPCSP.toString()),
                     Helper.removeDauNgoacVuong(listTNSP.toString()),
                     new MauViewModel(
                             sanPham.getMauMat().getId(),

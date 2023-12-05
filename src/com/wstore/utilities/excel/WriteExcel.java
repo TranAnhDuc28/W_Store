@@ -247,16 +247,14 @@ public class WriteExcel {
         cell = row.createCell(16);
         cell.setCellValue(sp.getMauVo().toString());
         cell = row.createCell(17);
-        cell.setCellValue(sp.getPhongCach());
-        cell = row.createCell(18);
         cell.setCellValue(sp.getTinhNang());
-        cell = row.createCell(19);
+        cell = row.createCell(18);
         cell.setCellValue(sp.getDoDay().toString());
-        cell = row.createCell(20);
+        cell = row.createCell(19);
         cell.setCellValue(sp.getMauMat().toString());
-        cell = row.createCell(21);
+        cell = row.createCell(20);
         cell.setCellValue(sp.getHinhAnh());
-        cell = row.createCell(22);
+        cell = row.createCell(21);
         cell.setCellValue(sp.getTrangThai() == 0 ? "Đang kinh doanh" : "Ngừng kinh doanh");
     }
 

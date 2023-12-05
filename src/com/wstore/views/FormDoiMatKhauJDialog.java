@@ -5,6 +5,10 @@
 package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.wstore.services.INhanVienService;
+import com.wstore.services.impl.NhanVienService;
+import com.wstore.utilities.BamMatKhau;
+import com.wstore.utilities.Helper;
 
 /**
  *
@@ -12,13 +16,41 @@ import com.formdev.flatlaf.FlatClientProperties;
  */
 public class FormDoiMatKhauJDialog extends javax.swing.JDialog {
 
-    /**
-     * Creates new form DoiMatKhauJDialog
-     */
+    private final INhanVienService nhanVienService = new NhanVienService();
+
     public FormDoiMatKhauJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         init();
+    }
+
+    private boolean validateForm() {
+        if (Helper.checkRongPasswordField(this, txtMatKhauCu,
+                "Vui lòng nhập mật khẩu hiện tại!")) {
+            return false;
+        }
+        if (Helper.checkRongPasswordField(this, txtMatKhauMoi,
+                "Vui lòng nhập mật khẩu mới!")) {
+            return false;
+        }
+        if (Helper.checkRongPasswordField(this, txtMatKhauMoiNhapLai,
+                "Vui lòng nhập mật khẩu xác nhận!")) {
+            return false;
+        }
+        String mkCu = BamMatKhau.hashPassword(String.valueOf(txtMatKhauCu.getPassword()));
+        System.out.println(mkCu);
+        System.out.println(Helper.USER_LOGIN.getMatKhau());
+        String mkMoi = String.valueOf(txtMatKhauMoi.getPassword());
+        String mkMoiXacNhan = String.valueOf(txtMatKhauMoiNhapLai.getPassword());
+        if (!Helper.USER_LOGIN.getMatKhau().equals(mkCu)) {
+            Helper.alert(this, "Mật khẩu hiện tại không chính xác!");
+            return false;
+        }
+        if (!mkMoi.equals(mkMoiXacNhan)) {
+            Helper.alert(this, "Mật khẩu mới và mật khẩu mới xác nhận phải giống nhau");
+            return false;
+        }
+        return true;
     }
 
     private void init() {
@@ -163,7 +195,23 @@ public class FormDoiMatKhauJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDongActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
-
+        if (validateForm()) {
+            if (Helper.comfirm(this, "Xác nhận đổi mật khẩu?")) {
+                String matKhauMoi = BamMatKhau.hashPassword(String.valueOf(txtMatKhauMoiNhapLai.getPassword()));
+                int id = Helper.USER_LOGIN.getId();
+                try {
+                    if (nhanVienService.updatePassword(matKhauMoi, id)) {
+                        Helper.alert(this, "Đổi mật khẩu thành công!");
+                        
+                        this.dispose();
+                    } else {
+                        Helper.alert(this, "Đổi mật khẩu thất bại!");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     /**

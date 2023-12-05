@@ -6,14 +6,12 @@ package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.wstore.services.IDongSanPhamService;
-import com.wstore.services.IPhongCachSanPhamService;
 import com.wstore.services.ITinhNangSanPhamService;
 import com.wstore.services.impl.SanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuDayService;
 import com.wstore.services.impl.thuoctinhsanpham.ChatLieuKinhService;
 import com.wstore.services.impl.thuoctinhsanpham.DongMayService;
 import com.wstore.services.impl.thuoctinhsanpham.DongSanPhamService;
-import com.wstore.services.impl.thuoctinhsanpham.PhongCachSanPhamService;
 import com.wstore.services.impl.thuoctinhsanpham.ThuongHieuService;
 import com.wstore.services.impl.thuoctinhsanpham.TinhNangSanPhamService;
 import com.wstore.utilities.Helper;
@@ -60,7 +58,6 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     DefaultComboBoxModel dcbmChatLieuKinh = new DefaultComboBoxModel();
     private final ISanPhamService sanPhamService = new SanPhamService();
     private final ITinhNangSanPhamService tinhNangSanPhamService = new TinhNangSanPhamService();
-    private final IPhongCachSanPhamService phongCachSanPhamService = new PhongCachSanPhamService();
     FormThemVaSuaSanPhamJFrame formThemVaSuaSanPham;
     private DefaultTableModel dtmTblSanPham;
     protected List<SanPhamViewModel> listSP;
@@ -315,17 +312,17 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
 
         tblDSSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã sản phẩm", "Thương hiệu", "Mã hàng hóa", "Giá nhập", "Giá bán", "Số lượng tồn", "Đối tượng sử dụng", "Dòng sản phẩm", "Dòng máy", "Chất liệu dây", "Chất liệu kính", "Kháng nước", "Khoảng trữ cót", "Size mặt", "Xuất xứ", "Chất liệu vỏ", "Hình dạng mặt", "Màu vỏ", "Phong cách", "Tính năng", "Độ dầy", "Màu mặt", "Hình ảnh", "Trạng thái"
+                "Mã sản phẩm", "Thương hiệu", "Mã hàng hóa", "Giá nhập", "Giá bán", "Số lượng tồn", "Đối tượng sử dụng", "Dòng sản phẩm", "Dòng máy", "Chất liệu dây", "Chất liệu kính", "Kháng nước", "Khoảng trữ cót", "Size mặt", "Xuất xứ", "Chất liệu vỏ", "Hình dạng mặt", "Màu vỏ", "Tính năng", "Độ dầy", "Màu mặt", "Hình ảnh", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -359,12 +356,11 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
             tblDSSanPham.getColumnModel().getColumn(15).setPreferredWidth(170);
             tblDSSanPham.getColumnModel().getColumn(16).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(17).setPreferredWidth(150);
-            tblDSSanPham.getColumnModel().getColumn(18).setPreferredWidth(200);
-            tblDSSanPham.getColumnModel().getColumn(19).setPreferredWidth(400);
+            tblDSSanPham.getColumnModel().getColumn(18).setPreferredWidth(400);
+            tblDSSanPham.getColumnModel().getColumn(19).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(20).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(21).setPreferredWidth(150);
             tblDSSanPham.getColumnModel().getColumn(22).setPreferredWidth(150);
-            tblDSSanPham.getColumnModel().getColumn(23).setPreferredWidth(150);
         }
 
         jPanel7.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -896,9 +892,6 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         List<TinhNangViewModel> listTNSP = new ArrayList<>(tinhNangSanPhamService.getAllByIdSanPham(sp.getId()));
         formThemVaSuaSanPham.cboTinhNang.clearSelectedItems();
         formThemVaSuaSanPham.cboTinhNang.setSelectedItems(listTNSP);
-        List<PhongCachViewModel> listPCSP = new ArrayList<>(phongCachSanPhamService.getAllByIdSanPham(sp.getId()));
-        formThemVaSuaSanPham.cboPhongCach.clearSelectedItems();
-        formThemVaSuaSanPham.cboPhongCach.setSelectedItems(listPCSP);
         Helper.showHinhAnh("images\\images-san-pham",
                 formThemVaSuaSanPham.lblHinhAnh, sp.getHinhAnh());
         formThemVaSuaSanPham.setVisible(true);

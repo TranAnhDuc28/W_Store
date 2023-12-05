@@ -479,7 +479,7 @@
                         <Component class="javax.swing.JTable" name="tblDSSanPham">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="24" rowCount="4">
+                              <Table columnCount="23" rowCount="4">
                                 <Column editable="false" title="M&#xe3; s&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
                                 <Column editable="false" title="Th&#x1b0;&#x1a1;ng hi&#x1ec7;u" type="java.lang.Object"/>
                                 <Column editable="false" title="M&#xe3; h&#xe0;ng h&#xf3;a" type="java.lang.Object"/>
@@ -498,7 +498,6 @@
                                 <Column editable="false" title="Ch&#x1ea5;t li&#x1ec7;u v&#x1ecf;" type="java.lang.Object"/>
                                 <Column editable="false" title="H&#xec;nh d&#x1ea1;ng m&#x1eb7;t" type="java.lang.Object"/>
                                 <Column editable="false" title="M&#xe0;u v&#x1ecf;" type="java.lang.Object"/>
-                                <Column editable="false" title="Phong c&#xe1;ch" type="java.lang.Object"/>
                                 <Column editable="false" title="T&#xed;nh n&#x103;ng" type="java.lang.Object"/>
                                 <Column editable="false" title="&#x110;&#x1ed9; d&#x1ea7;y" type="java.lang.Object"/>
                                 <Column editable="false" title="M&#xe0;u m&#x1eb7;t" type="java.lang.Object"/>
@@ -595,11 +594,6 @@
                                   <Renderer/>
                                 </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="150" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="200" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>

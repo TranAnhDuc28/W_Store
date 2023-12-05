@@ -41,7 +41,6 @@ public class SanPhamViewModel {
     private XuatXuViewModel xuatXu;
     private ChatLieuVoViewModel chatLieuVo;
     private MauViewModel mauVo;
-    private String phongCach;
     private String tinhNang;
     private MauViewModel mauMat;
     private String ghiChu;
@@ -50,7 +49,14 @@ public class SanPhamViewModel {
     public SanPhamViewModel() {
     }
 
-    public SanPhamViewModel(Integer id, String maSanPham, ThuongHieuViewModel thuongHieu, String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon, String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc, Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, DongMayViewModel dongMay, ChatLieuDayViewModel chatLieuDay, ChatLieuKinhViewModel chatLieuKinh, XuatXuViewModel xuatXu, ChatLieuVoViewModel chatLieuVo, MauViewModel mauVo, String phongCach, String tinhNang, MauViewModel mauMat, String ghiChu, Integer trangThai) {
+    public SanPhamViewModel(Integer id, String maSanPham, ThuongHieuViewModel thuongHieu, 
+            String maHangHoa, BigDecimal giaNhap, BigDecimal donGia, Integer soLuongTon,
+            String hinhAnh, String doiTuongSuDung, String dongSanPham, Integer khangNuoc,
+            Integer khoangTruCot, Float sizeMat, String hinhDang, Float doDay, 
+            DongMayViewModel dongMay, ChatLieuDayViewModel chatLieuDay, 
+            ChatLieuKinhViewModel chatLieuKinh, XuatXuViewModel xuatXu, 
+            ChatLieuVoViewModel chatLieuVo, MauViewModel mauVo,
+            String tinhNang, MauViewModel mauMat, String ghiChu, Integer trangThai) {
         this.id = id;
         this.maSanPham = maSanPham;
         this.thuongHieu = thuongHieu;
@@ -72,7 +78,6 @@ public class SanPhamViewModel {
         this.xuatXu = xuatXu;
         this.chatLieuVo = chatLieuVo;
         this.mauVo = mauVo;
-        this.phongCach = phongCach;
         this.tinhNang = tinhNang;
         this.mauMat = mauMat;
         this.ghiChu = ghiChu;
@@ -247,14 +252,6 @@ public class SanPhamViewModel {
         this.mauVo = mauVo;
     }
 
-    public String getPhongCach() {
-        return phongCach;
-    }
-
-    public void setPhongCach(String phongCach) {
-        this.phongCach = phongCach;
-    }
-
     public String getTinhNang() {
         return tinhNang;
     }
@@ -293,7 +290,7 @@ public class SanPhamViewModel {
             Helper.dfTien.format(giaNhap), Helper.dfTien.format(donGia), soLuongTon,
             doiTuongSuDung, dongSanPham, dongMay, chatLieuDay, chatLieuKinh,
             khangNuoc, khoangTruCot, sizeMat, xuatXu, chatLieuVo,
-            hinhDang, mauVo, phongCach, tinhNang, doDay, mauMat, hinhAnh,
+            hinhDang, mauVo, tinhNang, doDay, mauMat, hinhAnh,
             trangThai == 0 ? "Đang kinh doanh" : "Ngừng kinh doanh"};
     }
 }

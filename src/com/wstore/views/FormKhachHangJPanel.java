@@ -426,7 +426,7 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cboTrangThaiItemStateChanged
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        new FormThemVaSuaKhachHangJFrame().setVisible(true);
+        new FormThemVaSuaKhachHangJFrame(this).setVisible(true);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
@@ -459,7 +459,7 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
             Helper.alert(this, "Vui lòng chọn thông tin khách hàng muốn sửa!");
             return;
         }
-        formThemVaSuaKhachHangJFrame = new FormThemVaSuaKhachHangJFrame();
+        formThemVaSuaKhachHangJFrame = new FormThemVaSuaKhachHangJFrame(this);
         showData();
     }//GEN-LAST:event_btnDieuChinhActionPerformed
 
@@ -619,7 +619,8 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         formThemVaSuaKhachHangJFrame.txtGhiChu.setText(kh.getGhiChu());
         formThemVaSuaKhachHangJFrame.txtHoTen.setText(kh.getHoTen());
         try {
-            formThemVaSuaKhachHangJFrame.txtNgaySinh.setDate(Helper.sdfNgayThang.parse(kh.getNgaySinh()));
+            formThemVaSuaKhachHangJFrame.txtNgaySinh.setDate(
+                    kh.getNgaySinh() == null ? null : Helper.sdfNgayThang.parse(kh.getNgaySinh()));
         } catch (ParseException ex) {
             ex.printStackTrace();
         }

@@ -10,7 +10,6 @@ import com.wstore.views.thuoctinhsanpham.FormChatLieuVoJDialog;
 import com.wstore.views.thuoctinhsanpham.FormDongMayJDialog;
 import com.wstore.views.thuoctinhsanpham.FormDongSanPhamJDialog;
 import com.wstore.views.thuoctinhsanpham.FormMauJDialog;
-import com.wstore.views.thuoctinhsanpham.FormPhongCachJDialog;
 import com.wstore.views.thuoctinhsanpham.FormThuongHieuJDialog;
 import com.wstore.views.thuoctinhsanpham.FormTinhNangJDialog;
 import com.wstore.views.thuoctinhsanpham.FormXuatXuJDialog;
@@ -44,7 +43,6 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
         btnChatLieuKinh = new javax.swing.JButton();
         btnXuatXu = new javax.swing.JButton();
         btnChatLieuVo = new javax.swing.JButton();
-        btnPhongCach = new javax.swing.JButton();
         btnMau = new javax.swing.JButton();
         btnTinhNang = new javax.swing.JButton();
 
@@ -117,15 +115,6 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
         });
         add(btnChatLieuVo);
 
-        btnPhongCach.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPhongCach.setText("Phong cách ");
-        btnPhongCach.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPhongCachActionPerformed(evt);
-            }
-        });
-        add(btnPhongCach);
-
         btnMau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnMau.setText("Màu");
         btnMau.setIconTextGap(10);
@@ -174,10 +163,6 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
         new FormChatLieuVoJDialog(null, true).setVisible(true);
     }//GEN-LAST:event_btnChatLieuVoActionPerformed
 
-    private void btnPhongCachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhongCachActionPerformed
-        new FormPhongCachJDialog(null, true).setVisible(true);
-    }//GEN-LAST:event_btnPhongCachActionPerformed
-
     private void btnMauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMauActionPerformed
         new FormMauJDialog(null, true).setVisible(true);
     }//GEN-LAST:event_btnMauActionPerformed
@@ -194,7 +179,6 @@ public class FormTabThuocTinhSanPham extends javax.swing.JPanel {
     private javax.swing.JButton btnDongMay;
     private javax.swing.JButton btnDongSanPham;
     private javax.swing.JButton btnMau;
-    private javax.swing.JButton btnPhongCach;
     private javax.swing.JButton btnThuongHieu;
     private javax.swing.JButton btnTinhNang;
     private javax.swing.JButton btnXuatXu;

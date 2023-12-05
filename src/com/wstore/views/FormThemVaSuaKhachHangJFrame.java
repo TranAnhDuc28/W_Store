@@ -10,6 +10,8 @@ import com.wstore.services.impl.KhachHangService;
 import com.wstore.utilities.Helper;
 import java.awt.Color;
 import java.sql.Date;
+import java.sql.Timestamp;
+import javax.swing.JPanel;
 
 /**
  *
@@ -22,8 +24,9 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
     private String tenHinhAnh = null;
     private int rowSelected = -1;
 
-    public FormThemVaSuaKhachHangJFrame() {
+    public FormThemVaSuaKhachHangJFrame(JPanel jPanel) {
         initComponents();
+        this.formKhachHangJPanel = (FormKhachHangJPanel) jPanel;
         getContentPane().setBackground(new Color(235, 236, 239));
     }
 
@@ -42,6 +45,7 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
         kh.setSoDienThoai(txtSoDienThoai.getText());
         kh.setEmail(txtEmail.getText());
         kh.setGhiChu(txtGhiChu.getText());
+        kh.setNgayTao(new Timestamp(new java.util.Date().getTime()));
         String hinh = null;
         if (tenHinhAnh != null) {
             hinh = tenHinhAnh;
@@ -72,6 +76,7 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
         rdoNam.setSelected(true);
         lblHinhAnh.setIcon(null);
         lblHinhAnh.setText("Hình ảnh");
+        rowSelected = -1;
         formKhachHangJPanel.tblKhachHang.clearSelection();
     }
 
@@ -132,6 +137,11 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Khách hàng");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
         jToolBar1.setRollover(true);
@@ -314,6 +324,8 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        txtNgaySinh.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -480,8 +492,13 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRefeshAnhActionPerformed
 
     private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
+        clearForm();
         this.dispose();
     }//GEN-LAST:event_btnDongActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        clearForm();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
