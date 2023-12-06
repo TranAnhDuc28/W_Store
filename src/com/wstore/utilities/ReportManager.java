@@ -32,14 +32,15 @@ public class ReportManager {
     }
 
     public void printReportPayment(HoaDonViewModel hd) throws JRException {
+        String maHD = hd.getMaHoaDon();
         Map para = new HashMap();
-        para.put("maHoaDon", hd.getMaHoaDon());
+        para.put("maHoaDon", maHD);
         Connection con = DBConnect.getConnection();
-        JasperPrint print = JasperFillManager.fillReport(reportPay, para, con);
-        view(print);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reportPay, para, con);
+        view(jasperPrint);
     }
 
-    private void view(JasperPrint print) throws JRException {
-        JasperViewer.viewReport(print, false);
+    private void view(JasperPrint jasperPrint) throws JRException {
+        JasperViewer.viewReport(jasperPrint, false);
     }
 }

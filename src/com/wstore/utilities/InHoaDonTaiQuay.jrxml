@@ -69,7 +69,7 @@ GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang,
 				<textElement verticalAlignment="Middle">
 					<font fontName="Roboto"/>
 				</textElement>
-				<text><![CDATA[Địa chỉ]]></text>
+				<text><![CDATA[Địa chỉ:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="145" width="65" height="20" uuid="abfc1e75-5ce8-4008-b67a-573ab77721cc"/>
@@ -311,9 +311,9 @@ GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang,
 				<reportElement x="422" y="12" width="100" height="21" uuid="6e10c1b0-054b-4491-9c7d-9531c10de2ca"/>
 				<box leftPadding="5" rightPadding="5"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Roboto"/>
+					<font fontName="Roboto" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Tổng tiền]]></text>
+				<text><![CDATA[Tổng tiền:]]></text>
 			</staticText>
 			<line>
 				<reportElement x="276" y="76" width="251" height="1" uuid="0520e88d-7c84-421d-9f12-6ec747021783"/>

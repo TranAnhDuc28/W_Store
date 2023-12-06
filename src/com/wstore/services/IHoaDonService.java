@@ -26,5 +26,7 @@ public interface IHoaDonService {
 
     int getCountRecordByTrangThai(int trangThai);
 
-    HoaDonViewModel findByMa(String maHD);
+    HoaDonViewModel getOne(String maHD);
+
+    List<HoaDonViewModel> findByMaHD(int page, int pageSize, String maHD);
 }

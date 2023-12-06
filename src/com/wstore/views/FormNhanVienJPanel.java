@@ -50,8 +50,8 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
     private void init() {
         txtTimKiemNhanVien.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,
                 "Nhập nội dung tìm kiếm...");
-        txtTimKiemNhanVien.putClientProperty(FlatClientProperties.TEXT_FIELD_SHOW_CLEAR_BUTTON,
-                true);
+//        txtTimKiemNhanVien.putClientProperty(FlatClientProperties.TEXT_FIELD_SHOW_CLEAR_BUTTON,
+//                true);
         psfMatKhau.putClientProperty(FlatClientProperties.STYLE,
                 "showRevealButton:true");
     }
@@ -986,9 +986,11 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
             hinh = imageName;
             imageName = null;
         } else {
-            String hinhAnhPresent = listNVs.get(index).getHinhAnh();
-            if (index >= 0 && hinhAnhPresent != null && !(hinhAnhPresent.equals("No image"))) {
-                hinh = hinhAnhPresent;
+            if (index >= 0) {
+                String hinhAnhPresent = listNVs.get(index).getHinhAnh();
+                if (hinhAnhPresent != null && !(hinhAnhPresent.equals("No image"))) {
+                    hinh = hinhAnhPresent;
+                }
                 if (lblHinhAnh.getIcon() == null) {
                     hinh = "No image";
                 }

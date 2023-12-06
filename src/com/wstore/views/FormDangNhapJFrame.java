@@ -88,7 +88,7 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Đăng nhập");
 
-        txtMatKhau.setText("duc123");
+        txtMatKhau.setText("duc12345");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Tài khoản");

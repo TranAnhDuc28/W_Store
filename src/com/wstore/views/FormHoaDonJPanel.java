@@ -4,9 +4,9 @@
  */
 package com.wstore.views;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import com.wstore.services.IHoaDonService;
 import com.wstore.services.impl.HoaDonService;
-import com.wstore.utilities.Helper;
 import com.wstore.utilities.ReportManager;
 import com.wstore.viewmodels.HoaDonViewModel;
 import java.util.List;
@@ -31,33 +31,18 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
 
     public FormHoaDonJPanel() {
         initComponents();
+        init();
         try {
             ReportManager.getInstance().compileReport();
         } catch (JRException e) {
-            Helper.alert(null, e.getMessage());
+            e.printStackTrace();
         }
         initPagination(hoaDonService.getAll(page, pageSize));
     }
 
-    private void initPagination(List<HoaDonViewModel> list) {
-        trangThai = cboSoBanGhi.getSelectedIndex();
-        totalRowData = hoaDonService.getCountRecord();
-        pageSize = Integer.valueOf(cboSoBanGhi.getSelectedItem().toString());
-        totalPage = (int) Math.ceil(totalRowData.doubleValue() / pageSize.doubleValue());
-        if (page > totalPage) {
-            page = 1;
-        }
-        listHD = list;
-        loadDataToTable(listHD);
-        lblPageOfTotalPage.setText(page + "/" + totalPage);
-    }
-
-    private void loadDataToTable(List<HoaDonViewModel> list) {
-        dtmHoaDon = (DefaultTableModel) tblHoaDon.getModel();
-        dtmHoaDon.setRowCount(0);
-        for (HoaDonViewModel hd : list) {
-            dtmHoaDon.addRow(hd.toDataRow());
-        }
+    private void init() {
+        txtTimKiemHD.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,
+                "Nhập nội dung tìm kiếm...");
     }
 
     @SuppressWarnings("unchecked")
@@ -77,7 +62,7 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTimKiemHD = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         cboTrangThai = new javax.swing.JComboBox<>();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
@@ -184,6 +169,12 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Tìm kiếm");
 
+        txtTimKiemHD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemHDKeyReleased(evt);
+            }
+        });
+
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("Trạng thái");
 
@@ -207,7 +198,7 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTimKiemHD, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cboTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,7 +232,7 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(txtTimKiemHD, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
         );
 
@@ -361,7 +352,7 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
 
     private void btnInHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHoaDonActionPerformed
         rowSelected = tblHoaDon.getSelectedRow();
-        if(rowSelected < 0) {
+        if (rowSelected < 0) {
             return;
         }
         HoaDonViewModel hd = new HoaDonViewModel();
@@ -373,6 +364,31 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnInHoaDonActionPerformed
 
+    private void txtTimKiemHDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemHDKeyReleased
+        String maHD = txtTimKiemHD.getText();
+        initPagination(hoaDonService.findByMaHD(1, 50, maHD));
+    }//GEN-LAST:event_txtTimKiemHDKeyReleased
+
+    private void initPagination(List<HoaDonViewModel> list) {
+        trangThai = cboSoBanGhi.getSelectedIndex();
+        totalRowData = hoaDonService.getCountRecord();
+        pageSize = Integer.valueOf(cboSoBanGhi.getSelectedItem().toString());
+        totalPage = (int) Math.ceil(totalRowData.doubleValue() / pageSize.doubleValue());
+        if (page > totalPage) {
+            page = 1;
+        }
+        listHD = list;
+        loadDataToTable(listHD);
+        lblPageOfTotalPage.setText(page + "/" + totalPage);
+    }
+
+    private void loadDataToTable(List<HoaDonViewModel> list) {
+        dtmHoaDon = (DefaultTableModel) tblHoaDon.getModel();
+        dtmHoaDon.setRowCount(0);
+        for (HoaDonViewModel hd : list) {
+            dtmHoaDon.addRow(hd.toDataRow());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
@@ -401,9 +417,9 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblPageOfTotalPage;
     private javax.swing.JTable tblHoaDon;
+    private javax.swing.JTextField txtTimKiemHD;
     // End of variables declaration//GEN-END:variables
 }

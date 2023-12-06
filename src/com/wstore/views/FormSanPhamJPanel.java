@@ -20,7 +20,6 @@ import com.wstore.viewmodels.QLsanpham.SanPhamViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuDayViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ChatLieuKinhViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.DongMayViewModel;
-import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.PhongCachViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.ThuongHieuViewModel;
 import com.wstore.viewmodels.QLsanpham.thuoctinhsanpham.TinhNangViewModel;
 import java.beans.PropertyChangeEvent;
@@ -68,7 +67,6 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     private int tongSoBanGhiTheoTrangThai = 0;
     private int totalPage = 1;
     public int pageSize = 15;
-    private Thread thread;
     private ProgressExportExcel progressExportExcel;
 
     public FormSanPhamJPanel() {
@@ -974,7 +972,7 @@ class ProgressExportExcel extends SwingWorker<List<SanPhamViewModel>, Void> {
         } else {
             count = sanPhamService.getRecordCountByTrangThai(StatusSanPham.NGUNG_KINH_DOANH);
         }
-        listData.addAll(sanPhamService.getAll(1, count, 0));
+        listData.addAll(sanPhamService.getAll(1, count, trangThai));
         System.out.println("Số bản ghi: " + listData.size());
         return listData;
     }

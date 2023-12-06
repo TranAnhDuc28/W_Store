@@ -24,6 +24,7 @@ import com.wstore.services.ISanPhamService;
 import com.wstore.services.impl.HoaDonChiTietService;
 import com.wstore.services.impl.HoaDonService;
 import com.wstore.utilities.Helper;
+import com.wstore.utilities.ReportManager;
 import com.wstore.utilities.status.StatusHoaDon;
 import com.wstore.viewmodels.HoaDonChiTietViewModel;
 import com.wstore.viewmodels.HoaDonViewModel;
@@ -73,6 +74,11 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     public FormTabBanHangJPanel(Frame parent) {
         initComponents();
         this.formBanHangJFrame = parent;
+        try {
+            ReportManager.getInstance().compileReport();
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
         init();
         customJTable();
         initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
@@ -835,7 +841,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
             hoaDon.setTenKhachHang(txtTenKH.getText().trim());
             hoaDon.setIdNhanVien(Helper.USER_LOGIN.getId());
             if (hoaDonService.insert(hoaDon)) {
-                hoaDonViewModel = hoaDonService.findByMa(hoaDon.getMaHoaDon());
+                hoaDonViewModel = hoaDonService.getOne(hoaDon.getMaHoaDon());
                 showHoaDonDuocChon(hoaDonViewModel);
                 showDataHoaDonTaiQuay(hoaDonViewModel);
                 Helper.alert(this, "Tạo hóa đơn thành công!");
@@ -861,12 +867,20 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         if (!validateForm()) {
             if (hoaDonService.update(getDataToForm(), hoaDonViewModel.getId())) {
                 int idHoaDon = hoaDonViewModel.getId();
+
                 for (HoaDonChiTietViewModel hoaDonChiTietViewModel : listHoaDonChiTiet) {
                     hoaDonChiTietViewModel.setIdHoaDon(new HoaDon(idHoaDon));
                 }
                 hoaDonChiTietService.addListOrder(idHoaDon, listHoaDonChiTiet);
                 sanPhamService.updateSoLuong(listUpdateSoLuongSP);
                 Helper.alert(this, "Thanh toán thành công!");
+                if (Helper.comfirm(this, "Bạn có muốn in hóa đơn không?")) {
+                    try {
+                        ReportManager.getInstance().printReportPayment(hoaDonViewModel);
+                    } catch (JRException ex) {
+                        ex.printStackTrace();
+                    }
+                }
                 clearForm();
             } else {
                 Helper.alert(this, "Thanh toán thất bại!");
@@ -953,10 +967,11 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBoActionPerformed
 
     private void txtTienKhachDuaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyReleased
-        try {
-            tienKhachDua = Integer.parseInt(txtTienKhachDua.getText());
-        } catch (Exception e) {
+        if (txtTienKhachDua.getText().isEmpty()) {
+            txtTienKhachDua.setText("0");
         }
+        tienKhachCK = Integer.parseInt(txtTienKhachChietKhau.getText());
+        tienKhachDua = Integer.parseInt(txtTienKhachDua.getText());
         tienThua = (tienKhachDua + tienKhachCK) - tienCanThanhToan;
         txtTienThua.setText(Helper.dfTien.format(tienThua));
     }//GEN-LAST:event_txtTienKhachDuaKeyReleased
@@ -995,6 +1010,10 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtTienKhachChietKhauKeyTyped
 
     private void txtTienKhachChietKhauKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachChietKhauKeyReleased
+        if (txtTienKhachChietKhau.getText().isEmpty()) {
+            txtTienKhachChietKhau.setText("0");
+        }
+        tienKhachDua = Integer.parseInt(txtTienKhachDua.getText());
         tienKhachCK = Integer.parseInt(txtTienKhachChietKhau.getText());
         tienThua = (tienKhachDua + tienKhachCK) - tienCanThanhToan;
         txtTienThua.setText(Helper.dfTien.format(tienThua));
@@ -1005,14 +1024,22 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
             case 0:
                 txtTienKhachDua.setEnabled(true);
                 txtTienKhachChietKhau.setEnabled(false);
+                txtTienKhachChietKhau.setText("0");
+                txtTienKhachDua.setText(String.valueOf(tienCanThanhToan));
                 break;
             case 1:
                 txtTienKhachDua.setEnabled(false);
                 txtTienKhachChietKhau.setEnabled(true);
+                txtTienKhachChietKhau.setText(String.valueOf(tienCanThanhToan));
+                txtTienKhachDua.setText("0");
                 break;
             case 2:
                 txtTienKhachDua.setEnabled(true);
                 txtTienKhachChietKhau.setEnabled(true);
+                tienKhachDua = (int) tienCanThanhToan / 2;
+                tienKhachCK = (int) tienCanThanhToan / 2;
+                txtTienKhachDua.setText(String.valueOf(tienKhachDua));
+                txtTienKhachChietKhau.setText(String.valueOf(tienKhachCK));
                 break;
             default:
                 break;
@@ -1123,6 +1150,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         txtTongTien.setText(Helper.dfTien.format(tongTien));
         txtGiamGiaKM.setText(Helper.dfTien.format(tongTienGiamGia));
         txtThanhToan.setText(Helper.dfTien.format(tienCanThanhToan));
+        txtTienKhachDua.setText(String.valueOf(tienCanThanhToan));
     }
 
     public void showHoaDonDuocChon(HoaDonViewModel hd) {

@@ -22,9 +22,11 @@ public interface IHoaDonRepository {
 
     boolean update(HoaDon hoaDon, int id);
     
-    HoaDonViewModel findByMa(String maHD);
+    HoaDonViewModel getOne(String maHD);
 
     int getCountRecord();
 
     int getCountRecordByTrangThai(int trangThai);
+    
+    List<HoaDonViewModel> findByMa(int page, int pageSize, String maHD);
 }

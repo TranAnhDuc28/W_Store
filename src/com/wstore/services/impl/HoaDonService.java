@@ -50,8 +50,13 @@ public class HoaDonService implements IHoaDonService {
     }
 
     @Override
-    public HoaDonViewModel findByMa(String maHD) {
-        return hoaDonRepository.findByMa(maHD);
+    public HoaDonViewModel getOne(String maHD) {
+        return hoaDonRepository.getOne(maHD);
+    }
+
+    @Override
+    public List<HoaDonViewModel> findByMaHD(int page, int pageSize, String maHD) {
+        return hoaDonRepository.findByMa(page, pageSize, maHD);
     }
 
 }
