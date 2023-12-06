@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6f563fd7-6f9e-41d0-b929-08a0016ab844">
+	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="maHoaDon" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[WITH OrderTotal AS (
+	SELECT  dbo.HoaDon.id, dbo.HoaDon.ma_hoa_don, SUM(dbo.HoaDonChiTiet.so_luong * dbo.HoaDonChiTiet.don_gia_khuyen_mai) AS tong_tien
+	FROM  dbo.HoaDon INNER JOIN dbo.HoaDonChiTiet ON dbo.HoaDon.id = dbo.HoaDonChiTiet.id_hoa_don
+	GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.id
+)
+SELECT     dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang, dbo.HoaDon.dia_chi, dbo.HoaDon.so_dien_thoai, dbo.SanPham.ma_san_pham, 
+				CONCAT(dbo.ThuongHieu.ten_thuong_hieu, ' ', dbo.SanPham.ma_hang_hoa) as ten_san_pham, dbo.NhanVien.ho_ten, 
+                dbo.HoaDonChiTiet.so_luong, dbo.HoaDonChiTiet.don_gia, dbo.HoaDonChiTiet.don_gia_khuyen_mai, (dbo.HoaDonChiTiet.don_gia_khuyen_mai * CAST(dbo.HoaDonChiTiet.so_luong AS decimal(10, 0))) AS thanh_tien, OrderTotal.tong_tien
+FROM            dbo.HoaDon INNER JOIN OrderTotal ON  dbo.HoaDon.id = OrderTotal.id INNER JOIN
+                         dbo.HoaDonChiTiet ON dbo.HoaDon.id = dbo.HoaDonChiTiet.id_hoa_don INNER JOIN
+                         dbo.NhanVien ON dbo.HoaDon.id_nhan_vien = dbo.NhanVien.id INNER JOIN
+                         dbo.SanPham ON dbo.HoaDonChiTiet.id_san_pham = dbo.SanPham.id INNER JOIN
+                         dbo.ThuongHieu ON dbo.SanPham.id_thuong_hieu = dbo.ThuongHieu.id 
+WHERE dbo.HoaDon.ma_hoa_don = $P{maHoaDon}
+GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang, dbo.HoaDon.dia_chi, dbo.HoaDon.so_dien_thoai, dbo.SanPham.ma_san_pham,
+	  dbo.ThuongHieu.ten_thuong_hieu, dbo.SanPham.ma_hang_hoa, dbo.NhanVien.ho_ten, dbo.HoaDonChiTiet.so_luong, dbo.HoaDonChiTiet.don_gia, dbo.HoaDonChiTiet.don_gia_khuyen_mai, OrderTotal.tong_tien]]>
+	</queryString>
+	<field name="ma_hoa_don" class="java.lang.String"/>
+	<field name="ngay_tao" class="java.sql.Timestamp"/>
+	<field name="ten_khach_hang" class="java.lang.String"/>
+	<field name="dia_chi" class="java.lang.String"/>
+	<field name="so_dien_thoai" class="java.lang.String"/>
+	<field name="ma_san_pham" class="java.lang.String"/>
+	<field name="ten_san_pham" class="java.lang.String"/>
+	<field name="ho_ten" class="java.lang.String"/>
+	<field name="so_luong" class="java.lang.Integer"/>
+	<field name="don_gia" class="java.math.BigDecimal"/>
+	<field name="don_gia_khuyen_mai" class="java.math.BigDecimal"/>
+	<field name="thanh_tien" class="java.math.BigDecimal"/>
+	<field name="tong_tien" class="java.math.BigDecimal"/>
+	<variable name="tongTien" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="168" splitType="Stretch">
+			<staticText>
+				<reportElement x="294" y="52" width="215" height="28" uuid="7847f042-027f-4631-856c-1df864ee0866"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HÓA ĐƠN BÁN HÀNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="200" height="63" uuid="075bfb74-0895-4bb6-a2dd-ce219eaffe04"/>
+				<textElement>
+					<font fontName="Vivaldi" size="48"/>
+				</textElement>
+				<text><![CDATA[W-Store]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="105" width="65" height="20" uuid="ba0f23cc-0ad9-4bea-a309-572a305899fb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<text><![CDATA[Khách hàng:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="125" width="65" height="20" uuid="c8ba2a03-7201-4d45-a10f-dd2eab3aea9b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="145" width="65" height="20" uuid="abfc1e75-5ce8-4008-b67a-573ab77721cc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<text><![CDATA[Số điện thoại:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="562" y="105" width="52" height="20" uuid="2a030bcd-9f8c-49f9-97e0-0ded96b74d5d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<text><![CDATA[Mã HĐ:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="562" y="125" width="52" height="20" uuid="49caf711-d172-4ed7-8ffd-624d9912bba5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<text><![CDATA[Ngày tạo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="614" y="105" width="188" height="20" uuid="dc5c1a2f-4ad7-42e5-ac37-855db2452ba0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{maHoaDon}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="614" y="125" width="188" height="20" uuid="982d2da9-8121-4467-901d-df7c69c8ad03"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ngay_tao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="105" width="219" height="20" uuid="76d051f4-e974-4c25-b356-aa0e771eb1d4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ten_khach_hang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="125" width="219" height="20" uuid="3ebfc4ca-b92c-429c-9e14-a805e003eded"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dia_chi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="145" width="219" height="20" uuid="39b77a19-885d-4f3a-9477-d227137598fb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{so_dien_thoai}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="562" y="145" width="52" height="20" uuid="028ded83-3d8c-4d19-8dff-31e686a35c4f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<text><![CDATA[Nhân viên: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="614" y="145" width="188" height="20" uuid="8c211ffc-c4ac-45c8-8a18-3259c18d7cfe"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ho_ten}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="26">
+			<line>
+				<reportElement x="0" y="0" width="802" height="1" uuid="579d6139-3cf0-4a6d-b869-0aa089923a20"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="26" uuid="581f86e3-7a7b-4d09-af32-e602d2069c6b"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã sản phẩm ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="253" height="26" uuid="0f38a504-ab9f-43af-8b49-b33c4ce52d7a"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên sản phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="353" y="0" width="69" height="26" uuid="3d26051b-7a5b-42f2-9d4b-1117fa9f94c8"/>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="0" width="124" height="26" uuid="33ebc104-f0b8-4a4d-8e49-f88de0ceb3e5"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Đơn giá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="546" y="0" width="124" height="26" uuid="e44798e8-7407-49a1-9e1d-4e38557478e0"/>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Đơn giá khuyến mãi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="670" y="0" width="132" height="26" uuid="2bd9bd58-fbb8-45a8-aee0-14839cdd1e83"/>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thành tiền]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="23" uuid="9f34316e-d8c2-46cc-ae85-ba01f7400fe6"/>
+				<box leftPadding="5" rightPadding="5">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ma_san_pham}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="353" y="0" width="69" height="23" uuid="3a761340-84be-40de-986c-4489f1cc8ce1"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{so_luong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="546" y="0" width="124" height="23" uuid="b2949ef7-21fb-4b95-b5cb-a3ba2dd7e673"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{don_gia_khuyen_mai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="670" y="0" width="132" height="23" uuid="a5b46173-f6a0-48bd-81e6-6a12b1cb35e4"/>
+				<box leftPadding="5" rightPadding="5">
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{thanh_tien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="253" height="23" uuid="8dbf7698-a1e4-41f0-88b4-c80ff266f8fc"/>
+				<box leftPadding="5" rightPadding="5">
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ten_san_pham}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="0" width="124" height="23" uuid="f66fde2e-1c74-433f-8e29-3269302c1f97"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{don_gia}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="802" height="1" uuid="f81cc78a-3785-48ef-899c-e7ef73ecd234"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="182" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="802" height="1" uuid="d69d4857-4edf-4f26-a37d-0acd578bf137"/>
+			</line>
+			<staticText>
+				<reportElement x="422" y="12" width="100" height="21" uuid="6e10c1b0-054b-4491-9c7d-9531c10de2ca"/>
+				<box leftPadding="5" rightPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<text><![CDATA[Tổng tiền]]></text>
+			</staticText>
+			<line>
+				<reportElement x="276" y="76" width="251" height="1" uuid="0520e88d-7c84-421d-9f12-6ec747021783"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="288" y="91" width="227" height="74" uuid="a5903e33-80ec-41b0-bdb3-542b65a6c570"/>
+				<textElement textAlignment="Center">
+					<font fontName="Roboto"/>
+				</textElement>
+				<text><![CDATA[Cảm ơn quý khách và hẹn gặp lại
+Hotline: 0686868686
+Trường Cao đẳng FPT Polytechnic, Phố Kiều Mai,
+Phúc Diễn, Từ Liêm, Hà Nội]]></text>
+			</staticText>
+			<elementGroup>
+				<textField>
+					<reportElement x="522" y="12" width="280" height="21" uuid="0a0d49a0-1313-497e-a793-addee36c3911"/>
+					<box leftPadding="5" rightPadding="5"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Roboto"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tong_tien}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+		</band>
+	</summary>
+</jasperReport>

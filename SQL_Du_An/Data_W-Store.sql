@@ -455,22 +455,22 @@ select * from XuatXu
 
 
 
--- data table PhongCach
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Sang trọng',default);
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Quân đội',default);
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Lộ đáy',default);
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Classic cổ điển',default);
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Thời trang',default);
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Lộ máy',default);
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Hở tim lộ đáy',default);
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Thể thao',default);
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Trẻ trung',default);
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Cá tính',default);
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Chuyên dụng',default);
-insert into PhongCach(ten_phong_cach, trang_thai) values (N'Phiên bản giới hạn',default);
-go
+-- -- data table PhongCach
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Sang trọng',default);
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Quân đội',default);
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Lộ đáy',default);
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Classic cổ điển',default);
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Thời trang',default);
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Lộ máy',default);
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Hở tim lộ đáy',default);
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Thể thao',default);
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Trẻ trung',default);
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Cá tính',default);
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Chuyên dụng',default);
+-- insert into PhongCach(ten_phong_cach, trang_thai) values (N'Phiên bản giới hạn',default);
+-- go
 
-select * from PhongCach
+-- select * from PhongCach
 
 
 -- data table Mau
@@ -767,138 +767,136 @@ values ('SP000109',	18,	'0607283',	8874000,	9860000,	15,	'0607283.jpg',	N'Nam',	
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
 values ('SP000110',	18,	'0606369',	8550000,	9500000,	15,	'0606369.jpg',	N'Nam',	null,	3,	null,	39,	N'Mặt tròn',	null,	4,	2,	1,	null,	3,	17,	1,	default);
 
-
-select * from PhongCach
 select * from SanPham
  
--- data table PhongCachSanPham
-select * from PhongCachSanPham
+-- -- data table PhongCachSanPham
+-- select * from PhongCachSanPham
 
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (2, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (3, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (68, 4);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (22, 4);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (22, 7);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (22, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (38, 7);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (38, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (25, 7);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (25, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (25, 4);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (26, 7);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (26, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (26, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (30, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (81, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (65, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (65, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (28, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (28, 8);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (31, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (31, 8);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (33, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (33, 8);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (52, 6);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (8, 6);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (8, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (61, 6);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (61, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (101, 6);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (101, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (102, 6);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (102, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (7, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (9, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (10, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (11, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (12, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (14, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (20, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (24, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (34, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (35, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (37, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (39, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (47, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (69, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (75, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (77, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (63, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (63, 4);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (66, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (66, 4);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (64, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (64, 4);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (64, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (36, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (36, 7);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (36, 6);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (36, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (36, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (62, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (62, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (71, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (100, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (13, 6);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (13, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (67, 6);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (67, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (18, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (18, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (41, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (41, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (42, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (42, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (42, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (89, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (89, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (89, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (5, 8);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (29, 8);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (29, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (16, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (32, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (45, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (46, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (97, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (98, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (15, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (15, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (49, 5);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (49, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (1, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (1, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (17, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (17, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (19, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (19, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (50, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (50, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (72, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (72, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (74, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (74, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (86, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (86, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (87, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (87, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (27, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (27, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (27, 7);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (27, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (23, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (23, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (23, 3);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (23, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (73, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (73, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (73, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (88, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (88, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (88, 1);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (4, 9);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (4, 10);
-insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (4, 8);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (2, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (3, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (68, 4);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (22, 4);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (22, 7);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (22, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (38, 7);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (38, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (25, 7);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (25, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (25, 4);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (26, 7);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (26, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (26, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (30, 3);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (81, 3);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (65, 3);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (65, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (28, 3);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (28, 8);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (31, 3);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (31, 8);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (33, 3);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (33, 8);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (52, 6);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (8, 6);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (8, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (61, 6);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (61, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (101, 6);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (101, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (102, 6);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (102, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (7, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (9, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (10, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (11, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (12, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (14, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (20, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (24, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (34, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (35, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (37, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (39, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (47, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (69, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (75, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (77, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (63, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (63, 4);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (66, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (66, 4);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (64, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (64, 4);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (64, 3);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (36, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (36, 7);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (36, 6);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (36, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (36, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (62, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (62, 3);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (71, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (100, 3);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (13, 6);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (13, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (67, 6);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (67, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (18, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (18, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (41, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (41, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (42, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (42, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (42, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (89, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (89, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (89, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (5, 8);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (29, 8);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (29, 3);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (16, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (32, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (45, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (46, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (97, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (98, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (15, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (15, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (49, 5);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (49, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (1, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (1, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (17, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (17, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (19, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (19, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (50, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (50, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (72, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (72, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (74, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (74, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (86, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (86, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (87, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (87, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (27, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (27, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (27, 7);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (27, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (23, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (23, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (23, 3);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (23, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (73, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (73, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (73, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (88, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (88, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (88, 1);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (4, 9);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (4, 10);
+-- insert into PhongCachSanPham(id_san_pham, id_phong_cach) values (4, 8);
 
 -- data table TinhNangSanPham
 select * from TinhNang
@@ -1183,11 +1181,10 @@ insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai
 values ('KH000021', N'Nguyễn Văn Q', 1 , '1992-9-16', '0990697576', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
 
 -- data table ChuongTrinhKhuyenMai
-truncate table ChuongTrinhKhuyenMai
-insert into ChuongTrinhKhuyenMai(ten_chuong_trinh, ngay_bat_dau, ngay_ket_thuc, hinh_thuc_giam_gia, gia_tri_giam, trang_thai)
-values (N'Thích thì giảm', '2023-12-01 08:00:00', '2023-12-10 17:30:00', N'Phần trăm', 10, default);
-insert into ChuongTrinhKhuyenMai(ten_chuong_trinh, ngay_bat_dau, ngay_ket_thuc, hinh_thuc_giam_gia, gia_tri_giam, trang_thai)
-values (N'Thích thì giảm 2', '2023-12-01 08:00:00', '2023-12-20 17:30:00', N'Tiền mặt', 300000, default);
+insert into ChuongTrinhKhuyenMai(ma_chuong_trinh, ten_chuong_trinh, ngay_bat_dau, ngay_ket_thuc, hinh_thuc_giam_gia, gia_tri_giam, trang_thai)
+values ('KM000001', N'Thích thì giảm', '2023-12-01 08:00:00', '2023-12-10 17:30:00', N'Phần trăm', 10, default);
+insert into ChuongTrinhKhuyenMai(ma_chuong_trinh, ten_chuong_trinh, ngay_bat_dau, ngay_ket_thuc, hinh_thuc_giam_gia, gia_tri_giam, trang_thai)
+values ('KM000002', N'Thích thì giảm 2', '2023-12-01 08:00:00', '2023-12-20 17:30:00', N'Tiền mặt', 300000, default);
 
 select * from ChuongTrinhKhuyenMai
 

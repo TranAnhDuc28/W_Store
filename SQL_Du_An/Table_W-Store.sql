@@ -84,16 +84,16 @@ create table XuatXu(
 )
 go
 
-if OBJECT_ID('PhongCach') is not null
-drop table PhongCach
-go
-create table PhongCach(
-	id int identity(1,1) not null,
-	ten_phong_cach nvarchar(100) not null,
-	trang_thai bit default 1 not null,
-	constraint phong_cach_PK primary key (id),
-)
-go
+-- if OBJECT_ID('PhongCach') is not null
+-- drop table PhongCach
+-- go
+-- create table PhongCach(
+-- 	id int identity(1,1) not null,
+-- 	ten_phong_cach nvarchar(100) not null,
+-- 	trang_thai bit default 1 not null,
+-- 	constraint phong_cach_PK primary key (id),
+-- )
+-- go
 
 if OBJECT_ID('Mau') is not null
 drop table Mau
@@ -169,17 +169,17 @@ create table TinhNangSanPham(
 )
 go
 
-if OBJECT_ID('PhongCachSanPham') is not null
-drop table PhongCachSanPham
-go
-create table PhongCachSanPham(
-	id_san_pham int not null,
-	id_phong_cach int not null,
-	constraint phong_cach_san_pham_PK primary key (id_san_pham, id_phong_cach),
-	constraint san_pham_FK_tbl_PhongCachSanPham foreign key (id_san_pham) references SanPham(id),
-	constraint phong_cach_FK_tbl_PhongCachSanPham foreign key (id_phong_cach) references PhongCach(id)
-)
-go
+-- if OBJECT_ID('PhongCachSanPham') is not null
+-- drop table PhongCachSanPham
+-- go
+-- create table PhongCachSanPham(
+-- 	id_san_pham int not null,
+-- 	id_phong_cach int not null,
+-- 	constraint phong_cach_san_pham_PK primary key (id_san_pham, id_phong_cach),
+-- 	constraint san_pham_FK_tbl_PhongCachSanPham foreign key (id_san_pham) references SanPham(id),
+-- 	constraint phong_cach_FK_tbl_PhongCachSanPham foreign key (id_phong_cach) references PhongCach(id)
+-- )
+-- go
 
 if OBJECT_ID('NhanVien') is not null
 drop table NhanVien
@@ -285,6 +285,7 @@ drop table ChuongTrinhKhuyenMai
 go
 create table ChuongTrinhKhuyenMai(
 	id int identity(1,1) not null,
+	ma_chuong_trinh char(8) not null,
 	ten_chuong_trinh nvarchar(255) not null,
 	ngay_bat_dau datetime2 not null,
 	ngay_ket_thuc datetime2 not null,

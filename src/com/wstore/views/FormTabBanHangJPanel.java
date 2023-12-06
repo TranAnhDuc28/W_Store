@@ -24,7 +24,6 @@ import com.wstore.services.ISanPhamService;
 import com.wstore.services.impl.HoaDonChiTietService;
 import com.wstore.services.impl.HoaDonService;
 import com.wstore.utilities.Helper;
-import com.wstore.utilities.ReportManager;
 import com.wstore.utilities.status.StatusHoaDon;
 import com.wstore.viewmodels.HoaDonChiTietViewModel;
 import com.wstore.viewmodels.HoaDonViewModel;
@@ -868,20 +867,6 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
                 hoaDonChiTietService.addListOrder(idHoaDon, listHoaDonChiTiet);
                 sanPhamService.updateSoLuong(listUpdateSoLuongSP);
                 Helper.alert(this, "Thanh toán thành công!");
-                try {
-//                    Map mapData = new HashMap();
-//                    JasperReport jasperReport = JasperCompileManager.compileReport("src/com/wstore/utilities/InHoaDonReport.jrxml");
-//                    mapData.put("maHoaDon", hoaDonViewModel.getMaHoaDon());
-//                    Connection con = DBConnect.getConnection();
-//                    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mapData, con);
-//                    JasperViewer.viewReport(jasperPrint, false);
-                    ReportManager reportManager = ReportManager.getInstance();
-                    reportManager.compileReport();
-                    reportManager.printHoaDon(hoaDonViewModel);
-
-                } catch (JRException ex) {
-                    ex.printStackTrace();
-                }
                 clearForm();
             } else {
                 Helper.alert(this, "Thanh toán thất bại!");

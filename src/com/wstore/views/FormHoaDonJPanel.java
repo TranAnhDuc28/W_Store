@@ -6,9 +6,12 @@ package com.wstore.views;
 
 import com.wstore.services.IHoaDonService;
 import com.wstore.services.impl.HoaDonService;
+import com.wstore.utilities.Helper;
+import com.wstore.utilities.ReportManager;
 import com.wstore.viewmodels.HoaDonViewModel;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -19,19 +22,23 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
     private IHoaDonService hoaDonService = new HoaDonService();
     private DefaultTableModel dtmHoaDon;
     private List<HoaDonViewModel> listHD;
-    private int index = -1;
+    private int rowSelected = -1;
     private Integer trangThai = 0;
     private Integer page = 1;
     private Integer totalRowData = 0;
     private Integer totalPage = 1;
     private Integer pageSize = 15;
-    
-    
+
     public FormHoaDonJPanel() {
         initComponents();
-        loadDataToTable(hoaDonService.getAll(page, pageSize));
+        try {
+            ReportManager.getInstance().compileReport();
+        } catch (JRException e) {
+            Helper.alert(null, e.getMessage());
+        }
+        initPagination(hoaDonService.getAll(page, pageSize));
     }
-    
+
     private void initPagination(List<HoaDonViewModel> list) {
         trangThai = cboSoBanGhi.getSelectedIndex();
         totalRowData = hoaDonService.getCountRecord();
@@ -52,13 +59,13 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
             dtmHoaDon.addRow(hd.toDataRow());
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        jButton6 = new javax.swing.JButton();
+        btnInHoaDon = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -81,11 +88,11 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         cboSoBanGhi = new javax.swing.JComboBox<>();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnFirst = new javax.swing.JButton();
+        btnPrev = new javax.swing.JButton();
         lblPageOfTotalPage = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        btnLast = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(241, 246, 251));
@@ -95,13 +102,18 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
         jToolBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jToolBar1.setEnabled(false);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/printer.png"))); // NOI18N
-        jButton6.setText("In hóa đơn ");
-        jButton6.setFocusable(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton6.setIconTextGap(5);
-        jButton6.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jToolBar1.add(jButton6);
+        btnInHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/printer.png"))); // NOI18N
+        btnInHoaDon.setText("In hóa đơn ");
+        btnInHoaDon.setFocusable(false);
+        btnInHoaDon.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnInHoaDon.setIconTextGap(5);
+        btnInHoaDon.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        btnInHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInHoaDonActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnInHoaDon);
         jToolBar1.add(jSeparator5);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/see-details.png"))); // NOI18N
@@ -240,15 +252,30 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
 
         cboSoBanGhi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "15", "20", "30", "50", "100" }));
         cboSoBanGhi.setPreferredSize(new java.awt.Dimension(70, 25));
+        cboSoBanGhi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboSoBanGhiItemStateChanged(evt);
+            }
+        });
         jPanel6.add(cboSoBanGhi);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/first16x16.png"))); // NOI18N
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.add(jButton7);
+        btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/first16x16.png"))); // NOI18N
+        btnFirst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnFirst);
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/prev16x16.png"))); // NOI18N
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.add(jButton8);
+        btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/prev16x16.png"))); // NOI18N
+        btnPrev.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnPrev);
 
         lblPageOfTotalPage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPageOfTotalPage.setText("1/50");
@@ -256,13 +283,23 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
         lblPageOfTotalPage.setPreferredSize(new java.awt.Dimension(70, 22));
         jPanel6.add(lblPageOfTotalPage);
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/next16x16.png"))); // NOI18N
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.add(jButton9);
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/next16x16.png"))); // NOI18N
+        btnNext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnNext);
 
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/last16x16.png"))); // NOI18N
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.add(jButton10);
+        btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/last16x16.png"))); // NOI18N
+        btnLast.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnLast);
 
         jLabel4.setText("Tổng số: ");
         jLabel4.setPreferredSize(new java.awt.Dimension(125, 16));
@@ -294,18 +331,60 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cboSoBanGhiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboSoBanGhiItemStateChanged
+        initPagination(hoaDonService.getAll(page, pageSize));
+    }//GEN-LAST:event_cboSoBanGhiItemStateChanged
+
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        page = 1;
+        initPagination(hoaDonService.getAll(page, pageSize));
+    }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        if (page > 1) {
+            page--;
+            initPagination(hoaDonService.getAll(page, pageSize));
+        }
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if (page < totalPage) {
+            page++;
+            initPagination(hoaDonService.getAll(page, pageSize));
+        }
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        page = totalPage;
+        initPagination(hoaDonService.getAll(page, pageSize));
+    }//GEN-LAST:event_btnLastActionPerformed
+
+    private void btnInHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHoaDonActionPerformed
+        rowSelected = tblHoaDon.getSelectedRow();
+        if(rowSelected < 0) {
+            return;
+        }
+        HoaDonViewModel hd = new HoaDonViewModel();
+        hd.setMaHoaDon(tblHoaDon.getValueAt(rowSelected, 0).toString());
+        try {
+            ReportManager.getInstance().printReportPayment(hd);
+        } catch (JRException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnInHoaDonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnInHoaDon;
+    private javax.swing.JButton btnLast;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPrev;
     private javax.swing.JComboBox<String> cboSoBanGhi;
     private javax.swing.JComboBox<String> cboTrangThai;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;

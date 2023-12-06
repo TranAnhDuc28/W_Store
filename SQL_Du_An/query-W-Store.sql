@@ -267,7 +267,10 @@ order by id
 
 
 
--- 
+-- query ChuongTrinhKhuyenMai
+select id, ma_chuong_trinh, ten_chuong_trinh, ngay_bat_dau, ngay_ket_thuc, hinh_thuc_giam_gia, gia_tri_giam, trang_thai from ChuongTrinhKhuyenMai
+
+select * from ChuongTrinhKhuyenMai
 
 
 
@@ -275,5 +278,21 @@ order by id
 
 
 
-
+-- query in hóa đơn
+WITH OrderTotal AS (
+	SELECT  dbo.HoaDon.id, dbo.HoaDon.ma_hoa_don, SUM(dbo.HoaDonChiTiet.so_luong * dbo.HoaDonChiTiet.don_gia_khuyen_mai) AS tong_tien
+	FROM  dbo.HoaDon INNER JOIN dbo.HoaDonChiTiet ON dbo.HoaDon.id = dbo.HoaDonChiTiet.id_hoa_don
+	GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.id
+)
+SELECT     dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang, dbo.HoaDon.dia_chi, dbo.HoaDon.so_dien_thoai, dbo.SanPham.ma_san_pham, 
+				CONCAT(dbo.ThuongHieu.ten_thuong_hieu, ' ', dbo.SanPham.ma_hang_hoa) as ten_san_pham, dbo.NhanVien.ho_ten, 
+                dbo.HoaDonChiTiet.so_luong, dbo.HoaDonChiTiet.don_gia, dbo.HoaDonChiTiet.don_gia_khuyen_mai, (dbo.HoaDonChiTiet.don_gia_khuyen_mai * CAST(dbo.HoaDonChiTiet.so_luong AS decimal(10, 0))) AS thanh_tien, OrderTotal.tong_tien
+FROM            dbo.HoaDon INNER JOIN OrderTotal ON  dbo.HoaDon.id = OrderTotal.id INNER JOIN
+                         dbo.HoaDonChiTiet ON dbo.HoaDon.id = dbo.HoaDonChiTiet.id_hoa_don INNER JOIN
+                         dbo.NhanVien ON dbo.HoaDon.id_nhan_vien = dbo.NhanVien.id INNER JOIN
+                         dbo.SanPham ON dbo.HoaDonChiTiet.id_san_pham = dbo.SanPham.id INNER JOIN
+                         dbo.ThuongHieu ON dbo.SanPham.id_thuong_hieu = dbo.ThuongHieu.id 
+WHERE dbo.HoaDon.ma_hoa_don = 'HD031223060052'
+GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang, dbo.HoaDon.dia_chi, dbo.HoaDon.so_dien_thoai, dbo.SanPham.ma_san_pham,
+	  dbo.ThuongHieu.ten_thuong_hieu, dbo.SanPham.ma_hang_hoa, dbo.NhanVien.ho_ten, dbo.HoaDonChiTiet.so_luong, dbo.HoaDonChiTiet.don_gia, dbo.HoaDonChiTiet.don_gia_khuyen_mai, OrderTotal.tong_tien
 

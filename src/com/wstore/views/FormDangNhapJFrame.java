@@ -216,7 +216,6 @@ public class FormDangNhapJFrame extends javax.swing.JFrame {
             NhanVien nv = nhanVienService.findByMa(taiKhoan);
             if (nv != null && nv.getMaNhanVien().equals(taiKhoan)
                     && Objects.equals(nv.getMatKhau(), matKhau)) {
-                Helper.alert(this, "Đăng nhập thành công!");
                 // lưu tài khoản đang đăng nhập
                 Helper.USER_LOGIN = nv;
                 this.dispose();

@@ -63,7 +63,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
 
     private ISanPhamService sanPhamService = new SanPhamService();
     private ITinhNangSanPhamService tinhNangSanPhamService = new TinhNangSanPhamService();
-    private FormSanPhamJPanel formSanPhamJPanel;
+    private final FormSanPhamJPanel formSanPhamJPanel;
     private final IThuocTinhSanPhamService thuongHieuService = new ThuongHieuService();
     private final IThuocTinhSanPhamService dongMayService = new DongMayService();
     private final IThuocTinhSanPhamService xuatXuService = new XuatXuService();
@@ -1198,9 +1198,11 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
             hinh = tenHinhAnh;
             tenHinhAnh = null;
         } else {
-            Object hinhAnhOnTbl = formSanPhamJPanel.tblDSSanPham.getValueAt(rowSelected, 21);
-            if (rowSelected >= 0 && hinhAnhOnTbl != null && !(hinhAnhOnTbl.equals("No image"))) {
-                hinh = hinhAnhOnTbl.toString();
+            if (rowSelected >= 0) {
+                Object hinhAnhOnTbl = formSanPhamJPanel.tblDSSanPham.getValueAt(rowSelected, 21);
+                if (hinhAnhOnTbl != null && !(hinhAnhOnTbl.equals("No image"))) {
+                    hinh = hinhAnhOnTbl.toString();
+                }
                 if (lblHinhAnh.getIcon() == null) {
                     hinh = "No image";
                 }
