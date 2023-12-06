@@ -249,7 +249,7 @@ GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang,
 				</textElement>
 				<textFieldExpression><![CDATA[$F{so_luong}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement x="546" y="0" width="124" height="23" uuid="b2949ef7-21fb-4b95-b5cb-a3ba2dd7e673"/>
 				<box leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
@@ -263,7 +263,7 @@ GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang,
 				</textElement>
 				<textFieldExpression><![CDATA[$F{don_gia_khuyen_mai}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement x="670" y="0" width="132" height="23" uuid="a5b46173-f6a0-48bd-81e6-6a12b1cb35e4"/>
 				<box leftPadding="5" rightPadding="5">
 					<rightPen lineWidth="1.0"/>
@@ -283,7 +283,7 @@ GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang,
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ten_san_pham}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement x="422" y="0" width="124" height="23" uuid="f66fde2e-1c74-433f-8e29-3269302c1f97"/>
 				<box leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
@@ -332,7 +332,7 @@ Trường Cao đẳng FPT Polytechnic, Phố Kiều Mai,
 Phúc Diễn, Từ Liêm, Hà Nội]]></text>
 			</staticText>
 			<elementGroup>
-				<textField>
+				<textField pattern="#,##0">
 					<reportElement x="522" y="12" width="280" height="21" uuid="0a0d49a0-1313-497e-a793-addee36c3911"/>
 					<box leftPadding="5" rightPadding="5"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">

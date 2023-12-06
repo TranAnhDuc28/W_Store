@@ -15,5 +15,7 @@ public interface IHoaDonChiTietService {
     
     List<HoaDonChiTietViewModel> getAllByHoaDonID(int id);
 
-    void addListOrder(int idHoaDon, List<HoaDonChiTietViewModel> lists);
+    void addListOrderDetails(int idHoaDon, List<HoaDonChiTietViewModel> lists);
+    
+    void deleteListOrderDetails(List<Integer> listID);
 }

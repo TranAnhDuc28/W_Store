@@ -6,6 +6,7 @@ package com.wstore.viewmodels;
 
 import com.wstore.domainmodels.KhachHang;
 import com.wstore.domainmodels.NhanVien;
+import com.wstore.utilities.Helper;
 import com.wstore.utilities.status.StatusHoaDon;
 import com.wstore.viewmodels.banhang.HoaDonBanHangViewModel;
 import java.math.BigDecimal;
@@ -144,6 +145,7 @@ public class HoaDonViewModel extends HoaDonBanHangViewModel {
     public Object[] toDataRow() {
         return new Object[]{super.getMaHoaDon(), super.getNgayTao(), super.getTenKhachHang(),
             soDienThoai, diaChi, super.getNhanVien(), ngayThanhToan, hinhThucThanhToan,
-            tongTien, StatusHoaDon.getNameByValue(super.getTrangThai()), ghiChu};
+            tongTien == null ? tongTien : Helper.dfTien.format(tongTien.longValue()), 
+            StatusHoaDon.getNameByValue(super.getTrangThai()), ghiChu};
     }
 }

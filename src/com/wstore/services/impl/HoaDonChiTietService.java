@@ -26,8 +26,13 @@ public class HoaDonChiTietService implements IHoaDonChiTietService{
     }
 
     @Override
-    public void addListOrder(int idHoaDon, List<HoaDonChiTietViewModel> lists) {
+    public void addListOrderDetails(int idHoaDon, List<HoaDonChiTietViewModel> lists) {
         hoaDonChiTietRepository.insertListOrderDetails(idHoaDon, lists);
+    }
+
+    @Override
+    public void deleteListOrderDetails(List<Integer> listID) {
+        hoaDonChiTietRepository.deleteListOrderDetails(listID);
     }
     
 }

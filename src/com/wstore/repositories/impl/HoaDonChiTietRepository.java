@@ -66,10 +66,41 @@ public class HoaDonChiTietRepository implements IHoaDonChiTietRepository {
             try (PreparedStatement pstm = cn.prepareStatement(sql);) {
                 for (HoaDonChiTietViewModel hdct : lists) {
                     pstm.setInt(1, hdct.getSanPham().getId());
-                    pstm.setInt(2, hdct.getHoaDon().getId());
+                    pstm.setInt(2, idHoaDon);
                     pstm.setInt(3, hdct.getSoLuong());
                     pstm.setBigDecimal(4, hdct.getDonGia());
                     pstm.setBigDecimal(5, hdct.getDonGiaKhuyenMai());
+                    pstm.addBatch();
+                }
+
+                // chạy batch và lấy kết quả
+                results = pstm.executeBatch();
+
+                // check lỗi
+                for (int i = 0; i < results.length; i++) {
+                    if (results[i] == PreparedStatement.EXECUTE_FAILED) {
+                        System.out.println("Error in statement at index " + i);
+                    }
+                }
+                cn.commit();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                cn.rollback();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteListOrderDetails(List<Integer> listID) {
+        int results[];
+        String sql = "delete HoaDonChiTiet where id = ?;";
+        try (Connection cn = DBConnect.getConnection();) {
+            cn.setAutoCommit(false);
+            try (PreparedStatement pstm = cn.prepareStatement(sql);) {
+                for (int idHDCT : listID) {
+                    pstm.setInt(1, idHDCT);
                     pstm.addBatch();
                 }
 

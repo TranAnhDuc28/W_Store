@@ -17,4 +17,5 @@ public interface IHoaDonChiTietRepository {
 
     void insertListOrderDetails(int idHoaDon, List<HoaDonChiTietViewModel> lists);
     
+    void deleteListOrderDetails(List<Integer> listID);
 }
