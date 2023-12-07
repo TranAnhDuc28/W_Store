@@ -443,9 +443,5 @@ public class SanPhamRepository implements ISanPhamRepository {
         return list;
     }
 
-    public static void main(String[] args) {
-
-        System.out.println(new SanPhamRepository().getAllSanPhamBanHang(1, 100, 0).size());
-    }
 
 }

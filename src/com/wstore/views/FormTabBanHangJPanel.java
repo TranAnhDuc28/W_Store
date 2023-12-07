@@ -36,7 +36,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JTextField;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.table.TableCellEditor;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -95,6 +99,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         tabbedThanhToan.putClientProperty(
                 FlatClientProperties.TABBED_PANE_SHOW_TAB_SEPARATORS,
                 true);
+//        editorSoLuongTblGioHang();
     }
 
     private void customJTable() {
@@ -984,22 +989,23 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblGioHangMouseClicked
 
     private void btnBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoActionPerformed
-        int rowSeletedGioHang[] = tblGioHang.getSelectedRows();
+        int[] seletedRowGioHang = tblGioHang.getSelectedRows();
         int rowCountTblGioHang = tblGioHang.getRowCount();
-        int arrLenght = rowSeletedGioHang.length;
+        int arrLenght = seletedRowGioHang.length;
         if (arrLenght > 0) {
             if (arrLenght == 1) {
-                listHoaDonChiTiet.remove(rowSeletedGioHang[0]);
+                listHoaDonChiTiet.remove(seletedRowGioHang[0]);
             } else if (arrLenght > 1 && arrLenght < rowCountTblGioHang) {
                 for (int i = 0; i < arrLenght; i++) {
-                    System.out.println(rowSeletedGioHang[i]);
+                    System.out.println(seletedRowGioHang[i]);
                 }
-                for (int i = arrLenght - 1 ; i >= 0; i--) {
-                    listHoaDonChiTiet.remove(rowSeletedGioHang[i]);
-                    System.out.println(rowSeletedGioHang[i]);
+                for (int i = arrLenght - 1; i >= 0; i--) {
+                    listHoaDonChiTiet.remove(seletedRowGioHang[i]);
+                    System.out.println(seletedRowGioHang[i]);
                 }
             } else if (arrLenght == rowCountTblGioHang) {
                 listHoaDonChiTiet.clear();
+                loadDataToTblSanPham(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
             }
             loadDataToTblGioHang(listHoaDonChiTiet);
             showDataHoaDonTaiQuay(hoaDonViewModel);
@@ -1141,6 +1147,35 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         for (HoaDonChiTietViewModel hdct : listHoaDonChiTiet) {
             dtmTblGioHang.addRow(hdct.toDataRow());
         }
+    }
+
+    private void editorSoLuongTblGioHang() {
+        tblGioHang.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(new JTextField()));
+        TableCellEditor editor = tblGioHang.getColumnModel().getColumn(2).getCellEditor();
+        editor.addCellEditorListener(new CellEditorListener() {
+            @Override
+            public void editingStopped(ChangeEvent e) {
+                int selectedRow = tblGioHang.getSelectedRow();
+                int selectedCol = tblGioHang.getSelectedColumn();
+                if (selectedCol == 2) {
+                    int soLuongMoi = Integer.parseInt(tblGioHang.getValueAt(selectedRow, selectedCol).toString());
+                    System.out.println("Số lượng mới: " + soLuongMoi);
+                    HoaDonChiTietViewModel hoaDonChiTietViewModel = listHoaDonChiTiet.get(selectedRow);
+                    hoaDonChiTietViewModel.setSoLuong(soLuongMoi);
+                    loadDataToTblGioHang(listHoaDonChiTiet);
+                    showDataHoaDonTaiQuay(hoaDonViewModel);
+                    System.out.println("SP trong giỏ hàng: ");
+                    for (HoaDonChiTietViewModel hdct : listHoaDonChiTiet) {
+                        System.out.println(hdct.toString());
+                    }
+                }
+            }
+
+            @Override
+            public void editingCanceled(ChangeEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
     }
 
     private void themSanPhamVaoGioHang(int sanPhamSelected, int soLuongSPMua) {
