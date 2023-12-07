@@ -311,7 +311,7 @@ FROM            dbo.HoaDon INNER JOIN OrderTotal ON  dbo.HoaDon.id = OrderTotal.
                          dbo.NhanVien ON dbo.HoaDon.id_nhan_vien = dbo.NhanVien.id INNER JOIN
                          dbo.SanPham ON dbo.HoaDonChiTiet.id_san_pham = dbo.SanPham.id INNER JOIN
                          dbo.ThuongHieu ON dbo.SanPham.id_thuong_hieu = dbo.ThuongHieu.id 
-WHERE dbo.HoaDon.ma_hoa_don = 'HD061223084617'
+-- WHERE dbo.HoaDon.ma_hoa_don = 'HD061223084617'
 GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang, dbo.HoaDon.dia_chi, dbo.HoaDon.so_dien_thoai, dbo.SanPham.ma_san_pham,
 	  dbo.ThuongHieu.ten_thuong_hieu, dbo.SanPham.ma_hang_hoa, dbo.NhanVien.ho_ten, dbo.HoaDonChiTiet.so_luong, dbo.HoaDonChiTiet.don_gia, dbo.HoaDonChiTiet.don_gia_khuyen_mai, OrderTotal.tong_tien
 
@@ -320,3 +320,25 @@ select * from HoaDonChiTiet where id_hoa_don = 20
 select * from HoaDon where id = 20
 
 delete HoaDonChiTiet where id = ?;
+
+-- query thống kê 
+
+-- thống kê 7 ngày gần nhất
+WITH dates AS (
+    SELECT DATEADD(DAY, -7, GETDATE()) AS ngay_thang_nam
+    UNION ALL
+    SELECT DATEADD(DAY, 1, ngay_thang_nam)
+    FROM dates
+    WHERE ngay_thang_nam < GETDATE()
+)
+SELECT 
+	dates.ngay_thang_nam AS ngay,
+	ISNULL(SUM(sp.gia_nhap), 0) as von,
+	ISNULL(SUM(hdct.don_gia_khuyen_mai), 0) as doanh_thu
+FROM dates
+LEFT JOIN HoaDon hd on CONVERT(DATE, hd.ngay_tao) =  CONVERT(DATE, dates.ngay_thang_nam)
+LEFT JOIN HoaDonChiTiet hdct on hd.id = hdct.id_hoa_don
+LEFT JOIN SanPham sp on hdct.id_san_pham = sp.id
+GROUP BY dates.ngay_thang_nam  
+
+select * from HoaDon

@@ -4,11 +4,15 @@
  */
 package com.wstore.views;
 
+import com.wstore.services.IThongKeService;
+import com.wstore.services.impl.ThongKeService;
 import com.wstore.swing.chart.Chart;
 import com.wstore.swing.chart.ModelChart;
+import com.wstore.viewmodels.thongke.ThongKeTungNgayTrongThangViewModel;
 import com.wstore.views.thongke.TabDoanhThuJPanel;
 import com.wstore.views.thongke.TabThongKeTongQuanJPanel;
 import java.awt.Color;
+import java.util.List;
 
 /**
  *
@@ -16,6 +20,7 @@ import java.awt.Color;
  */
 public class FormThongKeJPanel extends javax.swing.JPanel {
 
+    private IThongKeService thongKeService = new ThongKeService();
     private TabThongKeTongQuanJPanel tabThongKeTongQuanJPanel;
     private TabDoanhThuJPanel tabDoanhThuJPanel;
     private Chart chart;
@@ -47,25 +52,14 @@ public class FormThongKeJPanel extends javax.swing.JPanel {
     private void tabbedThongKeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedThongKeStateChanged
         int tabSelected = tabbedThongKe.getSelectedIndex();
         if (tabSelected == 0) {
-            tabThongKeTongQuanJPanel.pnlChart.remove(tabThongKeTongQuanJPanel.chart);
+            tabThongKeTongQuanJPanel.pnlChart.remove(tabThongKeTongQuanJPanel.chartThongKeTongQuan);
             chart = new Chart();
-            chart.addLegend("Vốn", new Color(245, 189, 135));
-            chart.addLegend("Doanh thu", new Color(135, 189, 245));
-            chart.addLegend("Lợi nhuận", new Color(189, 135, 245));
-            chart.addData(new ModelChart("Ngày 1", new double[]{5000000, 2000000, 8000000}));
-            chart.addData(new ModelChart("Ngày 2", new double[]{6000000, 7500000, 9000000}));
-            chart.addData(new ModelChart("Ngày 3", new double[]{2000000, 3500000, 4600000}));
-            chart.addData(new ModelChart("Ngày 4", new double[]{4800000, 1500000, 7500000}));
-            chart.addData(new ModelChart("Ngày 5", new double[]{3500000, 5400000, 3000000}));
-            chart.addData(new ModelChart("Ngày 6", new double[]{1900000, 2800000, 5000000}));
-            chart.addData(new ModelChart("Ngày 7", new double[]{4750000, 3000000, 5000000}));
-            chart.addData(new ModelChart("Ngày 8", new double[]{1500000, 9100000, 2000000}));
-            chart.repaint();
-            chart.validate();
             tabThongKeTongQuanJPanel.pnlChart.add(chart);
             tabThongKeTongQuanJPanel.pnlChart.repaint();
             tabThongKeTongQuanJPanel.pnlChart.validate();
-            chart.start();
+            List<ThongKeTungNgayTrongThangViewModel> list = thongKeService.getThongKe7NgayGanNhat();
+            tabThongKeTongQuanJPanel.loadDataToTable(list);
+            tabThongKeTongQuanJPanel.loadDataToChar(list, chart);
         } else if (tabSelected == 1) {
 
         }

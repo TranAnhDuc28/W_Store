@@ -547,225 +547,226 @@ select * from DongMay
 
 
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000001',	1,	'LA-20WH-4A1DF',	459000,	510000,	15,	'LA-20WH-4A1DF.jpg',	N'Nữ',	null,	3,	null,	30.4,	N'Mặt vuông',	8.6,	2,	5,	2,	111,	2,	11,	22,	default);
+values ('SP000001',	1,	'LA-20WH-4A1DF',	382500,	510000,	15,	'LA-20WH-4A1DF.jpg',	N'Nữ',	null,	3,	null,	30.4,	N'Mặt vuông',	8.6,	2,	5,	2,	111,	2,	11,	22,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000002',	1,	'LTP-V300L-4AUDF',	1080000,	1200000,	15,	'LTP-V300L-4AUDF.jpg',	N'Nữ',	'Casio LTP',	3,	null,	33.2,	N'Mặt tròn',	8.2,	4,	1,	3,	111,	3,	17,	11,	default);
+values ('SP000002',	1,	'LTP-V300L-4AUDF',	900000,	1200000,	15,	'LTP-V300L-4AUDF.jpg',	N'Nữ',	'Casio LTP',	3,	null,	33.2,	N'Mặt tròn',	8.2,	4,	1,	3,	111,	3,	17,	11,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000003',	1,	'A159WAD-1DF',	918000,	1020000,	15,	'A159WAD-1DF.jpg',	N'Unisex',	null,	3,	null,	33.2,	N'Mặt chữ nhật',	9.7,	2,	2,	2,	111,	2,	17,	3,	default);
+values ('SP000003',	1,	'A159WAD-1DF',	765000,	1020000,	15,	'A159WAD-1DF.jpg',	N'Unisex',	null,	3,	null,	33.2,	N'Mặt chữ nhật',	9.7,	2,	2,	2,	111,	2,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000004',	1,	'F-94WA-9DG',	351000,	390000,	15,	'F-94WA-9DG.jpg',	N'Unisex',	null,	3,	null,	33.2,	N'Mặt vuông',	8.5,	4,	5,	2,	111,	2,	3,	22,	default);
+values ('SP000004',	1,	'F-94WA-9DG',	292500,	390000,	15,	'F-94WA-9DG.jpg',	N'Unisex',	null,	3,	null,	33.2,	N'Mặt vuông',	8.5,	4,	5,	2,	111,	2,	3,	22,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000005',	1,	'W-218HC-4A2VDF',	576000,	640000,	15,	'W-218HC-4A2VDF.jpg',	N'Unisex',	null,	5,	null,	43.2,	N'Mặt vuông',	11,	4,	5,	2,	111,	2,	1,	22,	default);
+values ('SP000005',	1,	'W-218HC-4A2VDF',	480000,	640000,	15,	'W-218HC-4A2VDF.jpg',	N'Unisex',	null,	5,	null,	43.2,	N'Mặt vuông',	11,	4,	5,	2,	111,	2,	1,	22,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000006',	1,	'LA670WEM-7DF',	918000,	1020000,	15,	'LA670WEM-7DF.jpg',	N'Nữ',	null,	3,	null,	24.6,	N'Mặt vuông',	7.3,	2,	2,	2,	111,	2,	17,	13,	default);
+values ('SP000006',	1,	'LA670WEM-7DF',	765000,	1020000,	15,	'LA670WEM-7DF.jpg',	N'Nữ',	null,	3,	null,	24.6,	N'Mặt vuông',	7.3,	2,	2,	2,	111,	2,	17,	13,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000007',	1,	'MTP-1384L-1AVDF',	1467000,	1630000,	15,	'MTP-1384L-1AVDF.jpg',	N'Nam',	'Casio MTP',	10,	null,	41,	N'Mặt tròn',	10,	4,	1,	3,	111,	4,	24,	3,	default);
+values ('SP000007',	1,	'MTP-1384L-1AVDF',	1222500,	1630000,	15,	'MTP-1384L-1AVDF.jpg',	N'Nam',	'Casio MTP',	10,	null,	41,	N'Mặt tròn',	10,	4,	1,	3,	111,	4,	24,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000008',	20,	'OP990-45.24ADGS-D',	5553000,	6170000,	15,	'OP990-45.24ADGS-D.jpg',	N'Nam',	null,	5,	null,	42,	N'Mặt tròn',	10.3,	1,	2,	1,	111,	3,	17,	6,	default);
+values ('SP000008',	20,	'OP990-45.24ADGS-D',	4627500,	6170000,	15,	'OP990-45.24ADGS-D.jpg',	N'Nam',	null,	5,	null,	42,	N'Mặt tròn',	10.3,	1,	2,	1,	111,	3,	17,	6,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000009',	20,	'OP89322GS-X',	2862000,	3180000,	15,	'OP89322GS-X.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	2,	1,	111,	3,	17,	1,	default);
+values ('SP000009',	20,	'OP89322GS-X',	2385000,	3180000,	15,	'OP89322GS-X.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	2,	1,	111,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000010',	20,	'OP990-45DDGS-T',	4536000,	5040000,	15,	'OP990-45DDGS-T.jpg',	N'Nữ',	null,	5,	null,	34,	N'Mặt tròn',	null,	4,	2,	1,	111,	3,	17,	2,	default);
+values ('SP000010',	20,	'OP990-45DDGS-T',	3780000,	5040000,	15,	'OP990-45DDGS-T.jpg',	N'Nữ',	null,	5,	null,	34,	N'Mặt tròn',	null,	4,	2,	1,	111,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000011',	20,	'OP89322AMS-X',	3744000,	4160000,	15,	'OP89322AMS-X.jpg',	N'Nam',	null,	3,	null,	36,	N'Mặt tròn',	11,	1,	2,	1,	111,	3,	17,	1,	default);
+values ('SP000011',	20,	'OP89322AMS-X',	3120000,	4160000,	15,	'OP89322AMS-X.jpg',	N'Nam',	null,	3,	null,	36,	N'Mặt tròn',	11,	1,	2,	1,	111,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000012',	20,	'OP89322AMS-T',	3744000,	4160000,	15,	'OP89322AMS-T.jpg',	N'Nam',	null,	3,	null,	36,	N'Mặt tròn',	null,	1,	2,	1,	111,	3,	17,	2,	default);
+values ('SP000012',	20,	'OP89322AMS-T',	3120000,	4160000,	15,	'OP89322AMS-T.jpg',	N'Nam',	null,	3,	null,	36,	N'Mặt tròn',	null,	1,	2,	1,	111,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000013',	20,	'OP990-45.24ADGS-GL-D',	5553000,	6170000,	15,	'OP990-45.24ADGS-GL-D.jpg',	N'Nam',	null,	5,	40,	42,	N'Mặt tròn',	11.5,	1,	3,	1,	111,	3,	17,	6,	default);
+values ('SP000013',	20,	'OP990-45.24ADGS-GL-D',	4627500,	6170000,	15,	'OP990-45.24ADGS-GL-D.jpg',	N'Nam',	null,	5,	40,	42,	N'Mặt tròn',	11.5,	1,	3,	1,	111,	3,	17,	6,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000014',	20,	'OP89322AGS-D',	3528000,	3920000,	15,	'OP89322AGS-D.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	1,	2,	1,	111,	3,	17,	3,	default);
+values ('SP000014',	20,	'OP89322AGS-D',	2940000,	3920000,	15,	'OP89322AGS-D.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	1,	2,	1,	111,	3,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000015',	20,	'OP990-45DGS-GL-T',	4140000,	4600000,	15,	'OP990-45DGS-GL-T.jpg',	N'Nữ',	null,	5,	null,	34,	N'Mặt tròn',	null,	4,	3,	1,	111,	3,	17,	2,	default);
+values ('SP000015',	20,	'OP990-45DGS-GL-T',	3450000,	4600000,	15,	'OP990-45DGS-GL-T.jpg',	N'Nữ',	null,	5,	null,	34,	N'Mặt tròn',	null,	4,	3,	1,	111,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000016',	8,	'BM8475-00F',	3339000,	3710000,	15,	'BM8475-00F.jpg',	N'Nam',	null,	10,	null,	42,	N'Mặt tròn',	11,	5,	4,	3,	111,	3,	3,	3,	default);
+values ('SP000016',	8,	'BM8475-00F',	2782500,	3710000,	15,	'BM8475-00F.jpg',	N'Nam',	null,	10,	null,	42,	N'Mặt tròn',	11,	5,	4,	3,	111,	3,	3,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000017',	8,	'NH8350-08A',	3708000,	4120000,	15,	'NH8350-08A.jpg',	N'Nam',	null,	5,	40,	40,	N'Mặt tròn',	11.5,	1,	1,	3,	111,	3,	17,	2,	default);
+values ('SP000017',	8,	'NH8350-08A',	3090000,	4120000,	15,	'NH8350-08A.jpg',	N'Nam',	null,	5,	40,	40,	N'Mặt tròn',	11.5,	1,	1,	3,	111,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000018',	8,	'AW1591-01L',	4572000,	5080000,	15,	'AW1591-01L.jpg',	N'Nam',	null,	10,	null,	43,	N'Mặt tròn',	12.2,	5,	1,	3,	111,	3,	17,	1,	default);
+values ('SP000018',	8,	'AW1591-01L',	3810000,	5080000,	15,	'AW1591-01L.jpg',	N'Nam',	null,	10,	null,	43,	N'Mặt tròn',	12.2,	5,	1,	3,	111,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000019',	8,	'EX1484-57D',	3780000,	4200000,	15,	'EX1484-57D.jpg',	N'Nữ',	null,	5,	null,	29,	N'Mặt tròn',	7,	5,	2,	1,	111,	3,	6,	2,	default);
+values ('SP000019',	8,	'EX1484-57D',	3150000,	4200000,	15,	'EX1484-57D.jpg',	N'Nữ',	null,	5,	null,	29,	N'Mặt tròn',	7,	5,	2,	1,	111,	3,	6,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000020',	8,	'AU1062-05E',	3573000,	3970000,	15,	'AU1062-05E.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	8,	5,	1,	3,	111,	4,	6,	3,	default);
+values ('SP000020',	8,	'AU1062-05E',	2977500,	3970000,	15,	'AU1062-05E.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	8,	5,	1,	3,	111,	4,	6,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000021',	8,	'FE1140-86X',	2835000,	3150000,	15,	'FE1140-86X.jpg',	N'Nữ',	null,	5,	null,	29,	N'Mặt tròn',	null,	5,	2,	3,	null,	3,	17,	11,	default);
+values ('SP000021',	8,	'FE1140-86X',	2362500,	3150000,	15,	'FE1140-86X.jpg',	N'Nữ',	null,	5,	null,	29,	N'Mặt tròn',	null,	5,	2,	3,	null,	3,	17,	11,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000022',	22,	'FAG03001D0',	6291000,	6990000,	15,	'FAG03001D0.jpg',	N'Nam',	'Orient Golden Eye',	5,	40,	38.5,	N'Mặt tròn',	10.8,	1,	2,	1,	111,	3,	17,	1,	default);
+values ('SP000022',	22,	'FAG03001D0',	5242500,	6990000,	15,	'FAG03001D0.jpg',	N'Nam',	'Orient Golden Eye',	5,	40,	38.5,	N'Mặt tròn',	10.8,	1,	2,	1,	111,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000023',	22,	'RA-AK0007S10B',	9099000,	10110000,	15,	'RA-AK0007S10B.jpg',	N'Nam',	'Sun & Moon',	5,	40,	42.5,	N'Mặt tròn',	null,	1,	1,	1,	111,	4,	6,	6,	default);
+values ('SP000023',	22,	'RA-AK0007S10B',	7582500,	10110000,	15,	'RA-AK0007S10B.jpg',	N'Nam',	'Sun & Moon',	5,	40,	42.5,	N'Mặt tròn',	null,	1,	1,	1,	111,	4,	6,	6,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000024',	22,	'RA-KA0005A00B',	5490000,	6100000,	15,	'RA-KA0005A00B.jpg',	N'Nữ',	'Sun & Moon',	5,	null,	35,	N'Mặt tròn',	null,	4,	1,	1,	111,	3,	17,	10,	default);
+values ('SP000024',	22,	'RA-KA0005A00B',	4575000,	6100000,	15,	'RA-KA0005A00B.jpg',	N'Nữ',	'Sun & Moon',	5,	null,	35,	N'Mặt tròn',	null,	4,	1,	1,	111,	3,	17,	10,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000025',	22,	'FAG03002B0',	6345000,	7050000,	15,	'FAG03002B0.jpg',	N'Nam',	'Orient Golden Eye',	5,	40,	38.5,	N'Mặt tròn',	10.8,	1,	2,	1,	111,	3,	17,	3,	default);
+values ('SP000025',	22,	'FAG03002B0',	5287500,	7050000,	15,	'FAG03002B0.jpg',	N'Nam',	'Orient Golden Eye',	5,	40,	38.5,	N'Mặt tròn',	10.8,	1,	2,	1,	111,	3,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000026',	22,	'FAG02004B0',	4581000,	5090000,	15,	'FAG02004B0.jpg',	N'Nam',	null,	5,	null,	41,	N'Mặt tròn',	12,	1,	1,	3,	111,	3,	17,	3,	default);
+values ('SP000026',	22,	'FAG02004B0',	3817500,	5090000,	15,	'FAG02004B0.jpg',	N'Nam',	null,	5,	null,	41,	N'Mặt tròn',	12,	1,	1,	3,	111,	3,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000027',	22,	'RA-AS0010S10B',	9513000,	10570000,	15,	'RA-AS0010S10B.jpg',	N'Nam',	'Sun & Moon',	5,	40,	42,	N'Mặt tròn',	14,	1,	1,	1,	111,	4,	6,	6,	default);
+values ('SP000027',	22,	'RA-AS0010S10B',	7927500,	10570000,	15,	'RA-AS0010S10B.jpg',	N'Nam',	'Sun & Moon',	5,	40,	42,	N'Mặt tròn',	14,	1,	1,	1,	111,	4,	6,	6,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000028',	24,	'SNKK11K1',	3033000,	3370000,	15,	'SNKK11K1.jpg',	N'Nam',	'Seiko 5',	3,	40,	38,	N'Mặt tròn',	11,	1,	2,	4,	111,	3,	17,	1,	default);
+values ('SP000028',	24,	'SNKK11K1',	2527500,	3370000,	15,	'SNKK11K1.jpg',	N'Nam',	'Seiko 5',	3,	40,	38,	N'Mặt tròn',	11,	1,	2,	4,	111,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000029',	24,	'SNKP15J1',	3978000,	4420000,	15,	'SNKP15J1.jpg',	N'Nam',	'Seiko 5',	5,	40,	42,	N'Mặt tròn',	11,	1,	2,	4,	111,	3,	null,	2,	default);
+values ('SP000029',	24,	'SNKP15J1',	3315000,	4420000,	15,	'SNKP15J1.jpg',	N'Nam',	'Seiko 5',	5,	40,	42,	N'Mặt tròn',	11,	1,	2,	4,	111,	3,	null,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000030',	24,	'SNZG07J1',	5301000,	5890000,	15,	'SNZG07J1.jpg',	N'Nam',	'Seiko 5 Sport',	null,	40,	42,	N'Mặt tròn',	11,	1,	4,	4,	111,	3,	17,	8,	default);
+values ('SP000030',	24,	'SNZG07J1',	4417500,	5890000,	15,	'SNZG07J1.jpg',	N'Nam',	'Seiko 5 Sport',	null,	40,	42,	N'Mặt tròn',	11,	1,	4,	4,	111,	3,	17,	8,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000031',	24,	'SNKP17J1',	3915000,	4350000,	15,	'SNKP17J1.jpg',	N'Nam',	'Seiko 5',	5,	40,	42,	N'Mặt tròn',	11,	1,	2,	4,	111,	3,	17,	1,	default);
+values ('SP000031',	24,	'SNKP17J1',	3262500,	4350000,	15,	'SNKP17J1.jpg',	N'Nam',	'Seiko 5',	5,	40,	42,	N'Mặt tròn',	11,	1,	2,	4,	111,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000032',	24,	'SUR638P1',	3402000,	3780000,	15,	'SUR638P1.jpg',	N'Nữ',	null,	5,	null,	29,	N'Mặt tròn',	8,	4,	1,	1,	111,	4,	6,	2,	default);
+values ('SP000032',	24,	'SUR638P1',	2835000,	3780000,	15,	'SUR638P1.jpg',	N'Nữ',	null,	5,	null,	29,	N'Mặt tròn',	8,	4,	1,	1,	111,	4,	6,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000033',	24,	'SRPD53K1',	7551000,	8390000,	15,	'SRPD53K1.jpg',	N'Nam',	'Seiko 5 Sport',	10,	40,	42.5,	N'Mặt tròn',	13.4,	8,	2,	4,	111,	3,	17,	1,	default);
+values ('SP000033',	24,	'SRPD53K1',	6292500,	8390000,	15,	'SRPD53K1.jpg',	N'Nam',	'Seiko 5 Sport',	10,	40,	42.5,	N'Mặt tròn',	13.4,	8,	2,	4,	111,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000034',	3,	'BL1869-101MKNN',	2835000,	3150000,	15,	'BL1869-101MKNN.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	8.5,	4,	1,	1,	82,	4,	6,	1,	default);
+values ('SP000034',	3,	'BL1869-101MKNN',	2362500,	3150000,	15,	'BL1869-101MKNN.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	8.5,	4,	1,	1,	82,	4,	6,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000035',	3,	'BL1865-30MKWB',	2457000,	2730000,	15,	'BL1865-30MKWB.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	5,	4,	1,	1,	82,	4,	6,	2,	default);
+values ('SP000035',	3,	'BL1865-30MKWB',	2047500,	2730000,	15,	'BL1865-30MKWB.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	5,	4,	1,	1,	82,	4,	6,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000036',	3,	'BL1784-252KBB-S2-M',	7731000,	8590000,	15,	'BL1784-252KBB-S2-M.jpg',	N'Nam',	null,	5,	null,	43,	N'Mặt tròn',	13.5,	1,	1,	1,	82,	4,	6,	10,	default);
+values ('SP000036',	3,	'BL1784-252KBB-S2-M',	6442500,	8590000,	15,	'BL1784-252KBB-S2-M.jpg',	N'Nam',	null,	5,	null,	43,	N'Mặt tròn',	13.5,	1,	1,	1,	82,	4,	6,	10,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000037',	3,	'BL1869-101MWBI',	3024000,	3360000,	15,	'BL1869-101MWBI.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	2,	1,	82,	3,	17,	3,	default);
+values ('SP000037',	3,	'BL1869-101MWBI',	2520000,	3360000,	15,	'BL1869-101MWBI.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	2,	1,	82,	3,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000038',	3,	'BL1831-15MKWD',	5436000,	6040000,	15,	'BL1831-15MKWD.jpg',	N'Nam',	null,	5,	null,	41,	N'Mặt tròn',	12,	1,	1,	1,	82,	4,	6,	2,	default);
+values ('SP000038',	3,	'BL1831-15MKWD',	4530000,	6040000,	15,	'BL1831-15MKWD.jpg',	N'Nam',	null,	5,	null,	41,	N'Mặt tròn',	12,	1,	1,	1,	82,	4,	6,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000039',	3,	'BL1869-101MWWI',	3024000,	3360000,	15,	'BL1869-101MWWI.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	2,	1,	82,	3,	17,	2,	default);
+values ('SP000039',	3,	'BL1869-101MWWI',	2520000,	3360000,	15,	'BL1869-101MWWI.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	2,	1,	82,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000040',	4,	'98A187',	4950000,	5500000,	15,	'98A187.jpg',	N'Nam',	null,	3,	null,	41,	N'Mặt tròn',	null,	1,	2,	3,	null,	3,	17,	13,	default);
+values ('SP000040',	4,	'98A187',	4125000,	5500000,	15,	'98A187.jpg',	N'Nam',	null,	3,	null,	41,	N'Mặt tròn',	null,	1,	2,	3,	null,	3,	17,	13,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000041',	4,	'98C134',	6057000,	6730000,	15,	'98C134.jpg',	N'Nam',	null,	3,	null,	41.5,	N'Đa giác',	9.8,	4,	2,	3,	235,	3,	3,	3,	default);
+values ('SP000041',	4,	'98C134',	5047500,	6730000,	15,	'98C134.jpg',	N'Nam',	null,	3,	null,	41.5,	N'Đa giác',	9.8,	4,	2,	3,	235,	3,	3,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000042',	4,	'96P197',	3366000,	3740000,	15,	'96P197.jpg',	N'Nữ',	null,	3,	null,	35,	N'Mặt tròn',	8.4,	4,	1,	1,	111,	3,	17,	10,	default);
+values ('SP000042',	4,	'96P197',	2805000,	3740000,	15,	'96P197.jpg',	N'Nữ',	null,	3,	null,	35,	N'Mặt tròn',	8.4,	4,	1,	1,	111,	3,	17,	10,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000043',	4,	'98P157',	3060000,	3400000,	15,	'98P157.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt tròn',	6.5,	4,	1,	1,	215,	3,	null,	12,	default);
+values ('SP000043',	4,	'98P157',	2550000,	3400000,	15,	'98P157.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt tròn',	6.5,	4,	1,	1,	215,	3,	null,	12,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000044',	4,	'96C142',	8685000,	9650000,	15,	'96C142.jpg',	N'Nam',	null,	3,	null,	43,	N'Mặt tròn',	null,	1,	1,	1,	235,	3,	17,	1,	default);
+values ('SP000044',	4,	'96C142',	7237500,	9650000,	15,	'96C142.jpg',	N'Nam',	null,	3,	null,	43,	N'Mặt tròn',	null,	1,	1,	1,	235,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000045',	4,	'98L232',	2808000,	3120000,	15,	'98L232.jpg',	N'Nữ',	null,	3,	null,	32,	N'Mặt tròn',	7,	4,	2,	3,	235,	3,	17,	10,	default);
+values ('SP000045',	4,	'98L232',	2340000,	3120000,	15,	'98L232.jpg',	N'Nữ',	null,	3,	null,	32,	N'Mặt tròn',	7,	4,	2,	3,	235,	3,	17,	10,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000046',	26,	'SG8886.4103AT',	2997000,	3330000,	15,	'SG8886.4103AT.jpg',	N'Nam',	null,	5,	40,	40,	N'Mặt tròn',	11.7,	1,	1,	1,	111,	3,	17,	1,	default);
+values ('SP000046',	26,	'SG8886.4103AT',	2497500,	3330000,	15,	'SG8886.4103AT.jpg',	N'Nam',	null,	5,	40,	40,	N'Mặt tròn',	11.7,	1,	1,	1,	111,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000047',	26,	'SG3003.4601CV',	1008000,	1120000,	15,	'SG3003.4601CV.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	5,	4,	1,	1,	111,	4,	6,	3,	default);
+values ('SP000047',	26,	'SG3003.4601CV',	840000,	1120000,	15,	'SG3003.4601CV.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	5,	4,	1,	1,	111,	4,	6,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000048',	26,	'SG2205.4601',	2259000,	2510000,	15,	'SG2205.4601.jpg',	N'Nam',	null,	5,	null,	31,	N'Mặt chữ nhật',	null,	4,	1,	1,	111,	3,	6,	3,	default);
+values ('SP000048',	26,	'SG2205.4601',	1882500,	2510000,	15,	'SG2205.4601.jpg',	N'Nam',	null,	5,	null,	31,	N'Mặt chữ nhật',	null,	4,	1,	1,	111,	3,	6,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000049',	26,	'SG3002.4601CV',	1008000,	1120000,	15,	'SG3002.4601CV.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	5,	4,	1,	1,	111,	4,	6,	3,	default);
+values ('SP000049',	26,	'SG3002.4601CV',	840000,	1120000,	15,	'SG3002.4601CV.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	5,	4,	1,	1,	111,	4,	6,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000050',	26,	'SL3005.1102CV',	927000,	1030000,	15,	'SL3005.1102CV.jpg',	N'Nữ',	null,	5,	null,	30,	N'Mặt tròn',	null,	4,	2,	1,	111,	3,	17,	2,	default);
+values ('SP000050',	26,	'SL3005.1102CV',	772500,	1030000,	15,	'SL3005.1102CV.jpg',	N'Nữ',	null,	5,	null,	30,	N'Mặt tròn',	null,	4,	2,	1,	111,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000051',	26,	'SG1056.4602TE',	1458000,	1620000,	15,	'SG1056.4602TE.jpg',	N'Nam',	null,	5,	null,	39,	N'Mặt tròn',	null,	4,	1,	1,	111,	3,	6,	2,	default);
+values ('SP000051',	26,	'SG1056.4602TE',	1215000,	1620000,	15,	'SG1056.4602TE.jpg',	N'Nam',	null,	5,	null,	39,	N'Mặt tròn',	null,	4,	1,	1,	111,	3,	6,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000052',	26,	'SG8895.4101',	4275000,	4750000,	15,	'SG8895.4101.jpg',	N'Nam',	null,	5,	40,	40,	N'Mặt tròn',	11.7,	1,	1,	1,	111,	3,	17,	3,	default);
+values ('SP000052',	26,	'SG8895.4101',	3562500,	4750000,	15,	'SG8895.4101.jpg',	N'Nam',	null,	5,	40,	40,	N'Mặt tròn',	11.7,	1,	1,	1,	111,	3,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000053',	10,	'DW00100368',	3402000,	3780000,	15,	'DW00100368.jpg',	N'Nữ',	null,	3,	null,	28,	N'Mặt tròn',	null,	4,	2,	3,	null,	null,	24,	11,	default);
+values ('SP000053',	10,	'DW00100368',	2835000,	3780000,	15,	'DW00100368.jpg',	N'Nữ',	null,	3,	null,	28,	N'Mặt tròn',	null,	4,	2,	3,	null,	null,	24,	11,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000054',	10,	'DW00100647',	2934000,	3260000,	15,	'DW00100647.jpg',	N'Nữ',	null,	3,	null,	28,	N'Mặt chữ nhật',	null,	4,	2,	3,	null,	null,	24,	3,	default);
+values ('SP000054',	10,	'DW00100647',	2445000,	3260000,	15,	'DW00100647.jpg',	N'Nữ',	null,	3,	null,	28,	N'Mặt chữ nhật',	null,	4,	2,	3,	null,	null,	24,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000055',	10,	'DW00100646',	4896000,	5440000,	15,	'DW00100646.jpg',	N'Nam',	null,	5,	null,	42,	N'Mặt tròn',	null,	4,	1,	3,	null,	null,	24,	2,	default);
+values ('SP000055',	10,	'DW00100646',	4080000,	5440000,	15,	'DW00100646.jpg',	N'Nam',	null,	5,	null,	42,	N'Mặt tròn',	null,	4,	1,	3,	null,	null,	24,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000056',	10,	'DW00100626',	4572000,	5080000,	15,	'DW00100626.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	1,	3,	null,	null,	24,	1,	default);
+values ('SP000056',	10,	'DW00100626',	3810000,	5080000,	15,	'DW00100626.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	1,	3,	null,	null,	24,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000057',	10,	'DW00100625',	4077000,	4530000,	15,	'DW00100625.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt chữ nhật',	null,	4,	2,	3,	null,	null,	17,	2,	default);
+values ('SP000057',	10,	'DW00100625',	3397500,	4530000,	15,	'DW00100625.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt chữ nhật',	null,	4,	2,	3,	null,	null,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000058',	10,	'DW00100622',	4077000,	4530000,	15,	'DW00100622.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt chữ nhật',	null,	4,	2,	3,	null,	null,	6,	2,	default);
+values ('SP000058',	10,	'DW00100622',	3397500,	4530000,	15,	'DW00100622.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt chữ nhật',	null,	4,	2,	3,	null,	null,	6,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000059',	10,	'DW00100621',	4455000,	4950000,	15,	'DW00100621.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt chữ nhật',	null,	4,	2,	3,	null,	null,	24,	11,	default);
+values ('SP000059',	10,	'DW00100621',	3712500,	4950000,	15,	'DW00100621.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt chữ nhật',	null,	4,	2,	3,	null,	null,	24,	11,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000060',	10,	'DW00100620',	4455000,	4950000,	15,	'DW00100620.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt chữ nhật',	null,	4,	2,	3,	null,	null,	24,	2,	default);
+values ('SP000060',	10,	'DW00100620',	3712500,	4950000,	15,	'DW00100620.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt chữ nhật',	null,	4,	2,	3,	null,	null,	24,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000061',	28,	'T006.407.36.053.00',	12546000,	13940000,	15,	'T006.407.36.053.00.jpg',	N'Nam',	'Tissot Le Locle',	3,	80,	39.3,	N'Mặt tròn',	9.8,	6,	1,	1,	215,	4,	24,	3,	default);
+values ('SP000061',	28,	'T006.407.36.053.00',	10455000,	13940000,	15,	'T006.407.36.053.00.jpg',	N'Nam',	'Tissot Le Locle',	3,	80,	39.3,	N'Mặt tròn',	9.8,	6,	1,	1,	215,	4,	24,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000062',	28,	'T137.407.11.051.00',	13410000,	14900000,	15,	'T137.407.11.051.00.jpg',	N'Nam',	'Tissot Prx',	10,	80,	40,	N'Mặt tròn',	10.9,	6,	2,	1,	215,	3,	17,	3,	default);
+values ('SP000062',	28,	'T137.407.11.051.00',	11175000,	14900000,	15,	'T137.407.11.051.00.jpg',	N'Nam',	'Tissot Prx',	10,	80,	40,	N'Mặt tròn',	10.9,	6,	2,	1,	215,	3,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000063',	28,	'T006.407.22.033.00',	15435000,	17150000,	15,	'T006.407.22.033.00.jpg',	N'Nam',	'Tissot Le Locle',	3,	80,	39.3,	N'Mặt tròn',	9.8,	6,	2,	1,	215,	3,	17,	2,	default);
+values ('SP000063',	28,	'T006.407.22.033.00',	12862500,	17150000,	15,	'T006.407.22.033.00.jpg',	N'Nam',	'Tissot Le Locle',	3,	80,	39.3,	N'Mặt tròn',	9.8,	6,	2,	1,	215,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000064',	28,	'T006.407.16.033.00',	11250000,	12500000,	15,	'T006.407.16.033.00.jpg',	N'Nam',	'Tissot Le Locle',	3,	80,	39.3,	N'Mặt tròn',	9.8,	6,	1,	1,	215,	3,	17,	2,	default);
+values ('SP000064',	28,	'T006.407.16.033.00',	9375000,	12500000,	15,	'T006.407.16.033.00.jpg',	N'Nam',	'Tissot Le Locle',	3,	80,	39.3,	N'Mặt tròn',	9.8,	6,	1,	1,	215,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000065',	28,	'T086.407.11.061.00',	7650000,	8500000,	15,	'T086.407.11.061.00.jpg',	N'Nam',	null,	5,	80,	41,	N'Mặt tròn',	9.8,	6,	2,	1,	215,	3,	17,	13,	default);
+values ('SP000065',	28,	'T086.407.11.061.00',	6375000,	8500000,	15,	'T086.407.11.061.00.jpg',	N'Nam',	null,	5,	80,	41,	N'Mặt tròn',	9.8,	6,	2,	1,	215,	3,	17,	13,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000066',	28,	'T006.407.22.036.00',	17010000,	18900000,	15,	'T006.407.22.036.00.jpg',	N'Nam',	'Tissot Le Locle',	3,	80,	39.3,	N'Mặt tròn',	9.8,	6,	2,	1,	215,	3,	17,	2,	default);
+values ('SP000066',	28,	'T006.407.22.036.00',	14175000,	18900000,	15,	'T006.407.22.036.00.jpg',	N'Nam',	'Tissot Le Locle',	3,	80,	39.3,	N'Mặt tròn',	9.8,	6,	2,	1,	215,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000067',	28,	'T065.430.22.031.00',	8100000,	9000000,	15,	'T065.430.22.031.00.jpg',	N'Nam',	null,	3,	null,	39.7,	N'Mặt tròn',	9.5,	1,	2,	1,	215,	3,	17,	2,	default);
+values ('SP000067',	28,	'T065.430.22.031.00',	6750000,	9000000,	15,	'T065.430.22.031.00.jpg',	N'Nam',	null,	3,	null,	39.7,	N'Mặt tròn',	9.5,	1,	2,	1,	215,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000068',	12,	'FC-200MC12B',	19827000,	22030000,	15,	'FC-200MC12B.jpg',	N'Nữ',	null,	3,	null,	23,	N'Mặt chữ nhật',	5.5,	4,	2,	1,	215,	3,	17,	2,	default);
+values ('SP000068',	12,	'FC-200MC12B',	16522500,	22030000,	15,	'FC-200MC12B.jpg',	N'Nữ',	null,	3,	null,	23,	N'Mặt chữ nhật',	5.5,	4,	2,	1,	215,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000069',	12,	'FC-303BN5B6B',	24066000,	26740000,	15,	'FC-303BN5B6B.jpg',	N'Nam',	null,	5,	38,	40,	N'Mặt tròn',	10.2,	1,	2,	1,	215,	3,	17,	3,	default);
+values ('SP000069',	12,	'FC-303BN5B6B',	20055000,	26740000,	15,	'FC-303BN5B6B.jpg',	N'Nam',	null,	5,	38,	40,	N'Mặt tròn',	10.2,	1,	2,	1,	215,	3,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000070',	12,	'FC-310MC4S36',	29439000,	32710000,	15,	'FC-310MC4S36.jpg',	N'Nam',	null,	3,	null,	33,	N'Mặt chữ nhật',	null,	1,	1,	1,	null,	3,	17,	2,	default);
+values ('SP000070',	12,	'FC-310MC4S36',	24532500,	32710000,	15,	'FC-310MC4S36.jpg',	N'Nam',	null,	3,	null,	33,	N'Mặt chữ nhật',	null,	1,	1,	1,	null,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000071',	12,	'FC-718NWM4H6',	82323000,	91470000,	15,	'FC-718NWM4H6.jpg',	N'Nam',	null,	5,	42,	42,	N'Mặt tròn',	12.1,	1,	1,	1,	215,	3,	17,	1,	default);
+values ('SP000071',	12,	'FC-718NWM4H6',	68602500,	91470000,	15,	'FC-718NWM4H6.jpg',	N'Nam',	null,	5,	42,	42,	N'Mặt tròn',	12.1,	1,	1,	1,	215,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000072',	12,	'FC-220MPW3BD26',	55998000,	62220000,	15,	'FC-220MPW3BD26.jpg',	N'Nữ',	null,	5,	null,	36,	N'Mặt tròn',	5,	4,	1,	1,	215,	3,	17,	2,	default);
+values ('SP000072',	12,	'FC-220MPW3BD26',	46665000,	62220000,	15,	'FC-220MPW3BD26.jpg',	N'Nữ',	null,	5,	null,	36,	N'Mặt tròn',	5,	4,	1,	1,	215,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000073',	12,	'FC-303MLG5B4',	25956000,	28840000,	15,	'FC-303MLG5B4.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	11,	1,	1,	1,	215,	3,	24,	2,	default);
+values ('SP000073',	12,	'FC-303MLG5B4',	21630000,	28840000,	15,	'FC-303MLG5B4.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	11,	1,	1,	1,	215,	3,	24,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000074',	12,	'FC-303MV5B4',	25956000,	28840000,	15,	'FC-303MV5B4.jpg',	N'Nam',	null,	5,	38,	40,	N'Mặt tròn',	10,	1,	1,	1,	215,	4,	6,	2,	default);
+values ('SP000074',	12,	'FC-303MV5B4',	21630000,	28840000,	15,	'FC-303MV5B4.jpg',	N'Nam',	null,	5,	38,	40,	N'Mặt tròn',	10,	1,	1,	1,	215,	4,	6,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000075',	14,	'L4.809.5.77.7',	39105000,	43450000,	15,	'L4.809.5.77.7.jpg',	N'Nam',	null,	3,	64,	34.5,	N'Mặt tròn',	8,	1,	2,	1,	215,	3,	24,	13,	default);
+values ('SP000075',	14,	'L4.809.5.77.7',	32587500,	43450000,	15,	'L4.809.5.77.7.jpg',	N'Nam',	null,	3,	64,	34.5,	N'Mặt tròn',	8,	1,	2,	1,	215,	3,	24,	13,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000076',	14,	'L3.742.3.56.7',	29160000,	32400000,	15,	'L3.742.3.56.7.jpg',	N'Nam',	null,	30,	null,	41,	N'Mặt tròn',	null,	1,	2,	1,	215,	3,	null,	3,	default);
+values ('SP000076',	14,	'L3.742.3.56.7',	24300000,	32400000,	15,	'L3.742.3.56.7.jpg',	N'Nam',	null,	30,	null,	41,	N'Mặt tròn',	null,	1,	2,	1,	215,	3,	null,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000077',	14,	'L2.821.5.57.2',	45450000,	50500000,	15,	'L2.821.5.57.2.jpg',	N'Nam',	null,	3,	72,	40,	N'Mặt tròn',	10.8,	1,	1,	1,	215,	5,	17,	3,	default);
+values ('SP000077',	14,	'L2.821.5.57.2',	37875000,	50500000,	15,	'L2.821.5.57.2.jpg',	N'Nam',	null,	3,	72,	40,	N'Mặt tròn',	10.8,	1,	1,	1,	215,	5,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000078',	14,	'L3.781.4.96.9',	31950000,	35500000,	15,	'L3.781.4.96.9.jpg',	N'Nam',	null,	30,	null,	41,	N'Mặt tròn',	null,	1,	3,	1,	null,	3,	1,	1,	default);
+values ('SP000078',	14,	'L3.781.4.96.9',	26625000,	35500000,	15,	'L3.781.4.96.9.jpg',	N'Nam',	null,	30,	null,	41,	N'Mặt tròn',	null,	1,	3,	1,	null,	3,	1,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000079',	14,	'L4.921.2.18.8',	27270000,	30300000,	15,	'L4.921.2.18.8.jpg',	N'Nam',	null,	3,	null,	38.5,	N'Mặt tròn',	12,	1,	2,	1,	215,	3,	6,	2,	default);
+values ('SP000079',	14,	'L4.921.2.18.8',	22725000,	30300000,	15,	'L4.921.2.18.8.jpg',	N'Nam',	null,	3,	null,	38.5,	N'Mặt tròn',	12,	1,	2,	1,	215,	3,	6,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000080',	14,	'L2.773.4.92.6',	71280000,	79200000,	15,	'L2.773.4.92.6.jpg',	N'Nam',	null,	3,	50,	42,	N'Mặt tròn',	14,	1,	2,	1,	215,	3,	17,	1,	default);
+values ('SP000080',	14,	'L2.773.4.92.6',	59400000,	79200000,	15,	'L2.773.4.92.6.jpg',	N'Nam',	null,	3,	50,	42,	N'Mặt tròn',	14,	1,	2,	1,	215,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000081',	14,	'L2.820.4.57.2',	40050000,	44500000,	15,	'L2.820.4.57.2.jpg',	N'Nam',	null,	3,	72,	38.5,	N'Mặt tròn',	10.7,	1,	1,	1,	215,	3,	17,	3,	default);
+values ('SP000081',	14,	'L2.820.4.57.2',	33375000,	44500000,	15,	'L2.820.4.57.2.jpg',	N'Nam',	null,	3,	72,	38.5,	N'Mặt tròn',	10.7,	1,	1,	1,	215,	3,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000082',	14,	'L4.921.2.42.2',	25110000,	27900000,	15,	'L4.921.2.42.2.jpg',	N'Nam',	null,	3,	64,	38.5,	N'Mặt tròn',	9,	1,	1,	1,	215,	3,	6,	6,	default);
+values ('SP000082',	14,	'L4.921.2.42.2',	20925000,	27900000,	15,	'L4.921.2.42.2.jpg',	N'Nam',	null,	3,	64,	38.5,	N'Mặt tròn',	9,	1,	1,	1,	215,	3,	6,	6,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000083',	14,	'L2.798.5.72.7',	56700000,	63000000,	15,	'L2.798.5.72.7.jpg',	N'Nam',	null,	5,	50,	42,	N'Mặt tròn',	null,	1,	2,	1,	215,	1,	24,	2,	default);
+values ('SP000083',	14,	'L2.798.5.72.7',	47250000,	63000000,	15,	'L2.798.5.72.7.jpg',	N'Nam',	null,	5,	50,	42,	N'Mặt tròn',	null,	1,	2,	1,	215,	1,	24,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000084',	7,	'C029.807.22.031.00',	18333000,	20370000,	15,	'C029.807.22.031.00.jpg',	N'Nam',	null,	10,	null,	40,	N'Mặt tròn',	null,	1,	2,	1,	215,	3,	24,	2,	default);
+values ('SP000084',	7,	'C029.807.22.031.00',	15277500,	20370000,	15,	'C029.807.22.031.00.jpg',	N'Nam',	null,	10,	null,	40,	N'Mặt tròn',	null,	1,	2,	1,	215,	3,	24,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000085',	7,	'C029.807.22.081.00',	18333000,	20370000,	15,	'C029.807.22.081.00.jpg',	N'Nam',	null,	10,	null,	40,	N'Mặt tròn',	11,	1,	2,	1,	215,	3,	6,	3,	default);
+values ('SP000085',	7,	'C029.807.22.081.00',	15277500,	20370000,	15,	'C029.807.22.081.00.jpg',	N'Nam',	null,	10,	null,	40,	N'Mặt tròn',	11,	1,	2,	1,	215,	3,	6,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000086',	7,	'C014.407.11.081.01',	16074000,	17860000,	15,	'C014.407.11.081.01.jpg',	N'Nam',	null,	20,	null,	40,	N'Mặt tròn',	12,	1,	2,	1,	215,	3,	17,	3,	default);
+values ('SP000086',	7,	'C014.407.11.081.01',	13395000,	17860000,	15,	'C014.407.11.081.01.jpg',	N'Nam',	null,	20,	null,	40,	N'Mặt tròn',	12,	1,	2,	1,	215,	3,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000087',	7,	'C024.410.11.031.20',	9792000,	10880000,	15,	'C024.410.11.031.20.jpg',	N'Nam',	null,	10,	null,	40,	N'Mặt tròn',	9.5,	4,	2,	1,	215,	3,	17,	2,	default);
+values ('SP000087',	7,	'C024.410.11.031.20',	8160000,	10880000,	15,	'C024.410.11.031.20.jpg',	N'Nam',	null,	10,	null,	40,	N'Mặt tròn',	9.5,	4,	2,	1,	215,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000088',	7,	'C029.807.16.031.60',	16074000,	17860000,	15,	'C029.807.16.031.60.jpg',	N'Nam',	null,	10,	null,	40,	N'Mặt tròn',	11,	1,	1,	1,	215,	3,	17,	2,	default);
+values ('SP000088',	7,	'C029.807.16.031.60',	13395000,	17860000,	15,	'C029.807.16.031.60.jpg',	N'Nam',	null,	10,	null,	40,	N'Mặt tròn',	11,	1,	1,	1,	215,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000089',	7,	'C036.407.11.050.01',	20205000,	22450000,	15,	'C036.407.11.050.01.jpg',	N'Nam',	null,	20,	null,	43,	N'Mặt tròn',	12,	1,	2,	1,	215,	3,	3,	3,	default);
+values ('SP000089',	7,	'C036.407.11.050.01',	16837500,	22450000,	15,	'C036.407.11.050.01.jpg',	N'Nam',	null,	20,	null,	43,	N'Mặt tròn',	12,	1,	2,	1,	215,	3,	3,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000090',	7,	'C035.007.22.117.02',	16074000,	17860000,	15,	'C035.007.22.117.02.jpg',	N'Nữ',	null,	5,	null,	29,	N'Mặt tròn',	null,	1,	2,	1,	null,	3,	6,	2,	default);
+values ('SP000090',	7,	'C035.007.22.117.02',	13395000,	17860000,	15,	'C035.007.22.117.02.jpg',	N'Nữ',	null,	5,	null,	29,	N'Mặt tròn',	null,	1,	2,	1,	null,	3,	6,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000091',	21,	'220.12.38.20.01.001',	74700000,	83000000,	15,	'220.12.38.20.01.001.jpg',	N'Nam',	null,	15,	null,	38,	N'Mặt tròn',	null,	1,	1,	1,	215,	3,	null,	3,	default);
+values ('SP000091',	21,	'220.12.38.20.01.001',	62250000,	83000000,	15,	'220.12.38.20.01.001.jpg',	N'Nam',	null,	15,	null,	38,	N'Mặt tròn',	null,	1,	1,	1,	215,	3,	null,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000092',	21,	'424.13.40.20.03.002',	53100000,	59000000,	15,	'424.13.40.20.03.002.jpg',	N'Nam',	'De ville',	3,	null,	39.5,	N'Mặt tròn',	null,	1,	1,	1,	215,	3,	null,	1,	default);
+values ('SP000092',	21,	'424.13.40.20.03.002',	44250000,	59000000,	15,	'424.13.40.20.03.002.jpg',	N'Nam',	'De ville',	3,	null,	39.5,	N'Mặt tròn',	null,	1,	1,	1,	215,	3,	null,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000093',	21,	'231.20.39.21.55.003',	150300000,	167000000,	15,	'231.20.39.21.55.003.jpg',	N'Nam',	null,	15,	60,	38.5,	N'Mặt tròn',	null,	null,	2,	1,	215,	5,	null,	10,	default);
+values ('SP000093',	21,	'231.20.39.21.55.003',	125250000,	167000000,	15,	'231.20.39.21.55.003.jpg',	N'Nam',	null,	15,	60,	38.5,	N'Mặt tròn',	null,	null,	2,	1,	215,	5,	null,	10,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000094',	21,	'326.30.40.50.01.002',	62550000,	69500000,	15,	'326.30.40.50.01.002.jpg',	N'Nam',	null,	10,	null,	40,	N'Mặt tròn',	null,	1,	9,	1,	215,	3,	17,	3,	default);
+values ('SP000094',	21,	'326.30.40.50.01.002',	52125000,	69500000,	15,	'326.30.40.50.01.002.jpg',	N'Nam',	null,	10,	null,	40,	N'Mặt tròn',	null,	1,	9,	1,	215,	3,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000095',	21,	'424.13.40.20.03.001',	41400000,	46000000,	15,	'424.13.40.20.03.001.jpg',	N'Nam',	'De ville',	3,	null,	39.5,	N'Mặt tròn',	null,	1,	1,	1,	215,	3,	17,	1,	default);
+values ('SP000095',	21,	'424.13.40.20.03.001',	34500000,	46000000,	15,	'424.13.40.20.03.001.jpg',	N'Nam',	'De ville',	3,	null,	39.5,	N'Mặt tròn',	null,	1,	1,	1,	215,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000096',	21,	'433.53.41.21.13.001',	179100000,	199000000,	15,	'433.53.41.21.13.001.jpg',	N'Nam',	'De ville',	10,	60,	41,	N'Mặt tròn',	13,	1,	1,	1,	215,	null,	24,	7,	default);
+values ('SP000096',	21,	'433.53.41.21.13.001',	149250000,	199000000,	15,	'433.53.41.21.13.001.jpg',	N'Nam',	'De ville',	10,	60,	41,	N'Mặt tròn',	13,	1,	1,	1,	215,	null,	24,	7,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000097',	19,	'OG380-46DLW',	11133000,	12370000,	15,	'OG380-46DLW.jpg',	N'Nữ',	null,	3,	null,	30,	N'Mặt tròn',	null,	4,	2,	1,	215,	3,	2,	2,	default);
+values ('SP000097',	19,	'OG380-46DLW',	9277500,	12370000,	15,	'OG380-46DLW.jpg',	N'Nữ',	null,	3,	null,	30,	N'Mặt tròn',	null,	4,	2,	1,	215,	3,	2,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000098',	19,	'OG377DLW-T-COC',	11475000,	12750000,	15,	'OG377DLW-T-COC.jpg',	N'Nữ',	null,	3,	null,	30,	N'Mặt tròn',	null,	4,	2,	1,	215,	3,	17,	2,	default);
+values ('SP000098',	19,	'OG377DLW-T-COC',	9562500,	12750000,	15,	'OG377DLW-T-COC.jpg',	N'Nữ',	null,	3,	null,	30,	N'Mặt tròn',	null,	4,	2,	1,	215,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000099',	19,	'OG385-022DMW-T',	6804000,	7560000,	15,	'OG385-022DMW-T.jpg',	N'Nam',	null,	5,	null,	38,	N'Mặt tròn',	9,	4,	2,	1,	215,	3,	17,	2,	default);
+values ('SP000099',	19,	'OG385-022DMW-T',	5670000,	7560000,	15,	'OG385-022DMW-T.jpg',	N'Nam',	null,	5,	null,	38,	N'Mặt tròn',	9,	4,	2,	1,	215,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000100',	19,	'OG1929-24AGK-T',	14994000,	16660000,	15,	'OG1929-24AGK-T.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	null,	1,	7,	1,	215,	4,	6,	2,	default);
+values ('SP000100',	19,	'OG1929-24AGK-T',	12495000,	16660000,	15,	'OG1929-24AGK-T.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	null,	1,	7,	1,	215,	4,	6,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000101',	19,	'OG358.33AGR-GL',	23445000,	26050000,	15,	'OG358.33AGR-GL.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	10,	1,	1,	1,	215,	4,	6,	24,	default);
+values ('SP000101',	19,	'OG358.33AGR-GL',	19537500,	26050000,	15,	'OG358.33AGR-GL.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	10,	1,	1,	1,	215,	4,	6,	24,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000102',	19,	'OG358.88AGR-GL',	22410000,	24900000,	15,	'OG358.88AGR-GL.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	null,	1,	1,	1,	215,	4,	6,	24,	default);
+values ('SP000102',	19,	'OG358.88AGR-GL',	18675000,	24900000,	15,	'OG358.88AGR-GL.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	null,	1,	1,	1,	215,	4,	6,	24,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000103',	19,	'OG380-451DLW',	8703000,	9670000,	15,	'OG380-451DLW.jpg',	N'Nữ',	null,	5,	null,	34,	N'Mặt tròn',	null,	4,	2,	1,	215,	3,	17,	2,	default);
+values ('SP000103',	19,	'OG380-451DLW',	7252500,	9670000,	15,	'OG380-451DLW.jpg',	N'Nữ',	null,	5,	null,	34,	N'Mặt tròn',	null,	4,	2,	1,	215,	3,	17,	2,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000104',	18,	'0606555',	9180000,	10200000,	15,	'0606555.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	2,	1,	null,	3,	17,	3,	default);
+values ('SP000104',	18,	'0606555',	7650000,	10200000,	15,	'0606555.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	2,	1,	null,	3,	17,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000105',	18,	'0607445',	9180000,	10200000,	15,	'0607445.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt tròn',	null,	4,	2,	3,	215,	3,	6,	3,	default);
+values ('SP000105',	18,	'0607445',	7650000,	10200000,	15,	'0607445.jpg',	N'Nữ',	null,	3,	null,	26,	N'Mặt tròn',	null,	4,	2,	3,	215,	3,	6,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000106',	18,	'0607123',	11520000,	12800000,	15,	'0607123.jpg',	N'Nam',	null,	3,	null,	39.5,	N'Mặt tròn',	9,	1,	1,	1,	215,	3,	null,	1,	default);
+values ('SP000106',	18,	'0607123',	9600000,	12800000,	15,	'0607123.jpg',	N'Nam',	null,	3,	null,	39.5,	N'Mặt tròn',	9,	1,	1,	1,	215,	3,	null,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000107',	18,	'0606896',	9180000,	10200000,	15,	'0606896.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	null,	4,	2,	1,	215,	null,	null,	3,	default);
+values ('SP000107',	18,	'0606896',	7650000,	10200000,	15,	'0606896.jpg',	N'Nam',	null,	5,	null,	40,	N'Mặt tròn',	null,	4,	2,	1,	215,	null,	null,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000108',	18,	'0607313',	6426000,	7140000,	15,	'0607313.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	1,	1,	215,	3,	17,	1,	default);
+values ('SP000108',	18,	'0607313',	5355000,	7140000,	15,	'0607313.jpg',	N'Nam',	null,	3,	null,	40,	N'Mặt tròn',	null,	4,	1,	1,	215,	3,	17,	1,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000109',	18,	'0607283',	8874000,	9860000,	15,	'0607283.jpg',	N'Nam',	null,	3,	null,	39,	N'Mặt tròn',	null,	4,	2,	1,	215,	3,	null,	3,	default);
+values ('SP000109',	18,	'0607283',	7395000,	9860000,	15,	'0607283.jpg',	N'Nam',	null,	3,	null,	39,	N'Mặt tròn',	null,	4,	2,	1,	215,	3,	null,	3,	default);
 insert into SanPham(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung, dong_san_pham, khang_nuoc, khoang_tru_cot, size_mat, hinh_dang, do_day, id_dong_may, id_chat_lieu_day, id_chat_lieu_kinh, id_xuat_xu, id_chat_lieu_vo, id_mau_vo, id_mau_mat, trang_thai) 
-values ('SP000110',	18,	'0606369',	8550000,	9500000,	15,	'0606369.jpg',	N'Nam',	null,	3,	null,	39,	N'Mặt tròn',	null,	4,	2,	1,	null,	3,	17,	1,	default);
+values ('SP000110',	18,	'0606369',	7125000,	9500000,	15,	'0606369.jpg',	N'Nam',	null,	3,	null,	39,	N'Mặt tròn',	null,	4,	2,	1,	null,	3,	17,	1,	default);
+
 
 select * from SanPham
  
@@ -1092,30 +1093,31 @@ values ('anhtp', '88bc42ee01ec1836dd1dc33b505aad6d8855cc76e2c0d3dcf61da6844f156a
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
 values ('HD112823113327', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923043755', default, N'Khách hàng lẻ', N'Tại cửa hàng', 0, 1);
+values ('HD112923043755', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923080128', default, N'Khách hàng lẻ', N'Tại cửa hàng', 0, 1);
+values ('HD112923080128', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923090317', default, N'Khách hàng lẻ', N'Tại cửa hàng', 0, 1);
+values ('HD112923090317', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923101701', default, N'Khách hàng lẻ', N'Tại cửa hàng', 0, 1);
+values ('HD112923101701', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923111701', default, N'Nguyễn Văn Nam', '0986383628', N'Hà Nội', 3, 1);
+values ('HD112923111701', default, N'Nguyễn Văn Nam', '0986383628', N'Hà Nội', 1, 1);
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923122033', default, N'Ngô Thị Bích', '0986383628', N'Hà Nội', 4, 1);
+values ('HD112923122033', default, N'Ngô Thị Bích', '0986383628', N'Hà Nội', 1, 1);
 
 select * from HoaDon
 
 -- data table HoaDonChiTiet
 
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(1, 1, 2, 510000, 459000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(2, 1, 1, 1200000, 1080000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(1, 3, 3, 510000, 459000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(1, 2, 1, 510000, 459000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(2, 2, 1, 1200000, 1080000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(3, 6, 2, 1020000, 918000);
-insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(4, 7, 2, 390000, 351000);
-
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(1, 1, 2, 510000, 484500);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(2, 1, 1, 1200000, 1140000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(1, 3, 3, 510000, 484500);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(1, 2, 1, 510000, 484500);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(2, 2, 1, 1200000, 1140000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(3, 6, 2, 1020000, 969000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(4, 7, 2, 390000, 370500);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(8, 4, 2, 1020000, 5861500);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(9, 5, 2, 390000, 3021000);
 
 select *from HoaDonChiTiet
 
@@ -1181,8 +1183,9 @@ insert into KhachHang(ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, so_dien_thoai
 values ('KH000021', N'Nguyễn Văn Q', 1 , '1992-9-16', '0990697576', 'chiennv@gmail.com', 'Vĩnh Phúc',default, default , N'Không',default);
 
 -- data table ChuongTrinhKhuyenMai
+truncate table ChuongTrinhKhuyenMai
 insert into ChuongTrinhKhuyenMai(ma_chuong_trinh, ten_chuong_trinh, ngay_bat_dau, ngay_ket_thuc, hinh_thuc_giam_gia, gia_tri_giam, trang_thai)
-values ('KM000001', N'Thích thì giảm', '2023-12-01 08:00:00', '2023-12-10 17:30:00', N'Phần trăm', 10, default);
+values ('KM000001', N'Thích thì giảm', '2023-12-01 08:00:00', '2023-12-10 17:30:00', N'Phần trăm', 5, default);
 insert into ChuongTrinhKhuyenMai(ma_chuong_trinh, ten_chuong_trinh, ngay_bat_dau, ngay_ket_thuc, hinh_thuc_giam_gia, gia_tri_giam, trang_thai)
 values ('KM000002', N'Thích thì giảm 2', '2023-12-01 08:00:00', '2023-12-20 17:30:00', N'Tiền mặt', 300000, default);
 
@@ -1190,6 +1193,7 @@ select * from ChuongTrinhKhuyenMai
 
 
 -- data table SanPhamKhuyenMai
+truncate table SanPhamKhuyenMai
 insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(1,1);
 insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(2,1);
 insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(3,1);
