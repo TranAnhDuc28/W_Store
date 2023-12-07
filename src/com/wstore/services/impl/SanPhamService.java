@@ -209,6 +209,9 @@ public class SanPhamService implements ISanPhamService {
         return sanPhamRepository.findByNameOrMaSanPhamBanHang(page, pageSize, name, trangThai);
     }
 
-    
+    @Override
+    public SanPhamBanHangViewModel getOne(int id) {
+        return sanPhamRepository.getOne(id);
+    }
     
 }

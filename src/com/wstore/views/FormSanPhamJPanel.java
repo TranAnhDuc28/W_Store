@@ -72,6 +72,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     public FormSanPhamJPanel() {
         initComponents();
         init();
+        turnOffFilter();
         cboThuongHieu.setModel(dcbmThuongHieu);
         cboDongMay.setModel(dcbmDongMay);
         cboChatLieuDay.setModel(dcbmChatLieuDay);
@@ -84,6 +85,11 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         loadDataCboDoiTuongSuDung();
         loadDataCboTrangThai();
         initPagination(sanPhamService.getAll(page, pageSize, trangThai));
+    }
+    
+    private void turnOffFilter() {
+        pnlLoc.setVisible(false);
+        btnLocSanPham.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -106,7 +112,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         txtTimKiemSanPham = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        pnlLoc = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -253,56 +259,56 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
                     .addComponent(txtTimKiemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jPanel5.setBackground(new java.awt.Color(243, 243, 243));
-        jPanel5.setOpaque(false);
-        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 2));
+        pnlLoc.setBackground(new java.awt.Color(243, 243, 243));
+        pnlLoc.setOpaque(false);
+        pnlLoc.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 2));
 
         jLabel7.setText("Thương hiệu");
         jLabel7.setPreferredSize(new java.awt.Dimension(150, 16));
-        jPanel5.add(jLabel7);
+        pnlLoc.add(jLabel7);
 
         jLabel10.setText("Dòng máy");
         jLabel10.setPreferredSize(new java.awt.Dimension(150, 16));
-        jPanel5.add(jLabel10);
+        pnlLoc.add(jLabel10);
 
         jLabel9.setText("Đối tượng sử dụng");
         jLabel9.setPreferredSize(new java.awt.Dimension(150, 16));
-        jPanel5.add(jLabel9);
+        pnlLoc.add(jLabel9);
 
         jLabel11.setText("Chất liệu dây");
         jLabel11.setPreferredSize(new java.awt.Dimension(150, 16));
-        jPanel5.add(jLabel11);
+        pnlLoc.add(jLabel11);
 
         jLabel8.setText("Chất liệu kính");
         jLabel8.setPreferredSize(new java.awt.Dimension(150, 16));
-        jPanel5.add(jLabel8);
+        pnlLoc.add(jLabel8);
 
         jLabel13.setText("Hình dạng mặt");
         jLabel13.setPreferredSize(new java.awt.Dimension(150, 16));
-        jPanel5.add(jLabel13);
+        pnlLoc.add(jLabel13);
 
         cboThuongHieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboThuongHieu.setPreferredSize(new java.awt.Dimension(150, 30));
-        jPanel5.add(cboThuongHieu);
+        pnlLoc.add(cboThuongHieu);
 
         cboDongMay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboDongMay.setPreferredSize(new java.awt.Dimension(150, 30));
-        jPanel5.add(cboDongMay);
+        pnlLoc.add(cboDongMay);
 
         cboDoiTuongSuDung.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboDoiTuongSuDung.setPreferredSize(new java.awt.Dimension(150, 30));
-        jPanel5.add(cboDoiTuongSuDung);
+        pnlLoc.add(cboDoiTuongSuDung);
 
         cboChatLieuDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboChatLieuDay.setPreferredSize(new java.awt.Dimension(150, 30));
-        jPanel5.add(cboChatLieuDay);
+        pnlLoc.add(cboChatLieuDay);
 
         cboChatLieuKinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboChatLieuKinh.setPreferredSize(new java.awt.Dimension(150, 30));
-        jPanel5.add(cboChatLieuKinh);
+        pnlLoc.add(cboChatLieuKinh);
 
         cboHinhDangMat.setPreferredSize(new java.awt.Dimension(150, 30));
-        jPanel5.add(cboHinhDangMat);
+        pnlLoc.add(cboHinhDangMat);
 
         jPanel7.setBackground(new java.awt.Color(243, 243, 243));
         jPanel7.setOpaque(false);
@@ -494,7 +500,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 932, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 932, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLocSanPham)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -507,7 +513,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnLocSanPham)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                    .addComponent(pnlLoc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
@@ -931,7 +937,6 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
@@ -942,6 +947,7 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblPageOfTotalPage;
     private javax.swing.JLabel lblTongSoBanGhi;
+    private javax.swing.JPanel pnlLoc;
     private javax.swing.JTabbedPane tabbebQLSanPham;
     public javax.swing.JTable tblDSSanPham;
     private javax.swing.JTextField txtTimKiemSanPham;

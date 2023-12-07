@@ -443,5 +443,39 @@ public class SanPhamRepository implements ISanPhamRepository {
         return list;
     }
 
+    @Override
+    public SanPhamBanHangViewModel getOne(int id) {
+        SanPhamBanHangViewModel sanPhamBanHang = null;
+
+        String sql = "select sp.id, sp.hinh_anh, sp.ma_san_pham, th.ten_thuong_hieu, sp.ma_hang_hoa, sp.don_gia, sp.so_luong_ton,\n"
+                + "	case\n"
+                + "        when ctkm.hinh_thuc_giam_gia = N'Phần trăm' then (sp.don_gia * (1 -  CAST(ctkm.gia_tri_giam AS decimal(10, 0))/100))\n"
+                + "        when ctkm.hinh_thuc_giam_gia = N'Tiền mặt' then sp.don_gia - ctkm.gia_tri_giam\n"
+                + "        else sp.don_gia\n"
+                + "    end as gia_khuyen_mai\n"
+                + "from SanPham sp\n"
+                + "	left join ThuongHieu th on sp.id_thuong_hieu = th.id\n"
+                + "	left join SanPhamKhuyenMai spkm on sp.id = spkm.id_san_pham\n"
+                + "	left join ChuongTrinhKhuyenMai ctkm on spkm.id_chuong_trinh_khuyen_mai = ctkm.id\n"
+                + "where sp.id = ?";
+        
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setInt(1, id);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                sanPhamBanHang = new SanPhamBanHangViewModel();
+                sanPhamBanHang.setId(rs.getInt("id"));
+                sanPhamBanHang.setMaSanPham(rs.getString("ma_san_pham"));
+                sanPhamBanHang.setTenSanPham(rs.getString("ten_thuong_hieu") + " " + rs.getString("ma_hang_hoa"));
+                sanPhamBanHang.setSoLuong(rs.getInt("so_luong_ton"));
+                sanPhamBanHang.setDonGia(rs.getBigDecimal("don_gia"));
+                sanPhamBanHang.setGiaKhuyenMai(rs.getBigDecimal("gia_khuyen_mai"));
+                sanPhamBanHang.setHinhAnh(rs.getString("hinh_anh"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sanPhamBanHang;
+    }
 
 }

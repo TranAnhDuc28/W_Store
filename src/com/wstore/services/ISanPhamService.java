@@ -41,4 +41,6 @@ public interface ISanPhamService {
     int getRecordCountByTrangThai(int trangThai);
 
     String getMaSanPhamTuDongSinh();
+    
+    SanPhamBanHangViewModel getOne(int id);
 }

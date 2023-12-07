@@ -8,8 +8,10 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.wstore.services.IHoaDonService;
 import com.wstore.services.impl.HoaDonService;
 import com.wstore.utilities.ReportManager;
+import com.wstore.utilities.status.StatusHoaDon;
 import com.wstore.viewmodels.HoaDonViewModel;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
 
@@ -21,6 +23,7 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
 
     private IHoaDonService hoaDonService = new HoaDonService();
     private DefaultTableModel dtmHoaDon;
+    private DefaultComboBoxModel dcbmTrangThai = new DefaultComboBoxModel();
     private List<HoaDonViewModel> listHD;
     private int rowSelected = -1;
     private Integer trangThai = 0;
@@ -389,7 +392,14 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
             dtmHoaDon.addRow(hd.toDataRow());
         }
     }
-
+    
+    private void loadCboTrangThai() {
+        dcbmTrangThai.removeAllElements();
+        dcbmTrangThai.addElement(StatusHoaDon.CHO_THANH_TOAN);
+        dcbmTrangThai.addElement(StatusHoaDon.CHO_GIAO_HANG);
+        dcbmTrangThai.addElement(StatusHoaDon.DANG_GIAO_HANG);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
     private javax.swing.JButton btnInHoaDon;
