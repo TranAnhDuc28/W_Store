@@ -209,7 +209,7 @@ from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
 group by  hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
 		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan
 		, hd.ghi_chu, hd.trang_thai, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
-having hd.trang_thai = 1
+having hd.ngay_tao between '2023-12-06' and '2023-12-07'
 order by hd.id
 offset 0 rows
 fetch next 10 rows only

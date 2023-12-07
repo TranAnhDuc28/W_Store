@@ -1090,7 +1090,7 @@ values ('anhtp', '88bc42ee01ec1836dd1dc33b505aad6d8855cc76e2c0d3dcf61da6844f156a
 -- data table HoaDon
 
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD1128231133', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
+values ('HD112823113327', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
 values ('HD112923043755', default, N'Khách hàng lẻ', N'Tại cửa hàng', 0, 1);
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 

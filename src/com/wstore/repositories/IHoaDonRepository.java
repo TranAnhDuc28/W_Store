@@ -29,4 +29,6 @@ public interface IHoaDonRepository {
     int getCountRecordByTrangThai(int trangThai);
     
     List<HoaDonViewModel> findByMa(int page, int pageSize, String maHD);
+    
+    List<HoaDonViewModel> filterHoaDonByNgayTao(int page, int pageSize, String tuNgay, String denNgay);
 }

@@ -29,4 +29,7 @@ public interface IHoaDonService {
     HoaDonViewModel getOne(String maHD);
 
     List<HoaDonViewModel> findByMaHD(int page, int pageSize, String maHD);
+
+    List<HoaDonViewModel> filterHoaDonByNgayTao(int page, int pageSize, String tuNgay, String denNgay);
+
 }

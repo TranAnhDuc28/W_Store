@@ -59,4 +59,9 @@ public class HoaDonService implements IHoaDonService {
         return hoaDonRepository.findByMa(page, pageSize, maHD);
     }
 
+    @Override
+    public List<HoaDonViewModel> filterHoaDonByNgayTao(int page, int pageSize, String tuNgay, String denNgay) {
+        return hoaDonRepository.filterHoaDonByNgayTao(page, pageSize, tuNgay, denNgay);
+    }
+
 }

@@ -143,9 +143,10 @@ public class HoaDonViewModel extends HoaDonBanHangViewModel {
 
     @Override
     public Object[] toDataRow() {
-        return new Object[]{super.getMaHoaDon(), super.getNgayTao(), super.getTenKhachHang(),
-            soDienThoai, diaChi, super.getNhanVien(), ngayThanhToan, hinhThucThanhToan,
-            tongTien == null ? tongTien : Helper.dfTien.format(tongTien.longValue()), 
+        return new Object[]{super.getMaHoaDon(), Helper.sdfNgayThangThoiGian.format(super.getNgayTao()),
+             super.getTenKhachHang(), soDienThoai, diaChi, super.getNhanVien(),
+            ngayThanhToan == null ? null : Helper.sdfNgayThangThoiGian.format(ngayThanhToan),
+            hinhThucThanhToan, tongTien == null ? tongTien : Helper.dfTien.format(tongTien.longValue()),
             StatusHoaDon.getNameByValue(super.getTrangThai()), ghiChu};
     }
 }
