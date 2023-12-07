@@ -214,6 +214,25 @@ order by hd.id
 offset 0 rows
 fetch next 10 rows only
 
+
+-- tìm kiếm hóa đơn
+select hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
+		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan
+		, sum(hdct.so_luong * hdct.don_gia) as tong_tien, hd.ghi_chu, hd.trang_thai
+		, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
+from HoaDon hd left join NhanVien nv on hd.id_nhan_vien = nv.id
+	left join KhachHang kh on hd.id_khach_hang = kh.id
+	left join HoaDonChiTiet hdct on hd.id = hdct.id_hoa_don
+	left join HinhThucThanhToan httt on hd.id = httt.id_hoa_don
+group by  hd.id, ma_hoa_don, hd.ngay_tao, ten_khach_hang, hd.so_dien_thoai, hd.dia_chi
+		, ngay_thanh_toan, ngay_giao_hang, tien_ship, tien_coc, ngay_nhan_hang, httt.loai_hinh_thanh_toan
+		, hd.ghi_chu, hd.trang_thai, id_nhan_vien, nv.ma_nhan_vien, nv.ho_ten, id_khach_hang
+having ma_hoa_don like '%440%' 
+order by hd.id
+offset 0 rows
+fetch next 10 rows only
+
+
 insert into HoaDon
 	(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien)
 values
@@ -292,7 +311,12 @@ FROM            dbo.HoaDon INNER JOIN OrderTotal ON  dbo.HoaDon.id = OrderTotal.
                          dbo.NhanVien ON dbo.HoaDon.id_nhan_vien = dbo.NhanVien.id INNER JOIN
                          dbo.SanPham ON dbo.HoaDonChiTiet.id_san_pham = dbo.SanPham.id INNER JOIN
                          dbo.ThuongHieu ON dbo.SanPham.id_thuong_hieu = dbo.ThuongHieu.id 
-WHERE dbo.HoaDon.ma_hoa_don = 'HD031223060052'
+WHERE dbo.HoaDon.ma_hoa_don = 'HD061223084617'
 GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang, dbo.HoaDon.dia_chi, dbo.HoaDon.so_dien_thoai, dbo.SanPham.ma_san_pham,
 	  dbo.ThuongHieu.ten_thuong_hieu, dbo.SanPham.ma_hang_hoa, dbo.NhanVien.ho_ten, dbo.HoaDonChiTiet.so_luong, dbo.HoaDonChiTiet.don_gia, dbo.HoaDonChiTiet.don_gia_khuyen_mai, OrderTotal.tong_tien
 
+select * from HoaDonChiTiet where id_hoa_don = 20
+
+select * from HoaDon where id = 20
+
+delete HoaDonChiTiet where id = ?;

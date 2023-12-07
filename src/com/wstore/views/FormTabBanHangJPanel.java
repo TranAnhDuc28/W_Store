@@ -121,6 +121,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
                     }
                     themSanPhamVaoGioHang(row, soLuong);
                     showDataHoaDonTaiQuay(hoaDonViewModel);
+                    System.out.println("SP trong giỏ hàng: ");
                     for (HoaDonChiTietViewModel hdct : listHoaDonChiTiet) {
                         System.out.println(hdct.toString());
                     }
@@ -983,7 +984,30 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblGioHangMouseClicked
 
     private void btnBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoActionPerformed
-        // TODO add your handling code here:
+        int rowSeletedGioHang[] = tblGioHang.getSelectedRows();
+        int rowCountTblGioHang = tblGioHang.getRowCount();
+        int arrLenght = rowSeletedGioHang.length;
+        if (arrLenght > 0) {
+            if (arrLenght == 1) {
+                listHoaDonChiTiet.remove(rowSeletedGioHang[0]);
+            } else if (arrLenght > 1 && arrLenght < rowCountTblGioHang) {
+                for (int i = 0; i < arrLenght; i++) {
+                    System.out.println(rowSeletedGioHang[i]);
+                }
+                for (int i = arrLenght - 1 ; i >= 0; i--) {
+                    listHoaDonChiTiet.remove(rowSeletedGioHang[i]);
+                    System.out.println(rowSeletedGioHang[i]);
+                }
+            } else if (arrLenght == rowCountTblGioHang) {
+                listHoaDonChiTiet.clear();
+            }
+            loadDataToTblGioHang(listHoaDonChiTiet);
+            showDataHoaDonTaiQuay(hoaDonViewModel);
+            System.out.println("SP còn lại trong giỏ hàng: ");
+            for (HoaDonChiTietViewModel hdct : listHoaDonChiTiet) {
+                System.out.println(hdct.toString());
+            }
+        }
     }//GEN-LAST:event_btnBoActionPerformed
 
     private void txtTienKhachDuaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyReleased
@@ -1067,6 +1091,9 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cboHinhThucThanhToanItemStateChanged
 
     private void btnRefeshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefeshActionPerformed
+        if (hoaDonViewModel == null) {
+            return;
+        }
         HoaDon hd = getDataToForm();
         hd.setTrangThai(0);
         if (hoaDonService.update(hd, hoaDonViewModel.getId())) {
@@ -1186,10 +1213,10 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
             donGiaSP = Integer.parseInt(tblGioHang.getValueAt(i, 3).toString());
             tienGiamGiaTrenSP = Integer.parseInt(tblGioHang.getValueAt(i, 4).toString());
             soLuongMua = Integer.parseInt(tblGioHang.getValueAt(i, 2).toString());
-            System.out.println(soLuongMua);
+            System.out.println("Số lượng mua SP " + (i + 1) + " " + soLuongMua);
             tongTien += donGiaSP * soLuongMua;
             tongTienGiamGia += tienGiamGiaTrenSP * soLuongMua;
-            System.out.println(tongTienGiamGia);
+            System.out.println("Tổng tiền giảm giá SP: " + tongTienGiamGia);
             tienCanThanhToan += Integer.parseInt(tblGioHang.getValueAt(i, 6).toString());
         }
         txtTongTien.setText(Helper.dfTien.format(tongTien));
@@ -1226,7 +1253,7 @@ public class FormTabBanHangJPanel extends javax.swing.JPanel {
         lblHoaDonDangMuaHang.setText("");
         txtTenKH.setText("Khách hàng lẻ");
         txtSDT.setText("");
-        txtDiaChi.setText("");
+        txtDiaChi.setText("Tại cửa hàng");
         txtMaHD.setText("");
         txtNgayTao.setText("");
         txtNhanVien.setText("");

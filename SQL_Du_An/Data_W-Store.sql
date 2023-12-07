@@ -1190,7 +1190,6 @@ select * from ChuongTrinhKhuyenMai
 
 
 -- data table SanPhamKhuyenMai
-truncate table SanPhamKhuyenMai
 insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(1,1);
 insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(2,1);
 insert into SanPhamKhuyenMai(id_san_pham, id_chuong_trinh_khuyen_mai) values(3,1);

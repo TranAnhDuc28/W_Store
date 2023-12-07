@@ -84,8 +84,8 @@ create table XuatXu(
 )
 go
 
--- if OBJECT_ID('PhongCach') is not null
--- drop table PhongCach
+--if OBJECT_ID('PhongCach') is not null
+--drop table PhongCach
 -- go
 -- create table PhongCach(
 -- 	id int identity(1,1) not null,
@@ -169,17 +169,17 @@ create table TinhNangSanPham(
 )
 go
 
--- if OBJECT_ID('PhongCachSanPham') is not null
--- drop table PhongCachSanPham
--- go
--- create table PhongCachSanPham(
+--if OBJECT_ID('PhongCachSanPham') is not null
+--drop table PhongCachSanPham
+--go
+--create table PhongCachSanPham(
 -- 	id_san_pham int not null,
 -- 	id_phong_cach int not null,
 -- 	constraint phong_cach_san_pham_PK primary key (id_san_pham, id_phong_cach),
--- 	constraint san_pham_FK_tbl_PhongCachSanPham foreign key (id_san_pham) references SanPham(id),
+--	constraint san_pham_FK_tbl_PhongCachSanPham foreign key (id_san_pham) references SanPham(id),
 -- 	constraint phong_cach_FK_tbl_PhongCachSanPham foreign key (id_phong_cach) references PhongCach(id)
--- )
--- go
+--)
+--go
 
 if OBJECT_ID('NhanVien') is not null
 drop table NhanVien
