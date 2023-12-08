@@ -1089,6 +1089,7 @@ values ('anhtp', '88bc42ee01ec1836dd1dc33b505aad6d8855cc76e2c0d3dcf61da6844f156a
 
 
 -- data table HoaDon
+select * from HoaDon
 
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
 values ('HD112823113327', default, N'Khách hàng lẻ', N'Tại cửa hàng', GETDATE(), 1, 1);
@@ -1105,6 +1106,196 @@ values ('HD112923111701', default, N'Nguyễn Văn Nam', '0986383628', N'Hà N�
 insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
 values ('HD112923122033', default, N'Ngô Thị Bích', '0986383628', N'Hà Nội', GETDATE(), 1, 1);
 
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122035', '2023-12-07', N'Hoàng Ngọc Hùng', '0374567890', N'Hà Nam', DATEADD(DAY, -1, GETDATE()), 1, 2);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122036', '2023-12-07', N'Dương Ngọc Thái', '0374567876', N'Phủ Lý', DATEADD(DAY, -1, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122037', '2023-12-07', N'Châu Tinh Trì', '0388453155', N'Lào Cai',  DATEADD(DAY, -1, GETDATE()), 1, 2);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122038', '2023-12-07', N'Đạt Văn Tây', '0978564335', N'Tháp Chàm',  DATEADD(DAY, -1, GETDATE()), 1, 5);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122039', '2023-12-07', N'Trương Mẫn', '0367888434', N'Đại Tự',  DATEADD(DAY, -1, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122040', '2023-12-07', N'Lưu Diệc Phi', '0398234789', N'Tam Dương', DATEADD(DAY, -1, GETDATE()), 1, 2);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122041', '2023-12-07', N'Lê Anh Tú', '0345678921', N'Củ Chi',  DATEADD(DAY, -1, GETDATE()), 1, 7);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122042', '2023-12-07', N'Hoàng Gia Bảo', '0375432667', N'Chùa Ha',  DATEADD(DAY, -1, GETDATE()), 1, 8);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122043', '2023-12-07', N'Khánh Đơn', '0366543766', N'Tam Đảo',  DATEADD(DAY, -1, GETDATE()), 1, 2);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122045', '2023-12-07', N'Nguyễn Anh Dũng', '0374555890', N'Lập Thạch',  DATEADD(DAY, -1, GETDATE()), 1, 2);
+
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122046', '2023/12/06', N'Nguyễn Ngọc Vũ', '0374567890', N'Vĩnh Yên',  DATEADD(DAY, -2, GETDATE()), 1, 3);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122047', '2023/12/06', N'Vũ Thị Hà', '0374567890', N'Việt Trì',  DATEADD(DAY, -2, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122048', '2023/12/06', N'Dương Trường', '0374567890', N'Phú Thọ',  DATEADD(DAY, -2, GETDATE()), 1, 5);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122049', '2023/12/06', N'Quách Tuấn Dương', '0374567890', N'Tam Đảo', DATEADD(DAY, -2, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122050', '2023/12/06', N'Hoàng Huy Hoàng', '0374567890', N'Hà Nội',  DATEADD(DAY, -2, GETDATE()), 1, 7);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122051', '2023/12/06', N'Trần Đình Trọng', '0374567890', N'Vĩnh Phúc',  DATEADD(DAY, -2, GETDATE()), 1, 8);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122052', '2023/12/05', N'Dương Khang', '0374567890', N'Di Trạch',  DATEADD(DAY, -3, GETDATE()), 1, 7);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122053', '2023/12/05', N'Hải My', '0374567890', N'Quốc Oai', DATEADD(DAY, -3, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122054', '2023/12/05', N'Tú Bà', '0374567890', N'Thạch Thất',  DATEADD(DAY, -3, GETDATE()), 1, 5);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122055', '2023/12/05', N'Trương Mị', '0374567890', N'Vân Phúc',  DATEADD(DAY, -3, GETDATE()), 1, 6);
+
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122056', '2023/12/05', N'A Châu', '0374567890', N'Hà Nội', DATEADD(DAY, -3, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122057', '2023/12/05', N'A Phủ', '0374567890', N'Hà Nội',  DATEADD(DAY, -3, GETDATE()), 1, 7);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122058', '2023/12/05', N'Trương Tho', '0374567890', N'Hà Nội',  DATEADD(DAY, -3, GETDATE()), 1, 8);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122059', '2023/12/05', N'Bùi Tuấn', '0374567890', N'Vân Phúc',  DATEADD(DAY, -3, GETDATE()),1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122060', '2023/12/05', N'Hạ Tấn', '0374567890', N'Vân Phúc',  DATEADD(DAY, -3, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122061', '2023/12/05', N'Dương Minh', '0374567890', N'Hà Nội',  DATEADD(DAY, -3, GETDATE()) ,1, 2);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122062', '2023/12/05', N'Yến Giang', '0374567890', N'Vân Phúc',  DATEADD(DAY, -3, GETDATE()) ,1, 3);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122063', '2023/12/05', N'Anh Đức', '0374567890', N'Hà Nội',  DATEADD(DAY, -3, GETDATE()) ,1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122064', '2023/12/05', N'Bao Bá', '0374567890', N'Hà Nội',  DATEADD(DAY, -3, GETDATE()),1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122065', '2023/12/05', N'Vũ Khang', '0374567890', N'Hà Nội',  DATEADD(DAY, -3, GETDATE()) , 1, 5);
+
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122066', '2023/12/05', N'A Chư', '0374567890', N'Hà Nội',  DATEADD(DAY, -3, GETDATE()) , 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122067', '2023/12/05', N'Cô Hiền', '0374567890', N'Hà Nội',  DATEADD(DAY, -3, GETDATE()) , 1, 7);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122068', '2023/12/05', N'Chú Tính', '0374567890', N'Hà Nội',  DATEADD(DAY, -3, GETDATE()) , 1, 8);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122069', '2023/12/05', N'Bác T', '0374567890', N'Vân Phúc',  DATEADD(DAY, -3, GETDATE()) , 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122070', '2023/12/05', N'Khang', '0374567890', N'Vân Phúc',  DATEADD(DAY, -3, GETDATE()) , 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122071', '2023/12/04', N'Phạm Văn', '0374567890', N'Hà Nội',  DATEADD(DAY, -4, GETDATE()) , 1, 2);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122072', '2023/12/04', N'Vân Pháp', '0374567890', N'Vân Phúc',  DATEADD(DAY, -4, GETDATE()), 1, 3);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122073', '2023/12/04', N'Văn Minh', '0374567890', N'Hà Nội',  DATEADD(DAY, -4, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122074', '2023/12/04', N'Bao Tú', '0374567890', N'Hà Nội',  DATEADD(DAY, -4, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122075', '2023/12/04', N'Vũ Vịt', '0374567890', N'Hà Nội',  DATEADD(DAY, -4, GETDATE()), 1, 5);
+
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122076', '2023/12/04', N'A Phú', '0374567890', N'Vĩnh Phúc',  DATEADD(DAY, -4, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122077', '2023/12/04', N'Ti Hợi', '0374567890', N'Vĩnh Phúc',  DATEADD(DAY, -4, GETDATE()), 1, 7);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122078', '2023/12/04', N'Lanh Cao', '0374567890', N'Vĩnh Phúc',  DATEADD(DAY, -4, GETDATE()), 1, 8);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122079', '2023/12/04', N'Bát Tho', '0374567890', N'Vân Phúc',  DATEADD(DAY, -4, GETDATE()), 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122080', '2023/12/03', N'Hạ Thương', '0374567890', N'Vân Phúc',  DATEADD(DAY, -5, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122081', '2023/12/03', N'Nguyễn Sôi', '0374567890', N'Hà Nội',DATEADD(DAY, -5, GETDATE()), 1, 2);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122082', '2023/12/03', N'Giang Nam', '0374567890', N'Vân Phúc',DATEADD(DAY, -5, GETDATE()), 1, 3);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122083', '2023/12/03', N'Trần Quang', '0374567890', N'Hà Nội',DATEADD(DAY, -5, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122084', '2023/12/03', N'Bá Đạo', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -5, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122085', '2023/12/03', N'Kiên', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -5, GETDATE()), 1, 5);
+
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122086', '2023/12/03', N'Ngọc Giàu', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -5, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122087', '2023/12/03', N'Thu Tiền', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -5, GETDATE()), 1, 7);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122088', '2023/12/03', N'Thu Ngân', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -5, GETDATE()), 1, 8);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122089', '2023/12/03', N'Bảo Ngân', '0374567890', N'Vân Phúc',DATEADD(DAY, -5, GETDATE()), 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122001', '2023/12/03', N'Hạ Thy', '0374567890', N'Vân Phúc',DATEADD(DAY, -5, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122002', '2023/12/03', N'Nguyễn Bắp', '0374567890', N'Hà Nội',DATEADD(DAY, -5, GETDATE()), 1, 2);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122003', '2023/12/03', N'Hoàng Nam', '0374567890', N'Vân Phúc',DATEADD(DAY, -5, GETDATE()), 1, 3);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122004', '2023/12/03', N'Bát Chàng', '0374567890', N'Hà Nội',DATEADD(DAY, -5, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122005', '2023/12/03', N'Join', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -5, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122006', '2023/12/03', N'Tri Cao', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -5, GETDATE()), 1, 5);
+
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122007', '2023/12/02', N'A Phú', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122008', '2023/12/02', N'Ti Hợi', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 7);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122009', '2023/12/02', N'Lanh Cao', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 8);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122110', '2023/12/02', N'Bát Tho', '0374567890', N'Vân Phúc',DATEADD(DAY, -6, GETDATE()), 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122111', '2023/12/02', N'Hạ Thương', '0374567890', N'Vân Phúc',DATEADD(DAY, -6, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122112', '2023/12/02', N'Nguyễn Sôi', '0374567890', N'Hà Nội',DATEADD(DAY, -6, GETDATE()), 1, 2);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122113', '2023/12/02', N'Giang Nam', '0374567890', N'Vân Phúc',DATEADD(DAY, -6, GETDATE()), 1, 3);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122114', '2023/12/02', N'Trần Quang', '0374567890', N'Hà Nội',DATEADD(DAY, -6, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122115', '2023/12/02', N'Bá Đạo', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122116', '2023/12/02', N'Kiên', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 5);
+
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122117', '2023/12/02', N'A Phó', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122118', '2023/12/02', N'Ti Tí', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 7);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122119', '2023/12/02', N'Bảo Lãnh', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 8);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD11292312212', '2023/12/02', N'Qua Môn', '0374567890', N'Vân Phúc',DATEADD(DAY, -6, GETDATE()), 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122121', '2023/12/02', N'Thu Qua', '0374567890', N'Vân Phúc',DATEADD(DAY, -6, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122122', '2023/12/02', N'Đông Phương', '0374567890', N'Hà Nội',DATEADD(DAY, -6, GETDATE()), 1, 2);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122123', '2023/12/02', N'Bất Bại', '0374567890', N'Vân Phúc',DATEADD(DAY, -6, GETDATE()), 1, 3);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122124', '2023/12/02', N'Tấn Dương', '0374567890', N'Hà Nội',DATEADD(DAY, -6, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122125', '2023/12/02', N'Bá Đạo Vương', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122126', '2023/12/02', N'Kiên', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 5);
+
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122127', '2023/12/02', N'A Phú', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122128', '2023/12/02', N'Ti Hợi', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 7);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122129', '2023/12/02', N'Lanh Cao', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -6, GETDATE()), 1, 8);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122130', '2023/12/02', N'Bát Tho', '0374567890', N'Vân Phúc',DATEADD(DAY, -6, GETDATE()), 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122131', '2023/12/02', N'Hạ Thương', '0374567890', N'Vân Phúc',DATEADD(DAY, -6, GETDATE()), 1, 6);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122132', '2023/12/02', N'Nguyễn Sôi', '0374567890', N'Hà Nội',DATEADD(DAY, -6, GETDATE()), 1, 2);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122133', '2023/12/01', N'Giang Nam', '0374567890', N'Vân Phúc',DATEADD(DAY, -7, GETDATE()), 1, 3);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122134', '2023/12/01', N'Trần Quang', '0374567890', N'Hà Nội',DATEADD(DAY, -7, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122135', '2023/12/01', N'Bá Đạo', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -7, GETDATE()), 1, 4);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122136', '2023/12/01', N'Kiên', '0374567890', N'Vĩnh Phúc',DATEADD(DAY, -7, GETDATE()), 1, 5);
+
+
 select * from HoaDon
 
 -- data table HoaDonChiTiet
@@ -1118,6 +1309,201 @@ insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_kh
 insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(4, 7, 2, 390000, 370500);
 insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(8, 4, 2, 1020000, 5861500);
 insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(9, 5, 2, 390000, 3021000);
+
+-- sửa bên dưới
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(1, 1, 1, 510000, 484500.000000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(2, 1, 1, 1200000, 1080000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(3, 1, 1, 1020000, 918000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(4, 2, 1, 390000, 351000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(5, 3, 1, 1200000, 576000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(6, 2, 1, 1020000, 918000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(7, 5, 1, 1630000, 1467000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(8, 2, 1, 6170000, 5553000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(9, 4, 1, 3180000, 2862000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(10, 1, 1, 5040000, 4536000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(11, 2, 1, 4160000, 3744000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(12, 3, 1, 4160000, 3744000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(13, 3, 1, 6170000, 5553000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(14, 4, 1, 3920000, 3528000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(15, 4, 1, 4600000, 4140000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(16, 5, 1, 3710000, 3339000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(17, 5, 1, 4120000, 3708000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(18, 6, 1, 5080000, 4572000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(19, 6, 1, 4200000, 3780000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(20, 7, 1, 3970000, 3573000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(21, 7, 1, 3150000, 2835000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(22, 8, 1, 6990000, 6291000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(23, 8, 1, 10110000, 9099000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(24,9, 1, 6100000, 5490000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(25,9, 1, 7050000, 6345000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(26, 10, 1, 5090000, 4581000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(27, 10, 1, 10570000, 9513000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(28, 11, 1, 3370000, 3033000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(29, 11, 1, 4420000, 3978000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(30, 12, 1, 5890000, 5301000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(31, 12, 1, 4350000, 3915000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(32, 13, 1, 3780000, 3402000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(33, 13, 1, 8390000, 7551000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(34,14, 1, 3150000, 2835000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(35,14, 1, 2730000, 2457000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(36, 15, 1, 8590000, 7731000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(37, 15, 1, 3360000, 3024000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(38, 16, 1, 6040000, 5436000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(39, 16, 1, 3360000, 3024000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(40, 17, 1, 5500000, 4950000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(41, 17, 1, 6730000, 6057000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(42, 18, 1, 3740000, 3366000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(43, 18, 1, 3400000, 3060000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(44,19, 1, 9650000, 8685000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(45,19, 1, 2730000, 2457000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(46, 20, 1, 3330000, 2997000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(47, 20, 1, 1120000, 1008000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(48, 21, 1, 2510000, 2259000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(49, 21, 1, 1120000, 1008000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(50, 22, 1, 1030000, 927000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(51, 22, 1, 1620000, 1458000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(52, 23, 1, 4750000, 4275000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(53, 23, 1, 3780000, 3402000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(54,24, 1, 3260000, 2934000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(55,24, 1, 5440000, 4896000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(56, 25, 1, 5080000, 4572000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(57, 25, 1, 4530000, 4077000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(58, 26, 1, 4530000, 4077000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(59, 26, 1, 4950000, 4455000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(60, 27, 1, 4950000, 4455000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(61, 27, 1, 13940000, 12546000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(62, 28, 1, 14900000, 13410000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(63, 28, 1, 17150000, 15435000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(64,29, 1, 12500000, 11250000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(65,29, 1, 8500000, 7650000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(66,30, 1, 18900000, 17010000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(67, 30, 1, 9000000, 8100000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(68, 31, 1, 22030000, 19827000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(69, 31, 1, 26740000, 24066000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(70, 32, 1, 32710000, 29439000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(71, 32, 1, 91470000, 82323000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(72, 33, 1, 30300000, 27270000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(73, 33, 1, 28840000, 25956000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(74,34, 1, 28840000, 25956000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(75,35, 1, 43450000, 39105000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(76,36, 1, 32400000, 29160000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(77, 36, 1, 50500000, 45450000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(78, 37, 1, 35500000, 31950000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(79, 38, 1, 30300000, 27270000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(80, 38, 1, 79200000, 71280000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(81, 37, 1, 44500000, 40050000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(82, 38, 1, 27900000, 25110000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(83, 38, 1, 63000000, 56700000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(84,39, 1, 20370000, 18333000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(85,39, 1, 20370000, 18333000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(86,40, 1, 17860000, 16074000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(87, 40, 1, 10880000, 9792000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(88, 41, 1, 17860000, 16074000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(89, 41, 1, 22450000, 20205000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(90, 42, 1, 17860000, 16074000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(91, 42, 1, 83000000, 74700000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(92, 43, 1, 59000000, 53100000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(93, 43, 1, 167000000, 150300000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(94,44, 1, 69500000, 62550000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(95, 45, 1, 46000000, 41400000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(96,45, 1, 199000000, 179100000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(97, 46, 1, 12370000, 11133000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(98, 46, 1, 12750000, 11475000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(99, 47, 1, 22450000, 6804000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(100, 47, 1, 16660000, 14994000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(101, 44, 1, 26050000, 23445000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(102, 45, 1, 24900000, 22410000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(103, 46, 1, 9670000, 8703000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(104,47, 1, 10200000, 9180000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(105, 48, 1, 10200000, 9180000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(106,49, 1, 12800000, 11520000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(107, 50, 1, 10200000, 9180000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(108, 51, 1, 7140000, 6426000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(109, 52, 1, 9860000, 8874000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(110, 53, 1, 9500000, 8550000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(10, 54, 1, 1020000, 918000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(11, 45, 1, 390000, 351000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(12, 46, 1, 640000, 576000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(13,47, 1, 1020000, 918000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(14, 48, 1, 1630000, 1467000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(15,49, 1, 6170000, 5553000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(16, 50, 1, 3180000, 2862000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(17, 51, 1, 5040000, 4536000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(18, 52, 1, 4160000, 3744000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(19, 53, 1, 4160000, 3744000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(20, 54, 1, 6170000, 5553000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(21, 55, 1, 3920000, 3528000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(22, 56, 1, 4600000, 4140000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(23,57, 1, 3710000, 3339000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(24, 58, 1, 4120000, 3708000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(25,59, 1, 5080000, 4572000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(26, 60, 1, 4200000, 3780000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(27, 61, 1, 3970000, 3573000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(28, 62, 1, 3150000, 2835000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(29, 63, 1, 6990000, 6291000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(30, 64, 1, 10110000, 9099000);
+
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(31, 55, 1, 6100000, 5490000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(32, 56, 1, 7050000, 6345000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(33,57, 1, 5090000, 4581000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(34, 58, 1, 10570000, 9513000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(35,59, 1, 3370000, 3033000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(36, 60, 1, 4420000, 3978000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(37, 61, 1, 5890000, 5301000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(38, 62, 1, 4350000, 3915000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(39, 63, 1, 3780000, 3402000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(40, 64, 1, 8390000, 7551000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(41, 65, 1, 3150000, 2835000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(42, 66, 1, 2730000, 2457000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(43,67, 1, 8590000, 7731000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(44, 68, 1, 3360000, 3024000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(45,69, 1, 6040000, 5436000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(46, 70, 1, 3360000, 3024000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(47, 71, 1, 5500000, 4950000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(48, 72, 1, 6730000, 6057000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(49, 73, 1, 3740000, 3366000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(50, 74, 1, 3400000, 3060000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(51, 75, 1, 9650000, 8685000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(52, 76, 1, 3120000, 2808000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(53,77, 1, 3330000, 2997000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(54,78, 1, 1120000, 1008000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(55,79, 1, 2510000, 2259000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(56, 80, 1, 1120000, 1008000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(57, 81, 1, 1030000, 927000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(58, 82, 1, 1620000, 1458000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(59, 83, 1, 4750000, 4275000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(60, 84, 1, 3780000, 3402000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(61, 85, 1, 3260000, 2934000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(62, 86, 1, 5440000, 4896000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(63,87, 1, 5080000, 4572000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(64,88, 1, 4530000, 4077000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(65,89, 1, 4530000, 4077000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(66, 90, 1, 4950000, 4455000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(67, 91, 1, 4950000, 4455000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(68, 92, 1, 13940000, 12546000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(69, 93, 1, 14900000, 13410000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(70, 94, 1, 17150000, 15435000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(71, 95, 1, 12500000, 11250000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(72, 96, 1, 8500000, 7650000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(73,97, 1, 18900000, 17010000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(74,98, 1, 9000000, 8100000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(75,99, 1, 22030000, 19827000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(76, 100, 1, 26740000, 24066000);
+insert into HoaDonChiTiet(id_san_pham, id_hoa_don, so_luong, don_gia, don_gia_khuyen_mai) values(77, 101, 1, 32710000, 29439000);
+
+
 
 select *from HoaDonChiTiet
 
@@ -1136,6 +1522,196 @@ insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
 values (N'Tiền mặt', 6);
 insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
 values (N'Tiền mặt', 7);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 8);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 9);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 10);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 11);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 12);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 13);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 14);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 15);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 16);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 17);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 18);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 19);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 20);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 21);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 22);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 23);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 24);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 25);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 26);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 27);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 28);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 29);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 30);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 31);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 32);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 33);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 34);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 35);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 36);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 37);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 38);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 39);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 40);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 41);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 42);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 43);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 44);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 45);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 46);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 47);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 48);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 49);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 50);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 8);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 51);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 52);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 53);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt',54);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 55);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 56);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 57);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 58);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 59);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 60);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 61);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 62);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 63);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 64);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 65);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 66);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 67);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 68);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 69);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 70);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 71);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 72);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 73);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 74);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 75);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 76);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 77);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 78);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 79);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 80);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 81);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 82);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 83);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 84);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 85);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 86);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 87);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 88);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 89);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 90);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 91);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 92);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 93);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 94);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 95);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 96);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 97);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 98);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 99);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Tiền mặt', 100);
+insert into HinhThucThanhToan(loai_hinh_thanh_toan, id_hoa_don)
+values (N'Chuyển khoản', 101);
 
 -- data table KhachHang
 

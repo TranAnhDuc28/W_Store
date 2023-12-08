@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import com.wstore.services.ISanPhamService;
 import com.wstore.services.impl.HoaDonChiTietService;
 import com.wstore.services.impl.HoaDonService;
+import com.wstore.swing.table.TableTextAlignmentRightCellRender;
 import com.wstore.utilities.Helper;
 import com.wstore.utilities.ReportManager;
 import com.wstore.utilities.status.StatusHoaDon;
@@ -100,6 +101,11 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
         tabbedThanhToan.putClientProperty(
                 FlatClientProperties.TABBED_PANE_SHOW_TAB_SEPARATORS,
                 true);
+        TableTextAlignmentRightCellRender textRightCellRender = new TableTextAlignmentRightCellRender();
+        int countColumntblHDCT = tblGioHang.getColumnCount();
+        for (int i = 2; i < countColumntblHDCT; i++) {
+            tblGioHang.getColumnModel().getColumn(i).setCellRenderer(textRightCellRender);
+        }
 //        editorSoLuongTblGioHang();
     }
 
@@ -211,6 +217,11 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(241, 246, 251));
         setPreferredSize(new java.awt.Dimension(1377, 725));
+        addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentRemoved(java.awt.event.ContainerEvent evt) {
+                formComponentRemoved(evt);
+            }
+        });
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setOpaque(false);
@@ -750,7 +761,6 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
 
         jLabel10.setText("Địa chỉ");
 
-        txtDiaChi.setBackground(new java.awt.Color(255, 255, 255));
         txtDiaChi.setColumns(20);
         txtDiaChi.setRows(5);
         txtDiaChi.setText("Tại cửa hàng");
@@ -995,32 +1005,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblGioHangMouseClicked
 
     private void btnBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoActionPerformed
-        int[] seletedRowGioHang = tblGioHang.getSelectedRows();
-        int rowCountTblGioHang = tblGioHang.getRowCount();
-        int arrLenght = seletedRowGioHang.length;
-        if (arrLenght > 0) {
-            if (arrLenght == 1) {
-                rollBackSoLuongSP(seletedRowGioHang[0]);
-                listHoaDonChiTiet.remove(seletedRowGioHang[0]);
-            } else if (arrLenght > 1 && arrLenght < rowCountTblGioHang) {
-                for (int i = arrLenght - 1; i >= 0; i--) {
-                    rollBackSoLuongSP(seletedRowGioHang[i]);
-                    listHoaDonChiTiet.remove(seletedRowGioHang[i]);
-                }
-            } else if (arrLenght == rowCountTblGioHang) {
-                for (int i = rowCountTblGioHang - 1; i >= 0; i--) {
-                    rollBackSoLuongSP(seletedRowGioHang[i]);
-                }
-                listHoaDonChiTiet.clear();
-            }
-            loadDataToTblGioHang(listHoaDonChiTiet);
-            showDataHoaDonTaiQuay(hoaDonViewModel);
-            initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
-            System.out.println("SP còn lại trong giỏ hàng: ");
-            for (HoaDonChiTietViewModel hdct : listHoaDonChiTiet) {
-                System.out.println(hdct.toString());
-            }
-        }
+        rollBackSoLuongSP();
     }//GEN-LAST:event_btnBoActionPerformed
 
     private void txtTienKhachDuaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyReleased
@@ -1127,6 +1112,10 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
         }
         btnTaoHoaDon.setEnabled(true);
     }//GEN-LAST:event_btnRefeshActionPerformed
+
+    private void formComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentRemoved
+        rollBackSoLuongSP();
+    }//GEN-LAST:event_formComponentRemoved
 
     public void initPagination(List<SanPhamBanHangViewModel> list) {
         tongSoBanGhiTheoTrangThai = sanPhamService.getRecordCountByTrangThai(trangThai);
@@ -1334,6 +1323,35 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
         Map<SanPhamBanHangViewModel, Integer> list = new HashMap<>();
         list.put(spbh, spbh.getSoLuong() + soLuongTrongGH);
         sanPhamService.updateSoLuong(list);
+    }
+
+    public void rollBackSoLuongSP() {
+        int[] seletedRowGioHang = tblGioHang.getSelectedRows();
+        int rowCountTblGioHang = tblGioHang.getRowCount();
+        int arrLenght = seletedRowGioHang.length;
+        if (arrLenght > 0) {
+            if (arrLenght == 1) {
+                rollBackSoLuongSP(seletedRowGioHang[0]);
+                listHoaDonChiTiet.remove(seletedRowGioHang[0]);
+            } else if (arrLenght > 1 && arrLenght < rowCountTblGioHang) {
+                for (int i = arrLenght - 1; i >= 0; i--) {
+                    rollBackSoLuongSP(seletedRowGioHang[i]);
+                    listHoaDonChiTiet.remove(seletedRowGioHang[i]);
+                }
+            } else if (arrLenght == rowCountTblGioHang) {
+                for (int i = rowCountTblGioHang - 1; i >= 0; i--) {
+                    rollBackSoLuongSP(seletedRowGioHang[i]);
+                }
+                listHoaDonChiTiet.clear();
+            }
+            loadDataToTblGioHang(listHoaDonChiTiet);
+            showDataHoaDonTaiQuay(hoaDonViewModel);
+            initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
+            System.out.println("SP còn lại trong giỏ hàng: ");
+            for (HoaDonChiTietViewModel hdct : listHoaDonChiTiet) {
+                System.out.println(hdct.toString());
+            }
+        }
     }
 
     private boolean validateForm() {

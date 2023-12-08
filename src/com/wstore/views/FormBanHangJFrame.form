@@ -81,6 +81,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="ancestorRemoved" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="tabbedBanHangAncestorRemoved"/>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="tabbedBanHangStateChanged"/>
       </Events>
 

@@ -12,7 +12,7 @@
 	FROM  dbo.HoaDon INNER JOIN dbo.HoaDonChiTiet ON dbo.HoaDon.id = dbo.HoaDonChiTiet.id_hoa_don
 	GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.id
 )
-SELECT     dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang, dbo.HoaDon.dia_chi, dbo.HoaDon.so_dien_thoai, dbo.SanPham.ma_san_pham, 
+SELECT     dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang, dbo.HoaDon.dia_chi, ISNULL(dbo.HoaDon.so_dien_thoai, '') as soDienThoai, dbo.SanPham.ma_san_pham, 
 				CONCAT(dbo.ThuongHieu.ten_thuong_hieu, ' ', dbo.SanPham.ma_hang_hoa) as ten_san_pham, dbo.NhanVien.ho_ten, 
                 dbo.HoaDonChiTiet.so_luong, dbo.HoaDonChiTiet.don_gia, dbo.HoaDonChiTiet.don_gia_khuyen_mai, (dbo.HoaDonChiTiet.don_gia_khuyen_mai * CAST(dbo.HoaDonChiTiet.so_luong AS decimal(10, 0))) AS thanh_tien, OrderTotal.tong_tien
 FROM            dbo.HoaDon INNER JOIN OrderTotal ON  dbo.HoaDon.id = OrderTotal.id INNER JOIN
@@ -28,7 +28,7 @@ GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang,
 	<field name="ngay_tao" class="java.sql.Timestamp"/>
 	<field name="ten_khach_hang" class="java.lang.String"/>
 	<field name="dia_chi" class="java.lang.String"/>
-	<field name="so_dien_thoai" class="java.lang.String"/>
+	<field name="soDienThoai" class="java.lang.String"/>
 	<field name="ma_san_pham" class="java.lang.String"/>
 	<field name="ten_san_pham" class="java.lang.String"/>
 	<field name="ho_ten" class="java.lang.String"/>
@@ -125,7 +125,7 @@ GROUP BY  dbo.HoaDon.ma_hoa_don, dbo.HoaDon.ngay_tao, dbo.HoaDon.ten_khach_hang,
 				<textElement verticalAlignment="Middle">
 					<font fontName="Roboto"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{so_dien_thoai}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{soDienThoai}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="562" y="145" width="52" height="20" uuid="028ded83-3d8c-4d19-8dff-31e686a35c4f"/>

@@ -9,6 +9,7 @@ import com.wstore.services.IHoaDonChiTietService;
 import com.wstore.services.IHoaDonService;
 import com.wstore.services.impl.HoaDonChiTietService;
 import com.wstore.services.impl.HoaDonService;
+import com.wstore.swing.table.TableTextAlignmentRightCellRender;
 import com.wstore.utilities.Helper;
 import com.wstore.utilities.ReportManager;
 import com.wstore.utilities.status.StatusHoaDon;
@@ -55,6 +56,11 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
     private void init() {
         txtTimKiemHD.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,
                 "Nhập nội dung tìm kiếm...");
+        TableTextAlignmentRightCellRender textRightCellRender = new TableTextAlignmentRightCellRender();
+        int countColumntblHDCT = tblHoaDonChiTiet.getColumnCount();
+        for (int i = 2; i < countColumntblHDCT; i++) {
+            tblHoaDonChiTiet.getColumnModel().getColumn(i).setCellRenderer(textRightCellRender);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -359,13 +365,15 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,7 +512,14 @@ public class FormHoaDonJPanel extends javax.swing.JPanel {
         dtmHoaDonChiTiet = (DefaultTableModel) tblHoaDonChiTiet.getModel();
         dtmHoaDonChiTiet.setRowCount(0);
         for (HoaDonChiTietViewModel hdct : list) {
-            dtmHoaDonChiTiet.addRow(hdct.toDataRow());
+            dtmHoaDonChiTiet.addRow(new Object[]{
+                hdct.getSanPham().getMaSanPham(),
+                hdct.getSanPham().getTenSanPham(),
+                hdct.getSoLuong(),
+                Helper.dfTien.format(hdct.getDonGia()),
+                Helper.dfTien.format(hdct.getDonGia().subtract(hdct.getDonGiaKhuyenMai()).intValue()),
+                Helper.dfTien.format(hdct.getDonGiaKhuyenMai().intValue()),
+                Helper.dfTien.format(hdct.getThanhTien().intValue())});
         }
     }
 

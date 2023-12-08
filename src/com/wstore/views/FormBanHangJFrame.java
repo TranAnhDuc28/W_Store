@@ -70,6 +70,15 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
 
         tabbedBanHang.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         tabbedBanHang.setPreferredSize(new java.awt.Dimension(1377, 760));
+        tabbedBanHang.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+                tabbedBanHangAncestorRemoved(evt);
+            }
+        });
         tabbedBanHang.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 tabbedBanHangStateChanged(evt);
@@ -97,7 +106,7 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
 
     private void btnTaoTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoTabActionPerformed
         int count = tabbedBanHang.getTabCount();
-        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG" , new FormTabBanHangJPanel(this));
+        tabbedBanHang.addTab("HÓA ĐƠN BÁN HÀNG", new FormTabBanHangJPanel(this));
     }//GEN-LAST:event_btnTaoTabActionPerformed
 
     private void tabbedBanHangStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedBanHangStateChanged
@@ -105,8 +114,12 @@ public class FormBanHangJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tabbedBanHangStateChanged
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        
+
     }//GEN-LAST:event_formWindowClosing
+
+    private void tabbedBanHangAncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabbedBanHangAncestorRemoved
+
+    }//GEN-LAST:event_tabbedBanHangAncestorRemoved
 
     /**
      * @param args the command line arguments
