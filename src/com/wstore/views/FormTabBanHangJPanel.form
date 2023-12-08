@@ -445,10 +445,10 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnBo" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnQuetMa" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnTaoHoaDon" alignment="1" max="32767" attributes="0"/>
                               <Component id="cboCachThucBanHang" max="32767" attributes="0"/>
+                              <Component id="btnBo" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -503,6 +503,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaoHoaDonActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cboCachThucBanHang">
                   <Properties>
@@ -983,7 +986,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel7">
+                <Container class="javax.swing.JPanel" name="pnlDatHang">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fb" green="f6" red="f1" type="rgb"/>
@@ -1115,12 +1118,12 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextArea" name="txtDiaChi">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
+                        <Property name="text" type="java.lang.String" value="T&#x1ea1;i c&#x1eed;a h&#xe0;ng"/>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>

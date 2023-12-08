@@ -169,9 +169,10 @@ public class FormHoaDonBanHangJDialog extends javax.swing.JDialog {
             rowSelected = tblHoaDon.getSelectedRow();
             formTabBanHangJPanel.hoaDonViewModel =  listHD.get(rowSelected);
             int idHoaDon = formTabBanHangJPanel.hoaDonViewModel.getId();
-            formTabBanHangJPanel.loadDataToTblGioHang(hoaDonChiTietService.getAllByHoaDonID(idHoaDon));
+            formTabBanHangJPanel.loadDataToTblGioHang(hoaDonChiTietService.getAllByIDHoaDon(idHoaDon));
             formTabBanHangJPanel.showHoaDonDuocChon(formTabBanHangJPanel.hoaDonViewModel);
             formTabBanHangJPanel.showDataHoaDonTaiQuay(listHD.get(rowSelected));
+            formTabBanHangJPanel.btnTaoHoaDon.setEnabled(false);
             this.dispose();
         }
     }//GEN-LAST:event_btnXacNhanActionPerformed

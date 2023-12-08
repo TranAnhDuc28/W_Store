@@ -23,7 +23,7 @@ import java.util.List;
 public class HoaDonChiTietRepository implements IHoaDonChiTietRepository {
 
     @Override
-    public List<HoaDonChiTietViewModel> getAllByHoaDonID(int id) {
+    public List<HoaDonChiTietViewModel> getAllByIDHoaDon(int id) {
         List<HoaDonChiTietViewModel> listHoaDonChiTiets = new ArrayList<>();
         String sql = "select hdct.id, hdct.id_san_pham, sp.ma_san_pham, tt.ten_thuong_hieu, sp.doi_tuong_su_dung,"
                 + " sp.ma_hang_hoa, hdct.id_hoa_don, hdct.so_luong, hdct.don_gia, hdct.don_gia_khuyen_mai\n"

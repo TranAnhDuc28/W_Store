@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface IHoaDonChiTietService {
     
-    List<HoaDonChiTietViewModel> getAllByHoaDonID(int id);
+    List<HoaDonChiTietViewModel> getAllByIDHoaDon(int id);
 
     void addListOrderDetails(int idHoaDon, List<HoaDonChiTietViewModel> lists);
     

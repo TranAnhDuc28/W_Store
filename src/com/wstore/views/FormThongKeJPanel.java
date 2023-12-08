@@ -7,11 +7,9 @@ package com.wstore.views;
 import com.wstore.services.IThongKeService;
 import com.wstore.services.impl.ThongKeService;
 import com.wstore.swing.chart.Chart;
-import com.wstore.swing.chart.ModelChart;
 import com.wstore.viewmodels.thongke.ThongKeTungNgayTrongThangViewModel;
 import com.wstore.views.thongke.TabDoanhThuJPanel;
 import com.wstore.views.thongke.TabThongKeTongQuanJPanel;
-import java.awt.Color;
 import java.util.List;
 
 /**

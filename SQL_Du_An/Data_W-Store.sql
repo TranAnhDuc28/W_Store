@@ -1090,20 +1090,20 @@ values ('anhtp', '88bc42ee01ec1836dd1dc33b505aad6d8855cc76e2c0d3dcf61da6844f156a
 
 -- data table HoaDon
 
-insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112823113327', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
-insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923043755', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
-insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923080128', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
-insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923090317', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
-insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923101701', default, N'Khách hàng lẻ', N'Tại cửa hàng', 1, 1);
-insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923111701', default, N'Nguyễn Văn Nam', '0986383628', N'Hà Nội', 1, 1);
-insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, trang_thai, id_nhan_vien) 
-values ('HD112923122033', default, N'Ngô Thị Bích', '0986383628', N'Hà Nội', 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112823113327', default, N'Khách hàng lẻ', N'Tại cửa hàng', GETDATE(), 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923043755', default, N'Khách hàng lẻ', N'Tại cửa hàng', GETDATE(), 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923080128', default, N'Khách hàng lẻ', N'Tại cửa hàng', GETDATE(), 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923090317', default, N'Khách hàng lẻ', N'Tại cửa hàng', GETDATE(), 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923101701', default, N'Khách hàng lẻ', N'Tại cửa hàng', GETDATE(), 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923111701', default, N'Nguyễn Văn Nam', '0986383628', N'Hà Nội', GETDATE(), 1, 1);
+insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, ngay_thanh_toan, trang_thai, id_nhan_vien) 
+values ('HD112923122033', default, N'Ngô Thị Bích', '0986383628', N'Hà Nội', GETDATE(), 1, 1);
 
 select * from HoaDon
 

@@ -233,10 +233,8 @@ offset 0 rows
 fetch next 10 rows only
 
 
-insert into HoaDon
-	(ma_hoa_don, ngay_tao, ten_khach_hang, dia_chi, trang_thai, id_nhan_vien)
-values
-	(?, ?, ?, ?, default, ?);
+insert into HoaDon (ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, trang_thai, id_nhan_vien)
+values (?, ?, ?, ?, ?, ?, ?);
 
 select id, ma_hoa_don, ngay_tao, ten_khach_hang
 from HoaDon

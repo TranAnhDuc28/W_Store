@@ -21,8 +21,8 @@ public class HoaDonChiTietService implements IHoaDonChiTietService{
             new HoaDonChiTietRepository();
 
     @Override
-    public List<HoaDonChiTietViewModel> getAllByHoaDonID(int id) {
-        return hoaDonChiTietRepository.getAllByHoaDonID(id);
+    public List<HoaDonChiTietViewModel> getAllByIDHoaDon(int id) {
+        return hoaDonChiTietRepository.getAllByIDHoaDon(id);
     }
 
     @Override

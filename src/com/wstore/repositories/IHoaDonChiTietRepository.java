@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface IHoaDonChiTietRepository {
     
-    List<HoaDonChiTietViewModel> getAllByHoaDonID(int id);
+    List<HoaDonChiTietViewModel> getAllByIDHoaDon(int id);
 
     void insertListOrderDetails(int idHoaDon, List<HoaDonChiTietViewModel> lists);
     

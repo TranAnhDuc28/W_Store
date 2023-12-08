@@ -130,14 +130,16 @@ public class HoaDonRepository implements IHoaDonRepository {
     @Override
     public boolean insert(HoaDon hoaDon) {
         int checkInsert = 0;
-        String query = "insert into HoaDon(ma_hoa_don, ngay_tao, ten_khach_hang, trang_thai, id_nhan_vien) \n"
-                + "values (?, ?, ?, ?, ?);";
+        String query = "insert into HoaDon (ma_hoa_don, ngay_tao, ten_khach_hang, so_dien_thoai, dia_chi, trang_thai, id_nhan_vien)\n"
+                + "values (?, ?, ?, ?, ?, ?, ?);";
         try (Connection con = DBConnect.getConnection(); PreparedStatement ps = con.prepareStatement(query);) {
             ps.setString(1, hoaDon.getMaHoaDon());
             ps.setTimestamp(2, hoaDon.getNgayTao());
             ps.setString(3, hoaDon.getTenKhachHang());
-            ps.setInt(4, hoaDon.getTrangThai());
-            ps.setInt(5, hoaDon.getIdNhanVien());
+            ps.setString(4, hoaDon.getSoDienThoai());
+            ps.setString(5, hoaDon.getDiaChi());
+            ps.setInt(6, hoaDon.getTrangThai());
+            ps.setInt(7, hoaDon.getIdNhanVien());
             checkInsert = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
