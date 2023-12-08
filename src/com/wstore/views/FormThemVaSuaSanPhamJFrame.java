@@ -211,7 +211,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         spnSizeMat = new javax.swing.JSpinner();
         spnKhoangTruCot = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtGhiChu = new javax.swing.JTextArea();
         btnInMaVach = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         spnGiaNhap = new javax.swing.JSpinner();
@@ -816,12 +816,17 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setPreferredSize(new java.awt.Dimension(232, 100));
-        jScrollPane1.setViewportView(jTextArea1);
+        txtGhiChu.setColumns(20);
+        txtGhiChu.setRows(5);
+        txtGhiChu.setPreferredSize(new java.awt.Dimension(232, 100));
+        jScrollPane1.setViewportView(txtGhiChu);
 
         btnInMaVach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/generate-barcode-product.png"))); // NOI18N
+        btnInMaVach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInMaVachActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("Ghi chú");
 
@@ -1102,6 +1107,10 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         formSanPhamJPanel.tblDSSanPham.clearSelection();
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnInMaVachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInMaVachActionPerformed
+        new FormTaoMaBarCodeSPJDialog(this, false).setVisible(true);
+    }//GEN-LAST:event_btnInMaVachActionPerformed
+
     private SanPham getDataToForm() {
         SanPham sp = new SanPham();
         sp.setMaSanPham(txtMaSanPham.getText().trim());
@@ -1211,6 +1220,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
             }
         }
         sp.setHinhAnh(hinh);
+        sp.setGhiChu(txtGhiChu.getText());
         return sp;
     }
 
@@ -1250,6 +1260,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
         spnSizeMat.setValue(0);
         spnDoDay.setValue(0);
         spnKhoangTruCot.setValue(0);
+        txtGhiChu.setText("");
     }
 
     private boolean validateForm() {
@@ -1485,7 +1496,6 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JLabel lblHinhAnh;
     protected javax.swing.JSpinner spnDoDay;
@@ -1495,6 +1505,7 @@ public class FormThemVaSuaSanPhamJFrame extends javax.swing.JFrame {
     protected javax.swing.JSpinner spnKhoangTruCot;
     protected javax.swing.JSpinner spnSizeMat;
     javax.swing.JSpinner spnSoLuong;
+    private javax.swing.JTextArea txtGhiChu;
     javax.swing.JTextField txtMaSanPham;
     javax.swing.JTextField txtMaVach;
     // End of variables declaration//GEN-END:variables

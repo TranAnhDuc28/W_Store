@@ -25,9 +25,9 @@ public interface ISanPhamService {
     boolean insert(SanPham sp);
 
     boolean update(SanPham sp, int idSanPham);
-    
+
     void updateSoLuong(Map<SanPhamBanHangViewModel, Integer> sanPham);
-    
+
     boolean updateAStatus(int trangThai, int idSanPham);
 
     void updateStatuses(int trangThai, List<Integer> listID);
@@ -41,6 +41,9 @@ public interface ISanPhamService {
     int getRecordCountByTrangThai(int trangThai);
 
     String getMaSanPhamTuDongSinh();
-    
+
     SanPhamBanHangViewModel getOne(int id);
+
+    SanPhamBanHangViewModel findByMaHangHoa(String maHangHoa);
+
 }

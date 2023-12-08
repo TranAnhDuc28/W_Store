@@ -213,5 +213,10 @@ public class SanPhamService implements ISanPhamService {
     public SanPhamBanHangViewModel getOne(int id) {
         return sanPhamRepository.getOne(id);
     }
+
+    @Override
+    public SanPhamBanHangViewModel findByMaHangHoa(String maHangHoa) {
+        return sanPhamRepository.findByMaHangHoa(maHangHoa);
+    }
     
 }

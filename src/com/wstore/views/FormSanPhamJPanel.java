@@ -777,11 +777,11 @@ public class FormSanPhamJPanel extends javax.swing.JPanel {
 //                true);
         tabbebQLSanPham.putClientProperty(FlatClientProperties.TABBED_PANE_SHOW_TAB_SEPARATORS, true);
         tabbebQLSanPham.addTab("THUỘC TÍNH SẢN PHẨM", new FormTabThuocTinhSanPham());
-        TableTextAlignmentCellRender textCenter = new TableTextAlignmentCellRender();
-        int countColumntblSP = tblDSSanPham.getColumnCount();
-        for (int i = 0; i < countColumntblSP; i++) {
-            tblDSSanPham.getColumnModel().getColumn(i).setCellRenderer(textCenter);
-        }
+//        TableTextAlignmentCellRender textCenter = new TableTextAlignmentCellRender();
+//        int countColumntblSP = tblDSSanPham.getColumnCount();
+//        for (int i = 0; i < countColumntblSP; i++) {
+//            tblDSSanPham.getColumnModel().getColumn(i).setCellRenderer(textCenter);
+//        }
     }
 
     public void initPagination(List<SanPhamViewModel> list) {

@@ -10,8 +10,18 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import com.wstore.services.ISanPhamService;
+import com.wstore.services.impl.SanPhamService;
+import com.wstore.utilities.Helper;
+import com.wstore.viewmodels.HoaDonChiTietViewModel;
+import com.wstore.viewmodels.banhang.SanPhamBanHangViewModel;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JPanel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -21,13 +31,17 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
 
     private Webcam webcam;
     private WebcamPanel webcamPanel;
-    //Tạo ra một Thread chạy song song với Thread chính
-    //để có thể chụp ảnh liên tiếp mà k ảnh hưởng đến thread chính
     private Thread captureThread;
+    private ISanPhamService sanPhamService = new SanPhamService();
+    private Map<SanPhamBanHangViewModel, Integer> listUpdateSoLuongSP = new HashMap<>();
+    private FormTabBanHangJPanel formTabBanHangJPanel;
+    private SanPhamBanHangViewModel sp;
 
-    public FormQuetMaBarcodeJDialog(java.awt.Frame parent, boolean modal) {
+    public FormQuetMaBarcodeJDialog(java.awt.Frame parent, boolean modal, JPanel jPanel) {
         super(parent, modal);
+        this.formTabBanHangJPanel = (FormTabBanHangJPanel) jPanel;
         initComponents();
+        init();
         initWebcam();
     }
 
@@ -127,21 +141,21 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         btnQuet = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
+        lblHinhAnh = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtDonGia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtGiaKM = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        spnSoLuongMua = new javax.swing.JSpinner();
         btnThemVaoGioHang = new javax.swing.JButton();
         btnDong = new javax.swing.JButton();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        txtMaSanPham = new javax.swing.JTextField();
+        txtTenSP = new javax.swing.JTextField();
+        txtSoLuongTon = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtMaBarCode = new javax.swing.JTextField();
@@ -177,10 +191,10 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(143, 143, 143)));
         jPanel3.setPreferredSize(new java.awt.Dimension(180, 0));
 
-        jLabel15.setBackground(new java.awt.Color(243, 243, 243));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Hình ảnh");
-        jLabel15.setOpaque(true);
+        lblHinhAnh.setBackground(new java.awt.Color(243, 243, 243));
+        lblHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHinhAnh.setText("Hình ảnh");
+        lblHinhAnh.setOpaque(true);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -188,14 +202,14 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addComponent(lblHinhAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addComponent(lblHinhAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -205,20 +219,24 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
 
         jLabel5.setText("Số lượng tồn");
 
-        jTextField5.setEditable(false);
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jTextField5.setOpaque(true);
+        txtDonGia.setEditable(false);
+        txtDonGia.setBackground(new java.awt.Color(255, 255, 255));
+        txtDonGia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtDonGia.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtDonGia.setOpaque(true);
 
         jLabel6.setText("Đơn giá");
 
-        jTextField6.setEditable(false);
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtGiaKM.setEditable(false);
+        txtGiaKM.setBackground(new java.awt.Color(255, 255, 255));
+        txtGiaKM.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtGiaKM.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        jLabel7.setText("Giá bán");
+        jLabel7.setText("Giá KM");
 
         jLabel8.setText("Số lượng mua");
+
+        spnSoLuongMua.setModel(new javax.swing.SpinnerNumberModel());
 
         btnThemVaoGioHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wstore/icons/add32x32.png"))); // NOI18N
         btnThemVaoGioHang.setText("Thêm vào giỏ hàng");
@@ -240,20 +258,21 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
             }
         });
 
-        jTextField7.setEditable(false);
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jTextField7.setOpaque(true);
+        txtMaSanPham.setEditable(false);
+        txtMaSanPham.setBackground(new java.awt.Color(255, 255, 255));
+        txtMaSanPham.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtMaSanPham.setOpaque(true);
 
-        jTextField8.setEditable(false);
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField8.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jTextField8.setOpaque(true);
+        txtTenSP.setEditable(false);
+        txtTenSP.setBackground(new java.awt.Color(255, 255, 255));
+        txtTenSP.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtTenSP.setOpaque(true);
 
-        jTextField9.setEditable(false);
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField9.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jTextField9.setOpaque(true);
+        txtSoLuongTon.setEditable(false);
+        txtSoLuongTon.setBackground(new java.awt.Color(255, 255, 255));
+        txtSoLuongTon.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtSoLuongTon.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtSoLuongTon.setOpaque(true);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -272,12 +291,12 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
                             .addComponent(jLabel6))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
+                            .addComponent(txtGiaKM, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(spnSoLuongMua, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(txtDonGia, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(txtMaSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(txtTenSP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(txtSoLuongTon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -298,26 +317,26 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtMaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtSoLuongTon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtGiaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spnSoLuongMua, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -392,11 +411,71 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnQuetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuetActionPerformed
-        txtMaBarCode.setText("");
+        clearForm();
         captureThread();
     }//GEN-LAST:event_btnQuetActionPerformed
 
     private void btnThemVaoGioHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemVaoGioHangActionPerformed
+        int soLuongSPMua = 0;
+        if (formTabBanHangJPanel.hoaDonViewModel == null) {
+            Helper.alert(null, "Vui lòng tạo hóa đơn để mua hàng!");
+            return;
+        }
+        soLuongSPMua = Integer.parseInt(spnSoLuongMua.getValue().toString());
+        if (soLuongSPMua <= 0) {
+            return;
+        }
+        if (sp == null) {
+            return;
+        }
+        int soLuongTonCuaSP = sp.getSoLuong();
+        if (soLuongTonCuaSP == 0) {
+            return;
+        }
+        if (soLuongSPMua > soLuongTonCuaSP) {
+            soLuongSPMua = soLuongTonCuaSP;
+        }
+
+        HoaDonChiTietViewModel hoaDonChiTietViewModel = new HoaDonChiTietViewModel();
+        hoaDonChiTietViewModel.setSanPham(new SanPhamBanHangViewModel(
+                sp.getId(),
+                sp.getMaSanPham(),
+                sp.getTenSanPham()));
+        hoaDonChiTietViewModel.setSoLuong(soLuongSPMua);
+        hoaDonChiTietViewModel.setDonGia(sp.getDonGia());
+        hoaDonChiTietViewModel.setDonGiaKhuyenMai(sp.getGiaKhuyenMai());
+        hoaDonChiTietViewModel.setIdHoaDon(null);
+        boolean flag = true;
+        if (!formTabBanHangJPanel.listHoaDonChiTiet.isEmpty()) { // kiem tra list hoa don chi tiet có san pham nao k ?
+            // neu co san pham ben trong se duyet qua tung san pham 
+            // neu trung ma san pham thi tang hoac giam so luong
+            for (HoaDonChiTietViewModel hdct : formTabBanHangJPanel.listHoaDonChiTiet) {
+                if (hdct.getSanPham().getId().equals(hoaDonChiTietViewModel.getSanPham().getId())) {
+                    hdct.setSoLuong(hdct.getSoLuong() + soLuongSPMua);
+                    flag = false;
+                    break;
+                }
+            }
+        }
+        // neu list hoa don chua co san pham nao hoac
+        // san pham chua co trong list
+        // thi se them vao danh sach
+        if (flag) {
+            formTabBanHangJPanel.listHoaDonChiTiet.add(hoaDonChiTietViewModel);
+        }
+
+        // tru so luong san pham da chon
+        sp.setSoLuong(soLuongTonCuaSP - soLuongSPMua);
+
+        formTabBanHangJPanel.loadDataToTblGioHang(formTabBanHangJPanel.listHoaDonChiTiet);
+        // luu du lieu de update so luong san pham vao co so du lieu neu thanh toan
+        listUpdateSoLuongSP.put(sp, sp.getSoLuong());
+        sanPhamService.updateSoLuong(listUpdateSoLuongSP);
+        formTabBanHangJPanel.initPagination(sanPhamService.getAllSanPhamBanHang(
+                formTabBanHangJPanel.page,
+                formTabBanHangJPanel.pageSize,
+                formTabBanHangJPanel.trangThai));
+        formTabBanHangJPanel.showDataHoaDonTaiQuay(formTabBanHangJPanel.hoaDonViewModel);
 
     }//GEN-LAST:event_btnThemVaoGioHangActionPerformed
 
@@ -413,54 +492,93 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
         webcam.close();
     }//GEN-LAST:event_formWindowClosed
 
+    private void init() {
+        txtMaBarCode.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String maHangHoa = txtMaBarCode.getText();
+                sp = sanPhamService.findByMaHangHoa(maHangHoa);
+                if (sp == null) {
+                    Helper.alert(null, "Sai mã hàng hóa hoặc sản phẩm không có trong cửa hàng.");
+                    return;
+                }
+                txtMaSanPham.setText(sp.getMaSanPham());
+                txtTenSP.setText(sp.getTenSanPham());
+                txtSoLuongTon.setText(sp.getSoLuong().toString());
+                txtDonGia.setText(Helper.dfTien.format(sp.getDonGia()));
+                txtGiaKM.setText(Helper.dfTien.format(sp.getGiaKhuyenMai()));
+                Helper.showHinhAnh("images/images-san-pham", lblHinhAnh, sp.getHinhAnh());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+            }
+        });
+    }
+
+    private void clearForm() {
+        txtMaBarCode.setText("");
+        txtMaSanPham.setText("");
+        txtTenSP.setText("");
+        txtSoLuongTon.setText("");
+        txtDonGia.setText("");
+        txtGiaKM.setText("");
+        spnSoLuongMua.setValue(0);
+        lblHinhAnh.setIcon(null);
+        lblHinhAnh.setText("Hình ảnh");
+    }
+
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the dialog */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                FormQuenMatKhauJDialog dialog = new FormQuenMatKhauJDialog(new javax.swing.JFrame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    @Override
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FormQuenMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                FormQuetMaBarcodeJDialog dialog = new FormQuetMaBarcodeJDialog(new javax.swing.JFrame(), true, null);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDong;
     private javax.swing.JButton btnQuet;
     private javax.swing.JButton btnThemVaoGioHang;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -471,14 +589,15 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel lblHinhAnh;
     private javax.swing.JPanel pnlShowWebcam;
+    private javax.swing.JSpinner spnSoLuongMua;
+    private javax.swing.JTextField txtDonGia;
+    private javax.swing.JTextField txtGiaKM;
     private javax.swing.JTextField txtMaBarCode;
+    private javax.swing.JTextField txtMaSanPham;
+    private javax.swing.JTextField txtSoLuongTon;
+    private javax.swing.JTextField txtTenSP;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -5,8 +5,10 @@
 package com.wstore.views;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.wstore.domainmodels.HinhThucThanhToan;
 import com.wstore.domainmodels.HoaDon;
 import com.wstore.domainmodels.KhachHang;
+import com.wstore.services.IHinhThucThanhToanService;
 import com.wstore.services.IHoaDonChiTietService;
 import com.wstore.services.IHoaDonService;
 import com.wstore.services.impl.SanPhamService;
@@ -21,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
 import com.wstore.services.ISanPhamService;
+import com.wstore.services.impl.HinhThucThanhToanService;
 import com.wstore.services.impl.HoaDonChiTietService;
 import com.wstore.services.impl.HoaDonService;
 import com.wstore.swing.table.TableTextAlignmentRightCellRender;
@@ -54,6 +57,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
     private final ISanPhamService sanPhamService = new SanPhamService();
     private final IHoaDonService hoaDonService = new HoaDonService();
     private final IHoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietService();
+    private final IHinhThucThanhToanService hinhThucThanhToanService = new HinhThucThanhToanService();
     private DefaultTableModel dtmTblSanPham;
     private DefaultTableModel dtmTblGioHang;
     private List<SanPhamBanHangViewModel> listSanPham;
@@ -62,11 +66,11 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
     private HoaDon hoaDon;
     HoaDonViewModel hoaDonViewModel;
     private KhachHang kh = new KhachHang();
-    public int trangThai = 0;
-    public int page = 1;
+    int trangThai = 0;
+    int page = 1;
     private int tongSoBanGhiTheoTrangThai = 0;
-    private int totalPage = 1;
-    public int pageSize = 15;
+    int totalPage = 1;
+    int pageSize = 15;
     int tongTien = 0;
     int soLuongMua = 0;
     int donGiaSP = 0;
@@ -888,7 +892,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
     private void btnQuetMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuetMaActionPerformed
-        new FormQuetMaBarcodeJDialog(formBanHangJFrame, false).setVisible(true);
+        new FormQuetMaBarcodeJDialog(formBanHangJFrame, false, this).setVisible(true);
     }//GEN-LAST:event_btnQuetMaActionPerformed
 
     private void btnTimKiemKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemKhachHangActionPerformed
@@ -901,6 +905,10 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
         }
         if (!validateForm()) {
             if (hoaDonService.update(getDataToForm(), hoaDonViewModel.getId())) {
+                HinhThucThanhToan httt = new HinhThucThanhToan();
+                httt.setLoaiHinhThanhToan(cboHinhThucThanhToan.getSelectedItem().toString());
+                httt.setIdHoaDon(new HoaDon(hoaDonViewModel.getId()));
+                hinhThucThanhToanService.insert(httt);
                 List<Integer> listIDOrderDetails = new ArrayList();
                 for (HoaDonChiTietViewModel hoaDonChiTietViewModel : listHoaDonChiTiet) {
                     if (hoaDonChiTietViewModel.getId() != null) {
@@ -1097,6 +1105,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
         if (hoaDonService.update(hd, hoaDonViewModel.getId())) {
             List<Integer> listIDOrderDetails = new ArrayList();
             for (HoaDonChiTietViewModel hoaDonChiTietViewModel : listHoaDonChiTiet) {
+                System.out.println(hoaDonChiTietViewModel.toString());
                 if (hoaDonChiTietViewModel.getId() != null) {
                     listIDOrderDetails.add(Integer.valueOf(hoaDonChiTietViewModel.getId().toString()));
                 }
@@ -1104,6 +1113,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
             hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
             int idHoaDon = hoaDonViewModel.getId();
             for (HoaDonChiTietViewModel hoaDonChiTietViewModel : listHoaDonChiTiet) {
+                System.out.println(hoaDonChiTietViewModel.toString());
                 hoaDonChiTietViewModel.setIdHoaDon(new HoaDon(idHoaDon));
             }
             hoaDonChiTietService.addListOrderDetails(idHoaDon, listHoaDonChiTiet);
@@ -1170,7 +1180,6 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
 
             @Override
             public void editingCanceled(ChangeEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
     }
@@ -1218,14 +1227,13 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
         // tru so luong san pham da chon
         sanPham.setSoLuong(soLuongCuaSPSelected - soLuongSPMua);
 
-        listSanPham.set(sanPhamSelected, sanPham);
-        loadDataToTblSanPham(listSanPham);
-        tblDSSanPham.setRowSelectionInterval(sanPhamSelected, sanPhamSelected);
-
+//        listSanPham.set(sanPhamSelected, sanPham);
+//        loadDataToTblSanPham(listSanPham);
         loadDataToTblGioHang(listHoaDonChiTiet);
         // luu du lieu de update so luong san pham vao co so du lieu neu thanh toan
         listUpdateSoLuongSP.put(sanPham, sanPham.getSoLuong());
         sanPhamService.updateSoLuong(listUpdateSoLuongSP);
+        initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
     }
 
     public void showDataHoaDonTaiQuay(HoaDonViewModel hd) {
@@ -1313,7 +1321,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
         hoaDonViewModel = null;
     }
 
-    private void rollBackSoLuongSP(int SPSelected) {
+    private void updateSoLuongSP(int SPSelected) {
         int idSanPham;
         int soLuongTrongGH;
         HoaDonChiTietViewModel hdct = listHoaDonChiTiet.get(SPSelected);
@@ -1328,20 +1336,45 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
     public void rollBackSoLuongSP() {
         int[] seletedRowGioHang = tblGioHang.getSelectedRows();
         int rowCountTblGioHang = tblGioHang.getRowCount();
+        List<Integer> listIDOrderDetails = new ArrayList();
         int arrLenght = seletedRowGioHang.length;
         if (arrLenght > 0) {
             if (arrLenght == 1) {
-                rollBackSoLuongSP(seletedRowGioHang[0]);
+                updateSoLuongSP(seletedRowGioHang[0]);
+                HoaDonChiTietViewModel hdct = listHoaDonChiTiet.get(seletedRowGioHang[0]);
+                if (hdct.getId() != null) {
+                    listIDOrderDetails.add(Integer.valueOf(hdct.getId().toString()));
+                }
+                if (listIDOrderDetails.isEmpty()) {
+                    return;
+                }
+                hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
                 listHoaDonChiTiet.remove(seletedRowGioHang[0]);
             } else if (arrLenght > 1 && arrLenght < rowCountTblGioHang) {
                 for (int i = arrLenght - 1; i >= 0; i--) {
-                    rollBackSoLuongSP(seletedRowGioHang[i]);
+                    updateSoLuongSP(seletedRowGioHang[i]);
+                    HoaDonChiTietViewModel hdct = listHoaDonChiTiet.get(seletedRowGioHang[i]);
+                    if (hdct.getId() != null) {
+                        listIDOrderDetails.add(Integer.valueOf(hdct.getId().toString()));
+                    }
                     listHoaDonChiTiet.remove(seletedRowGioHang[i]);
                 }
+                if (listIDOrderDetails.isEmpty()) {
+                    return;
+                }
+                hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
             } else if (arrLenght == rowCountTblGioHang) {
                 for (int i = rowCountTblGioHang - 1; i >= 0; i--) {
-                    rollBackSoLuongSP(seletedRowGioHang[i]);
+                    updateSoLuongSP(seletedRowGioHang[i]);
+                    HoaDonChiTietViewModel hdct = listHoaDonChiTiet.get(seletedRowGioHang[i]);
+                    if (hdct.getId() != null) {
+                        listIDOrderDetails.add(Integer.valueOf(hdct.getId().toString()));
+                    }
                 }
+                if (listIDOrderDetails.isEmpty()) {
+                    return;
+                }
+                hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
                 listHoaDonChiTiet.clear();
             }
             loadDataToTblGioHang(listHoaDonChiTiet);
@@ -1355,6 +1388,11 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
     }
 
     private boolean validateForm() {
+        int tongTien = Integer.parseInt(txtTienKhachDua.getText());
+        if (tongTien == 0) {
+            Helper.alert(this, "Vui lòng chọn sản phẩm muốn mua!");
+            return true;
+        }
         int tienKhachTra = Integer.parseInt(txtTienKhachDua.getText()) + Integer.parseInt(txtTienKhachChietKhau.getText());
         if (tienKhachTra < tienCanThanhToan) {
             Helper.alert(this, "Tiền thanh toán chưa đủ");

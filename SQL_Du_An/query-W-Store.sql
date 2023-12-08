@@ -66,9 +66,8 @@ fetch next 200 rows only;
 update SanPham set so_luong_ton = ? where id = ?;
 
 
-select id
-from SanPham
-where ma_san_pham = 'SP000108'
+select * from SanPham
+
 
 insert into SanPham
 	(ma_san_pham, id_thuong_hieu, ma_hang_hoa, gia_nhap, don_gia, so_luong_ton, hinh_anh, doi_tuong_su_dung

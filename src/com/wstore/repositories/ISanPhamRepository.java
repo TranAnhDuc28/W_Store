@@ -39,6 +39,8 @@ public interface ISanPhamRepository {
     List<SanPhamBanHangViewModel> findByNameOrMaSanPhamBanHang(int page, int pageSize, String name, int trangThai);
 
     List<SanPham> filter(String condition);
-    
-    SanPhamBanHangViewModel getOne(int id);  
+
+    SanPhamBanHangViewModel getOne(int id);
+
+    SanPhamBanHangViewModel findByMaHangHoa(String maHangHoa);
 }
