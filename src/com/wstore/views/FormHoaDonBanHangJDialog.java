@@ -153,7 +153,7 @@ public class FormHoaDonBanHangJDialog extends javax.swing.JDialog {
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         int row = tblHoaDon.getSelectedRow();
-        if(row < 0) {
+        if (row < 0) {
             return;
         }
         if (!formTabBanHangJPanel.listHoaDonChiTiet.isEmpty()) {
@@ -167,12 +167,13 @@ public class FormHoaDonBanHangJDialog extends javax.swing.JDialog {
                     formTabBanHangJPanel.pageSize,
                     formTabBanHangJPanel.trangThai));
             rowSelected = tblHoaDon.getSelectedRow();
-            formTabBanHangJPanel.hoaDonViewModel =  listHD.get(rowSelected);
+            formTabBanHangJPanel.hoaDonViewModel = listHD.get(rowSelected);
             int idHoaDon = formTabBanHangJPanel.hoaDonViewModel.getId();
             formTabBanHangJPanel.loadDataToTblGioHang(hoaDonChiTietService.getAllByIDHoaDon(idHoaDon));
             formTabBanHangJPanel.showHoaDonDuocChon(formTabBanHangJPanel.hoaDonViewModel);
             formTabBanHangJPanel.showDataHoaDonTaiQuay(listHD.get(rowSelected));
             formTabBanHangJPanel.btnTaoHoaDon.setEnabled(false);
+            formTabBanHangJPanel.btnHoaDon.setEnabled(false);
             this.dispose();
         }
     }//GEN-LAST:event_btnXacNhanActionPerformed
@@ -213,7 +214,6 @@ public class FormHoaDonBanHangJDialog extends javax.swing.JDialog {
         dcbmTrangThai.addElement(StatusHoaDon.CHO_GIAO_HANG);
         dcbmTrangThai.addElement(StatusHoaDon.DANG_GIAO_HANG);
     }
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

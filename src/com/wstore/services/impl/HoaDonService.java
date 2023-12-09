@@ -64,4 +64,9 @@ public class HoaDonService implements IHoaDonService {
         return hoaDonRepository.filterHoaDonByNgayTao(page, pageSize, tuNgay, denNgay);
     }
 
+    @Override
+    public int getSoHoaDonTrongNgay(String ngay) {
+        return hoaDonRepository.getSoHoaDonTrongNgay(ngay);
+    }
+
 }

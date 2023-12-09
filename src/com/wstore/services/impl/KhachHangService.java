@@ -32,7 +32,7 @@ public class KhachHangService implements IKhachHangService {
             KhView.setMaKhachHang(kh.getMaKhachHang());
             KhView.setHoTen(kh.getHoTen());
             KhView.setGioiTinh(kh.getGioiTinh());
-            KhView.setNgaySinh(kh.getNgaySinh() == null ? null : Helper.sdfNgayThang.format(kh.getNgaySinh()));
+            KhView.setNgaySinh(kh.getNgaySinh() == null ? null : Helper.sdfNgayThangNam.format(kh.getNgaySinh()));
             KhView.setSoDienThoai(kh.getSoDienThoai());
             KhView.setEmail(kh.getEmail());
             KhView.setDiaChi(kh.getDiaChi());
@@ -76,7 +76,7 @@ public class KhachHangService implements IKhachHangService {
             KhView.setMaKhachHang(kh.getMaKhachHang());
             KhView.setHoTen(kh.getHoTen());
             KhView.setGioiTinh(kh.getGioiTinh());
-            KhView.setNgaySinh(kh.getNgaySinh() == null ? null :Helper.sdfNgayThang.format(kh.getNgaySinh()));
+            KhView.setNgaySinh(kh.getNgaySinh() == null ? null :Helper.sdfNgayThangNam.format(kh.getNgaySinh()));
             KhView.setSoDienThoai(kh.getSoDienThoai());
             KhView.setEmail(kh.getEmail());
             KhView.setDiaChi(kh.getDiaChi());

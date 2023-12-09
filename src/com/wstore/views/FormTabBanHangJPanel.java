@@ -238,10 +238,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
         tblDSSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblDSSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Hình ảnh", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá", "Giá khuyến mãi", ""
@@ -885,6 +882,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
                 showDataHoaDonTaiQuay(hoaDonViewModel);
                 Helper.alert(this, "Tạo hóa đơn thành công!");
                 btnTaoHoaDon.setEnabled(false);
+                btnHoaDon.setEnabled(false);
             } else {
                 Helper.alert(this, "Tạo hóa đơn thất bại!");
             }
@@ -1104,13 +1102,17 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
         hd.setTrangThai(0);
         if (hoaDonService.update(hd, hoaDonViewModel.getId())) {
             List<Integer> listIDOrderDetails = new ArrayList();
+            System.out.println("DS HDCT cũ: ");
             for (HoaDonChiTietViewModel hoaDonChiTietViewModel : listHoaDonChiTiet) {
                 System.out.println(hoaDonChiTietViewModel.toString());
                 if (hoaDonChiTietViewModel.getId() != null) {
                     listIDOrderDetails.add(Integer.valueOf(hoaDonChiTietViewModel.getId().toString()));
                 }
             }
-            hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
+            if (!listIDOrderDetails.isEmpty()) {
+                hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
+            }
+            System.out.println("DS HDCT mới: ");
             int idHoaDon = hoaDonViewModel.getId();
             for (HoaDonChiTietViewModel hoaDonChiTietViewModel : listHoaDonChiTiet) {
                 System.out.println(hoaDonChiTietViewModel.toString());
@@ -1121,6 +1123,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
             clearForm();
         }
         btnTaoHoaDon.setEnabled(true);
+        btnHoaDon.setEnabled(true);
     }//GEN-LAST:event_btnRefeshActionPerformed
 
     private void formComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentRemoved
@@ -1230,7 +1233,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
 //        listSanPham.set(sanPhamSelected, sanPham);
 //        loadDataToTblSanPham(listSanPham);
         loadDataToTblGioHang(listHoaDonChiTiet);
-        // luu du lieu de update so luong san pham vao co so du lieu neu thanh toan
+
         listUpdateSoLuongSP.put(sanPham, sanPham.getSoLuong());
         sanPhamService.updateSoLuong(listUpdateSoLuongSP);
         initPagination(sanPhamService.getAllSanPhamBanHang(page, pageSize, trangThai));
@@ -1345,10 +1348,9 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
                 if (hdct.getId() != null) {
                     listIDOrderDetails.add(Integer.valueOf(hdct.getId().toString()));
                 }
-                if (listIDOrderDetails.isEmpty()) {
-                    return;
+                if (!listIDOrderDetails.isEmpty()) {
+                    hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
                 }
-                hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
                 listHoaDonChiTiet.remove(seletedRowGioHang[0]);
             } else if (arrLenght > 1 && arrLenght < rowCountTblGioHang) {
                 for (int i = arrLenght - 1; i >= 0; i--) {
@@ -1359,10 +1361,9 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
                     }
                     listHoaDonChiTiet.remove(seletedRowGioHang[i]);
                 }
-                if (listIDOrderDetails.isEmpty()) {
-                    return;
+                if (!listIDOrderDetails.isEmpty()) {
+                    hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
                 }
-                hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
             } else if (arrLenght == rowCountTblGioHang) {
                 for (int i = rowCountTblGioHang - 1; i >= 0; i--) {
                     updateSoLuongSP(seletedRowGioHang[i]);
@@ -1371,10 +1372,9 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
                         listIDOrderDetails.add(Integer.valueOf(hdct.getId().toString()));
                     }
                 }
-                if (listIDOrderDetails.isEmpty()) {
-                    return;
+                if (!listIDOrderDetails.isEmpty()) {
+                    hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
                 }
-                hoaDonChiTietService.deleteListOrderDetails(listIDOrderDetails);
                 listHoaDonChiTiet.clear();
             }
             loadDataToTblGioHang(listHoaDonChiTiet);
@@ -1388,7 +1388,8 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
     }
 
     private boolean validateForm() {
-        int tongTien = Integer.parseInt(txtTienKhachDua.getText());
+        int tongTien = Integer.parseInt(Helper.removeDauPhay(txtTongTien.getText()));
+        System.out.println(Helper.removeDauPhay(txtTongTien.getText()));
         if (tongTien == 0) {
             Helper.alert(this, "Vui lòng chọn sản phẩm muốn mua!");
             return true;
@@ -1404,7 +1405,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBo;
     private javax.swing.JButton btnFirst;
-    private javax.swing.JButton btnHoaDon;
+    javax.swing.JButton btnHoaDon;
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;

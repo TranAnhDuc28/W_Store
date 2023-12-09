@@ -339,3 +339,7 @@ LEFT JOIN SanPham sp on hdct.id_san_pham = sp.id
 GROUP BY dates.ngay_thang_nam  
 
 select * from HoaDon
+
+select count(*) from HoaDon where CONVERT(DATE, ngay_tao) = '2023-12-08'
+
+select * from SanPham

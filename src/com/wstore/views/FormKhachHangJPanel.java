@@ -620,7 +620,7 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         formThemVaSuaKhachHangJFrame.txtHoTen.setText(kh.getHoTen());
         try {
             formThemVaSuaKhachHangJFrame.txtNgaySinh.setDate(
-                    kh.getNgaySinh() == null ? null : Helper.sdfNgayThang.parse(kh.getNgaySinh()));
+                    kh.getNgaySinh() == null ? null : Helper.sdfNgayThangNam.parse(kh.getNgaySinh()));
         } catch (ParseException ex) {
             ex.printStackTrace();
         }

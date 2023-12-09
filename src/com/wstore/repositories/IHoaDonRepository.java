@@ -31,4 +31,6 @@ public interface IHoaDonRepository {
     List<HoaDonViewModel> findByMa(int page, int pageSize, String maHD);
     
     List<HoaDonViewModel> filterHoaDonByNgayTao(int page, int pageSize, String tuNgay, String denNgay);
+    
+    int getSoHoaDonTrongNgay(String ngay);
 }

@@ -353,4 +353,20 @@ public class HoaDonRepository implements IHoaDonRepository {
         return list;
     }
 
+    @Override
+    public int getSoHoaDonTrongNgay(String ngay) {
+         int count = 0;
+        String sql = "select count(*) from HoaDon where CONVERT(DATE, ngay_tao) = ?";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            pstm.setString(1, ngay);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return count;
+    }
+
 }

@@ -34,7 +34,8 @@ public class Helper {
 
     public static Image ICON_APP;
     public static SimpleDateFormat sdfNgayThangThoiGian = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-    public static SimpleDateFormat sdfNgayThang = new SimpleDateFormat("dd/MM/yyyy");
+    public static SimpleDateFormat sdfNgayThangNam = new SimpleDateFormat("dd/MM/yyyy");
+    public static SimpleDateFormat sdfNgayThangNamSQL = new SimpleDateFormat("yyyy-MM-dd");
     public static DecimalFormat dfTien = new DecimalFormat("###,###.##");
     public static Dimension dimensionJFileChooser = new Dimension(800, 500);
     public static NhanVien USER_LOGIN = null;
@@ -49,7 +50,7 @@ public class Helper {
     public static void logout() {
         Helper.USER_LOGIN = null;
     }
-    
+
     // dialog thông báo
     public static void alert(Component component, String message) {
         JOptionPane.showMessageDialog(component, message,
@@ -114,7 +115,7 @@ public class Helper {
         }
         return false;
     }
-    
+
     public static boolean checkRongTextArea(Component component, JTextArea txt, String message) {
         if (txt.getText().trim().isEmpty()) {
             alert(component, message);
@@ -219,6 +220,10 @@ public class Helper {
         return str.replaceAll("\\[|\\]", "");
     }
 
+    public static String removeDauPhay(String str) {
+        return str.replaceAll(",", "");
+    }
+
     public static boolean isValidNumber(String text) {
         if (text == null) {
             return false;
@@ -239,9 +244,9 @@ public class Helper {
             return false;
         }
     }
-    
+
     public static ImageIcon scaledImage(ImageIcon image, int width, int height) {
-        return new ImageIcon( image.getImage()
+        return new ImageIcon(image.getImage()
                 .getScaledInstance(width, height, Image.SCALE_SMOOTH));
     }
 }

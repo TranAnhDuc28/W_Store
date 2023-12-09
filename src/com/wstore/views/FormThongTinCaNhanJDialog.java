@@ -320,7 +320,7 @@ public class FormThongTinCaNhanJDialog extends javax.swing.JDialog {
         NhanVien nv = Helper.USER_LOGIN;
         txtMaNhanVien.setText(nv.getMaNhanVien());
         txtHoTen.setText(nv.getHoTen());
-        txtNgaySinh.setText(Helper.sdfNgayThang.format(nv.getNgaySinh()));
+        txtNgaySinh.setText(Helper.sdfNgayThangNam.format(nv.getNgaySinh()));
         txtGioiTinh.setText(nv.getGioiTinh() ? "Nam" : "Nữ");
         txtSoDienThoai.setText(nv.getSoDienThoai());
         txtCCCD.setText(nv.getCanCuocCongDan());

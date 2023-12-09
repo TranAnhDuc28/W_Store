@@ -1012,7 +1012,7 @@ public class FormNhanVienJPanel extends javax.swing.JPanel {
             rdoNu.setSelected(true);
         }
         try {
-            txtNgaySinh.setDate(Helper.sdfNgayThang.parse(nv.getNgaySinh()));
+            txtNgaySinh.setDate(Helper.sdfNgayThangNam.parse(nv.getNgaySinh()));
         } catch (ParseException ex) {
             ex.printStackTrace();
         }

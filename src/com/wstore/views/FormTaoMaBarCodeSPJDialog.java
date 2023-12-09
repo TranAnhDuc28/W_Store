@@ -292,7 +292,6 @@ public class FormTaoMaBarCodeSPJDialog extends javax.swing.JDialog {
                     BufferedImage.TYPE_BYTE_BINARY, false, 0);
             code128.generateBarcode(canvas, nameFile);
             canvas.finish();
-
             FileOutputStream fos = new FileOutputStream("images/images_barcode_san-pham/" + nameFile + ".png");
             fos.write(baos.toByteArray());
             fos.flush();

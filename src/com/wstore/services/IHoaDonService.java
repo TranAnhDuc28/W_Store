@@ -32,4 +32,6 @@ public interface IHoaDonService {
 
     List<HoaDonViewModel> filterHoaDonByNgayTao(int page, int pageSize, String tuNgay, String denNgay);
 
+    int getSoHoaDonTrongNgay(String ngay);
+
 }
