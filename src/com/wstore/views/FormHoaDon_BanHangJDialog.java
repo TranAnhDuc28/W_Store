@@ -22,12 +22,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ducan
  */
-public class FormHoaDonBanHangJDialog extends javax.swing.JDialog {
+public class FormHoaDon_BanHangJDialog extends javax.swing.JDialog {
 
     private final IHoaDonService hoaDonService = new HoaDonService();
     private final IHoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietService();
     private ISanPhamService sanPhamService = new SanPhamService();
-    private final FormTabBanHangJPanel formTabBanHangJPanel;
+    private FormTabBanHangJPanel formTabBanHangJPanel;
     private DefaultTableModel dtmHoaDon;
     private final DefaultComboBoxModel dcbmTrangThai = new DefaultComboBoxModel();
     private List<HoaDonViewModel> listHD;
@@ -35,7 +35,7 @@ public class FormHoaDonBanHangJDialog extends javax.swing.JDialog {
     private int countRecord = 0;
     private int trangThai = 0;
 
-    public FormHoaDonBanHangJDialog(java.awt.Frame parent, boolean modal, JPanel jPanel) {
+    public FormHoaDon_BanHangJDialog(java.awt.Frame parent, boolean modal, JPanel jPanel) {
         super(parent, modal);
         formTabBanHangJPanel = (FormTabBanHangJPanel) jPanel;
         initComponents();

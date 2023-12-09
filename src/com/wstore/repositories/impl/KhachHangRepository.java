@@ -86,7 +86,7 @@ public class KhachHangRepository implements IKhachHangRepository {
         int checkupdate = 0;
         String sql = "update KhachHang\n"
                 + "set ma_khach_hang =? , ho_ten = ?, gioi_tinh=?, ngay_sinh=?, so_dien_thoai=?,\n"
-                + "email=?, dia_chi=?, hinh_anh=?, , ghi_chu=?\n"
+                + "email=?, dia_chi=?, hinh_anh=?, ghi_chu=?\n"
                 + "where id = ?";
         try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
             pstm.setString(1, kh.getMaKhachHang());

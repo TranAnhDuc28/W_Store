@@ -630,7 +630,7 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
         if (kh.getGioiTinh().equals("Nam")) {
             formThemVaSuaKhachHangJFrame.rdoNam.setSelected(true);
         } else {
-            formThemVaSuaKhachHangJFrame.rdoNu.setSelected(false);
+            formThemVaSuaKhachHangJFrame.rdoNu.setSelected(true);
         }
         formThemVaSuaKhachHangJFrame.setVisible(true);
     }

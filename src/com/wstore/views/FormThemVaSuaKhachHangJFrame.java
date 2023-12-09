@@ -51,9 +51,11 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
             hinh = tenHinhAnh;
             tenHinhAnh = null;
         } else {
-            Object hinhAnhOnTbl = formKhachHangJPanel.tblKhachHang.getValueAt(rowSelected, 7);
-            if (rowSelected >= 0 && hinhAnhOnTbl != null && !(hinhAnhOnTbl.equals("No image"))) {
-                hinh = hinhAnhOnTbl.toString();
+            if (rowSelected >= 0) {
+                Object hinhAnhOnTbl = formKhachHangJPanel.tblKhachHang.getValueAt(rowSelected, 7);
+                if (hinhAnhOnTbl != null && !(hinhAnhOnTbl.equals("No image"))) {
+                    hinh = hinhAnhOnTbl.toString();
+                }
                 if (lblHinhAnh.getIcon() == null) {
                     hinh = "No image";
                 }

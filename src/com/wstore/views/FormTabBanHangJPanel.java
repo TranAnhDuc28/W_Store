@@ -894,7 +894,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnQuetMaActionPerformed
 
     private void btnTimKiemKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemKhachHangActionPerformed
-        // TODO add your  code here:
+        new FormHoaDon_BanHangJDialog(null, true, this).setVisible(true);
     }//GEN-LAST:event_btnTimKiemKhachHangActionPerformed
 
     private void btnThanhToanTaiQuayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanTaiQuayActionPerformed
@@ -937,7 +937,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThanhToanTaiQuayActionPerformed
 
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
-        new FormHoaDonBanHangJDialog(null, true, this).setVisible(true);
+        new FormHoaDon_BanHangJDialog(null, true, this).setVisible(true);
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void cboSoBanGhiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboSoBanGhiItemStateChanged
