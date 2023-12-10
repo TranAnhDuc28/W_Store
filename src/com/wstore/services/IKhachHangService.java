@@ -26,4 +26,6 @@ public interface IKhachHangService {
     List<KhachHangViewModel> findByNameOrMaOrSDT(int page, int pageSize, int trangThai, String name);
 
     int getCountRecordByTrangThai(int trangThai);
+    
+    String getMaKhachHangTuDongSinh();
 }

@@ -68,7 +68,7 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
     }
 
     public void clearForm() {
-        txtMaKhachHang.setText("");
+        txtMaKhachHang.setText(khachHangService.getMaKhachHangTuDongSinh());
         txtDiaChi.setText("");
         txtEmail.setText("");
         txtGhiChu.setText("");
@@ -189,6 +189,8 @@ public class FormThemVaSuaKhachHangJFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Mã khách hàng (*)");
 
+        txtMaKhachHang.setEditable(false);
+        txtMaKhachHang.setBackground(new java.awt.Color(255, 255, 255));
         txtMaKhachHang.setPreferredSize(new java.awt.Dimension(250, 30));
 
         jLabel10.setText("Họ và tên (*)");

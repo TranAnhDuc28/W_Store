@@ -476,7 +476,7 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
                 formTabBanHangJPanel.pageSize,
                 formTabBanHangJPanel.trangThai));
         formTabBanHangJPanel.showDataHoaDonTaiQuay(formTabBanHangJPanel.hoaDonViewModel);
-
+        showData();
     }//GEN-LAST:event_btnThemVaoGioHangActionPerformed
 
     private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
@@ -498,16 +498,7 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
             public void insertUpdate(DocumentEvent e) {
                 String maHangHoa = txtMaBarCode.getText();
                 sp = sanPhamService.findByMaHangHoa(maHangHoa);
-                if (sp == null) {
-                    Helper.alert(null, "Sai mã hàng hóa hoặc sản phẩm không có trong cửa hàng.");
-                    return;
-                }
-                txtMaSanPham.setText(sp.getMaSanPham());
-                txtTenSP.setText(sp.getTenSanPham());
-                txtSoLuongTon.setText(sp.getSoLuong().toString());
-                txtDonGia.setText(Helper.dfTien.format(sp.getDonGia()));
-                txtGiaKM.setText(Helper.dfTien.format(sp.getGiaKhuyenMai()));
-                Helper.showHinhAnh("images/images-san-pham", lblHinhAnh, sp.getHinhAnh());
+                showData();
             }
 
             @Override
@@ -532,9 +523,19 @@ public class FormQuetMaBarcodeJDialog extends javax.swing.JDialog {
         lblHinhAnh.setText("Hình ảnh");
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    private void showData() {
+        if (sp == null) {
+            Helper.alert(null, "Sai mã hàng hóa hoặc sản phẩm không có trong cửa hàng.");
+            return;
+        }
+        txtMaSanPham.setText(sp.getMaSanPham());
+        txtTenSP.setText(sp.getTenSanPham());
+        txtSoLuongTon.setText(sp.getSoLuong().toString());
+        txtDonGia.setText(Helper.dfTien.format(sp.getDonGia()));
+        txtGiaKM.setText(Helper.dfTien.format(sp.getGiaKhuyenMai()));
+        Helper.showHinhAnh("images/images-san-pham", lblHinhAnh, sp.getHinhAnh());
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

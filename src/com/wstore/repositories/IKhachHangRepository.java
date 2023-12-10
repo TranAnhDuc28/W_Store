@@ -26,4 +26,6 @@ public interface IKhachHangRepository {
     List<KhachHang> findByNameOrMaOrSDT(int page, int pageSize, int trangThai, String name);
 
     int getCountRecordByTrangThai(int trangThai);
+    
+    int getCountRecord();
 }

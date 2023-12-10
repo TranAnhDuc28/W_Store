@@ -894,7 +894,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnQuetMaActionPerformed
 
     private void btnTimKiemKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemKhachHangActionPerformed
-        new FormHoaDon_BanHangJDialog(null, true, this).setVisible(true);
+        new FormKhachHang_BanHangJDialog(null, true, this).setVisible(true);
     }//GEN-LAST:event_btnTimKiemKhachHangActionPerformed
 
     private void btnThanhToanTaiQuayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanTaiQuayActionPerformed
@@ -930,6 +930,7 @@ public final class FormTabBanHangJPanel extends javax.swing.JPanel {
                 }
                 clearForm();
                 btnTaoHoaDon.setEnabled(true);
+                btnHoaDon.setEnabled(true);
             } else {
                 Helper.alert(this, "Thanh toán thất bại!");
             }

@@ -426,7 +426,9 @@ public class FormKhachHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cboTrangThaiItemStateChanged
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        new FormThemVaSuaKhachHangJFrame(this).setVisible(true);
+       formThemVaSuaKhachHangJFrame = new FormThemVaSuaKhachHangJFrame(this);
+       formThemVaSuaKhachHangJFrame.txtMaKhachHang.setText(khachHangService.getMaKhachHangTuDongSinh());
+       formThemVaSuaKhachHangJFrame.setVisible(true);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed

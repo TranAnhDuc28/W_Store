@@ -204,4 +204,19 @@ public class KhachHangRepository implements IKhachHangRepository {
         return count;
     }
 
+    @Override
+    public int getCountRecord() {
+        int count = 0;
+        String sql = "select count(*) from KhachHang";
+        try (Connection cn = DBConnect.getConnection(); PreparedStatement pstm = cn.prepareStatement(sql);) {
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return count;
+    }
+
 }
